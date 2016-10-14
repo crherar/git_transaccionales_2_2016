@@ -1,0 +1,29 @@
+# FORMULARIO PARA REGISTRAR UN PRESTAMO
+
+ID regobj 020506 200 200
+opc debug
+
+cf 01 27 30 P O R T A L  P R E S T A M O S
+cf 02 1 80 ==============================================================================
+
+box 0 0 30 80
+cf 4 15  17 REGISTRAR OBJETOS
+
+
+cf 6 2 32 Email usuario dueño del objeto:
+ce 6 33 30 000 AN 0
+
+cf 8 2 18 Nombre del objeto:
+ce 8 20 15 030 AN 0
+
+
+cm  18  15  02 0
+tm  01  32  Datos guardados correctamente!!!
+tm  02  19  Error al guardar!!!
+
+cf 28 1 15 Ir a formulario
+fs 28 17
+ff
+
+
+

@@ -1,0 +1,21 @@
+ID loginn 020506 40 10
+opc debug
+box 0 0 30 80
+cf 01 27 30 P O R T A L  P R E S T A M O S
+cf 02 1 80 ==============================================================================
+cf 08 35 10 - Log In -
+box 09 20 10 50
+cf 13 25 6 Email:
+ce 13 33 30 000 AN 0
+cf 15 25 9 Password: 
+ce 15 35 10 030 AN 0 
+
+cm 20  15  02 0
+#tm 01 22 Logueado correctamente
+tm 02 28 Email o password incorrectos
+tm 03 13 Error general
+
+fa menpri
+cf 28 1 15 Ir a formulario
+fs 28 17
+ff

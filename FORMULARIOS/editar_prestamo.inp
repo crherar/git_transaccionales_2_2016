@@ -1,0 +1,58 @@
+# FORMULARIO PARA REGISTRAR UN PRESTAMO
+
+ID eprest 020506 200 200
+opc debug
+
+cf 01 27 30 P O R T A L  P R E S T A M O S
+cf 02 1 80 ==============================================================================
+
+box 0 0 30 80
+cf 4 15  16 EDITAR PRESTAMOS
+
+
+#FECHA DEL PRESTAMO
+cf 6 2 6 Fecha:
+cd 6 8 2 006 006
+cf 6 13 1 -
+cd 6 15 2 004 004
+cf 6 20 1 -
+cd 6 22 4 000 000
+
+
+
+#CORREO USUARIO PRESTADOR
+cf 8 2 25 Correo usuario prestador:
+cd 8 27 30 008 008
+
+#OBJETO PRESTADO
+cf 10 2 16 Objeto prestado:
+cd 10 19 15 038 038 
+
+#CANTIDAD
+cf 12 2 9 Cantidad:
+cd 12 11 3 053 053
+
+#CORREO USUARIO RECIBIDOR
+cf 14 2 25 Correo usuario recibidor:
+cd 14 27 30 056 056
+
+#FECHA DEVOLUCION
+cf 16 2 17 Fecha devolucion:
+cd 16 20 2 092 092
+cf 16 25 1 -
+cd 16 27 2 090 090
+cf 16 32 1 -
+cd 16 35 4 086 086
+
+
+
+cm  18  15  02 094
+tm  01  32  Datos guardados correctamente!!!
+tm  02  19  Error al guardar!!!
+
+cf 28 1 15 Ir a formulario
+fs 28 17
+ff
+
+
+ 

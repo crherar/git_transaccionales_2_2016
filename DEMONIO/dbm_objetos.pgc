@@ -1,0 +1,173 @@
+#include <stdlib.h>
+#include <sqlca.h>
+
+EXEC SQL INCLUDE sqlca;
+//#include EXEC SQL INCLUDE SQLCA;
+#define ASSERT(ptr) if(sqlca.sqlcode != 0){free(ptr);ptr=NULL;}
+
+EXEC SQL BEGIN DECLARE SECTION;
+EXEC SQL INCLUDE modelo.h;
+EXEC SQL END DECLARE SECTION;
+
+int get_id_objeto(char *nombre_objeto)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+int  SQL_output;
+char SQL_nombre_obj[15];
+
+EXEC SQL END DECLARE SECTION;
+
+//SQL_output = (Usuario*) malloc(sizeof(Usuario));
+//memset(SQL_output, 0, sizeof(Usuario));
+strcpy(SQL_nombre_obj,nombre_objeto);
+ 
+EXEC SQL SELECT id INTO :SQL_output FROM objetos WHERE nombre = :SQL_nombre_obj;
+db_commit();
+
+ASSERT(SQL_output);
+return SQL_output;
+}
+
+
+Objeto *insertar_objeto(int id_usuario_dueno,char *nombre_objeto)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+Objeto  *SQL_output;
+int  SQL_id_usuario_dueno;
+char SQL_nombre_obj[15];
+
+EXEC SQL END DECLARE SECTION;
+
+strcpy(SQL_nombre_obj,nombre_objeto);
+SQL_id_usuario_dueno = id_usuario_dueno;
+
+SQL_output = (Objeto*) malloc(sizeof(Objeto));
+memset(SQL_output, 0, sizeof(Objeto));
+
+EXEC SQL INSERT INTO objetos(nombre,id_usuario_dueno) VALUES(:SQL_nombre_obj,:SQL_id_usuario_dueno);
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("\n");
+SQL_output->verificador_error = sqlca.sqlcode;
+	//printf("antes de hacer commit \n");
+        
+db_commit();
+ASSERT(SQL_output);
+return SQL_output;
+}
+
+
+char *get_listado_objetos(int pagina)//debe venir por parametro la id del usuario
+{
+EXEC SQL BEGIN DECLARE SECTION;
+Objeto  *SQL_output;
+int SQL_pagina;
+int SQL_count;
+//int  SQL_id_usuario_dueno;
+//char SQL_nombre_obj[15];
+
+EXEC SQL END DECLARE SECTION;
+
+SQL_pagina = (pagina-1)*10;
+EXEC SQL SELECT COUNT(*) INTO :SQL_count FROM objetos limit 10 offset :SQL_pagina;
+
+if(SQL_count == 0) return "no hay datos";
+
+
+//if(SQL_count == 0)
+    //char datos[1] = "";
+//else
+//char datos[200] = "";
+
+SQL_output = (Objeto*) malloc(sizeof(Objeto) * (SQL_count + 1));
+//SQL_output[SQL_count].SQL_CODE = 0;
+//memset(SQL_output, 0, sizeof(Objeto));
+
+
+EXEC SQL DECLARE RESULT_SET CURSOR FOR SELECT nombre
+FROM objetos  ORDER BY nombre limit 10 offset :SQL_pagina;
+EXEC SQL OPEN RESULT_SET;
+
+int resultset_pos = 0;
+
+//EXEC SQL SELECT nombre INTO :SQL_output->nombre FROM objetos;
+
+
+
+char nombre_obj[15] = "";
+char datos[200] = "";
+printf("antes del while \n");
+while(!sqlca.sqlcode && resultset_pos < SQL_count){
+	EXEC SQL FETCH NEXT FROM RESULT_SET INTO :SQL_output[resultset_pos].nombre;
+        printf("nombre: %s \n",SQL_output[resultset_pos].nombre);
+        int tamanio = strlen(SQL_output[resultset_pos].nombre);
+        if(tamanio <=15)
+        {
+         //if(tamanio >0)
+         printf("tamanio: %d \n",tamanio);
+         int num_espacios = 15 - tamanio; 
+         printf("num_espacios: %d \n",num_espacios);
+         char espacios[15 - tamanio];
+         printf("largo espacios: %d \n",strlen(espacios));
+        
+        
+
+        //memset(espacios,' ',num_espacios);
+        
+        //for(int i = 0;i<num_espacios;i++){
+        //  espacios[i] = ' ';
+        //}
+        
+         strcpy(nombre_obj, SQL_output[resultset_pos].nombre);
+        //strcat(nombre_obj,espacios);
+        //memset(nombre_obj, ' ', espacios);
+         int i;
+         for(i = 0;i<num_espacios;i++){
+          strcat(nombre_obj," ");
+         }
+         strcat(datos,nombre_obj);
+        //char espacios[15 - tamanio];
+        //memset(espacios,' ',sizeof(espacios));
+        //char nombre = 
+        //strcat(datos,SQL_output[resultset_pos].nombre);
+        //strcat(datos,espacios);
+	//SQL_output[resultset_pos].SQL_CODE = 1;
+	 
+         } 
+         
+	}
+
+EXEC SQL CLOSE RESULT_SET;
+printf("despues del while \n");
+
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("\n");
+SQL_output->verificador_error = sqlca.sqlcode;
+	//printf("antes de hacer commit \n");
+       
+db_commit();
+ASSERT(SQL_output);
+printf("datos en el sql %s \n",datos);
+printf("largo datos en el sql %d \n",strlen(datos));
+return datos;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

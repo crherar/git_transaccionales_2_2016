@@ -1,0 +1,15 @@
+ID menobj 000004 0 0
+opc debug
+box 0 0 30 80
+cf 01 27 30 P O R T A L  P R E S T A M O S
+cf 02 1 80 ==============================================================================
+cf 05 34 29 - Mis objetos -
+cf 09 2 22 Seleccione una opción
+cf 12 2 24 1) Ver objetos agregados
+cf 14 2 47 2) Agregar objeto (nombre formulario: regobj)
+cf 16 2 18 3) Eliminar objeto
+cf 18 2 30 4) Marcar objeto como devuelto
+cf 20 2 49 5) Hacer un prestamo (nombre formulario: hprest)
+cf 28 1 18 Ir a formulario
+fs 28 17
+ff

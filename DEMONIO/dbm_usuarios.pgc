@@ -1,0 +1,82 @@
+#include <stdlib.h>
+#include <sqlca.h>
+
+EXEC SQL INCLUDE sqlca;
+//#include EXEC SQL INCLUDE SQLCA;
+#define ASSERT(ptr) if(sqlca.sqlcode != 0){free(ptr);ptr=NULL;}
+
+EXEC SQL BEGIN DECLARE SECTION;
+EXEC SQL INCLUDE modelo.h;
+EXEC SQL END DECLARE SECTION;
+
+
+int logueo(char *email,char *password)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+int  SQL_output;
+char SQL_email[30];
+char SQL_password[10];
+EXEC SQL END DECLARE SECTION;
+strcpy(SQL_email,email);
+strcpy(SQL_password,password);
+
+EXEC SQL SELECT count(*)  INTO :SQL_output FROM usuarios WHERE email = :SQL_email and contrasenia = :SQL_password;
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("\n");
+db_commit();
+ASSERT(SQL_output);
+return SQL_output;
+}
+
+int get_id_usuario_por_nombre_apellido(char *nombre,char *apellido)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+int  SQL_output;
+char SQL_nombre[11];
+char SQL_apellido[11];
+EXEC SQL END DECLARE SECTION;
+printf("select id del nombre de usuario: %s \n",nombre);
+printf("select id del apellido de usuario: %s \n",apellido);
+//SQL_output = (Usuario*) malloc(sizeof(Usuario));
+//memset(SQL_output, 0, sizeof(Usuario));
+strcpy(SQL_nombre,nombre);
+strcpy(SQL_apellido,apellido);
+EXEC SQL SELECT id INTO :SQL_output FROM usuarios WHERE nombre = :SQL_nombre and apellido = :SQL_apellido;
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("\n");
+db_commit();
+
+ASSERT(SQL_output);
+return SQL_output;
+}
+
+
+int get_id_usuario_por_email(char *email)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+int  SQL_output;
+char SQL_email[30]; 
+EXEC SQL END DECLARE SECTION;
+printf("select id del email de usuario: %s \n",email);
+ 
+//SQL_output = (Usuario*) malloc(sizeof(Usuario));
+//memset(SQL_output, 0, sizeof(Usuario));
+strcpy(SQL_email,email);
+EXEC SQL SELECT id INTO :SQL_output FROM usuarios WHERE email = :SQL_email;
+
+db_commit();
+
+ASSERT(SQL_output);
+return SQL_output;
+}
+
+
+
+Usuario * insertar_usuario(.....)
+{
+
+
+
+}
+
+

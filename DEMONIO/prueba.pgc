@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+#include <string.h>
+#include <unistd.h>
+#include <sys/ipc.h>
+#include <sys/msg.h>
+#include <sys/types.h>
+#include "dbm_conectar.h"
+#include "dbm_prestamos.h"
+#include "dbm_usuarios.h"
+#include "dbm_objetos.h" 
+ 
+
+int main()
+{
+ 
+ 
+printf("HOLA MUNDO \n");
+
+ 
+if(db_conectar())
+	{
+           
+		printf("%s\n", "Failed to connect to database");
+		return 1;
+	}
+printf("conectado \n");
+printf("otra cosa \n");
+
+Prestamo *pre;
+
+pre = insertar_prestamo("2016-10-08",1,1,1,1,"2016-10-08"); 
+printf("despues de insertar \n");
+printf("%d\n",pre->verificador_error);
+
+
+
+Usuario *usr;
+printf("antes de obtener id usuario \n");
+int id = get_id_usuario("usuario1","ap1");
+printf("despues de obtener id usuario \n");
+
+printf("La id del usuario es: %d \n",id);
+
+int id_objeto = get_id_objeto("disco duro");
+printf("La id del objeto es: %d \n",id_objeto); 
+
+
+
+
+}
