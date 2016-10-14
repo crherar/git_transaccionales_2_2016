@@ -1,0 +1,25 @@
+ID regusr 100001 90 10
+opc debug
+box 0 0 30 80
+cf 01 27 30 P O R T A L  P R E S T A M O S
+cf 02 1 80 ==============================================================================
+
+cf  05 27 29 - Registro de nuevo usuario -
+cf  09 2  41 Por favor, ingrese los siguientes campos:
+
+cf  12	2	6    Email:
+ce  12	9	40   000 AN 000
+
+cf  14	2	7    Nombre:
+ce  14	10	20	 40 AN 000
+
+cf  16  2   8    Apellido:
+ce  16  12  20   60 AN 000
+
+cf  18 	2   9  	 Password:
+ce  18	12  10   80 AN 000
+
+cf 28 1 18 Ir a formulario
+fs 28 17
+
+ff
