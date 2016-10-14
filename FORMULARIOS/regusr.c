@@ -1,3 +1,45 @@
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/msg.h>
+
+struct trans
+{
+    int len;
+    char datos[2000];
+};
+
+void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans *tx_sa)
+{
+
+
+//-------------PARA TODOS LOS FORMULARIOS DESDE AQUI--------------------------------
+int idcola, idproceso;
+
+struct monitor_demonio
+{
+long mtype;
+char formulario_actual[7];
+	struct 
+	{
+	  int idproceso;
+          
+	  char datos_formulario[2000];
+	} texto;
+} mensaje, respuesta;
+
+
+//idcola =  msgget (6300451, 0666);
+idcola = msgget(0070, 0666);
+
+
+idproceso = getpid();
+printf ("id cola: %d \n",idcola);
+printf("id proceso: %d \n",idproceso);
+//-----------------------PARA TODOS LOS FORMULARIOS HASTA AQUI------------------------------------
+
 //se limpia mensaje antes de llenarlo con los datos traidos del formulario
  memset (&mensaje, 0, sizeof mensaje);
 
@@ -9,7 +51,7 @@ strcpy(mensaje.texto.datos_formulario, tx_in->datos);
 
 printf("Copia de datos formulario a mensaje \n");
 
-strcpy(mensaje.formulario_actual,"loginn");
+strcpy(mensaje.formulario_actual,"regusr");
 
 mensaje.mtype = 1;
 mensaje.texto.idproceso = idproceso;
@@ -58,18 +100,19 @@ printf("valor recibido de la respuesta msgrcv: %d \n", valor_recibido);
 printf("largo de la respuesta recibida %d \n",sizeof(respuesta.texto.datos_formulario));
 printf("datos tx_out->datos: %s \n",tx_out->datos);
 
-if(strcmp(respuesta.texto.datos_formulario, "01") == 0)
-{
-	aci[7]='1';
+//if(strcmp(respuesta.texto.datos_formulario, "01") == 0)
+//{
+//	aci[7]='1';
 	//printf("if form loginn \n");
 	// strcpy(aci,"afmenpri00");
 	//tx_out->len = 8;
 	//strcpy(tx_out->datos,"menpri00");
-} else
-{
-	tx_out->len = 2;
-	memset(tx_out->datos,' ',2);
+//} 
+//else
+//{
+	//tx_out->len = 2;
+	//memset(tx_out->datos,' ',2);
 	tx_out->len= sprintf(tx_out->datos,"%s", respuesta.texto.datos_formulario);
-}
+//}
 
 }

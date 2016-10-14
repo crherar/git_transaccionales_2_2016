@@ -167,6 +167,16 @@ int main() {
 
                 usr = insertar_usuario(email, nombre, apellido, password);
 
+                  printf("La respuesta de insertar usuario es: %d \n", usr->verificador_error);                
+                
+                if (usr->verificador_error == 0) {
+                    strcpy(respuesta.texto.datos_formulario, "01");
+                } else {
+                    strcpy(respuesta.texto.datos_formulario, "02");
+                }
+                
+                
+
                 printf("************************** FIN Formulario 'regusr' **************************\n");
             }
 

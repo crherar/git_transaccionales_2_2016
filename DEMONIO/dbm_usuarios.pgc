@@ -85,10 +85,17 @@ char SQL_password[10];
 
 EXEC SQL END DECLARE SECTION;
 
+
+strcpy(SQL_email,email);
+strcpy(SQL_nombre,nombre);
+strcpy(SQL_apellido,apellido);
+strcpy(SQL_password,password);
+
+
 SQL_output = (Usuario*) malloc(sizeof(Usuario));
 memset(SQL_output, 0, sizeof(Usuario));
 
-EXEC SQL INSERT INTO usuario(email, nombre, apellido, password) VALUES(:SQL_email, :SQL_nombre, :SQL_apellido, :SQL_password);
+EXEC SQL INSERT INTO usuarios(email, nombre, apellido, password) VALUES(:SQL_email, :SQL_nombre, :SQL_apellido, :SQL_password);
 printf(sqlca.sqlerrm.sqlerrmc );
 printf("\n");
 SQL_output->verificador_error = sqlca.sqlcode;
