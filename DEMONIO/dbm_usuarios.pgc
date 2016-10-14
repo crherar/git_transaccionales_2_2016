@@ -59,7 +59,7 @@ int get_id_usuario_por_email(char *email)
 {
 EXEC SQL BEGIN DECLARE SECTION;
 int  SQL_output;
-char SQL_email[30]; 
+char SQL_email[40]; 
 EXEC SQL END DECLARE SECTION;
 printf("select id del email de usuario: %s \n",email);
  
