@@ -64,7 +64,7 @@ int main() {
 
     //char *nombre_usuario_prestador[10]; //esta como puntero porque por alguna razon que no puede encontrar, al recibir los datos de hprest, en el valor de esta variable se guardaba el 52. Entre probar y probar le puse el * y funciono
     //char apellido_usuario_prestador[10] = "";
-    char email_usuario_prestador[41]; 
+    char email_usuario_prestador[41];
     char *nombre_objeto[15];
     int cantidad_prestada;
     char email_usuario_recibidor[41];
@@ -82,9 +82,9 @@ int main() {
     char apellido[21];
 
 
-/* *****************************************************************************************************************
- *                                                    FORMULARIOS                                                  *
- * *****************************************************************************************************************/
+    /* *****************************************************************************************************************
+     *                                                    FORMULARIOS                                                  *
+     * *****************************************************************************************************************/
 
 
     while (10) // While Infinito
@@ -111,7 +111,7 @@ int main() {
 
             /**************************************
                     FORMULARIO "loginn"
-            **************************************/
+             **************************************/
 
             if (strcmp(formulario_actual, "loginn") == 0) {
 
@@ -120,7 +120,7 @@ int main() {
                 printf("-----> Logeo de usuario <-----\n");
 
                 printf("El mensaje de recibido de %s es: %s \n", formulario_actual, mensaje.texto.datos_formulario);
-                
+
                 sscanf(mensaje.texto.datos_formulario, "%40s%10s", email, password);
 
                 printf("El email recibido desde loginn es: %s \n", email);
@@ -145,8 +145,8 @@ int main() {
 
             /**************************************
                     FORMULARIO "regusr"
-            **************************************/            
-              
+             **************************************/
+
             if (strcmp(formulario_actual, "regusr") == 0) {
 
                 printf("************************** Formulario 'regusr' **************************\n");
@@ -154,7 +154,7 @@ int main() {
                 printf("-----> Registro de nuevo usuario <-----\n");
 
                 printf("El mensaje de recibido de %s es: %s \n", formulario_actual, mensaje.texto.datos_formulario);
-                
+
                 sscanf(mensaje.texto.datos_formulario, "%40s%20s%20s%10s", email, nombre, apellido, password);
 
                 printf("El email recibido desde regusr es: %s \n", email);
@@ -167,15 +167,15 @@ int main() {
 
                 usr = insertar_usuario(email, nombre, apellido, password);
 
-                  printf("La respuesta de insertar usuario es: %d \n", usr->verificador_error);                
-                
+                printf("La respuesta de insertar usuario es: %d \n", usr->verificador_error);
+
                 if (usr->verificador_error == 0) {
                     strcpy(respuesta.texto.datos_formulario, "01");
                 } else {
                     strcpy(respuesta.texto.datos_formulario, "02");
                 }
-                
-                
+
+
 
                 printf("************************** FIN Formulario 'regusr' **************************\n");
             }
@@ -185,7 +185,7 @@ int main() {
 
             /**************************************
                     FORMULARIO "hprest"
-            **************************************/ 
+             **************************************/
 
             if (strcmp(formulario_actual, "hprest") == 0) {
 
@@ -236,7 +236,7 @@ int main() {
 
             /**************************************
                     FORMULARIO "regobj"
-            **************************************/ 
+             **************************************/
 
             if (strcmp(formulario_actual, "regobj") == 0) {
 
@@ -266,25 +266,25 @@ int main() {
             }
 
             /* ********************************************************************************************************* */
-            
+
             /**************************************
                     FORMULARIO "verobj"
-            **************************************/ 
+             **************************************/
 
             if (strcmp(formulario_actual, "verobj") == 0) {
-                
+
                 printf("************************** Formulario 'verobj' **************************\n");
 
                 printf("-----> Ver objetos <-----\n");
 
                 printf("El mensaje recibido de %s es: %s \n", formulario_actual, mensaje.texto.datos_formulario);
-               
+
                 char mis_objetos[170] = "";
                 int pagina;
-               
+
                 sscanf(mensaje.texto.datos_formulario, "%2d", &pagina);
                 strcpy(mis_objetos, get_listado_objetos(pagina));
-             
+
                 printf("Los objetos son: %s \n", mis_objetos);
                 printf("despues de obtener los objetos \n");
 
@@ -305,9 +305,9 @@ int main() {
             }
 
             /* ********************************************************************************************************* */
-            
+
             printf("***** FIN PROCESAMIENTO DE MENSAJE - INICIO ENVIO DE RESPUESTA A FORMULARIO *****\n");
-            
+
             respuesta.mtype = id_proceso_destinatario;
             respuesta.texto.idproceso = idproceso;
 
@@ -322,7 +322,7 @@ int main() {
             msgsnd(idcola, &respuesta, strlen(respuesta.texto.datos_formulario) + 20, 0);
 
             printf("Enviado a %s: %s \n", formulario_actual, respuesta.texto.datos_formulario);
-            
+
             printf("*********** FIN PROCESAR RESPUESTA ***************** \n");
             printf("------------------ FIN - SIGIUIENTE MENSAJE ------------- \n");
 
