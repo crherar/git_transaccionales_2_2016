@@ -1,0 +1,21 @@
+ID delobj 100007 15 02
+opc debug
+box 0 0 30 80
+cf 01 27 30 P O R T A L  P R E S T A M O S
+cf 02 1 80 ==============================================================================
+
+cf  05 32 19 - Eliminar Objeto -
+cf  09 2  33 Ingrese ID del objeto a eliminar.
+
+cf  12  2 3 ID:
+ce  12  6 15 000 AN 000
+
+cm  18  15  02 0
+tm  01  31  Objeto eliminado correctamente.
+tm  02  25  Error al eliminar objeto.
+
+cf 28 1 18 Ir a formulario
+
+fs 28 17
+
+ff

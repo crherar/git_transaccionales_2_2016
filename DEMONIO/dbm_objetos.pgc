@@ -55,7 +55,6 @@ ASSERT(SQL_output);
 return SQL_output;
 }
 
-
 char *get_listado_objetos(int pagina)//debe venir por parametro la id del usuario
 {
 EXEC SQL BEGIN DECLARE SECTION;
@@ -151,6 +150,28 @@ printf("largo datos en el sql %d \n",strlen(datos));
 return datos;
 }
 
+int borrar_objeto(int id_objeto)
+{
+
+    EXEC SQL BEGIN DECLARE SECTION;
+    
+    int  SQL_id_objeto;
+
+    EXEC SQL END DECLARE SECTION;
+
+    SQL_id_objeto = id_objeto;
+
+    EXEC SQL DELETE FROM objetos WHERE objetos.id = :SQL_id_objeto;
+
+    printf("\n\n Sqlca Sqlcode: %d\n\n", sqlca.sqlcode);
+
+    int resp;
+    resp = sqlca.sqlcode;
+
+    db_commit();
+    
+    return resp;
+}
 
 
 

@@ -306,6 +306,39 @@ int main() {
 
             /* ********************************************************************************************************* */
 
+            /**************************************
+                    FORMULARIO "delobj"
+             **************************************/
+
+            if (strcmp(formulario_actual, "delobj") == 0) {
+
+                printf("************************** Formulario 'delobj' **************************\n");
+
+                printf("-----> Borrar objeto <-----\n");
+
+                printf("El mensaje de recibido de %s es: %s \n", formulario_actual, mensaje.texto.datos_formulario);
+
+                sscanf(mensaje.texto.datos_formulario, "%15d", &id_objeto);
+
+                printf("El id recibido desde delobj es: %d \n", id_objeto);
+
+                int resp = borrar_objeto(id_objeto);
+
+                printf("RESP: %d \n", resp);
+
+               if (resp == 0) {
+                    strcpy(respuesta.texto.datos_formulario, "01");
+                } else if (resp != 0) {
+                    strcpy(respuesta.texto.datos_formulario, "02");
+                }
+
+
+                printf("************************** FIN Formulario 'delobj' **************************\n");
+            }
+
+            /* ********************************************************************************************************* */
+
+
             printf("***** FIN PROCESAMIENTO DE MENSAJE - INICIO ENVIO DE RESPUESTA A FORMULARIO *****\n");
 
             respuesta.mtype = id_proceso_destinatario;

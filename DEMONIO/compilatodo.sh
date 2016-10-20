@@ -18,7 +18,7 @@ gmon registrar_prestamo.inp hprest.c
 echo "****************************************** ";
 
 echo "*************** objetos ***************";
-gmon registrar_objeto.inp regobj.c
+gmon registrar_objeto.inp regobj.c delobj.inp delobj.c
 
 echo "****************************************** ";
 
