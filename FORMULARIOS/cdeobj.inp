@@ -1,0 +1,27 @@
+ID cdeobj 100008 16 17
+opc debug
+box 0 0 30 80
+cf 01 27 30 P O R T A L  P R E S T A M O S
+cf 02 1 80 ==============================================================================
+
+cf  05 32 19 - Eliminar Objeto -
+
+cf  09 02 19 El ID ingresado es:
+cs  09 22 15 0 AN 0
+
+cf 12 02 44 ¿Está seguro que desea eliminar este objeto?
+
+cf 16 02 16 Respuesta (s/n):
+ce 16 19 01 0 AN 0
+
+cm  18  15  02 15
+tm  01  31  Objeto eliminado correctamente.
+tm  02  25  Error al eliminar objeto.
+tm  03  22  Confirmación negativa.
+tm  04  18  Caracter inválido.
+
+cf 28 1 18 Ir a formulario
+
+fs 28 17
+
+ff

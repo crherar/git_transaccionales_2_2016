@@ -1,29 +1,38 @@
 #!/bin/bash
 
-
-
 echo "*************** usuarios *************** ";
-gmon regusr.inp regusr.c
+gmon regusr.inp 
+gmon regusr.c
 
 echo "****************************************** ";
 
 echo "*************** login ***************";
-gmon loginn.inp loginn.c
+gmon loginn.inp 
+gmon loginn.c
 
 echo "****************************************** ";
 
 echo "*************** prestamos ***************";
-gmon registrar_prestamo.inp hprest.c
+gmon registrar_prestamo.inp 
+gmon hprest.c
 
 echo "****************************************** ";
 
 echo "*************** objetos ***************";
-gmon registrar_objeto.inp regobj.c delobj.inp delobj.c
+gmon registrar_objeto.inp 
+gmon regobj.c 
+gmon delobj.inp 
+gmon delobj.c
+gmon cdeobj.inp
+gmon cdeobj.c
 
 echo "****************************************** ";
 
 echo "*************** menus ***************\n";
-gmon menu_principal.inp menu objetos.inp menpri.c menobj.c
+gmon menu_principal.inp 
+gmon menu objetos.inp 
+gmon menpri.c 
+gmon menobj.c
 
 echo "****************************************** ";
 

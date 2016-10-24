@@ -99,9 +99,6 @@ void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans 
 
 	aci[7]='1';
 	
-	tx_out->len=sprintf(tx_out->datos,"%s", mensaje.texto.datos_formulario);
-	
-	puts(aci);
-
+	//stx_out->len=sprintf(tx_out->datos,"%s", mensaje.texto.datos_formulario);
 
 }

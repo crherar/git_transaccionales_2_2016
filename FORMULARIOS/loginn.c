@@ -54,13 +54,13 @@ mensaje.texto.idproceso = idproceso;
 
 //se envia el mensaje al demonio
 
-printf("Antes de enviar mensaje desde hprest \n");
+printf("Antes de enviar mensaje desde loginn \n");
 
 //msgsnd (idcola, &mensaje, strlen (mensaje.texto.datos_formulario), 0);
 
 msgsnd (idcola, &mensaje, strlen (mensaje.texto.datos_formulario)+20, 0);
 
-printf("despues de enviar mensaje desde hprest \n");
+printf("despues de enviar mensaje desde loggin \n");
 
 //memset (&mensaje, 0, sizeof mensaje);
 //se recibe el mensaje del demonio
@@ -108,6 +108,6 @@ if(strcmp(respuesta.texto.datos_formulario, "01") == 0)
 	tx_out->len = 2;
 	memset(tx_out->datos,' ',2);
 	tx_out->len= sprintf(tx_out->datos,"%s", respuesta.texto.datos_formulario);
-}
+}s
 
 }

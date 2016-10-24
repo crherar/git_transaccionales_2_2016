@@ -54,7 +54,9 @@ int main() {
     int id_usuario_prestador;
     int id_usuario_recibidor;
     int id_usuario_dueno_objeto;
+    
     int id_objeto;
+
     int estado;
 
     char *fecha_devolucion[10]; //la deje como puntero porque me tomaba el dia de la fecha como 37 aunque mandara cualquier otro numero, y provocaba error al insertar en la base de datos.
@@ -80,6 +82,10 @@ int main() {
     char password[11];
     char nombre[21];
     char apellido[21];
+
+    char id_obj[16]; // delobj
+    char confirmacion[2]; // delobj
+    char id_prestamo[16];
 
 
     /* *****************************************************************************************************************
@@ -307,37 +313,83 @@ int main() {
             /* ********************************************************************************************************* */
 
             /**************************************
-                    FORMULARIO "delobj"
+                    FORMULARIO "cdeobj"
              **************************************/
 
-            if (strcmp(formulario_actual, "delobj") == 0) {
+            if (strcmp(formulario_actual, "cdeobj") == 0) {
 
-                printf("************************** Formulario 'delobj' **************************\n");
+                printf("************************** Formulario 'cdeobj' **************************\n");
 
-                printf("-----> Borrar objeto <-----\n");
+                printf("-----> Confirmar borrado de objeto <-----\n");
 
-                printf("El mensaje de recibido de %s es: %s \n", formulario_actual, mensaje.texto.datos_formulario);
+                printf("El mensaje de recibido de %s es: %s\n", formulario_actual, mensaje.texto.datos_formulario);
 
-                sscanf(mensaje.texto.datos_formulario, "%15d", &id_objeto);
+                sscanf(mensaje.texto.datos_formulario, "%15s%1s", id_obj, confirmacion);
 
-                printf("El id recibido desde delobj es: %d \n", id_objeto);
+                printf("\n\nEl id_objeto es:%s\nEl caracter es:%s\n\n", id_obj, confirmacion);
 
-                int resp = borrar_objeto(id_objeto);
+                printf("\nTamaño de id_obj:%d\n\n", (int)sizeof(id_obj));
+                printf("\nTamaño de confirmacion:%d\n\n", (int)sizeof(confirmacion));
 
-                printf("RESP: %d \n", resp);
+                int num = atoi(id_obj);
+                printf("Num:%d\n", num);
 
-               if (resp == 0) {
-                    strcpy(respuesta.texto.datos_formulario, "01");
-                } else if (resp != 0) {
-                    strcpy(respuesta.texto.datos_formulario, "02");
+                if (strcmp(confirmacion, "s") == 0)
+                {
+                    int resp = borrar_objeto(num);
+                    printf("RESP: %d \n", resp);
+                    if (resp == 0) {
+                        strcpy(respuesta.texto.datos_formulario, "10");
+                    }
+                    else if (resp != 0) 
+                    {
+                        strcpy(respuesta.texto.datos_formulario, "12");
+                    }
                 }
-
-
-                printf("************************** FIN Formulario 'delobj' **************************\n");
+                else if(strcmp(confirmacion, "n") == 0){
+                    strcpy(respuesta.texto.datos_formulario, "13");
+                }
+                else {
+                    strcpy(respuesta.texto.datos_formulario, "14");
+                }  
+                printf("************************** FIN Formulario 'cdeobj' **************************\n");
             }
 
             /* ********************************************************************************************************* */
 
+            /**************************************
+                    FORMULARIO "modpre"
+             **************************************/
+
+            if (strcmp(formulario_actual, "modpre") == 0) {
+
+                printf("************************** Formulario 'modpre' **************************\n");
+
+                printf("-----> Modificar prestamo <-----\n");
+
+                printf("El mensaje recibido de %s es: %s \n", formulario_actual, mensaje.texto.datos_formulario);
+
+                sscanf(mensaje.texto.datos_formulario, "%15s", id_prestamo);
+
+                printf("\n\nid_prestamo: %s\n\n", id_prestamo);
+
+                // printf("El email del dueño objeto es: %s \n", email_usuario_dueno_objeto);
+
+                // prestamo = get_id_usuario_por_email(email_usuario_dueno_objeto);
+
+                // obj = insertar_objeto(id_usuario_dueno_objeto, nombre_objeto);
+
+                // printf("La respuesta luego de insertar objeto es: %d \n", obj->verificador_error);
+                // if (obj->verificador_error == 0) {
+                //     strcpy(respuesta.texto.datos_formulario, "01");
+                // } else {
+                //     strcpy(respuesta.texto.datos_formulario, "02");
+                // }
+                printf("************************** FIN Formulario 'regobj' **************************\n");
+
+            }
+
+            /* ********************************************************************************************************* */
 
             printf("***** FIN PROCESAMIENTO DE MENSAJE - INICIO ENVIO DE RESPUESTA A FORMULARIO *****\n");
 

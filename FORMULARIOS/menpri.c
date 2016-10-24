@@ -14,6 +14,7 @@ struct trans
 
 void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans *tx_sa)
 {
+printf("\n\nantes de aci menpri asdasdasd \n");
 strcpy(aci,"menpri00");
 printf("antes de aci menpri \n");
 //aci[7] = '1';
