@@ -61,10 +61,33 @@ Prestamo * insertar_prestamo(char *fecha_prestamo ,int id_usuario_prestador,int 
 	SQL_output->verificador_error = sqlca.sqlcode;
 	printf("antes de hacer commit \n");
         
-        db_commit();
+    db_commit();
 	ASSERT(SQL_output);
 	return SQL_output;
 
+}
+
+
+
+Prestamo *get_prestamo_por_id(int id)
+{
+	printf("Inicio get prestamo por id \n");
+	EXEC SQL BEGIN DECLARE SECTION;
+	Prestamo *SQL_output;
+	int SQL_id;
+	EXEC SQL END DECLARE SECTION;
+	SQL_id = id;
+
+	SQL_output = (Prestamo*) malloc(sizeof(Prestamo));
+	memset(SQL_output, 0, sizeof(Prestamo));
+
+	EXEC SQL SELECT fecha,id_usuario_prestador,id_usuario_recibidor,id_objeto,estado,fecha_devolucion INTO :SQL_output->fecha_prestamo,:SQL_output->id_usuario_prestador,:SQL_output->id_usuario_recibidor,:SQL_output->id_objeto,:SQL_output->estado,:SQL_output->fecha_devolucion FROM prestamos WHERE prestamos.id = :SQL_id;
+
+ 
+	SQL_output->verificador_error = sqlca.sqlcode;
+	db_commit();
+	ASSERT(SQL_output);
+	return SQL_output;
 }
 
 

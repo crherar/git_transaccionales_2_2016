@@ -175,7 +175,24 @@ int borrar_objeto(int id_objeto)
 
 
 
+char *get_nombre_objeto_por_id(int id)
+{
+    EXEC SQL BEGIN DECLARE SECTION;
+    char *SQL_output[15];
+    int SQL_id;
+    EXEC SQL END DECLARE SECTION;
+    SQL_id = id;
 
+    EXEC SQL SELECT nombre INTO :SQL_output FROM objetos WHERE objetos.id = :SQL_id;
+    
+    //SQL_output->verificador_error = sqlca.sqlcode;
+
+    db_commit();
+
+   // ASSERT(SQL_output);
+    return SQL_output;
+
+}
 
 
 

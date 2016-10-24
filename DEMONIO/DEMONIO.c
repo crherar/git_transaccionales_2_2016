@@ -85,8 +85,8 @@ int main() {
 
     char id_obj[16]; // delobj
     char confirmacion[2]; // delobj
-    char id_prestamo[16];
-
+   // char id_prestamo[16];
+    int id_prestamo; //editar prestamo
 
     /* *****************************************************************************************************************
      *                                                    FORMULARIOS                                                  *
@@ -238,8 +238,57 @@ int main() {
 
             }
 
+
+           if(strcmp(formulario_actual,"eprest") == 0){
+            printf("************************** Formulario 'eprest' **************************\n");
+
+         //   sprintf(respuesta.texto.datos_formulario, "%4d%2d%2d%40s%15s%3d%40s%4d%2d%2d", &anio_prestamo, &mes_prestamo, &dia_prestamo, email_usuario_prestador, nombre_objeto,
+           // &cantidad_prestada, email_usuario_recibidor, &anio_devolucion, &mes_devolucion, &dia_devolucion);
+           
+
+            printf("************************** FIN Formulario 'eprest' **************************\n");
+           }
+            /* ********************************************************************************************************* */
             /* ********************************************************************************************************* */
 
+            /**************************************
+                    FORMULARIO "modpre"
+             **************************************/
+
+            if (strcmp(formulario_actual, "modpre") == 0) {
+
+                printf("************************** Formulario 'modpre' **************************\n");
+            sscanf(mensaje.texto.datos_formulario,"%15d",&id_prestamo);
+            prest = get_prestamo_por_id(id_prestamo);
+            strcpy(email_usuario_prestador,get_email_usuario_por_id(prest->id_usuario_prestador));//get_id_usuario_por_email(prest->id_usuario_prestador);
+            strcpy(email_usuario_recibidor,get_email_usuario_por_id(prest->id_usuario_recibidor));
+            printf("fecha prestamo: %s\n",prest->fecha_prestamo);
+            strcpy(nombre_objeto,get_nombre_objeto_por_id(prest->id_objeto));
+//                printf("-----> Modificar prestamo <-----\n");
+//
+  //              printf("El mensaje recibido de %s es: %s \n", formulario_actual, mensaje.texto.datos_formulario);
+
+    //            sscanf(mensaje.texto.datos_formulario, "%15s", id_prestamo);
+
+      //          printf("\n\nid_prestamo: %s\n\n", id_prestamo);
+
+                // printf("El email del dueño objeto es: %s \n", email_usuario_dueno_objeto);
+
+                // prestamo = get_id_usuario_por_email(email_usuario_dueno_objeto);
+
+                // obj = insertar_objeto(id_usuario_dueno_objeto, nombre_objeto);
+
+                // printf("La respuesta luego de insertar objeto es: %d \n", obj->verificador_error);
+                // if (obj->verificador_error == 0) {
+                //     strcpy(respuesta.texto.datos_formulario, "01");
+                // } else {
+                //     strcpy(respuesta.texto.datos_formulario, "02");
+                // }
+                printf("************************** FIN Formulario 'modpre' **************************\n");
+
+            }
+
+            /* ********************************************************************************************************* */
             /**************************************
                     FORMULARIO "regobj"
              **************************************/
@@ -355,41 +404,7 @@ int main() {
                 printf("************************** FIN Formulario 'cdeobj' **************************\n");
             }
 
-            /* ********************************************************************************************************* */
 
-            /**************************************
-                    FORMULARIO "modpre"
-             **************************************/
-
-            if (strcmp(formulario_actual, "modpre") == 0) {
-
-                printf("************************** Formulario 'modpre' **************************\n");
-
-                printf("-----> Modificar prestamo <-----\n");
-
-                printf("El mensaje recibido de %s es: %s \n", formulario_actual, mensaje.texto.datos_formulario);
-
-                sscanf(mensaje.texto.datos_formulario, "%15s", id_prestamo);
-
-                printf("\n\nid_prestamo: %s\n\n", id_prestamo);
-
-                // printf("El email del dueño objeto es: %s \n", email_usuario_dueno_objeto);
-
-                // prestamo = get_id_usuario_por_email(email_usuario_dueno_objeto);
-
-                // obj = insertar_objeto(id_usuario_dueno_objeto, nombre_objeto);
-
-                // printf("La respuesta luego de insertar objeto es: %d \n", obj->verificador_error);
-                // if (obj->verificador_error == 0) {
-                //     strcpy(respuesta.texto.datos_formulario, "01");
-                // } else {
-                //     strcpy(respuesta.texto.datos_formulario, "02");
-                // }
-                printf("************************** FIN Formulario 'regobj' **************************\n");
-
-            }
-
-            /* ********************************************************************************************************* */
 
             printf("***** FIN PROCESAMIENTO DE MENSAJE - INICIO ENVIO DE RESPUESTA A FORMULARIO *****\n");
 

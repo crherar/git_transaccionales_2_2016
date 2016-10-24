@@ -8,5 +8,5 @@ int get_id_objeto(char *nombre_objeto);
 Objeto *insertar_objeto(int id_usuario_dueno,char *nombre_objeto);
 char *get_listado_objetos(int pagina);
 int borrar_objeto(int id_objeto);
-
+char *get_nombre_objeto_por_id(int id);
 #endif

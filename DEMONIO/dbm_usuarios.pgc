@@ -107,3 +107,21 @@ return SQL_output;
 
 }
 
+char *get_email_usuario_por_id(int id)
+{
+	EXEC SQL BEGIN DECLARE SECTION;
+    char *SQL_output;   
+	int SQL_id;
+	EXEC SQL END DECLARE SECTION;
+    SQL_id = id;
+
+    EXEC SQL SELECT email INTO :SQL_output FROM usuarios WHERE usuarios.id = :SQL_id;
+    
+	//SQL_output->verificador_error = sqlca.sqlcode;
+
+	db_commit();
+
+	ASSERT(SQL_output);
+	return SQL_output;
+
+}
