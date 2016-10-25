@@ -37,10 +37,11 @@ struct Prestamo{
     // int mes;
     // int dia;
     // };
-
+    
     int id_usuario_prestador;
     int id_usuario_recibidor;
     int id_objeto;
+    int cantidad_prestada;
     int estado;
     //int anio_devolucion
     char fecha_devolucion[11];

@@ -48,7 +48,7 @@ void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans 
 
 	printf("Copia de datos formulario a mensaje \n");
 
-	strcpy(mensaje.formulario_actual,"eprest.ll");
+	strcpy(mensaje.formulario_actual,"modpre");
 
 	mensaje.mtype = 1;
 	mensaje.texto.idproceso = idproceso;

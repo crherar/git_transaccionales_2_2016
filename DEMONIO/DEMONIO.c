@@ -54,7 +54,7 @@ int main() {
     int id_usuario_prestador;
     int id_usuario_recibidor;
     int id_usuario_dueno_objeto;
-    
+
     int id_objeto;
 
     int estado;
@@ -85,7 +85,7 @@ int main() {
 
     char id_obj[16]; // delobj
     char confirmacion[2]; // delobj
-   // char id_prestamo[16];
+    // char id_prestamo[16];
     int id_prestamo; //editar prestamo
 
     /* *****************************************************************************************************************
@@ -239,15 +239,14 @@ int main() {
             }
 
 
-           if(strcmp(formulario_actual,"eprest") == 0){
-            printf("************************** Formulario 'eprest' **************************\n");
+            if (strcmp(formulario_actual, "eprest") == 0) {
+                printf("************************** Formulario 'eprest' **************************\n");
 
-         //   sprintf(respuesta.texto.datos_formulario, "%4d%2d%2d%40s%15s%3d%40s%4d%2d%2d", &anio_prestamo, &mes_prestamo, &dia_prestamo, email_usuario_prestador, nombre_objeto,
-           // &cantidad_prestada, email_usuario_recibidor, &anio_devolucion, &mes_devolucion, &dia_devolucion);
-           
+              
 
-            printf("************************** FIN Formulario 'eprest' **************************\n");
-           }
+
+                printf("************************** FIN Formulario 'eprest' **************************\n");
+            }
             /* ********************************************************************************************************* */
             /* ********************************************************************************************************* */
 
@@ -258,19 +257,31 @@ int main() {
             if (strcmp(formulario_actual, "modpre") == 0) {
 
                 printf("************************** Formulario 'modpre' **************************\n");
-            sscanf(mensaje.texto.datos_formulario,"%15d",&id_prestamo);
-            prest = get_prestamo_por_id(id_prestamo);
-            strcpy(email_usuario_prestador,get_email_usuario_por_id(prest->id_usuario_prestador));//get_id_usuario_por_email(prest->id_usuario_prestador);
-            strcpy(email_usuario_recibidor,get_email_usuario_por_id(prest->id_usuario_recibidor));
-            printf("fecha prestamo: %s\n",prest->fecha_prestamo);
-            strcpy(nombre_objeto,get_nombre_objeto_por_id(prest->id_objeto));
-//                printf("-----> Modificar prestamo <-----\n");
-//
-  //              printf("El mensaje recibido de %s es: %s \n", formulario_actual, mensaje.texto.datos_formulario);
+                printf("Mensaje recibido: %s \n",mensaje.texto.datos_formulario);
+                sscanf(mensaje.texto.datos_formulario, "%15d", &id_prestamo);
+                printf("La id del prestamo recibida es: %d \n",id_prestamo);
+                prest = get_prestamo_por_id(id_prestamo);
+                printf("despues de asignar a prest \n");
+                printf("id usuario prestador: %d \n",get_email_usuario_por_id(prest->id_usuario_prestador));
+                printf("id usuario recibidor: %d \n",get_email_usuario_por_id(prest->id_usuario_recibidor));
+                strcpy(email_usuario_prestador, get_email_usuario_por_id(prest->id_usuario_prestador)); //get_id_usuario_por_email(prest->id_usuario_prestador);
+                strcpy(email_usuario_recibidor, get_email_usuario_por_id(prest->id_usuario_recibidor));
+                printf("fecha prestamo: %s\n", prest->fecha_prestamo);
+                printf("id objeto: %d \n",prest->id_objeto);
+                strcpy(nombre_objeto, get_nombre_objeto_por_id(prest->id_objeto));
+                printf("nombre objeto: %s \n",nombre_objeto);
+                printf("email usuario prestador: %s \n",email_usuario_prestador);
+                printf("email_usuario_recibidor: %s \n",email_usuario_recibidor);
+                printf("fecha devolucion: %s \n",fecha_prestamo);
+                sprintf(respuesta.texto.datos_formulario, "%4d%2d%2d%40s%15s%3d%40s%4d%2d%2d", &anio_prestamo, &mes_prestamo, &dia_prestamo, email_usuario_prestador, nombre_objeto,
+                 &cantidad_prestada, email_usuario_recibidor, &anio_devolucion, &mes_devolucion, &dia_devolucion);
+                //                printf("-----> Modificar prestamo <-----\n");
+                //
+                //              printf("El mensaje recibido de %s es: %s \n", formulario_actual, mensaje.texto.datos_formulario);
 
-    //            sscanf(mensaje.texto.datos_formulario, "%15s", id_prestamo);
+                //            sscanf(mensaje.texto.datos_formulario, "%15s", id_prestamo);
 
-      //          printf("\n\nid_prestamo: %s\n\n", id_prestamo);
+                //          printf("\n\nid_prestamo: %s\n\n", id_prestamo);
 
                 // printf("El email del dueño objeto es: %s \n", email_usuario_dueno_objeto);
 
@@ -377,30 +388,25 @@ int main() {
 
                 printf("\n\nEl id_objeto es:%s\nEl caracter es:%s\n\n", id_obj, confirmacion);
 
-                printf("\nTamaño de id_obj:%d\n\n", (int)sizeof(id_obj));
-                printf("\nTamaño de confirmacion:%d\n\n", (int)sizeof(confirmacion));
+                printf("\nTamaño de id_obj:%d\n\n", (int) sizeof (id_obj));
+                printf("\nTamaño de confirmacion:%d\n\n", (int) sizeof (confirmacion));
 
                 int num = atoi(id_obj);
                 printf("Num:%d\n", num);
 
-                if (strcmp(confirmacion, "s") == 0)
-                {
+                if (strcmp(confirmacion, "s") == 0) {
                     int resp = borrar_objeto(num);
                     printf("RESP: %d \n", resp);
                     if (resp == 0) {
                         strcpy(respuesta.texto.datos_formulario, "10");
-                    }
-                    else if (resp != 0) 
-                    {
+                    } else if (resp != 0) {
                         strcpy(respuesta.texto.datos_formulario, "12");
                     }
-                }
-                else if(strcmp(confirmacion, "n") == 0){
+                } else if (strcmp(confirmacion, "n") == 0) {
                     strcpy(respuesta.texto.datos_formulario, "13");
-                }
-                else {
+                } else {
                     strcpy(respuesta.texto.datos_formulario, "14");
-                }  
+                }
                 printf("************************** FIN Formulario 'cdeobj' **************************\n");
             }
 

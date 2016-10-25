@@ -51,8 +51,8 @@ Prestamo * insertar_prestamo(char *fecha_prestamo ,int id_usuario_prestador,int 
 	//printf(SQL_id_usuario_prestador + "\n");
 	//printf(SQL_id_usuario_recibidor + "\n");
 	//printf(SQL_fecha_devolucion + "\n");
-	EXEC SQL INSERT INTO prestamos (fecha,id_usuario_prestador,id_usuario_recibidor,id_objeto,estado,fecha_devolucion) VALUES( 
-	:SQL_fecha_prestamo, :SQL_id_usuario_prestador, :SQL_id_usuario_recibidor,:SQL_id_objeto, :SQL_estado,:SQL_fecha_devolucion);
+	EXEC SQL INSERT INTO prestamos (fecha,id_usuario_prestador,id_usuario_recibidor,id_objeto,estado,fecha_devolucion,cantidad_prestada) VALUES( 
+	:SQL_fecha_prestamo, :SQL_id_usuario_prestador, :SQL_id_usuario_recibidor,:SQL_id_objeto, :SQL_estado,:SQL_fecha_devolucion,:SQL_cantidad);
 	//EXEC SQL INSERT INTO monto (id_car,tienda,cantidad) VALUES( 
 	//:SQL_id, :SQL_tienda, :SQL_cantidad);
 	printf(sqlca.sqlerrm.sqlerrmc );
@@ -80,13 +80,14 @@ Prestamo *get_prestamo_por_id(int id)
 
 	SQL_output = (Prestamo*) malloc(sizeof(Prestamo));
 	memset(SQL_output, 0, sizeof(Prestamo));
-
-	EXEC SQL SELECT fecha,id_usuario_prestador,id_usuario_recibidor,id_objeto,estado,fecha_devolucion INTO :SQL_output->fecha_prestamo,:SQL_output->id_usuario_prestador,:SQL_output->id_usuario_recibidor,:SQL_output->id_objeto,:SQL_output->estado,:SQL_output->fecha_devolucion FROM prestamos WHERE prestamos.id = :SQL_id;
-
+  //  printf ("antes del select \n");
+	EXEC SQL SELECT fecha,id_usuario_prestador,id_usuario_recibidor,id_objeto,cantidad,estado,fecha_devolucion INTO :SQL_output->fecha_prestamo,:SQL_output->id_usuario_prestador,:SQL_output->id_usuario_recibidor,:SQL_output->id_objeto,:SQL_output->estado,:SQL_output->fecha_devolucion FROM prestamos WHERE prestamos.id = :SQL_id;
+   // printf("despues del select \n");
  
 	SQL_output->verificador_error = sqlca.sqlcode;
 	db_commit();
 	ASSERT(SQL_output);
+    printf("antes del return \n");
 	return SQL_output;
 }
 
