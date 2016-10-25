@@ -272,7 +272,7 @@ int main() {
 
                 prest = actualizar_prestamo(fecha_prestamo, id_usuario_prestador, id_objeto,
                         id_usuario_recibidor, fecha_devolucion,cantidad_prestada,estado,id_prestamo);
-
+               
                 printf("La respuesta luego de actualizar el prestamo es: %d \n", prest->verificador_error);
 
                 if (prest->verificador_error == 0) {

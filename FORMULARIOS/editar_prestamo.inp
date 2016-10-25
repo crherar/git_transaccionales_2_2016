@@ -1,7 +1,7 @@
 # FORMULARIO PARA REGISTRAR UN PRESTAMO
 
 ID eprest 020506 200 200
-opc debug
+#opc debug
 
 cf 01 27 30 P O R T A L  P R E S T A M O S
 cf 02 1 80 ==============================================================================

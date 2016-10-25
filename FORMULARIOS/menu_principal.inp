@@ -1,5 +1,5 @@
 ID menpri 020508 10 10
-opc debug
+#opc debug
 box 0 0 30 80
 cf 01 27 30 P O R T A L  P R E S T A M O S
 cf 02 1 80 ==============================================================================
@@ -10,7 +10,7 @@ cf 14 2 23 2) Prestamos realizados
 cf 16 2 25 3) Ver mi lista de amigos
 cf 18 2 16 4) Buscar amigos
 
-ce 20 2 4 000 AN 0
+#ce 20 2 4 000 AN 0
 
 cf 28 1 18 Ir a formulario
 
