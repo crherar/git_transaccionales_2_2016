@@ -45,10 +45,10 @@ void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans 
 	memset (&mensaje, 0, sizeof mensaje);
 
 	strcpy(mensaje.texto.datos_formulario, tx_in->datos);
-
+    strcat(mensaje.texto.datos_formulario,tx_sa->datos);
 	printf("Copia de datos formulario a mensaje \n");
 
-	strcpy(mensaje.formulario_actual,"modpre");
+	strcpy(mensaje.formulario_actual,"eprest");
 
 	mensaje.mtype = 1;
 	mensaje.texto.idproceso = idproceso;
@@ -75,11 +75,11 @@ void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans 
 
 	// printf("Idproceso (respuesta.mtype) antes de recibir %d \n",respuesta.mtype);
 
-	// printf("Respuesta antes del demonio: %s \n",respuesta.texto.datos_formulario);
+	 printf("Respuesta antes del demonio: %s \n",respuesta.texto.datos_formulario);
 
-	int valor_recibido = msgrcv (idcola, &respuesta, 2000, idproceso, 0);
+	 int valor_recibido = msgrcv (idcola, &respuesta, 2000, idproceso, 0);
 
-	// printf("Respuesta despues del demonio: %s \n",respuesta.texto.datos_formulario);
+	 printf("Respuesta despues del demonio: %s \n",respuesta.texto.datos_formulario);
 
 	// printf("Idproceso (respuesta.mtype) despues de recibir %d \n",respuesta.mtype);
 
@@ -93,11 +93,11 @@ void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans 
 	// printf("mensaje.texto.datos_formulario = %s\n\n", mensaje.texto.datos_formulario);
 
 
-	puts(aci);
+	//puts(aci);
 
-	tx_sa->len=sprintf(tx_sa->datos,"%s", mensaje.texto.datos_formulario);
+	//tx_out->len=sprintf(tx_sa->datos,"%s", mensaje.texto.datos_formulario);
 
-	aci[7]='1';
+	//aci[7]='1';
 	
 	tx_out->len=sprintf(tx_out->datos,"%s", respuesta.texto.datos_formulario);
 

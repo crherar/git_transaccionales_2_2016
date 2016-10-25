@@ -48,9 +48,9 @@ cd 16 35 4 106 106
 cf 18 2  43 Estado prestamo(0 = pendiente, 1 = devuelto)
 cd 18 45  1 114 114
 
-cm  18  15  02 115
-tm  01  32  Datos guardados correctamente!!!
-tm  02  19  Error al guardar!!!
+cm  22  15  02 115
+tm  01  32  Datos actualizados correctamente!!!
+tm  02  19  Error al actualizar!!!
 
 cf 28 1 15 Ir a formulario
 fs 28 17

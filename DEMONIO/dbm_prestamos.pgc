@@ -53,9 +53,7 @@ Prestamo * insertar_prestamo(char *fecha_prestamo ,int id_usuario_prestador,int 
 	//printf(SQL_fecha_devolucion + "\n");
 	EXEC SQL INSERT INTO prestamos (fecha,id_usuario_prestador,id_usuario_recibidor,id_objeto,estado,fecha_devolucion,cantidad_prestada) VALUES( 
 	:SQL_fecha_prestamo, :SQL_id_usuario_prestador, :SQL_id_usuario_recibidor,:SQL_id_objeto, :SQL_estado,:SQL_fecha_devolucion,:SQL_cantidad);
-	//EXEC SQL INSERT INTO monto (id_car,tienda,cantidad) VALUES( 
-	//:SQL_id, :SQL_tienda, :SQL_cantidad);
-	printf(sqlca.sqlerrm.sqlerrmc );
+	
 
 	printf("\n");
 	SQL_output->verificador_error = sqlca.sqlcode;
@@ -67,7 +65,76 @@ Prestamo * insertar_prestamo(char *fecha_prestamo ,int id_usuario_prestador,int 
 
 }
 
+Prestamo * actualizar_prestamo(char *fecha_prestamo ,int id_usuario_prestador,int id_objeto,int id_usuario_recibidor,char  *fecha_devolucion,int estado,int cantidad_prestada,int id_prestamo){
+        printf("inicio insertar prestamo \n");
+	EXEC SQL BEGIN DECLARE SECTION;
+	Prestamo *SQL_output;
+	char SQL_fecha_prestamo[11];	
+	int SQL_id_usuario_prestador;
+	int SQL_id_objeto;
+    int SQL_cantidad_prestada;
+	int SQL_estado;
+	int SQL_id_usuario_recibidor;
+	char SQL_fecha_devolucion[11];
+	int SQL_id_prestamo;
+	EXEC SQL END DECLARE SECTION;
+	printf("fin declaracion variables \n");
 
+        strcpy(SQL_fecha_prestamo,fecha_prestamo);
+	printf("strcpy fecha_prestamo \n");
+    SQL_id_usuario_prestador = id_usuario_prestador;
+	SQL_id_objeto = id_objeto;
+	SQL_cantidad_prestada = cantidad_prestada;
+	SQL_id_usuario_recibidor = id_usuario_recibidor;
+	SQL_estado = estado;
+	SQL_id_prestamo = id_prestamo;
+	printf("strcpy fecha_devolucion \n");
+         
+        memset(SQL_fecha_devolucion,' ',11);
+        strcpy(SQL_fecha_devolucion,fecha_devolucion);
+	//printf("fin strcpy \n");
+        //strcpy(SQL_id_usuario_prestador,id_usuario_prestador);
+	//strcpy(SQL_id_objeto,id_objeto);
+	//strcpy(SQL_cantidad,cantidad);
+	//strcpy(SQL_id_usuario_recibidor,id_usuario_recibidor);
+	//strcpy(SQL_fecha_devolucion,fecha_devolucion->anio+"-"+fecha_devolucion->mes+"-"+fecha_devolucion->dia);
+        //strcpy(SQL_fecha_devolucion,strcat(fecha_devolucion->anio,"-",fecha_devolucion->mes,"-",fecha_devolucion->dia));
+
+	 
+
+	SQL_output = (Prestamo*) malloc(sizeof(Prestamo));
+	memset(SQL_output, 0, sizeof(Prestamo));
+	//printf(SQL_fecha_prestamo + "\n");
+	//printf(SQL_id_usuario_prestador + "\n");
+	//printf(SQL_id_usuario_recibidor + "\n");
+	//printf(SQL_fecha_devolucion + "\n");
+	
+    EXEC SQL UPDATE PRESTAMOS SET
+    fecha = :SQL_fecha_prestamo,
+    id_usuario_prestador = :SQL_id_usuario_prestador,
+    id_usuario_recibidor = :SQL_id_usuario_recibidor,
+    id_objeto = :SQL_id_objeto,
+    estado = :SQL_estado,
+    fecha_devolucion = :SQL_fecha_devolucion,
+    cantidad_prestada = :SQL_cantidad_prestada
+    WHERE id = :SQL_id_prestamo;
+
+	
+	
+
+
+
+	printf(sqlca.sqlerrm.sqlerrmc );
+
+	printf("\n");
+	SQL_output->verificador_error = sqlca.sqlcode;
+	printf("antes de hacer commit \n");
+        
+    db_commit();
+	ASSERT(SQL_output);
+	return SQL_output;
+
+}
 
 Prestamo *get_prestamo_por_id(int id)
 {
