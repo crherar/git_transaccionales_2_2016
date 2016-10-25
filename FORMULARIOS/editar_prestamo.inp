@@ -22,31 +22,33 @@ cd 6 22 4 000 000
 
 #CORREO USUARIO PRESTADOR
 cf 8 2 25 Correo usuario prestador:
-cd 8 27 30 008 008
+cd 8 27 40 008 008
 
 #OBJETO PRESTADO
 cf 10 2 16 Objeto prestado:
-cd 10 19 15 038 038 
+cd 10 19 15 048 048 
 
 #CANTIDAD
 cf 12 2 9 Cantidad:
-cd 12 11 3 053 053
+cd 12 11 3 063 063
 
 #CORREO USUARIO RECIBIDOR
 cf 14 2 25 Correo usuario recibidor:
-cd 14 27 30 056 056
+cd 14 27 30 066 066
 
 #FECHA DEVOLUCION
 cf 16 2 17 Fecha devolucion:
-cd 16 20 2 092 092
+cd 16 20 2 112 112
 cf 16 25 1 -
-cd 16 27 2 090 090
+cd 16 27 2 110 110
 cf 16 32 1 -
-cd 16 35 4 086 086
+cd 16 35 4 106 106
 
+#ESTADO PRESTAMO
+cf 18 2  43 Estado prestamo(0 = pendiente, 1 = devuelto)
+cd 18 45  1 114 114
 
-
-cm  18  15  02 094
+cm  18  15  02 115
 tm  01  32  Datos guardados correctamente!!!
 tm  02  19  Error al guardar!!!
 

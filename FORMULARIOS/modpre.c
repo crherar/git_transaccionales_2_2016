@@ -95,10 +95,10 @@ void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans 
 
 	puts(aci);
 
-	tx_sa->len=sprintf(tx_sa->datos,"%s", mensaje.texto.datos_formulario);
+	tx_out->len=sprintf(tx_sa->datos,"%s", mensaje.texto.datos_formulario);
 
 	aci[7]='1';
 	
-	//stx_out->len=sprintf(tx_out->datos,"%s", mensaje.texto.datos_formulario);
+	tx_out->len=sprintf(tx_out->datos,"%s", respuesta.texto.datos_formulario);
 
 }

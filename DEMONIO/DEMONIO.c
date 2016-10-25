@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <string.h>
 #include <unistd.h>
 #include <sys/ipc.h>
@@ -262,19 +264,91 @@ int main() {
                 printf("La id del prestamo recibida es: %d \n",id_prestamo);
                 prest = get_prestamo_por_id(id_prestamo);
                 printf("despues de asignar a prest \n");
-                printf("id usuario prestador: %d \n",get_email_usuario_por_id(prest->id_usuario_prestador));
-                printf("id usuario recibidor: %d \n",get_email_usuario_por_id(prest->id_usuario_recibidor));
+                printf("id usuario prestador: %d \n",prest->id_usuario_prestador);
+                printf("id usuario recibidor: %d \n",prest->id_usuario_recibidor);
                 strcpy(email_usuario_prestador, get_email_usuario_por_id(prest->id_usuario_prestador)); //get_id_usuario_por_email(prest->id_usuario_prestador);
                 strcpy(email_usuario_recibidor, get_email_usuario_por_id(prest->id_usuario_recibidor));
-                printf("fecha prestamo: %s\n", prest->fecha_prestamo);
-                printf("id objeto: %d \n",prest->id_objeto);
+                strcpy(fecha_prestamo,prest->fecha_prestamo);
+              //  anio_prestamo = atoi(strtok(fecha_prestamo,"-"));
+               // mes_prestamo = atoi(strtok(NULL,"-"));
+              //  dia_prestamo = atoi(strtok(NULL,"-"));
+                
+                //printf("año: %d,mes: %d,dia: %d \n",anio_prestamo,mes_prestamo,dia_prestamo);
+                //int fecha_prestamo2 = atoi(fecha_prestamo);
+               // printf("fecha prestamo 2: %d \n",fecha_prestamo2);
+                sscanf(fecha_prestamo,"%4d%2d%2d",&anio_prestamo,&mes_prestamo,&dia_prestamo);
+                printf("anio prestamo: %d \n",anio_prestamo);
+                printf("mes prestamo: %d \n",mes_prestamo);
+                printf("dia prestamo: %d \n",dia_prestamo);
+                strcpy(fecha_devolucion,prest->fecha_devolucion);
                 strcpy(nombre_objeto, get_nombre_objeto_por_id(prest->id_objeto));
+                
+                //yyyy-mm-dd
+                
+                cantidad_prestada = prest->cantidad_prestada;
+                estado = prest->estado;
+                printf("cantidad prestada: %d \n",cantidad_prestada);
+                printf("estado prestamo: %d \n",estado);
+                printf("fecha prestamo: %s\n", fecha_prestamo);
+                printf("id objeto: %d \n",prest->id_objeto);
+                
                 printf("nombre objeto: %s \n",nombre_objeto);
                 printf("email usuario prestador: %s \n",email_usuario_prestador);
                 printf("email_usuario_recibidor: %s \n",email_usuario_recibidor);
-                printf("fecha devolucion: %s \n",fecha_prestamo);
-                sprintf(respuesta.texto.datos_formulario, "%4d%2d%2d%40s%15s%3d%40s%4d%2d%2d", &anio_prestamo, &mes_prestamo, &dia_prestamo, email_usuario_prestador, nombre_objeto,
-                 &cantidad_prestada, email_usuario_recibidor, &anio_devolucion, &mes_devolucion, &dia_devolucion);
+                printf("fecha devolucion: %s \n",fecha_devolucion);
+                int largo_correo_prestador = strlen(email_usuario_prestador);
+                int num_espacios_correo_prestador = 40 - largo_correo_prestador;
+                int largo_correo_recibidor = strlen(email_usuario_recibidor);
+                int num_espacios_correo_recibidor = 40 - largo_correo_recibidor;
+                int largo_nombre_objeto = strlen(nombre_objeto);
+                int num_espacios_nombre_objeto = 15 - largo_nombre_objeto;
+                
+                int i;
+                for(i = 0;i<num_espacios_correo_prestador;i++){
+                    strcat(email_usuario_prestador," ");
+                }
+                
+                //int j;
+                for(i = 0;i<num_espacios_correo_recibidor;i++){
+                  strcat(email_usuario_recibidor," ");  
+                }
+                
+                for(i = 0;i<num_espacios_nombre_objeto;i++){
+                    strcat(nombre_objeto," ");
+                }
+               // char espacios_correo_prestador[40]
+                //email@email.email => largo 17
+                  //                         40
+                 //email@email.email
+                printf("despues de los for \n");
+               char nueva_cantidad_prestada[3];
+             //  memset(nueva_cantidad_prestada,' ',3);
+               sprintf(nueva_cantidad_prestada, "%d", cantidad_prestada);
+               //  strcpy(nueva_cantidad_prestada,itoa(cantidad_prestada));
+               if(cantidad_prestada < 10){
+                  strcat(nueva_cantidad_prestada," ");
+                  strcat(nueva_cantidad_prestada," ");
+                   //nueva_cantidad_prestada[0] = '0';
+                   //nueva_cantidad_prestada[1] = '0';
+                   //nueva_cantidad_prestada[2] = itoa(cantidad_prestada);
+               }
+               
+                  if(cantidad_prestada > 10){
+                  strcat(nueva_cantidad_prestada," ");
+                 
+                   //nueva_cantidad_prestada[0] = '0';
+                   //nueva_cantidad_prestada[1] = '0';
+                   //nueva_cantidad_prestada[2] = itoa(cantidad_prestada);
+               }
+                // sprintf(respuesta.texto.datos_formulario, "%4s%2s%2s%40s%15s%3d%40s%4d%2d%2d", anio_prestamo, mes_prestamo, dia_prestamo, email_usuario_prestador, nombre_objeto,
+               // &cantidad_prestada, email_usuario_recibidor, &anio_devolucion, &mes_devolucion, &dia_devolucion);
+              //  sprintf(respuesta.texto.datos_formulario, "%8s%40s%15s%3d%40s%8s%1d",fecha_prestamo, email_usuario_prestador, nombre_objeto,
+              //  &cantidad_prestada, email_usuario_recibidor, fecha_devolucion,&estado);     
+             //    sprintf(respuesta.texto.datos_formulario, "%s%s%s%d%s%s%d",fecha_prestamo, email_usuario_prestador, nombre_objeto,
+             //   &cantidad_prestada, email_usuario_recibidor, fecha_devolucion,&estado);
+                     sprintf(respuesta.texto.datos_formulario, "%s%s%s%s%s%s%d",fecha_prestamo, email_usuario_prestador, nombre_objeto,
+                nueva_cantidad_prestada, email_usuario_recibidor, fecha_devolucion,estado); 
+                
                 //                printf("-----> Modificar prestamo <-----\n");
                 //
                 //              printf("El mensaje recibido de %s es: %s \n", formulario_actual, mensaje.texto.datos_formulario);

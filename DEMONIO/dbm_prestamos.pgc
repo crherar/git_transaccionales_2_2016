@@ -77,16 +77,39 @@ Prestamo *get_prestamo_por_id(int id)
 	int SQL_id;
 	EXEC SQL END DECLARE SECTION;
 	SQL_id = id;
-
+    printf("id del prestamo: %d \n",id);
 	SQL_output = (Prestamo*) malloc(sizeof(Prestamo));
 	memset(SQL_output, 0, sizeof(Prestamo));
   //  printf ("antes del select \n");
-	EXEC SQL SELECT fecha,id_usuario_prestador,id_usuario_recibidor,id_objeto,cantidad,estado,fecha_devolucion INTO :SQL_output->fecha_prestamo,:SQL_output->id_usuario_prestador,:SQL_output->id_usuario_recibidor,:SQL_output->id_objeto,:SQL_output->estado,:SQL_output->fecha_devolucion FROM prestamos WHERE prestamos.id = :SQL_id;
+   // SQL_output->estado = 0;
+   // SQL_output->cantidad_prestada = 0;
+	EXEC SQL SELECT 
+	to_char(prestamos.fecha,'yyyymmdd'),
+	prestamos.id_usuario_prestador, 
+	prestamos.id_usuario_recibidor, 
+	prestamos.id_objeto, 
+	prestamos.cantidad_prestada, 
+	to_char(prestamos.fecha_devolucion,'yyyymmdd'), 
+	prestamos.estado
+	
+	INTO 
+	:SQL_output->fecha_prestamo, 
+	:SQL_output->id_usuario_prestador, 
+	:SQL_output->id_usuario_recibidor, 
+	:SQL_output->id_objeto, 
+	:SQL_output->cantidad_prestada, 
+	:SQL_output->fecha_devolucion,  
+	:SQL_output->estado
+	
+	FROM prestamos WHERE prestamos.id = :SQL_id;
+	puts(SQL_output->fecha_devolucion);
+	printf("fecha devolucion sql_output: %s \n",SQL_output->fecha_devolucion);
    // printf("despues del select \n");
- 
+    printf(sqlca.sqlerrm.sqlerrmc );
+    printf("\n");
 	SQL_output->verificador_error = sqlca.sqlcode;
 	db_commit();
-	ASSERT(SQL_output);
+	//ASSERT(SQL_output);
     printf("antes del return \n");
 	return SQL_output;
 }
