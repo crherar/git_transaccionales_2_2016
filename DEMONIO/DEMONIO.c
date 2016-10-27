@@ -90,7 +90,7 @@ int main() {
     // char id_prestamo[16];
     int id_prestamo; //editar prestamo
 
-    char resp[200];
+    char *resp[200];
 
     /* *****************************************************************************************************************
      *                                                    FORMULARIOS                                                  *
@@ -512,6 +512,8 @@ int main() {
                 //memset(resp, '\0', sizeof(resp));
 
                 strcpy(resp, get_nombre_objeto_por_id(num));
+
+                printf("resp: %s\n", resp);
 
                 printf("\n\n DESPUES DE LA LLAMADA A FUNCION \n\n");
 

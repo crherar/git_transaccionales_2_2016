@@ -177,50 +177,24 @@ int borrar_objeto(int id_objeto)
 
 char *get_nombre_objeto_por_id(int id)
 {
-    printf("\nhola 0 \n");
-
     EXEC SQL BEGIN DECLARE SECTION;
-
     char *SQL_output;
     int SQL_id;
-
     EXEC SQL END DECLARE SECTION;
-
     SQL_id = id;
-
-    printf("\nhola 1 \n");
-
-    //memset(SQL_output,'\0',sizeof(SQL_output));
-
-    printf("\nhola 2 \n");
-
+    memset(SQL_output,' ',strlen(SQL_output));
+   // printf("antes de select nombre objeto \n");
     EXEC SQL SELECT objetos.nombre INTO :SQL_output FROM objetos WHERE objetos.id = :SQL_id;
 
-    int resp;
-    resp = sqlca.sqlcode;
-
-    printf("\nhola 3 \n");
-
-    printf("\n resp=%d\n", resp);
-
-    if (resp != 0) {
-       strcpy(SQL_output, "");
-    }
-
-    printf("\nhola 4 \n");
-
-    printf("\nSQL_output: %s\n", SQL_output);
+   // printf("despues de select nombre objeto \n");
+    //SQL_output->verificador_error = sqlca.sqlcode;
 
     db_commit();
 
-    printf("\nhola 5 \n");
-
     ASSERT(SQL_output);
-
     return SQL_output;
 
 }
-
 
 
 
