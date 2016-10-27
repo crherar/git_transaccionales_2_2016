@@ -103,11 +103,10 @@ if(strcmp(respuesta.texto.datos_formulario, "01") == 0)
 	// strcpy(aci,"afmenpri00");
 	//tx_out->len = 8;
 	//strcpy(tx_out->datos,"menpri00");
-} else
-{
+} else{
 	tx_out->len = 2;
 	memset(tx_out->datos,' ',2);
 	tx_out->len= sprintf(tx_out->datos,"%s", respuesta.texto.datos_formulario);
-}s
+}
 
 }

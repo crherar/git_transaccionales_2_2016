@@ -63,7 +63,6 @@ void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans 
 	sprintf(men,"%15s%s",tx_sa->datos,tx_in->datos);
 
 	puts(men);
-
 	
 	strcpy(mensaje.texto.datos_formulario, men);
 
@@ -106,7 +105,6 @@ void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans 
 	
 	printf("mensaje.texto.datos_formulario:%s\n",mensaje.texto.datos_formulario);
 
-	tx_out->len= sprintf(tx_out->datos,"%s", respuesta.texto.datos_formulario);
+	tx_out->len = sprintf(tx_out->datos,"%s", respuesta.texto.datos_formulario);
 	
-
 }
