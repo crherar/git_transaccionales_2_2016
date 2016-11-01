@@ -1,0 +1,31 @@
+HOLA MUNDO! [usuario]
+
+CHAO MUNDO!
+
+DIRPRG [dir_prg] -> establece directorio de programas
+
+TX_IN [opc][idfmt][aci][tx_in]
+	opc: 000 -> opciones de proceso
+	idfmt: xxxxxx -> codigo tx
+	aci: tttttttts -> nombre del formulario/proceso +
+					 codigo FA (siguiente funcion)
+
+OK!  [aci][tx_out]
+
+ERR [num]
+
+
+1 NO SE PUDO ENVIAR EL MENSAJE AL PROGRAMA
+2 EL PROGRAMA NO EXISTE
+3 NO SE PUDO RECIBIR EL MENSAJE DESDE EL PROGRAMA
+5 HA OCURRIDO UN ERROR EN EL SERVIDOR
+
+
+ejemplos
+
+TXIN 000<cod_tx de 6><nombre proceso de 6><aci de 2><datos>
+OK! <aci de 8><respuesta>
+ERR <#error de 1>
+
+PHP
+http://php.net/manual/en/function.fsockopen.php

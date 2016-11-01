@@ -1,0 +1,22 @@
+ Objeto *get_nombre_objeto_por_id2(int id)
+{
+    EXEC SQL BEGIN DECLARE SECTION;
+    char *SQL_output;
+    int SQL_id;
+    EXEC SQL END DECLARE SECTION;
+    SQL_id = id;
+    SQL_output = (Objeto*) malloc(sizeof(Objeto));
+    memset(SQL_output,' ',strlen(SQL_output));
+   // printf("antes de select nombre objeto \n");
+    
+    EXEC SQL SELECT objetos.id,objetos.nombre INTO :SQL_output->id,:SQL_output->nombre FROM objetos WHERE objetos.id = :SQL_id;
+
+   // printf("despues de select nombre objeto \n");
+ 
+    SQL_output->verificador_error = sqlca.sqlcode;
+    db_commit();
+
+    ASSERT(SQL_output);
+    return SQL_output;
+
+}

@@ -1,0 +1,46 @@
+int validar_registro_objeto(char nombre_objeto,int id_dueno_objeto)
+{
+    EXEC SQL BEGIN DECLARE SECTION;
+    int SQL_output;
+    char SQL_nombre_objeto[15];
+    int SQL_id_dueno_objeto;
+    EXEC SQL END DECLARE SECTION;
+    strcpy(SQL_nombre_objeto,nombre_objeto);
+    SQL_id_dueno_objeto = id_dueno_objeto;
+   // memset(SQL_output,' ',strlen(SQL_output));
+   // printf("antes de select nombre objeto \n");
+    EXEC SQL SELECT count(*) INTO :SQL_output FROM objetos WHERE objetos.nombre = :SQL_nombre_objeto
+    and objetos.id = :SQL_id_dueno_objeto;
+
+   // printf("despues de select nombre objeto \n");
+    //SQL_output->verificador_error = sqlca.sqlcode;
+
+    db_commit();
+
+    ASSERT(SQL_output);
+    return SQL_output;
+}
+
+
+int validar_registro_usuario(char nombre_usuario)
+{
+    EXEC SQL BEGIN DECLARE SECTION;
+    int SQL_output;
+    char SQL_nombre_usuario;
+    EXEC SQL END DECLARE SECTION;
+    strcpy(SQL_nombre_usuario,nombre_usuario);
+
+   // memset(SQL_output,' ',strlen(SQL_output));
+   // printf("antes de select nombre objeto \n");
+    
+    EXEC SQL SELECT count(*) INTO :SQL_output FROM objetos WHERE objetos.nombre = :SQL_nombre_objeto;
+
+   // printf("despues de select nombre objeto \n");
+    //SQL_output->verificador_error = sqlca.sqlcode;
+
+    db_commit();
+
+    ASSERT(SQL_output);
+    return SQL_output;
+
+}

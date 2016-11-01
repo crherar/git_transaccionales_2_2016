@@ -1,0 +1,26 @@
+
+HOLA MUNDO! [usuario]
+
+CHAO MUNDO!
+
+DIRPRG [dir_prg] -> establece directorio de programas
+
+TXIN [opc][idfmt][aci][tx_in]
+  opc: 000 -> opciones de proceso
+  idfmt: xxxxxx -> codigo tx
+  aci: ttttttss -> nombre del formulario/proceso  +
+                   codigo FA (siguiente funcion)
+
+OK! [aci][tx_out]
+
+ERR [num]
+
+  1 No se pudo enviar el mensaje al programa
+  2 El programa no existe
+  3 No se pudo recibir el mensaje desde el programa
+  5 Ha ocurrido un error en el servidor
+
+Ejemplos
+TXIN 000<cod_tx de 6><nombre_proceso de 6><aci de 2><datos>
+OK! <aci de 8><respuesta>
+ERR <# error de 1>

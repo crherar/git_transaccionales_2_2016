@@ -175,10 +175,10 @@ int borrar_objeto(int id_objeto)
 
 
 
-char *get_nombre_objeto_por_id(int id)
+Objeto *get_nombre_objeto_por_id(int id)
 {
     EXEC SQL BEGIN DECLARE SECTION;
-    char *SQL_output;
+    Objeto *SQL_output;
     int SQL_id;
     EXEC SQL END DECLARE SECTION;
     SQL_id = id;
