@@ -4,8 +4,8 @@ import socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  
  
 # Bind the socket to the port  
-server_address = ('localhost', 80)  
-print 'Starting up on %s port %s' % server_address  
+server_address = ('localhost', 3000)  
+#print 'Starting up on %s port %s' % server_address  
 sock.bind(server_address)  
  
 # Listen for incoming connections  
@@ -13,17 +13,17 @@ sock.listen(5)
  
 while True:  
  # Wait for a connection  
- print 'Waiting for a connection'  
+ print 'Esperando para conectarse'  
  connection, client_address = sock.accept()  
  try:  
-   print 'Connection from: ', client_address  
+   print 'Conexion desde: ', client_address  
    # Receive the data in small chunks  
    try:  
      all_data = ''  
      while True:  
        data = ''  
        try:  
-         data = connection.recv(16, socket.MSG_DONTWAIT)  
+         data = connection.recv(16, socket.MSG_DONTWAIT)        
        except:  
          pass  
        if data:  
@@ -39,10 +39,10 @@ while True:
        print '** Sending info to the client **'  
        print info  
        connection.sendall(info)  
-   except:  
+ except:  
      break    
- finally:  
-   try:  
-     connection.close()  
-   except:  
-     pass  
+ #finally:  
+   #try:  
+     #connection.close()  
+   #except:  
+   #  pass  

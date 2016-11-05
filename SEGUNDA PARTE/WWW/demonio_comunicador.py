@@ -20,38 +20,41 @@ sock.close()
 
 
 
-socket_php = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_address = ('localhost', 80)  
+#socket_php = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server_address = ('localhost', 3000)  
 socket_php.bind(server_address)
-sock.listen(5) 
+socket_php.listen(5)#conexiones simultaneas 
 while True:
-	socket_php.connect(("127.0.0.1",80))
-	socket_php.listen()
+	socket_php.accept()
+	#socket_php.connect(("127.0.0.1",80))
+	#socket_php.listen()
 	mensaje = socket_php.recv(1024)
 	#print "hola mundo"
 	print str(mensaje)
-	socket_php.close()
+	#socket_php.close()
 	#
    	#print "mensaje: "+mensaje+"\n"
    # print "mensaje: "+mensaje+"\n"
 
 
+'''
 def preparar_mensaje():
 	
-	socket = socket.socket()
-	print "hola mundo"
-	#respuesta = ""
-	socket.connect(("127.0.0.1", 5000))
-	print "hola mundo"
-	#socket.connect(("200.14.84.74", 5000))
-	socket.recv(1024)
-	socket.send("HOLA MUNDO! 17957132")
-	print socket.recv(1024)
-	socket.send("DIRPRG /home/alumnos/17957132/")
-	print  socket.recv(1024)
-	socket.send("TXIN 000020506loginn00matias@gmail.com123")
-	respuesta =  socket.recv(1024)
-	print "hola mundo"
-	print respuesta
+socket = socket.socket()
+print "hola mundo"
+#respuesta = ""
+socket.connect(("127.0.0.1", 5000))
+print "hola mundo"
+#socket.connect(("200.14.84.74", 5000))
+socket.recv(1024)
+socket.send("HOLA MUNDO! 17957132")
+print socket.recv(1024)
+socket.send("DIRPRG /home/alumnos/17957132/")
+print  socket.recv(1024)
+socket.send("TXIN 000020506loginn00matias@gmail.com                        123       ")
+respuesta =  socket.recv(1024)
+print "hola mundo"
+print respuesta
+'''
 #preparar_mensaje()             
 
