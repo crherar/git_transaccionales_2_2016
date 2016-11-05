@@ -29,7 +29,7 @@ while True:
  print 'data recibida "%s"' % data
  print 'la direccion del cliente es: '+json.dumps(client_address)#str(connection)#str(client_address)
 # socket_php.send(str(int(datos_cliente[1])))
- connection.send("hola desde python")  
+ connection.send('hola desde python cliente: "%s"'%datos_cliente[1])  
  # -------------------  
  # Process input data and generate your output info  
  # -------------------  

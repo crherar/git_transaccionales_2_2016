@@ -12,13 +12,18 @@ $id_usuario = "";
 if (socket_connect($socket, $host, $puerto))
 {
 echo "\nConexion Exitosa, puerto: " . $puerto;
-$msg = "mensaje desde php!!!";
+$msg = "mensaje del CLIENTE 2 desde php!!!";
 
-
-$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132")); 
-
+ 
+$sock_data = socket_write($socket, $msg, strlen($msg));
 $resp = socket_read($socket, 1024);
 var_dump($resp);
+
+ 
+
+
+
+
 $sock_data = socket_write($socket, "DIRPRG /home/alumnos/17957132/", strlen("DIRPRG /home/alumnos/17957132/")); 
 $resp = socket_read($socket, 1024);
 var_dump($resp);
