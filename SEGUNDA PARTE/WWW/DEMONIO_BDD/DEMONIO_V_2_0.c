@@ -228,8 +228,9 @@ int main() {
                 memset(nombre_objeto,'\0',sizeof nombre_objeto);
                 memset(email_usuario_recibidor,'\0',sizeof email_usuario_recibidor);
 
-                sscanf(mensaje.texto.datos_formulario, "%4d%2d%2d%40c%15c%3d%40c%4d%2d%2d", &anio_prestamo, &mes_prestamo, &dia_prestamo, email_usuario_prestador, nombre_objeto,
-                        &cantidad_prestada, email_usuario_recibidor, &anio_devolucion, &mes_devolucion, &dia_devolucion);
+                sscanf(mensaje.texto.datos_formulario, "%4d%2d%2d%40c%15c%3d%40c%4d%2d%2d", 
+                       &anio_prestamo, &mes_prestamo, &dia_prestamo, email_usuario_prestador, nombre_objeto,
+                       &cantidad_prestada, email_usuario_recibidor, &anio_devolucion, &mes_devolucion, &dia_devolucion);
 
                 sprintf(fecha_prestamo, "%d-%d-%d", anio_prestamo, mes_prestamo, dia_prestamo);
 
