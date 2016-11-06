@@ -1,6 +1,7 @@
 import socket
 import json
 from pprint import pprint
+
 class monitor:
 	def __init__(self):
 		self.socket=socket.socket()
