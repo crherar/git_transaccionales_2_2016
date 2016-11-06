@@ -464,7 +464,10 @@ int main() {
 
                 printf("El mensaje recibido de %s es: %s \n", formulario_actual, mensaje.texto.datos_formulario);
 
-                sscanf(mensaje.texto.datos_formulario, "%40s%15s", email_usuario_dueno_objeto, nombre_objeto);
+                memset(email_usuario_recibidor,'\0',sizeof email_usuario_dueno_objeto);
+                memset(nombre_objeto,'\0',sizeof nombre_objeto);
+
+                sscanf(mensaje.texto.datos_formulario, "%40c%15c", email_usuario_dueno_objeto, nombre_objeto);
 
                 printf("El email del dueño objeto es: %s \n", email_usuario_dueno_objeto);
                 printf("El nombre del objeto recibido es: %s \n", nombre_objeto);
