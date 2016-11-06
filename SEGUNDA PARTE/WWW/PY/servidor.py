@@ -11,7 +11,7 @@ socket_php.bind(server_address)
  
 # Listen for incoming connections  
 socket_php.listen(10)  
-usuarios usr = usuarios.usuarios()
+usr = usuarios.usuarios()
 while True:  
  # Wait for a connection  
  print 'Esperando para conectarse'  
@@ -25,14 +25,19 @@ while True:
  
        
  data = ''  
-       
- data = connection.recv(2000,socket.MSG_DONTWAIT)
- if data == "reguser"
- 	usr.insertar_usuario(data)
+ respuesta_php = ''     
+ data = connection.recv(2000,socket.MSG_DONTWAIT).split('|')
+ dmx = data[1]
+
  print 'data recibida "%s"' % data
+ if data[0] == "loginn":
+ 	respuesta_php = usr.login(dmx)
+ 	print "respuesta final "+respuesta_php
+ 	#print "la respuesta de login es: "+str(usr.login(data[1]))
+ 
  print 'la direccion del cliente es: '+json.dumps(client_address)#str(connection)#str(client_address)
 # socket_php.send(str(int(datos_cliente[1])))
- connection.send('hola desde python cliente: "%s"'%datos_cliente[1])  
+ connection.send('hola desde python cliente: "%s"'%datos_cliente[1]+ "y la respuesta de la operacion es: "+respuesta_php)  
  # -------------------  
  # Process input data and generate your output info  
  # -------------------  
