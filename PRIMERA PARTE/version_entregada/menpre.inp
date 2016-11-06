@@ -1,0 +1,21 @@
+ID menpre 123381 0 02
+opc debug
+box 0 0 30 80
+cf 01 27 30 P O R T A L  P R E S T A M O S
+cf 02 1 80 ==============================================================================
+
+cf  05 31 19 - Editar Prestamo -
+cm 12 22 02 0
+tm 01 28 Actualizacion satisfactoria.
+tm 02 30 Error al actualizar prestamo.
+
+
+cf 28 1 18 Ir a formulario
+
+fs 28 17
+
+ff
+
+
+
+

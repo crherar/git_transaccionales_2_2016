@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
+#include <stdlib.h>
+#include <math.h>
+ 
+
+
+
+ 
+ 
+#include <sqlca.h>
+ 
+EXEC SQL INCLUDE sqlca;
+//#include EXEC SQL INCLUDE SQLCA;
+#define ASSERT(ptr) if(sqlca.sqlcode != 0){free(ptr);ptr=NULL;}
+
+EXEC SQL BEGIN DECLARE SECTION;
+EXEC SQL INCLUDE modelo.h;
+EXEC SQL END DECLARE SECTION;
+
+//int db_conectar(char *base_de_datos, char *usuario, char *pass) {
+int db_conectar() {
+    printf("metodo conectar \n");
+    EXEC SQL BEGIN DECLARE SECTION;
+    char SQL_bdd[19] = "b17957132_prestamo";
+    char SQL_usuario_bdd[19] = "b17957132_prestamo";
+    char SQL_password_bdd[10] = "prestados";
+    EXEC SQL END DECLARE SECTION;
+   // printf(SQL_bdd);
+   // memset(SQL_bdd,' ',sizeof(base_de_datos));
+   // memset(SQL_usuario_bdd,' ',sizeof(usuario));
+   // memset(SQL_password_bdd,' ',sizeof(pass));
+   // strcpy(SQL_bdd, base_de_datos);
+   // strcpy(SQL_usuario_bdd, usuario);
+   // strcpy(SQL_password_bdd, pass);
+    printf("antes de ejecutar la conexion \n");
+    EXEC SQL CONNECT TO :SQL_bdd USER :SQL_usuario_bdd IDENTIFIED BY :SQL_password_bdd;
+   // EXEC SQL CONNECT TO :"b17957132_prestamo" USER :"b17957132_prestamo" IDENTIFIED BY :"prestados";
+   // EXEC SQL CONNECT TO :SQL_bdd USER :SQL_usuario_bdd USING :SQL_password_bdd;
+    return sqlca.sqlcode;
+}
+
+void db_close() {
+    EXEC SQL DISCONNECT ALL;
+}
+
+void db_commit() {
+    EXEC SQL COMMIT;
+}

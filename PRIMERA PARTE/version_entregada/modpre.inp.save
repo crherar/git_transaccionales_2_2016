@@ -1,0 +1,18 @@
+ID modpre 100008 15 00
+opc debug
+box 0 0 30 80
+cf 01 27 30 P O R T A L  P R E S T A M O S
+cf 02 1 80 ==============================================================================
+
+cf  05 31 22 - Modificar Prestamo -
+cf  09 2  36 Ingrese ID del prestamo a modificar.
+
+cf  12  2  3  ID:
+ce  12  6  15 000 AN 000
+
+fa muestra
+cf 28 1 18 Ir a formulario
+
+fs 28 17
+
+ff

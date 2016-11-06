@@ -1,0 +1,31 @@
+ID mospre 100099 32 32
+opc debug
+box 0 0 30 80
+cf 01 27 30 P O R T A L  P R E S T A M O S
+cf 02 1 80 ==============================================================================
+
+cf  05 31 22 - Modificar Prestamo -
+
+
+#FECHA DEL PRESTAMO
+cf 6 2  Fecha de devolución:
+cd 6 8 2 006 006
+cf 6 13 1 -
+cd 6 15 2 004 004
+cf 6 20 1 -
+cd 6 22 4 000 000
+      	
+cf  13   2   10    ID objeto:
+cd  13   13  8     8  8 
+
+cf  15   2   24    ID de usuario recibidor:
+cd  15   27  15    16 16 
+
+cf  17   2   34    Estado (0=pendiente, 1=devuelto):
+cd  17   37  1     31 31
+
+cf 28 1 18 Ir a formulario
+
+fs 28 17
+
+ff

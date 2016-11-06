@@ -1,0 +1,26 @@
+ID cdeobj 100008 1 30
+#opc debug
+box 0 0 30 80
+cf 01 27 30 P O R T A L  P R E S T A M O S
+cf 02 1 80 ==============================================================================
+
+cf  05 31 19 - Eliminar Objeto -
+
+cf  09 02 19 El ID ingresado es:
+cs  09 22 15 0 AN 0
+
+cf  11 02 17 Nombre de objeto:
+cs  11 20 15 15 AN 0
+
+cf 16 02 44 ¿Está seguro que desea eliminar este objeto?
+
+cf 19 02 16 Respuesta (s/n):
+ce 19 19 01 0 AN 0
+
+fa menobj mdeobj
+
+cf 28 1 18 Ir a formulario
+
+fs 28 17
+
+ff
