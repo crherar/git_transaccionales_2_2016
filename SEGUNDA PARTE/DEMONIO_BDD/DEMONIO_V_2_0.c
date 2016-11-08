@@ -340,14 +340,14 @@ int main() {
                 printf("id usuario recibidor: %d \n", prest->id_usuario_recibidor);
                 printf("\nDESPUES DE ID USARIO RECIBIDOR\n");
                 strcpy(email_usuario_prestador, get_email_usuario_por_id(prest->id_usuario_prestador));
-                    printf("\nDESPUES DE em us prest\n"); //get_id_usuario_por_email(prest->id_usuario_prestador);
+                printf("\nDESPUES DE em us prest\n"); //get_id_usuario_por_email(prest->id_usuario_prestador);
                 strcpy(email_usuario_recibidor, get_email_usuario_por_id(prest->id_usuario_recibidor));
-                    printf("\nDESPUES DE em us rec\n");
+                printf("\nDESPUES DE em us rec\n");
                 strcpy(fecha_prestamo, prest->fecha_prestamo);
                 //  anio_prestamo = atoi(strtok(fecha_prestamo,"-"));
                 // mes_prestamo = atoi(strtok(NULL,"-"));
                 //  dia_prestamo = atoi(strtok(NULL,"-"));
-                   printf("\nDESPUES DE atoi\n");
+                //printf("\nDESPUES DE atoi\n");
                 //printf("año: %d,mes: %d,dia: %d \n",anio_prestamo,mes_prestamo,dia_prestamo);
                 //int fecha_prestamo2 = atoi(fecha_prestamo);
                 // printf("fecha prestamo 2: %d \n",fecha_prestamo2);
