@@ -22,10 +22,10 @@ void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans 
 	{
 	long mtype;
 	char formulario_actual[7];
-		struct 
+		struct
 		{
 		  int idproceso;
-	          
+
 		  char datos_formulario[2000];
 		} texto;
 	} mensaje, respuesta;
@@ -46,7 +46,7 @@ void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans 
 
 	printf("\nTX_IN->DATOS:%s\n",tx_in->datos);
 	printf("\nmensaje.texto.datos_formulario: %s\n",mensaje.texto.datos_formulario);
-	
+
 	//strcpy(mensaje.texto.datos_formulario, tx_in->datos);
 
 	printf("Copia de datos formulario a mensaje \n");
@@ -59,11 +59,11 @@ void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans 
 	//se envia el mensaje al demonio
 
 	char men[2000];
-	
+
 	sprintf(men,"%15s%s",tx_sa->datos,tx_in->datos);
 
 	puts(men);
-	
+
 	strcpy(mensaje.texto.datos_formulario, men);
 
 	printf("Antes de enviar mensaje desde cdeobj\n");
@@ -102,9 +102,9 @@ void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans 
 	printf("largo de la respuesta recibida %d \n",sizeof(respuesta.texto.datos_formulario));
 
 	printf("mensaje.texto.datos_formulario = %s\n\n", mensaje.texto.datos_formulario);
-	
+
 	printf("mensaje.texto.datos_formulario:%s\n",mensaje.texto.datos_formulario);
 
 	tx_out->len = sprintf(tx_out->datos,"%s", respuesta.texto.datos_formulario);
-	
+
 }

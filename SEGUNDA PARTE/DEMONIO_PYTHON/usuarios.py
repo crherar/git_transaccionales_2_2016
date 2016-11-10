@@ -18,7 +18,7 @@ class usuarios:
 		self.apellido = datos[1]
 		self.email = datos[2]
 		self.password = datos[3]
-		self.mensaje = str(nombre+apellido+email+password)		
+		self.mensaje = str(nombre+apellido+email+password)
 		return monitor.enviar("regusr","123456","00",mensaje)
 
 	#def actualizar_usuario(data):

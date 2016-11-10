@@ -1,0 +1,9 @@
+C:\Users\MatiasAlvarezZabate\Documents\Universidad\año 2015\Segundo semestre 2015\Desarrollo WEB\recordatorioPrestados\recordatorioPrestados\bin\Debug\recordatorioPrestados.exe.config
+C:\Users\MatiasAlvarezZabate\Documents\Universidad\año 2015\Segundo semestre 2015\Desarrollo WEB\recordatorioPrestados\recordatorioPrestados\bin\Debug\recordatorioPrestados.exe
+C:\Users\MatiasAlvarezZabate\Documents\Universidad\año 2015\Segundo semestre 2015\Desarrollo WEB\recordatorioPrestados\recordatorioPrestados\bin\Debug\recordatorioPrestados.pdb
+C:\Users\MatiasAlvarezZabate\Documents\Universidad\año 2015\Segundo semestre 2015\Desarrollo WEB\recordatorioPrestados\recordatorioPrestados\obj\Debug\recordatorioPrestados.csprojResolveAssemblyReference.cache
+C:\Users\MatiasAlvarezZabate\Documents\Universidad\año 2015\Segundo semestre 2015\Desarrollo WEB\recordatorioPrestados\recordatorioPrestados\obj\Debug\recordatorioPrestados.Form1.resources
+C:\Users\MatiasAlvarezZabate\Documents\Universidad\año 2015\Segundo semestre 2015\Desarrollo WEB\recordatorioPrestados\recordatorioPrestados\obj\Debug\recordatorioPrestados.Properties.Resources.resources
+C:\Users\MatiasAlvarezZabate\Documents\Universidad\año 2015\Segundo semestre 2015\Desarrollo WEB\recordatorioPrestados\recordatorioPrestados\obj\Debug\recordatorioPrestados.csproj.GenerateResource.Cache
+C:\Users\MatiasAlvarezZabate\Documents\Universidad\año 2015\Segundo semestre 2015\Desarrollo WEB\recordatorioPrestados\recordatorioPrestados\obj\Debug\recordatorioPrestados.exe
+C:\Users\MatiasAlvarezZabate\Documents\Universidad\año 2015\Segundo semestre 2015\Desarrollo WEB\recordatorioPrestados\recordatorioPrestados\obj\Debug\recordatorioPrestados.pdb
