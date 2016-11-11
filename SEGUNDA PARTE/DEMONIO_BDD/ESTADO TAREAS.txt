@@ -1,0 +1,54 @@
+EN LOS ARCHIVOS PGC
+
+USUARIOS
+  insertar  OK
+  actualizar OK
+  eliminar OK
+
+PRESTADOS
+  insertar OK
+  actualizar OK
+  eliminar OK
+
+AMIGOS
+  insertar
+  actualizar
+  eliminar
+
+OBJETOS
+  insertar OK
+  actualizar
+  eliminar OK
+
+REPUTACIONES
+  insertar
+  actualizar
+  eliminar
+
+
+EN EL DEMONIO
+
+USUARIOS
+  insertar  OK
+  actualizar
+  eliminar
+
+PRESTADOS
+  insertar OK
+  actualizar OK
+  eliminar
+
+AMIGOS
+  insertar
+  actualizar
+  eliminar
+
+OBJETOS
+  insertar OK
+  actualizar
+  eliminar OK
+
+REPUTACIONES
+  insertar
+  actualizar
+  eliminar

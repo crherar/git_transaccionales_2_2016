@@ -1,0 +1,66 @@
+#include <stdlib.h>
+#include <sqlca.h>
+
+EXEC SQL INCLUDE sqlca;
+//#include EXEC SQL INCLUDE SQLCA;
+#define ASSERT(ptr) if(sqlca.sqlcode != 0){free(ptr);ptr=NULL;}
+
+EXEC SQL BEGIN DECLARE SECTION;
+EXEC SQL INCLUDE modelo.h;
+EXEC SQL END DECLARE SECTION;
+
+
+
+Amigo *insertar_amigo(int id_usuario_logueado,id_amigo)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+Amigo  *SQL_output;
+int  SQL_id_usuario_logueado;
+int SQL_id_amigo;
+EXEC SQL END DECLARE SECTION;
+
+SQL_id_usuario_logueado = id_usario_logueado;
+SQL_id_amigo = id_amigo;
+
+
+SQL_output = (Amigo*) malloc(sizeof(Amigo));
+memset(SQL_output,0,sizeof(Amigo));
+
+EXEC SQL INSERT INTO amigos(amigo_1,amigo_2) VALUES(:SQL_id_usuario_logueado,:SQL_id_amigo);
+EXEC SQL INSERT INTO amigos(amigo_1,amigo_2) VALUES(:SQL_id_amigo,:SQL_usuario_logueado);
+SQL_output->verificador_error = sqlca.sqlcode;
+
+dbm_commit();
+ASSERT(SQL_output);
+return SQL_output;
+
+}
+
+Amigo *actualizar_amigos(int id_usuario_logueado,id_amigo,id_amistad)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+Amigo  *SQL_output;
+int  SQL_id_usuario_logueado;
+int SQL_id_amigo;
+int SQL_id_amistad
+EXEC SQL END DECLARE SECTION;
+
+SQL_id_usuario_logueado = id_usario_logueado;
+SQL_id_amigo = id_amigo;
+SQL_id_amistad = id_amistad;
+
+SQL_output = (Amigo*) malloc(sizeof(Amigo));
+memset(SQL_output,0,sizeof(Amigo));
+
+EXEC SQL UPDATE amigos SET
+amigo_1 = :SQL_id_usuario_logueado,
+amigo_2 = :SQL_id_amigo
+WHERE amigos.id = :SQL_id_amistad;
+
+SQL_output->verificador_error = sqlca.sqlcode;
+
+dbm_commit();
+ASSERT(SQL_output);
+return SQL_output;
+
+}

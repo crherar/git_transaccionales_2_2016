@@ -1,0 +1,210 @@
+#include <stdlib.h>
+#include <sqlca.h>
+
+EXEC SQL INCLUDE sqlca;
+//#include EXEC SQL INCLUDE SQLCA;
+#define ASSERT(ptr) if(sqlca.sqlcode != 0){free(ptr);ptr=NULL;}
+
+EXEC SQL BEGIN DECLARE SECTION;
+EXEC SQL INCLUDE modelo.h;
+EXEC SQL END DECLARE SECTION;
+
+
+int logueo(char *email, char *password)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+
+int  SQL_output;
+char SQL_email[40]; // Se puede definir con el largo real ya que el argumento se ha pasado por parametro en el demonio (VERIFICAR).
+char SQL_password[10]; // Se puede definir con el largo real ya que el argumento se ha pasado por parametro en el demonio (VERIFICAR).
+
+EXEC SQL END DECLARE SECTION;
+
+strcpy(SQL_email,email);
+strcpy(SQL_password,password);
+
+EXEC SQL SELECT count(*) INTO :SQL_output FROM usuarios WHERE email = :SQL_email and password = :SQL_password;
+
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("\n");
+
+db_commit();
+ASSERT(SQL_output);
+return SQL_output;
+}
+
+int get_id_usuario_por_nombre_apellido(char *nombre, char *apellido)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+int  SQL_output;
+char SQL_nombre[21]; // ¿CON 20 o 21?
+char SQL_apellido[21]; // ¿CON 20 o 21?
+EXEC SQL END DECLARE SECTION;
+printf("select id del nombre de usuario: %s \n",nombre);
+printf("select id del apellido de usuario: %s \n",apellido);
+//SQL_output = (Usuario*) malloc(sizeof(Usuario));
+//memset(SQL_output, 0, sizeof(Usuario));
+strcpy(SQL_nombre,nombre);
+strcpy(SQL_apellido,apellido);
+EXEC SQL SELECT id INTO :SQL_output FROM usuarios WHERE nombre = :SQL_nombre and apellido = :SQL_apellido;
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("\n");
+db_commit();
+
+ASSERT(SQL_output);
+return SQL_output;
+}
+
+int get_id_usuario_por_email(char *email)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+int  SQL_output;
+char SQL_email[40];
+EXEC SQL END DECLARE SECTION;
+printf("select id del email de usuario: %s \n",email);
+
+//SQL_output = (Usuario*) malloc(sizeof(Usuario));
+//memset(SQL_output, 0, sizeof(Usuario));
+strcpy(SQL_email,email);
+EXEC SQL SELECT id INTO :SQL_output FROM usuarios WHERE email = :SQL_email;
+
+db_commit();
+
+ASSERT(SQL_output);
+return SQL_output;
+}
+
+Usuario *insertar_usuario(char *email,char *nombre, char *apellido, char *password)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+Usuario *SQL_output;
+char SQL_email[40];
+char SQL_nombre[20];
+char SQL_apellido[20];
+char SQL_password[10];
+
+EXEC SQL END DECLARE SECTION;
+
+
+strcpy(SQL_email,email);
+strcpy(SQL_nombre,nombre);
+strcpy(SQL_apellido,apellido);
+strcpy(SQL_password,password);
+
+
+SQL_output = (Usuario*) malloc(sizeof(Usuario));
+memset(SQL_output, 0, sizeof(Usuario));
+
+EXEC SQL INSERT INTO usuarios(email, nombre, apellido, password) VALUES(:SQL_email, :SQL_nombre, :SQL_apellido, :SQL_password);
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("\n");
+SQL_output->verificador_error = sqlca.sqlcode;
+
+db_commit();
+
+ASSERT(SQL_output);
+return SQL_output;
+
+}
+
+
+Usuario *actualizar_usuario(char *email,char *nombre, char *apellido, char *password,int id_usuario)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+Usuario *SQL_output;
+char SQL_email[40];
+char SQL_nombre[20];
+char SQL_apellido[20];
+char SQL_password[10];
+int SQL_id_usuario;
+EXEC SQL END DECLARE SECTION;
+
+
+strcpy(SQL_email,email);
+strcpy(SQL_nombre,nombre);
+strcpy(SQL_apellido,apellido);
+strcpy(SQL_password,password);
+SQL_id_usuario = id_usuario;
+
+SQL_output = (Usuario*) malloc(sizeof(Usuario));
+memset(SQL_output, 0, sizeof(Usuario));
+
+EXEC SQL UPDATE usuarios SET
+nombre = :SQL_nombre,
+apellido = :SQL_apellido,
+email = :SQL_email,
+password = :SQL_password;
+WHERE usuarios.id = :SQL_id_usuario;
+SQL_output->verificador_error = sqlca.sqlcode;
+db_commit();
+
+ASSERT(SQL_output);
+return SQL_output;
+}
+
+
+int eliminar_usuario(int id_usuario)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+
+int  SQL_id_usuario;
+
+EXEC SQL END DECLARE SECTION;
+
+SQL_id_usuario = id_usuario;
+
+EXEC SQL DELETE FROM usuarios WHERE usuarios.id = :SQL_id_usuario;
+
+printf("\n\n Sqlca Sqlcode: %d\n\n", sqlca.sqlcode);
+
+printf(sqlca.sqlerrm.sqlerrmc );
+
+int resp;
+resp = sqlca.sqlcode;
+
+db_commit();
+
+return resp;
+}
+
+char *get_email_usuario_por_id(int id)
+{
+	EXEC SQL BEGIN DECLARE SECTION;
+    char *SQL_output;
+	int SQL_id;
+	EXEC SQL END DECLARE SECTION;
+    SQL_id = id;
+
+    EXEC SQL SELECT email INTO :SQL_output FROM usuarios WHERE usuarios.id = :SQL_id;
+
+	//SQL_output->verificador_error = sqlca.sqlcode;
+
+	db_commit();
+
+	ASSERT(SQL_output);
+	return SQL_output;
+
+}
+
+int validar_registro_usuario(char *email_usuario)
+{
+    EXEC SQL BEGIN DECLARE SECTION;
+    int SQL_output;
+    char SQL_email_usuario;
+    EXEC SQL END DECLARE SECTION;
+    strcpy(SQL_email_usuario,email_usuario);
+
+   // memset(SQL_output,' ',strlen(SQL_output));
+   // printf("antes de select nombre objeto \n");
+
+    EXEC SQL SELECT count(*) INTO :SQL_output FROM usuarios WHERE usuarios.email = :SQL_email_usuario;
+
+   // printf("despues de select nombre objeto \n");
+    //SQL_output->verificador_error = sqlca.sqlcode;
+
+    db_commit();
+
+    ASSERT(SQL_output);
+    return SQL_output;
+
+}
