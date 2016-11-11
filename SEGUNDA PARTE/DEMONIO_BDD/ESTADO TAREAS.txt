@@ -1,54 +1,64 @@
 EN LOS ARCHIVOS PGC
+    USUARIOS
+      insertar  OK
+      actualizar OK actobj.c
+      eliminar OK
 
-USUARIOS
-  insertar  OK
-  actualizar OK actobj.c
-  eliminar OK
+    PRESTADOS
+      insertar OK
+      actualizar OK
+      eliminar OK delpre.c
 
-PRESTADOS
-  insertar OK
-  actualizar OK
-  eliminar OK delpre.c
+    AMIGOS
+      insertar OK inami.c
+      actualizar OK actami.c
+      eliminar OK delami.c
 
-AMIGOS
-  insertar OK inami.c
-  actualizar OK actami.c
-  eliminar OK delami.c
+    OBJETOS
+      insertar OK
+      actualizar OK actobj.c
+      eliminar OK
 
-OBJETOS
-  insertar OK
-  actualizar OK actobj.c
-  eliminar OK
+    REPUTACIONES
+      insertar OK  inrep.c
+      actualizar OK actrep.c
+      eliminar ?
 
-REPUTACIONES
-  insertar OK  inrep.c
-  actualizar OK actrep.c
-  eliminar ?
+ARCHIVOS C DE LOS FORMS PENDIENTES
+    actobj.c
+    delpre.c
+    inami.c
+    actami.c
+    delami.c
+    actobj.c
+    inrep.c
+    actrep.c
+
+
 
 
 EN EL DEMONIO
+    USUARIOS
+      insertar  OK
+      actualizar
+      eliminar
 
-USUARIOS
-  insertar  OK
-  actualizar
-  eliminar
+    PRESTADOS
+      insertar OK
+      actualizar OK
+      eliminar
 
-PRESTADOS
-  insertar OK
-  actualizar OK
-  eliminar
+    AMIGOS
+      insertar
+      actualizar
+      eliminar
 
-AMIGOS
-  insertar
-  actualizar
-  eliminar
+    OBJETOS
+      insertar OK
+      actualizar
+      eliminar OK
 
-OBJETOS
-  insertar OK
-  actualizar
-  eliminar OK
-
-REPUTACIONES
-  insertar
-  actualizar
-  eliminar
+    REPUTACIONES
+      insertar
+      actualizar
+      eliminar
