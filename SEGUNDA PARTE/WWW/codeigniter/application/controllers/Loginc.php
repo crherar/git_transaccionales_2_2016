@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Loginc extends CI_Controller {
 
+	function __construct() {
+	        parent::__construct();
+	        $this->load->library('Socket');
+
+	    }
 	/**
 	 * Index Page for this controller.
 	 *
@@ -30,6 +35,8 @@ class Loginc extends CI_Controller {
 		$password = $this->input->post('password');
 		var_dump($email);
 		var_dump($password);
-		$this->load->library('../controllers/Socketc');
+		$this->socket->enviar(str_pad($email,40)+"-"+str_pad($password,15));
+//$this->socket->enviar();
+		//$this->load->library('../controllers/Socketc');
 	}
 }
