@@ -9,7 +9,7 @@
 #include "dbm_conectar.h"
 #include "dbm_prestamos.h"
 #include "dbm_usuarios.h"
-#include "dbm_objetos.h" 
+#include "dbm_objetos.h"
 //#include "dbm_conectar.h"
 
 int main() {
@@ -55,6 +55,7 @@ int main() {
 
     int id_usuario_prestador;
     int id_usuario_recibidor;
+    int id_usuario;
     int id_usuario_dueno_objeto;
 
     int id_objeto;
@@ -209,7 +210,43 @@ int main() {
                 printf("************************** FIN Formulario 'regusr' **************************\n");
             }
 
+            if (strcmp(formulario_actual, "actusr") == 0) {
 
+            printf("************************** Formulario 'actusr' **************************\n");
+
+            printf("-----> Actualizar usuario <-----\n");
+
+              memset(email,'\0',sizeof email);
+              memset(nombre,'\0',sizeof nombre);
+              memset(apellido,'\0',sizeof apellido);
+              memset(password,'\0',sizeof password);
+
+              sscanf(mensaje.texto.datos_formulario, "%40c%20c%20c%10c%10d", email, nombre, apellido, password);
+              usr = actualizar_usuario(email,nombre,apellido,password,id_usuario);
+              if (usr->verificador_error == 0) {
+                      printf("\n\nDENTRO VERF_ERR\n\n");
+                      strcpy(respuesta.texto.datos_formulario, "01");
+              } else {
+                  strcpy(respuesta.texto.datos_formulario, "02");
+              }
+
+              printf("************************** FIN Formulario 'actusr' **************************\n");
+            }
+
+            if(strcpy(formulario_actual,"delusr") == 0){
+                printf("************************** Formulario 'delusr' **************************\n");
+                printf("-----> Eliminar usuario <-----\n");
+                sscanf(mensaje.texto.datos_formulario,"%10d",&id_usuario);
+                int resp = eliminar_usuario(id_usuario);
+
+                if(resp == 0){
+                    strcpy(respuesta.texto.datos_formulario, "01");
+                }else{
+                    strcpy(respuesta.texto.datos_formulario, "02");
+                }
+
+                printf("************************** FIN Formulario 'delusr' **************************\n");
+            }
             /* ********************************************************************************************************* */
 
             /**************************************
@@ -228,7 +265,7 @@ int main() {
                 memset(nombre_objeto,'\0',sizeof nombre_objeto);
                 memset(email_usuario_recibidor,'\0',sizeof email_usuario_recibidor);
 
-                sscanf(mensaje.texto.datos_formulario, "%4d%2d%2d%40c%15c%3d%40c%4d%2d%2d", 
+                sscanf(mensaje.texto.datos_formulario, "%4d%2d%2d%40c%15c%3d%40c%4d%2d%2d",
                        &anio_prestamo, &mes_prestamo, &dia_prestamo, email_usuario_prestador, nombre_objeto,
                        &cantidad_prestada, email_usuario_recibidor, &anio_devolucion, &mes_devolucion, &dia_devolucion);
 
@@ -265,7 +302,21 @@ int main() {
                 printf("************************** FIN Formulario 'hprest' **************************\n");
 
             }
+            if(strcpy(formulario_actual,"delpre") == 0){
+                printf("************************** Formulario 'delpre' **************************\n");
+                printf("-----> Eliminar prestamo <-----\n");
+                sscanf(mensaje.texto.datos_formulario,"%10d",&id_prestamo);
+                int resp = eliminar_prestamo(id_prestamo);
 
+                if(resp == 0){
+                    strcpy(respuesta.texto.datos_formulario, "01");
+                }else{
+                    strcpy(respuesta.texto.datos_formulario, "02");
+                }
+
+
+                printf("************************** FIN Formulario 'delpre' **************************\n");
+            }
             /* ********************************************************************************************************* */
 
             /**************************************
@@ -309,7 +360,7 @@ int main() {
 
                 prest = actualizar_prestamo(fecha_prestamo, id_usuario_prestador, id_objeto,
                         id_usuario_recibidor, fecha_devolucion,estado,cantidad_prestada,id_prestamo);
-               
+
                 printf("La respuesta luego de actualizar el prestamo es: %d \n", prest->verificador_error);
 
                 if (prest->verificador_error == 0) {
@@ -419,14 +470,14 @@ int main() {
                 // sprintf(respuesta.texto.datos_formulario, "%4s%2s%2s%40s%15s%3d%40s%4d%2d%2d", anio_prestamo, mes_prestamo, dia_prestamo, email_usuario_prestador, nombre_objeto,
                 // &cantidad_prestada, email_usuario_recibidor, &anio_devolucion, &mes_devolucion, &dia_devolucion);
                 //  sprintf(respuesta.texto.datos_formulario, "%8s%40s%15s%3d%40s%8s%1d",fecha_prestamo, email_usuario_prestador, nombre_objeto,
-                //  &cantidad_prestada, email_usuario_recibidor, fecha_devolucion,&estado);     
+                //  &cantidad_prestada, email_usuario_recibidor, fecha_devolucion,&estado);
                 //    sprintf(respuesta.texto.datos_formulario, "%s%s%s%d%s%s%d",fecha_prestamo, email_usuario_prestador, nombre_objeto,
                 //   &cantidad_prestada, email_usuario_recibidor, fecha_devolucion,&estado);
                 sprintf(respuesta.texto.datos_formulario, "%s%s%s%s%s%s%d", fecha_prestamo, email_usuario_prestador, nombre_objeto,
                         nueva_cantidad_prestada, email_usuario_recibidor, fecha_devolucion, estado);
 
                                printf("-----> Modificar prestamo <-----\n");
-                
+
                              printf("El mensaje recibido de %s es: %s \n", formulario_actual, mensaje.texto.datos_formulario);
 
                          //   sscanf(mensaje.texto.datos_formulario, "%15s", id_prestamo);
@@ -494,7 +545,7 @@ int main() {
                     strcpy(respuesta.texto.datos_formulario, "03");
                 }
 
-                
+
                 printf("************************** FIN Formulario 'regobj' **************************\n");
 
             }
@@ -582,12 +633,12 @@ int main() {
                 // printf("Resp:%s\n", resp);
 
                 printf("\n\n DESPUES DE LA LLAMADA A FUNCION \n\n");
-                
+
                 if (obj->verificador_error == 0 && obj->id > 0) {
-                
+
                     sprintf(respuesta.texto.datos_formulario,"%15d%15s", obj->id, obj->nombre);
                     printf("\n\nrespuesta.texto.datos_formulario:\n\n%s\n", respuesta.texto.datos_formulario);
-                }else { 
+                }else {
                     strcpy(respuesta.texto.datos_formulario, "02");
                 }
                 printf("************************** FIN Formulario 'delobj' **************************\n");
@@ -657,7 +708,7 @@ int main() {
             printf("*********** FIN PROCESAR RESPUESTA ***************** \n");
             printf("------------------ FIN - SIGIUIENTE MENSAJE ------------- \n");
 
-            // mensaje.mtype = mensaje.texto.idproceso;                                 
+            // mensaje.mtype = mensaje.texto.idproceso;
             //  mensaje.texto.pid = idproceso;
             // msgsnd (qid, &mensaje, strlen(mensaje.texto.datos_formulario) + 12, 0);
 

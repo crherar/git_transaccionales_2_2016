@@ -40,13 +40,13 @@ ARCHIVOS C DE LOS FORMS PENDIENTES
 EN EL DEMONIO
     USUARIOS
       insertar  OK
-      actualizar
-      eliminar
+      actualizar Ok
+      eliminar OK
 
     PRESTADOS
       insertar OK
       actualizar OK
-      eliminar
+      eliminar OK
 
     AMIGOS
       insertar
