@@ -11,7 +11,7 @@ EXEC SQL END DECLARE SECTION;
 
 
 
-Amigo *insertar_amigo(int id_usuario_logueado,id_amigo)
+Amigo *insertar_amigos(int id_usuario_logueado,id_amigo)
 {
 EXEC SQL BEGIN DECLARE SECTION;
 Amigo  *SQL_output;
@@ -63,4 +63,28 @@ dbm_commit();
 ASSERT(SQL_output);
 return SQL_output;
 
+}
+
+int eliminar_amistad(id_amistad)
+{
+  EXEC SQL BEGIN DECLARE SECTION;
+
+  int  SQL_id_amistad;
+
+  EXEC SQL END DECLARE SECTION;
+
+  SQL_id_usuario = id_amistad;
+
+  EXEC SQL DELETE FROM amigos WHERE amigos.id = :SQL_id_amistad;
+
+  printf("\n\n Sqlca Sqlcode: %d\n\n", sqlca.sqlcode);
+
+  printf(sqlca.sqlerrm.sqlerrmc );
+
+  int resp;
+  resp = sqlca.sqlcode;
+
+  db_commit();
+
+  return resp;
 }

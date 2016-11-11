@@ -20,7 +20,7 @@ EXEC SQL END DECLARE SECTION;
 //SQL_output = (Usuario*) malloc(sizeof(Usuario));
 //memset(SQL_output, 0, sizeof(Usuario));
 strcpy(SQL_nombre_obj,nombre_objeto);
- 
+
 EXEC SQL SELECT id INTO :SQL_output FROM objetos WHERE nombre = :SQL_nombre_obj;
 db_commit();
 
@@ -49,11 +49,43 @@ printf(sqlca.sqlerrm.sqlerrmc );
 printf("\n");
 SQL_output->verificador_error = sqlca.sqlcode;
 	//printf("antes de hacer commit \n");
-        
+
 db_commit();
 ASSERT(SQL_output);
 return SQL_output;
 }
+
+Objeto *actualizar_objeto(int id_usuario_dueno,char *nombre_objeto,int id_objeto)
+{
+    EXEC SQL BEGIN DECLARE SECTION;
+    Objeto  *SQL_output;
+    int  SQL_id_usuario_dueno;
+    char SQL_nombre_obj[15];
+    int SQL_id_objeto;
+    EXEC SQL END DECLARE SECTION;
+
+    strcpy(SQL_nombre_obj,nombre_objeto);
+    SQL_id_usuario_dueno = id_usuario_dueno;
+    SQL_id_objeto = id_objeto;
+    SQL_output = (Objeto*) malloc(sizeof(Objeto));
+    memset(SQL_output, 0, sizeof(Objeto));
+
+    EXEC SQL UPDATE  objetos SET
+    id_usuario_dueno = :SQL_id_usario_dueno,
+    nomre_objeto = :SQL_nombre_objeto
+    WHERE objetos.id = :SQL_id_objeto;
+    
+    printf(sqlca.sqlerrm.sqlerrmc );
+    printf("\n");
+    SQL_output->verificador_error = sqlca.sqlcode;
+    	//printf("antes de hacer commit \n");
+
+    db_commit();
+    ASSERT(SQL_output);
+    return SQL_output;
+}
+
+
 
 char *get_listado_objetos(int pagina)//debe venir por parametro la id del usuario
 {
@@ -103,19 +135,19 @@ while(!sqlca.sqlcode && resultset_pos < SQL_count){
         {
          //if(tamanio >0)
          printf("tamanio: %d \n",tamanio);
-         int num_espacios = 15 - tamanio; 
+         int num_espacios = 15 - tamanio;
          printf("num_espacios: %d \n",num_espacios);
          char espacios[15 - tamanio];
          printf("largo espacios: %d \n",strlen(espacios));
-        
-        
+
+
 
         //memset(espacios,' ',num_espacios);
-        
+
         //for(int i = 0;i<num_espacios;i++){
         //  espacios[i] = ' ';
         //}
-        
+
          strcpy(nombre_obj, SQL_output[resultset_pos].nombre);
         //strcat(nombre_obj,espacios);
         //memset(nombre_obj, ' ', espacios);
@@ -126,13 +158,13 @@ while(!sqlca.sqlcode && resultset_pos < SQL_count){
          strcat(datos,nombre_obj);
         //char espacios[15 - tamanio];
         //memset(espacios,' ',sizeof(espacios));
-        //char nombre = 
+        //char nombre =
         //strcat(datos,SQL_output[resultset_pos].nombre);
         //strcat(datos,espacios);
 	//SQL_output[resultset_pos].SQL_CODE = 1;
-	 
-         } 
-         
+
+         }
+
 	}
 
 EXEC SQL CLOSE RESULT_SET;
@@ -142,7 +174,7 @@ printf(sqlca.sqlerrm.sqlerrmc );
 printf("\n");
 SQL_output->verificador_error = sqlca.sqlcode;
 	//printf("antes de hacer commit \n");
-       
+
 db_commit();
 ASSERT(SQL_output);
 printf("datos en el sql %s \n",datos);
@@ -154,7 +186,7 @@ int borrar_objeto(int id_objeto)
 {
 
     EXEC SQL BEGIN DECLARE SECTION;
-    
+
     int  SQL_id_objeto;
 
     EXEC SQL END DECLARE SECTION;
@@ -171,7 +203,7 @@ int borrar_objeto(int id_objeto)
     resp = sqlca.sqlcode;
 
     db_commit();
-    
+
     return resp;
 }
 
@@ -210,11 +242,11 @@ Objeto *get_nombre_objeto_por_id2(int id)
     SQL_output = (Objeto*) malloc(sizeof(Objeto));
     memset(SQL_output,' ',strlen(SQL_output));
    // printf("antes de select nombre objeto \n");
-    
+
     EXEC SQL SELECT objetos.id,objetos.nombre INTO :SQL_output->id,:SQL_output->nombre FROM objetos WHERE objetos.id = :SQL_id;
 
    // printf("despues de select nombre objeto \n");
- 
+
     SQL_output->verificador_error = sqlca.sqlcode;
     db_commit();
 
@@ -245,10 +277,3 @@ int validar_registro_objeto(char *nombre_objeto, int id_dueno_objeto)
     ASSERT(SQL_output);
     return SQL_output;
 }
-
-
-
-
-
-
-

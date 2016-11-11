@@ -1,0 +1,72 @@
+#include <stdlib.h>
+#include <sqlca.h>
+
+EXEC SQL INCLUDE sqlca;
+//#include EXEC SQL INCLUDE SQLCA;
+#define ASSERT(ptr) if(sqlca.sqlcode != 0){free(ptr);ptr=NULL;}
+
+EXEC SQL BEGIN DECLARE SECTION;
+EXEC SQL INCLUDE modelo.h;
+EXEC SQL END DECLARE SECTION;
+
+
+
+Reputacion *insertar_reputacion(int id_usuario_clasificado,int clasificacion,char *comentario)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+Reputacion *SQL_output;
+int SQL_id_usuario_clasificado;
+int SQL_clasificacion;
+char SQL_comentario[100];
+EXEC SQL END DECLARE SECTION;
+
+
+strcpy(SQL_comentario,comentario);
+SQL_id_usuario_clasificado = id_usuario_clasificado;
+SQL_clasificacion = clasificacion;
+
+
+SQL_output = (Reputacion*) malloc(sizeof(Reputacion));
+memset(SQL_output,0,sizeof(Reputacion));
+
+EXEC SQL INSERT INTO reputacionusuarios(id_usuario_clasificado,clasificacion,comentario) VALUES(:SQL_id_usuario_clasificado,:SQL_clasificacion,:SQL_comentario);
+
+SQL_output->verificador_error = sqlca.sqlcode;
+
+db_commit();
+
+ASSERT(SQL_output);
+return SQL_output;
+}
+
+Reputacion *actualizar_reputacion(int id_usuario_clasificado,int clasificacion,char *comentario,id_reputacion)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+Reputacion *SQL_output;
+int SQL_id_usuario_clasificado;
+int SQL_clasificacion;
+char SQL_comentario[100];
+EXEC SQL END DECLARE SECTION;
+
+
+strcpy(SQL_comentario,comentario);
+SQL_id_usuario_clasificado = id_usuario_clasificado;
+SQL_clasificacion = clasificacion;
+
+
+SQL_output = (Reputacion*) malloc(sizeof(Reputacion));
+memset(SQL_output,0,sizeof(Reputacion));
+
+EXEC SQL UPDATE reputacionusuarios SET
+id_usuario_clasificado = :SQL_id_usuario_clasificado,
+clasificacion = :SQL_clasificacion,
+comentario = :SQL_comentario
+WHERE reputacionusuarios.id = :SQL_id_reputacion;
+
+SQL_output->verificador_error = sqlca.sqlcode;
+
+db_commit();
+
+ASSERT(SQL_output);
+return SQL_output;
+}

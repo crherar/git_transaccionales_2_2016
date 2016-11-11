@@ -2,28 +2,28 @@ EN LOS ARCHIVOS PGC
 
 USUARIOS
   insertar  OK
-  actualizar OK
+  actualizar OK actobj.c
   eliminar OK
 
 PRESTADOS
   insertar OK
   actualizar OK
-  eliminar OK
+  eliminar OK delpre.c
 
 AMIGOS
-  insertar
-  actualizar
-  eliminar
+  insertar OK inami.c
+  actualizar OK actami.c
+  eliminar OK delami.c
 
 OBJETOS
   insertar OK
-  actualizar
+  actualizar OK actobj.c
   eliminar OK
 
 REPUTACIONES
-  insertar
-  actualizar
-  eliminar
+  insertar OK  inrep.c
+  actualizar OK actrep.c
+  eliminar ?
 
 
 EN EL DEMONIO

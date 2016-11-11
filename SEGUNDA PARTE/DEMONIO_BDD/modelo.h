@@ -21,13 +21,13 @@ struct Usuario{
 struct Fecha{
   int anio;
    int mes;
-    int dia; 
+    int dia;
 };
 
 struct Prestamo{
     int verificador_error;
     int id;
-    char fecha_prestamo[11]; 
+    char fecha_prestamo[11];
    //int anio_prestamo;
     //int mes_prestamo;
     //int dia_prestamo;
@@ -37,7 +37,7 @@ struct Prestamo{
     // int mes;
     // int dia;
     // };
-    
+
     int id_usuario_prestador;
     int id_usuario_recibidor;
     int id_objeto;
@@ -60,10 +60,15 @@ struct Amigo{
     int id_amigo2;
 };
 
+struct Reputacion{
+    int id_usuario_clasificador;
+    int clasificación;
+    char comentario[100];
+};
+
 typedef struct Objeto Objeto;
 typedef struct Usuario Usuario;
 typedef struct Fecha Fecha;
 typedef struct Prestamo Prestamo;
 typedef struct Amigo Amigo;
 #endif
-
