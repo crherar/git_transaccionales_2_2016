@@ -90,3 +90,59 @@ int eliminar_amistad(id_amistad)
 
   return resp;
 }
+
+char *get_mis_amigos(int id_usuario_logueado)
+{
+  EXEC SQL BEGIN DECLARE SECTION;
+  Misamigos *SQL_output;
+  int SQL_id_usuario_logueado;
+  int SQL_count;
+  EXEC SQL END DECLARE SECTION;
+
+  SQL_id_usuario_logueado = id_usuario_logueado;
+
+  EXEC SQL SELECT COUNT(*) INTO :SQL_count FROM misAmigos WHERE amigo_1 = :SQL_id_usuario_logueado;
+  if(SQL_count == 0) return "no hay datos";
+  printf("SQL_count: %d \n",SQL_count);
+  SQL_output = (Misamigos*) malloc(sizeof(Misamigos) * (SQL_count + 1));
+
+  EXEC SQL DECLARE RESULT_SET CURSOR FOR SELECT emailamigo
+  FROM misamigos  ORDER BY emailamigo;
+  EXEC SQL OPEN RESULT_SET;
+
+  int resultset_pos = 0;
+
+  int tamanio = 0;
+  tamanio = (SQL_count*40)+1;
+  //char datos[tamanio] = "";
+  //memset(datos,'\0',sizeof datos);
+  printf("antes del malloc \n");
+    char *datos;
+    datos = (char *)malloc(tamanio * sizeof(char));
+    memset(datos,'\0',sizeof datos);
+  //char datos =malloc(sizeof(int)*tamanio);
+ printf("despues del malloc \n");
+  //char datos *;
+  //datos = malloc(sizeof (char*) * tamanio);
+  char email_amigo[40] = "";
+
+  printf("antes del while \n");
+  printf(sqlca.sqlcode );
+  printf("\n");
+  while(!sqlca.sqlcode && resultset_pos < SQL_count){
+  	printf("inicio del while \n");
+    printf("dlskldkls \n");
+    EXEC SQL FETCH NEXT FROM RESULT_SET INTO :SQL_output[resultset_pos].emailamigo;
+    printf("email: %s \n",SQL_output[resultset_pos].emailamigo);
+    strcpy(email_amigo,SQL_output[resultset_pos].emailamigo);
+    printf("1 \n");
+    strcat(email_amigo,"-");
+    printf("2 \n");
+    strcat(datos,email_amigo);
+    printf("3 \n");
+  }
+EXEC SQL CLOSE RESULT_SET;
+
+
+return datos;
+}

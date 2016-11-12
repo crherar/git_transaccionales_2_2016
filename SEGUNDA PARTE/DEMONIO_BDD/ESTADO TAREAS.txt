@@ -11,12 +11,15 @@ EN LOS ARCHIVOS PGC
       insertar OK
       actualizar OK
       eliminar OK delpre.c
-
+      marcar prestamo como devuelto
+      marcar prestamo como pendiente
+      ver mis prestamos
+      ver mis reputaciones
     AMIGOS
       insertar OK inami.c
       actualizar OK actami.c
       eliminar OK delami.c
-
+      get mis amigos verami.c
     OBJETOS
       insertar OK
       actualizar OK actobj.c

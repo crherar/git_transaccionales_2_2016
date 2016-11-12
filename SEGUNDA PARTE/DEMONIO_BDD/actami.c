@@ -13,20 +13,6 @@ struct trans
 
 void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans *tx_sa)
 {
-
-//int id_usuario_prestador;
-//int id_usuario_recibidor;
-//int id_objeto;
-//int estado;
-//char fecha_devolucion[10];
-
-//char nombre_usuario_prestador[10];
-//char apellido_usuario_prestador[10];
-//char nombre_objeto[15];
-//int cantidad_prestada;
-//char nombre_usuario_recibidor[10];
-//char apellido_usuario_recibidor[10];
-
 //-------------PARA TODOS LOS FORMULARIOS DESDE AQUI--------------------------------
 int idcola, idproceso;
 

@@ -40,7 +40,7 @@ printf("id proceso: %d \n",idproceso);
 memset (&mensaje, 0, sizeof mensaje);
 strcpy(mensaje.texto.datos_formulario,tx_in->datos);
 printf("copia de datos formulario a mensaje \n");
-strcpy(mensaje.formulario_actual,"actusr");
+strcpy(mensaje.formulario_actual,"verami");
 mensaje.mtype = 1;
 mensaje.texto.idproceso = idproceso;
 //se envia el mensaje al demonio

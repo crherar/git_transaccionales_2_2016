@@ -9,9 +9,10 @@ print "hola mundo"
 socket.recv(1024)
 socket.send("HOLA MUNDO! 17957132")
 print socket.recv(1024)
-socket.send("DIRPRG /home/alumnos/17957132/")
+socket.send("DIRPRG /home/alumnos/17957132/transaccionales_2_2016/SEGUNDA_PARTE/DEMONIO_BDD/")
 print  socket.recv(1024)
-socket.send("TXIN 000020506loginn00matias@gmail.com                        123       ")
+#socket.send("TXIN 000020506loginn00matias@gmail.com                        123       ")
+socket.send("TXIN 000020510verami009")
 respuesta =  socket.recv(1024)
 print "hola mundo"
 print respuesta

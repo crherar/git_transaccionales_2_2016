@@ -60,6 +60,11 @@ struct Amigo{
     int id_amigo2;
 };
 
+struct Misamigos{
+    int id_usuario_logueado;
+    char emailamigo[40];
+};
+
 struct Reputacion{
     int verificador_error;
     int id_usuario_clasificador;
@@ -72,5 +77,6 @@ typedef struct Usuario Usuario;
 typedef struct Fecha Fecha;
 typedef struct Prestamo Prestamo;
 typedef struct Amigo Amigo;
+typedef struct Misamigos Misamigos;
 typedef struct Reputacion Reputacion;
 #endif
