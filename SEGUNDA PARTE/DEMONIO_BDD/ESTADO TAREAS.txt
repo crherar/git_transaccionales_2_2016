@@ -58,7 +58,7 @@ EN EL DEMONIO
       insertar
       actualizar
       eliminar
-
+      get listado mis amigos
     OBJETOS
       insertar OK
       actualizar
@@ -68,3 +68,29 @@ EN EL DEMONIO
       insertar
       actualizar
       eliminar
+
+TX ID
+  USUARIOS
+    insertar
+    actualizar
+    eliminar
+
+  PRESTADOS
+    insertar 
+    actualizar OK
+    eliminar OK
+
+  AMIGOS
+    insertar
+    actualizar
+    eliminar
+    get listado mis amigos
+  OBJETOS
+    insertar OK
+    actualizar
+    eliminar OK
+
+  REPUTACIONES
+    insertar
+    actualizar
+    eliminar
