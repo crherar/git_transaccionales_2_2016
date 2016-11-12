@@ -9,7 +9,7 @@ EXEC SQL BEGIN DECLARE SECTION;
 EXEC SQL INCLUDE modelo.h;
 EXEC SQL END DECLARE SECTION;
 
-
+/*
 int logueo(char *email, char *password)
 {
 EXEC SQL BEGIN DECLARE SECTION;
@@ -32,6 +32,44 @@ db_commit();
 ASSERT(SQL_output);
 return SQL_output;
 }
+*/
+
+Usuario *logueo(char *email, char *password)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+int SQL_cuantos;
+Usuario  *SQL_output;
+char SQL_email[40]; // Se puede definir con el largo real ya que el argumento se ha pasado por parametro en el demonio (VERIFICAR).
+char SQL_password[10]; // Se puede definir con el largo real ya que el argumento se ha pasado por parametro en el demonio (VERIFICAR).
+
+EXEC SQL END DECLARE SECTION;
+
+strcpy(SQL_email,email);
+strcpy(SQL_password,password);
+
+printf("email_recibido: %s \n",email);
+printf("password: %s \n",password);
+SQL_output = (Usuario*) malloc(sizeof(Usuario));
+memset(SQL_output,0,sizeof(Usuario));
+
+EXEC SQL SELECT count(*) INTO :SQL_cuantos FROM usuarios WHERE email = RTRIM(:SQL_email) and password = RTRIM(:SQL_password);
+printf("CUANTOS EN LOGUEO %d \n",SQL_cuantos);
+if(SQL_cuantos == 1){
+EXEC SQL SELECT id,nombre,apellido,email INTO :SQL_output->id,:SQL_output->nombre,:SQL_output->apellido,:SQL_output->email FROM usuarios WHERE email = RTRIM(:SQL_email) and password = RTRIM(:SQL_password);
+SQL_output->verificador_error = sqlca.sqlcode;
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("\n");
+
+db_commit();
+ASSERT(SQL_output);
+}
+else
+{
+SQL_output->verificador_error = 1;
+}
+return SQL_output;
+}
+
 
 int get_id_usuario_por_nombre_apellido(char *nombre, char *apellido)
 {

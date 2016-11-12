@@ -5,6 +5,7 @@
 import select
 import socket
 import usuarios
+import sys
 from pprint import pprint
 
 host = '127.0.0.1'
@@ -29,7 +30,7 @@ while running:
             # handle the server socket
             client, address = server.accept()
             input.append(client)
-            
+
         else:
             # handle all other sockets
             data = s.recv(size)

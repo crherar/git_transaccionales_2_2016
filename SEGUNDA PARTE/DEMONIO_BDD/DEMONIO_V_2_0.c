@@ -127,6 +127,38 @@ int main() {
 
              /* ----------> LISTO <---------- */
 
+            // if (strcmp(formulario_actual, "loginn") == 0) {
+            //
+            //     printf("************************** Formulario 'loginn' **************************\n");
+            //
+            //     printf("-----> Logeo de usuario <-----\n");
+            //
+            //     printf("El mensaje de recibido de %s es: %s \n", formulario_actual, mensaje.texto.datos_formulario);
+            //
+            //     char formulario[6];
+            //     memset(email,'\0',sizeof email);
+            //     memset(password,'\0',sizeof password);
+            //
+            //     sscanf(mensaje.texto.datos_formulario, "%40c%10c", email, password);
+            //
+            //     printf("El email recibido desde loginn es: %s \n", email);
+            //
+            //     printf("La password recibida desde loggin es: %s \n", password);
+            //
+            //     int resp = logueo(email, password);
+            //
+            //     printf("Valor recibido del logueo: %d \n", resp);
+            //
+            //     if (resp == 1) {
+            //         strcpy(respuesta.texto.datos_formulario, "01");
+            //     } else if (resp == 0) {
+            //         strcpy(respuesta.texto.datos_formulario, "02");
+            //     } else {
+            //         strcpy(respuesta.texto.datos_formulario, "03");
+            //     }
+            //     printf("************************** FIN Formulario 'loginn' **************************\n");
+            // }
+
             if (strcmp(formulario_actual, "loginn") == 0) {
 
                 printf("************************** Formulario 'loginn' **************************\n");
@@ -145,17 +177,31 @@ int main() {
 
                 printf("La password recibida desde loggin es: %s \n", password);
 
-                int resp = logueo(email, password);
+                usr = logueo(email, password);
 
-                printf("Valor recibido del logueo: %d \n", resp);
+                printf("Valor recibido del logueo: %d \n", usr->verificador_error);
 
-                if (resp == 1) {
-                    strcpy(respuesta.texto.datos_formulario, "01");
-                } else if (resp == 0) {
-                    strcpy(respuesta.texto.datos_formulario, "02");
-                } else {
-                    strcpy(respuesta.texto.datos_formulario, "03");
+                if (usr->verificador_error == 0) {
+                  printf("ID USUARIO LOGUEADO: %d \n",usr->id);
+                  sprintf(respuesta.texto.datos_formulario,"%d-%s",usr->id,usr->email);
+                //   strcpy(respuesta.texto.datos_formulario, usr->id);
+                //   printf("1 \n");
+                //   strcat(respuesta.texto.datos_formulario, "-");
+                //   printf("2");
+                //   strcat(respuesta.texto.datos_formulario, usr->email);
+                //   printf("3");
                 }
+                else
+                {
+                    strcpy(respuesta.texto.datos_formulario, "01");
+                    //printf("el verificador_error de usuario es 1 \n");
+                }
+                //     strcpy(respuesta.texto.datos_formulario, "01");
+                // } else if (resp == 0) {
+                //     strcpy(respuesta.texto.datos_formulario, "02");
+                // } else {
+                //     strcpy(respuesta.texto.datos_formulario, "03");
+                // }
                 printf("************************** FIN Formulario 'loginn' **************************\n");
             }
 

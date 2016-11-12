@@ -35,7 +35,7 @@ class monitor:
 			self.socket.recv(1024)
 			self.socket.send("HOLA MUNDO! 17957132")
 			print self.socket.recv(1024)
-			self.socket.send("DIRPRG /home/alumnos/17957132/")
+			self.socket.send("DIRPRG /home/alumnos/17957132/transaccionales_2_2016/SEGUNDA_PARTE/DEMONIO_BDD/")
 
 			print self.socket.recv(1024)
 			#print "hola mundo"
@@ -49,4 +49,3 @@ class monitor:
 		except Exception, e:
 			print "E"
 			print e
-		
