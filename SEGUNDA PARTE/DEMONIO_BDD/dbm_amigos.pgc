@@ -27,10 +27,12 @@ SQL_output = (Amigo*) malloc(sizeof(Amigo));
 memset(SQL_output,0,sizeof(Amigo));
 
 EXEC SQL INSERT INTO amigos(amigo_1,amigo_2) VALUES(:SQL_id_usuario_logueado,:SQL_id_amigo);
+db_commit();
 EXEC SQL INSERT INTO amigos(amigo_1,amigo_2) VALUES(:SQL_id_amigo,:SQL_id_usuario_logueado);
+
 SQL_output->verificador_error = sqlca.sqlcode;
 
-dbm_commit();
+db_commit();
 ASSERT(SQL_output);
 return SQL_output;
 
@@ -45,7 +47,7 @@ int SQL_id_amigo;
 int SQL_id_amistad;
 EXEC SQL END DECLARE SECTION;
 
-SQL_id_usuario_logueado = id_usario_logueado;
+SQL_id_usuario_logueado = id_usuario_logueado;
 SQL_id_amigo = id_amigo;
 SQL_id_amistad = id_amistad;
 
@@ -59,7 +61,7 @@ WHERE amigos.id = :SQL_id_amistad;
 
 SQL_output->verificador_error = sqlca.sqlcode;
 
-dbm_commit();
+db_commit();
 ASSERT(SQL_output);
 return SQL_output;
 

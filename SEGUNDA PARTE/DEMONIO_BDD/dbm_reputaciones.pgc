@@ -39,7 +39,7 @@ ASSERT(SQL_output);
 return SQL_output;
 }
 
-Reputacion *actualizar_reputacion(int id_usuario_clasificado,int clasificacion,char *comentario,id_reputacion)
+Reputacion *actualizar_reputacion(int id_usuario_clasificado,int clasificacion,char *comentario,int id_reputacion)
 {
 EXEC SQL BEGIN DECLARE SECTION;
 Reputacion *SQL_output;

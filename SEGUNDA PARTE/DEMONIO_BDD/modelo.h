@@ -61,6 +61,7 @@ struct Amigo{
 };
 
 struct Reputacion{
+    int verificador_error;
     int id_usuario_clasificador;
     int clasificacion;
     char comentario[100];
