@@ -11,7 +11,7 @@ EXEC SQL END DECLARE SECTION;
 
 
 
-Amigo *insertar_amigos(int id_usuario_logueado,id_amigo)
+Amigo *insertar_amigos(int id_usuario_logueado,int id_amigo)
 {
 EXEC SQL BEGIN DECLARE SECTION;
 Amigo  *SQL_output;
@@ -19,7 +19,7 @@ int  SQL_id_usuario_logueado;
 int SQL_id_amigo;
 EXEC SQL END DECLARE SECTION;
 
-SQL_id_usuario_logueado = id_usario_logueado;
+SQL_id_usuario_logueado = id_usuario_logueado;
 SQL_id_amigo = id_amigo;
 
 
@@ -27,7 +27,7 @@ SQL_output = (Amigo*) malloc(sizeof(Amigo));
 memset(SQL_output,0,sizeof(Amigo));
 
 EXEC SQL INSERT INTO amigos(amigo_1,amigo_2) VALUES(:SQL_id_usuario_logueado,:SQL_id_amigo);
-EXEC SQL INSERT INTO amigos(amigo_1,amigo_2) VALUES(:SQL_id_amigo,:SQL_usuario_logueado);
+EXEC SQL INSERT INTO amigos(amigo_1,amigo_2) VALUES(:SQL_id_amigo,:SQL_id_usuario_logueado);
 SQL_output->verificador_error = sqlca.sqlcode;
 
 dbm_commit();
@@ -36,13 +36,13 @@ return SQL_output;
 
 }
 
-Amigo *actualizar_amigos(int id_usuario_logueado,id_amigo,id_amistad)
+Amigo *actualizar_amigos(int id_usuario_logueado,int id_amigo,int id_amistad)
 {
 EXEC SQL BEGIN DECLARE SECTION;
 Amigo  *SQL_output;
 int  SQL_id_usuario_logueado;
 int SQL_id_amigo;
-int SQL_id_amistad
+int SQL_id_amistad;
 EXEC SQL END DECLARE SECTION;
 
 SQL_id_usuario_logueado = id_usario_logueado;
@@ -73,7 +73,7 @@ int eliminar_amistad(id_amistad)
 
   EXEC SQL END DECLARE SECTION;
 
-  SQL_id_usuario = id_amistad;
+  SQL_id_amistad = id_amistad;
 
   EXEC SQL DELETE FROM amigos WHERE amigos.id = :SQL_id_amistad;
 

@@ -133,7 +133,7 @@ EXEC SQL UPDATE usuarios SET
 nombre = :SQL_nombre,
 apellido = :SQL_apellido,
 email = :SQL_email,
-password = :SQL_password;
+password = :SQL_password
 WHERE usuarios.id = :SQL_id_usuario;
 SQL_output->verificador_error = sqlca.sqlcode;
 db_commit();

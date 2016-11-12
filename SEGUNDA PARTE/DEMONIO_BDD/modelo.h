@@ -62,7 +62,7 @@ struct Amigo{
 
 struct Reputacion{
     int id_usuario_clasificador;
-    int clasificación;
+    int clasificacion;
     char comentario[100];
 };
 
@@ -71,4 +71,5 @@ typedef struct Usuario Usuario;
 typedef struct Fecha Fecha;
 typedef struct Prestamo Prestamo;
 typedef struct Amigo Amigo;
+typedef struct Reputacion Reputacion;
 #endif

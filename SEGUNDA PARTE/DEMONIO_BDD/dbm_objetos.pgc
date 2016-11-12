@@ -60,21 +60,21 @@ Objeto *actualizar_objeto(int id_usuario_dueno,char *nombre_objeto,int id_objeto
     EXEC SQL BEGIN DECLARE SECTION;
     Objeto  *SQL_output;
     int  SQL_id_usuario_dueno;
-    char SQL_nombre_obj[15];
+    char SQL_nombre_objeto[15];
     int SQL_id_objeto;
     EXEC SQL END DECLARE SECTION;
 
-    strcpy(SQL_nombre_obj,nombre_objeto);
+    strcpy(SQL_nombre_objeto,nombre_objeto);
     SQL_id_usuario_dueno = id_usuario_dueno;
     SQL_id_objeto = id_objeto;
     SQL_output = (Objeto*) malloc(sizeof(Objeto));
     memset(SQL_output, 0, sizeof(Objeto));
 
     EXEC SQL UPDATE  objetos SET
-    id_usuario_dueno = :SQL_id_usario_dueno,
+    id_usuario_dueno = :SQL_id_usuario_dueno,
     nomre_objeto = :SQL_nombre_objeto
     WHERE objetos.id = :SQL_id_objeto;
-    
+
     printf(sqlca.sqlerrm.sqlerrmc );
     printf("\n");
     SQL_output->verificador_error = sqlca.sqlcode;

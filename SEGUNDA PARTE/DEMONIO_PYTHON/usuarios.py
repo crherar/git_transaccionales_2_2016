@@ -31,7 +31,6 @@ class usuarios:
 		datos = data.split("-")
 		self.email = datos[0]
 		self.password = datos[1]
-		self.mensaje = str(self.email+self.password)
+		mensaje = str(self.email+self.password)
 		print 'datos para el monitor: "%s"' % mensaje
 		return self.mtx.enviar("loginn","020506","00",mensaje)
-		#return ""

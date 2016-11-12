@@ -44,6 +44,7 @@ Reputacion *actualizar_reputacion(int id_usuario_clasificado,int clasificacion,c
 EXEC SQL BEGIN DECLARE SECTION;
 Reputacion *SQL_output;
 int SQL_id_usuario_clasificado;
+int SQL_id_reputacion;
 int SQL_clasificacion;
 char SQL_comentario[100];
 EXEC SQL END DECLARE SECTION;
@@ -52,7 +53,7 @@ EXEC SQL END DECLARE SECTION;
 strcpy(SQL_comentario,comentario);
 SQL_id_usuario_clasificado = id_usuario_clasificado;
 SQL_clasificacion = clasificacion;
-
+SQL_id_reputacion = id_reputacion;
 
 SQL_output = (Reputacion*) malloc(sizeof(Reputacion));
 memset(SQL_output,0,sizeof(Reputacion));

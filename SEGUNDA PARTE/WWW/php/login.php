@@ -8,26 +8,28 @@ $host = "127.0.0.1";
 $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 $puerto = 3000;
 $email = "";
-$id_usuario = "";	
+$id_usuario = "";
 if (socket_connect($socket, $host, $puerto))
 {
 echo "\nConexion Exitosa, puerto: " . $puerto;
 //$msg = "mensaje del CLIENTE 1 desde php!!!";
-$msg = "loginn|matias@gmail.com-123";
+$email = str_pad("matias@gmail.com",40);
+$password = str_pad("123",10);
+$msg = "loginn|".$email."-".$password;
 
-//$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132")); 
- 
+//$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
+
 $sock_data = socket_write($socket, $msg, strlen($msg));
 $resp = socket_read($socket, 1024);
 var_dump($resp);
 
 
 /*
-$sock_data = socket_write($socket, "loginn", strlen("DIRPRG /home/alumnos/17957132/")); 
+$sock_data = socket_write($socket, "loginn", strlen("DIRPRG /home/alumnos/17957132/"));
 $resp = socket_read($socket, 1024);
 var_dump($resp);
 $mensaje = "TXIN 000020506loginn00matias@gmail.com                        123       ";
-$sock_data = socket_write($socket, $mensaje, strlen($mensaje)); 
+$sock_data = socket_write($socket, $mensaje, strlen($mensaje));
 $resp = socket_read($socket, 1024);
 var_dump($resp);
 */
