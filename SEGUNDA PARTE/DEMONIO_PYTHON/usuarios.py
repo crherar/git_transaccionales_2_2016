@@ -18,6 +18,7 @@ class usuarios:
 		self.codtx = codigostx.codigostx()
 		self.procpx = procesospx.procesospx()
 		self.objson = objs_json.objs_json()
+
 	def insertar_usuario(self,data):
 		self.nombre = data["datos"]['nombre']
 		self.apellido = data["datos"]['apellido']
@@ -37,7 +38,7 @@ class usuarios:
 		if len(respuesta) > 0:
 			return json.dumps({'cabecera':{'formulario':data['cabecera']['formulario'],'id_usuario_logueado':'','email':''},'datos':self.objson.usuarios(respuesta)})
 		else:
-			return ""
+			return json.dumps({'cabecera':{'formulario':data['cabecera']['formulario'],'id_usuario_logueado':'','email':''},'datos':'02'})
 
 	def actualizar_usuario(self,data):
 		self.nombre = data["datos"]['nombre']

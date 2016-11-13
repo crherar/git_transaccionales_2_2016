@@ -5,6 +5,7 @@ import json
 import select
 import socket
 import usuarios
+import objetos
 import amigos
 import sys
 from pprint import pprint
@@ -95,6 +96,21 @@ while running:
                 print formulario
                 respuesta = usr.actualizar_usuario(data)
                 del usr
+                if respuesta:
+                    print "respuesta 2: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
+            if formulario == "regobj":
+                obj = objetos.objetos()
+                print formulario
+                respuesta = obj.insertar_objeto(data)
+                del obj
                 if respuesta:
                     print "respuesta 2: "
                     print respuesta

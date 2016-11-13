@@ -133,7 +133,7 @@ strcpy(SQL_password,password);
 SQL_output = (Usuario*) malloc(sizeof(Usuario));
 memset(SQL_output, 0, sizeof(Usuario));
 
-EXEC SQL INSERT INTO usuarios(email, nombre, apellido, password) VALUES(:SQL_email, :SQL_nombre, :SQL_apellido, :SQL_password);
+EXEC SQL INSERT INTO usuarios(email, nombre, apellido, password) VALUES(RTRIM(:SQL_email), RTRIM(:SQL_nombre), RTRIM(:SQL_apellido), RTRIM(:SQL_password));
 printf(sqlca.sqlerrm.sqlerrmc );
 printf("\n");
 SQL_output->verificador_error = sqlca.sqlcode;

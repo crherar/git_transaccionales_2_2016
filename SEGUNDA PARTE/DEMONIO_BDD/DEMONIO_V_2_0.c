@@ -320,7 +320,7 @@ int main() {
 
                 printf("-----> Ver mis amigos <-----\n");
                 //id_usuario_logueado = 9;
-                printf("id usuario logueado: %d \n",id_usuario_logueado);
+                printf("id usuario logueado: %5d \n",id_usuario_logueado);
                 sscanf(mensaje.texto.datos_formulario, "%d", &id_usuario_logueado);
                 printf("id usuario logueado: %d \n",id_usuario_logueado);
                 printf("despues de sscanf \n");
@@ -394,7 +394,7 @@ int main() {
 
 
 
-            else if (strcpy(formulario_actual, "delpre") == 0) {
+            else if (strcmp(formulario_actual, "delpre") == 0) {
                 printf("************************** Formulario 'delpre' **************************\n");
                 printf("-----> Eliminar prestamo <-----\n");
                 sscanf(mensaje.texto.datos_formulario, "%10d", &id_prestamo);
@@ -611,12 +611,12 @@ int main() {
                 memset(email_usuario_recibidor, '\0', sizeof email_usuario_dueno_objeto);
                 memset(nombre_objeto, '\0', sizeof nombre_objeto);
 
-                sscanf(mensaje.texto.datos_formulario, "%40c%15c", email_usuario_dueno_objeto, nombre_objeto);
+                sscanf(mensaje.texto.datos_formulario, "%15c%5d", nombre_objeto,&id_usuario_dueno_objeto);
 
-                printf("El email del dueño objeto es: %s \n", email_usuario_dueno_objeto);
+                printf("El id del dueño del objeto recibido es: %d \n", id_usuario_dueno_objeto);
                 printf("El nombre del objeto recibido es: %s \n", nombre_objeto);
 
-                id_usuario_dueno_objeto = get_id_usuario_por_email(email_usuario_dueno_objeto);
+                //id_usuario_dueno_objeto = get_id_usuario_por_email(email_usuario_dueno_objeto);
 
 
 
