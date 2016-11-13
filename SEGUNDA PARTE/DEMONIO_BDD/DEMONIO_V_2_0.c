@@ -309,7 +309,7 @@ int main() {
                 printf("hola \n");
                 //strcpy(mis_amigos, get_mis_amigos(id_usuario_logueado));
                 printf("\n mis amigos:  \n %s \n", get_mis_amigos(id_usuario_logueado));
-
+                strcpy(respuesta.texto.datos_formulario,get_mis_amigos(id_usuario_logueado));
                 printf("************************** FIN Formulario 'verami' **************************\n");
             }
 

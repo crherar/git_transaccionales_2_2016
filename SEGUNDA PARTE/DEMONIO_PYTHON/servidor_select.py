@@ -5,6 +5,7 @@
 import select
 import socket
 import usuarios
+import amigos
 import sys
 from pprint import pprint
 
@@ -38,6 +39,7 @@ while running:
             print "data recibida"
             formulario = datsplit[0]
             print formulario
+
             if formulario == "loginn":
                 usr = usuarios.usuarios()
                 print formulario
@@ -53,7 +55,21 @@ while running:
                     s.close()
                     input.remove(s)
 
-                #
+            if formulario == "verami":
+                amig = amigos.amigos()
+                print formulario
+                respuesta = amig.ver_mis_amigos(datsplit[1])
+                del amig
+                if respuesta:
+                    print "respuesta 2: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+#
                 # if len(respuesta) != 0:
                 #     s.send(respuesta)
                 # else:

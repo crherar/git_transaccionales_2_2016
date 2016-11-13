@@ -11,10 +11,12 @@ class amigos:
         self.id = 0
         self.mtx = monitor.monitor()
         self.codtx = codigostx.codigostx()
-        self.pocpx = procesospx.procesospx()
+        self.procpx = procesospx.procesospx()
 
     def ver_mis_amigos(self,data):
         self.amigo_1 = data
-        datos = mtx.enviar(self.procpx.ver_mis_amigos(),codtx.ver_mis_amigos(),"",self.amigo_1)
+        print "id usuario logueado dentro del metodo ver mis amigos: "+self.amigo_1
+        datos = self.mtx.enviar(self.procpx.ver_mis_amigos(),self.codtx.ver_mis_amigos(),"00",self.amigo_1)
+        print "datos recibidos del monitor: "+datos
         mis_amigos = datos[:-1].split('-')
         return json.dumps(mis_amigos)
