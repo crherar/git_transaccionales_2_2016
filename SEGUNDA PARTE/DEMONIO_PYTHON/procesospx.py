@@ -7,6 +7,9 @@ class procesospx:
     def insertar_usuario(self):
         return "regusr"
 
+    def get_usuario_por_id(self):
+        return "modusr"
+        
     def actualizar_usuario(self):
         return "actusr"
 

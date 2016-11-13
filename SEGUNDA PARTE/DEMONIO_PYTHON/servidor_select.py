@@ -75,6 +75,21 @@ while running:
                     s.close()
                     input.remove(s)
 
+            if formulario == "modusr":
+                usr = usuarios.usuarios()
+                print formulario
+                respuesta = usr.get_usuario_por_id(data)
+                del usr
+                if respuesta:
+                    print "respuesta 2: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
             if formulario == "actusr":
                 usr = usuarios.usuarios()
                 print formulario

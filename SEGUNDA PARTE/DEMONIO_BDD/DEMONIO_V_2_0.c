@@ -257,6 +257,15 @@ int main() {
                 printf("************************** FIN Formulario 'regusr' **************************\n");
             }
 
+            if (strcmp(formulario_actual,"modusr") == 0){
+                printf("************************** FIN Formulario 'modusr' **************************\n");
+                sscanf(mensaje.texto.datos_formulario, "%5d", &id_usuario);
+                //char usuario[90] = "";
+                printf("Usuario para actualizar : %s\n", get_usuario_por_id(id_usuario));
+                strcpy(respuesta.texto.datos_formulario,get_usuario_por_id(id_usuario));
+                printf("************************** Formulario 'modusr' **************************\n");
+            }
+
             if (strcmp(formulario_actual, "actusr") == 0) {
 
             printf("************************** Formulario 'actusr' **************************\n");

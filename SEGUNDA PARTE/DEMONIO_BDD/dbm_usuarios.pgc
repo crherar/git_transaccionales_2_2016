@@ -184,6 +184,52 @@ return SQL_output;
 }
 
 
+char *get_usuario_por_id(int id_usuario)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+char SQL_output[90];
+int SQL_id_usuario;
+EXEC SQL END DECLARE SECTION;
+
+SQL_id_usuario = id_usuario;
+/*
+SQL_output = (Usuario*)malloc(sizeof(Usuario));
+memset(SQL_output,0,sizeof(Usuario));
+
+
+EXEC SQL SELECT
+usuarios.id,
+usuarios.nombre,
+usuarios.apellido,
+usuarios.email,
+usuarios.password
+INTO
+:SQL_output->nombre,
+:SQL_output->apellido,
+:SQL_output->email,
+:SQL_output->password
+FROM usuarios WHERE usuarios.id = :SQL_id_usuario;
+*/
+EXEC SQL SELECT
+CONCAT(usuarios.id,'-',
+usuarios.nombre,'-',
+usuarios.apellido,'-',
+usuarios.email,'-',
+usuarios.password) as usuario INTO :SQL_output
+FROM usuarios WHERE usuarios.id = :SQL_id_usuario;
+
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("\n");
+//SQL_output->verificador_error = sqlca.sqlcode;
+db_commit();
+//ASSERT(SQL_output);
+printf("antes del return \n");
+return SQL_output;
+
+}
+
+
+
 int eliminar_usuario(int id_usuario)
 {
 EXEC SQL BEGIN DECLARE SECTION;

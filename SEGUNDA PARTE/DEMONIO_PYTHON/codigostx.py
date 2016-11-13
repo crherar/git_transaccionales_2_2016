@@ -2,11 +2,14 @@ class codigostx:
 
     #USUARIOS
     def iniciar_sesion(self):
-        return "020501"
+        return "020500"
 
     def insertar_usuario(self):
-        return "020502"
+        return "020501"
 
+    def get_usuario_por_id(self):
+        return "020502"
+        
     def actualizar_usuario(self):
         return "020503"
 

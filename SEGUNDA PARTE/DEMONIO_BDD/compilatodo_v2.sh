@@ -3,6 +3,7 @@
 echo "*************** usuarios *************** ";
 #gmon regusr.inp
 gmon regusr.c
+gmon modusr.c
 gmon actusr.c
 echo "****************************************** ";
 
