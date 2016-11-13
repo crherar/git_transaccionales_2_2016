@@ -18,12 +18,12 @@ class usuarios:
 		self.procpx = procesospx.procesospx()
 
 	def insertar_usuario(self,data):
-		self.nombre = datos[0]
-		self.apellido = datos[1]
-		self.email = datos[2]
-		self.password = datos[3]
-		self.mensaje = str(nombre+apellido+email+password)
-		return mtx.enviar(self.procpx.insertar_usuario(),codtx.insertar_usuario(),"00",mensaje)
+		self.nombre = data['nombre']
+		self.apellido = data['apellido']
+		self.email = data['email']
+		self.password = data['password']
+		self.mensaje = str(self.nombre+self.apellido+self.email+self.password)
+		return self.mtx.enviar(self.procpx.insertar_usuario(),self.codtx.insertar_usuario(),"00",self.mensaje)
 
 
 	#def actualizar_usuario(self,data):
@@ -35,9 +35,9 @@ class usuarios:
 	def iniciar_sesion(self,data):
 		print 'dentro del metodo login de usuarios'
 		print 'data dentro del metodo login de usuarios "%s"' % data
-		datos = data.split("-")
-		self.email = datos[0]
-		self.password = datos[1]
+		#datos = json.loads(data)#data.split("-")
+		self.email = data["email"]
+		self.password = data["password"]
 		mensaje = str(self.email+self.password)
 		print 'datos para el monitor: "%s"' % mensaje
 		print "codigo tx"+self.codtx.iniciar_sesion()

@@ -227,7 +227,7 @@ int main() {
                 memset(apellido, '\0', sizeof apellido);
                 memset(password, '\0', sizeof password);
 
-                sscanf(mensaje.texto.datos_formulario, "%40c%20c%20c%10c", email, nombre, apellido, password);
+                sscanf(mensaje.texto.datos_formulario, "%20c%20c%40c%10c", nombre, apellido,email, password);
 
                 printf("El email recibido desde regusr es: %s \n", email);
 

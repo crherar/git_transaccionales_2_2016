@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 
-
+import json
 import select
 import socket
 import usuarios
@@ -34,16 +34,36 @@ while running:
 
         else:
             # handle all other sockets
-            data = s.recv(size)
-            datsplit = data.split('|')
-            print "data recibida"
-            formulario = datsplit[0]
+            data = json.loads(s.recv(size))
+            print "data recibida: "
+            print data
+            #datsplit = data.split('|')
+            print "formulario recibido"
+            formulario = data["cabecera"]["formulario"]
+            #datsplit[0]
             print formulario
+
 
             if formulario == "loginn":
                 usr = usuarios.usuarios()
                 print formulario
-                respuesta = usr.iniciar_sesion(datsplit[1])
+                #respuesta = usr.iniciar_sesion(datsplit[1])
+                respuesta = usr.iniciar_sesion(data["datos"])
+                del usr
+                if respuesta:
+                    print "respuesta 2: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
+            if formulario == "regusr":
+                usr = usuarios.usuarios()
+                print formulario
+                respuesta = usr.insertar_usuario(data["datos"])
                 del usr
                 if respuesta:
                     print "respuesta 2: "
@@ -58,7 +78,7 @@ while running:
             if formulario == "verami":
                 amig = amigos.amigos()
                 print formulario
-                respuesta = amig.ver_mis_amigos(datsplit[1])
+                respuesta = amig.ver_mis_amigos(data["datos"])
                 del amig
                 if respuesta:
                     print "respuesta 2: "
