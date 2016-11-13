@@ -41,7 +41,7 @@ while running:
             if formulario == "loginn":
                 usr = usuarios.usuarios()
                 print formulario
-                respuesta = usr.login(datsplit[1])
+                respuesta = usr.iniciar_sesion(datsplit[1])
                 del usr
                 if respuesta:
                     print "respuesta 2: "

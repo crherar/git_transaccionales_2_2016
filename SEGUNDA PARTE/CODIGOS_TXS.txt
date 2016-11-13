@@ -1,0 +1,24 @@
+USUARIOS
+  insertar  020501
+  actualizar 020502
+  eliminar 020503
+  login 020504
+PRESTADOS
+  insertar 020505
+  actualizar 020506
+  eliminar OK
+
+AMIGOS
+  insertar
+  actualizar
+  eliminar
+  get listado mis amigos
+OBJETOS
+  insertar OK
+  actualizar
+  eliminar OK
+
+REPUTACIONES
+  insertar
+  actualizar
+  eliminar

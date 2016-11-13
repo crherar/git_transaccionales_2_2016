@@ -6,15 +6,16 @@ EN LOS ARCHIVOS PGC
       insertar  OK
       actualizar OK actobj.c
       eliminar OK
-
+      ver usuarios registrados
     PRESTADOS
       insertar OK
       actualizar OK
       eliminar OK delpre.c
       marcar prestamo como devuelto
       marcar prestamo como pendiente
-      ver mis prestamos
-      ver mis reputaciones
+      ver mis prestamos pendientes
+      ver mis prestamos devueltos
+
     AMIGOS
       insertar OK inami.c
       actualizar OK actami.c
@@ -31,14 +32,14 @@ EN LOS ARCHIVOS PGC
       eliminar ?
 
 ARCHIVOS C DE LOS FORMS PENDIENTES
-    actobj.c
-    delpre.c
-    inami.c
-    actami.c
-    delami.c
-    actobj.c
-    inrep.c
-    actrep.c
+    actobj.c OK
+    delpre.c OK
+    inami.c OK
+    actami.c OK
+    delami.c OK
+    actobj.c OK
+    inrep.c OK
+    actrep.c OK
 
 
 
@@ -76,7 +77,7 @@ TX ID
     eliminar
 
   PRESTADOS
-    insertar 
+    insertar
     actualizar OK
     eliminar OK
 
