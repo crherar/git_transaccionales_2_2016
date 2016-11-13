@@ -26,12 +26,13 @@ echo "****************************************** ";
 echo "*************** objetos ***************";
 #gmon registrar_objeto.inp
 gmon regobj.c
+gmon modobj.c
 #gmon delobj.inp
 gmon delobj.c
 #gmon cdeobj.inp
 gmon cdeobj.c
 #gmon mdeobj.inp
-gmon mdeobj.c
+#gmon mdeobj.c
 
 echo "****************************************** ";
 

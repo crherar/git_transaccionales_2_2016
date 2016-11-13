@@ -44,7 +44,7 @@ SQL_id_usuario_dueno = id_usuario_dueno;
 SQL_output = (Objeto*) malloc(sizeof(Objeto));
 memset(SQL_output, 0, sizeof(Objeto));
 
-EXEC SQL INSERT INTO objetos(nombre,id_usuario_dueno) VALUES(:SQL_nombre_obj,:SQL_id_usuario_dueno);
+EXEC SQL INSERT INTO objetos(nombre,id_usuario_dueno) VALUES(RTRIM(:SQL_nombre_obj),:SQL_id_usuario_dueno);
 printf(sqlca.sqlerrm.sqlerrmc );
 printf("\n");
 SQL_output->verificador_error = sqlca.sqlcode;
@@ -72,7 +72,7 @@ Objeto *actualizar_objeto(int id_usuario_dueno,char *nombre_objeto,int id_objeto
 
     EXEC SQL UPDATE  objetos SET
     id_usuario_dueno = :SQL_id_usuario_dueno,
-    nomre_objeto = :SQL_nombre_objeto
+    nomre_objeto = RTRIM(:SQL_nombre_objeto)
     WHERE objetos.id = :SQL_id_objeto;
 
     printf(sqlca.sqlerrm.sqlerrmc );
@@ -230,6 +230,35 @@ char *get_nombre_objeto_por_id(int id)
 
 }
 
+char *get_objeto_por_id(int id_objeto)
+{
+    EXEC SQL BEGIN DECLARE SECTION;
+    char SQL_output[25];
+    int SQL_id_objeto;
+    EXEC SQL END DECLARE SECTION;
+
+    SQL_id_objeto = id_objeto;
+
+    //SQL_output = (char*)malloc(sizeof(SLQ_output));
+    //memset(SQL_output,' ',strlen(SQL_output));
+    printf("1 \n");
+    EXEC SQL SELECT
+    CONCAT(objetos.id,'-',objetos.nombre,'-',
+    objetos.id_usuario_dueno) as objeto INTO :SQL_output
+    FROM objetos WHERE objetos.id = :SQL_id_objeto;
+    //printf(SQL_output);
+    printf("\n");
+    printf(sqlca.sqlerrm.sqlerrmc );
+    printf("2 \n");
+   // printf("despues de select nombre objeto \n");
+    printf("3 \n");
+    db_commit();
+    printf("4 \n");
+    //ASSERT(SQL_output);
+    printf("5 \n");
+    return SQL_output;
+
+}
 
 
 Objeto *get_nombre_objeto_por_id2(int id)

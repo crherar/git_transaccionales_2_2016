@@ -121,6 +121,21 @@ while running:
                     s.close()
                     input.remove(s)
 
+            if formulario == "modobj":
+                obj = objetos.objetos()
+                print formulario
+                respuesta = obj.get_objeto_por_id(data)
+                del obj
+                if respuesta:
+                    print "respuesta 2: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
             if formulario == "verami":
                 amig = amigos.amigos()
                 print formulario

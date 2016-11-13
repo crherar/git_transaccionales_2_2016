@@ -26,7 +26,7 @@ class usuarios:
 		self.password = data["datos"]['password']
 		self.mensaje = str(self.nombre+self.apellido+self.email+self.password)
 		respuesta = self.mtx.enviar(self.procpx.insertar_usuario(),self.codtx.insertar_usuario(),"00",self.mensaje)
-		return json.dumps({'cabecera':{'formulario':data['cabecera']['formulario'],'id_usuario_logueado':'','email':''},'datos':respuesta})
+		return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
 
 	def get_usuario_por_id(self,data):
 		self.id = data['cabecera']['id_usuario_logueado']
@@ -36,9 +36,9 @@ class usuarios:
 		#print "tamanio respuesta: "+str(len(respuesta))
 		#print json.loads(respuesta)
 		if len(respuesta) > 0:
-			return json.dumps({'cabecera':{'formulario':data['cabecera']['formulario'],'id_usuario_logueado':'','email':''},'datos':self.objson.usuarios(respuesta)})
+			return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.usuarios(respuesta)})
 		else:
-			return json.dumps({'cabecera':{'formulario':data['cabecera']['formulario'],'id_usuario_logueado':'','email':''},'datos':'02'})
+			return json.dumps({'cabecera':data["cabecera"],'datos':'02'})
 
 	def actualizar_usuario(self,data):
 		self.nombre = data["datos"]['nombre']

@@ -193,8 +193,8 @@ EXEC SQL END DECLARE SECTION;
 
 SQL_id_usuario = id_usuario;
 /*
-SQL_output = (Usuario*)malloc(sizeof(Usuario));
-memset(SQL_output,0,sizeof(Usuario));
+//SQL_output = (Usuario*)malloc(sizeof(Usuario));
+//memset(SQL_output,0,sizeof(Usuario));
 
 
 EXEC SQL SELECT

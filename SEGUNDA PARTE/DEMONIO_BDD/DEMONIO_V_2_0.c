@@ -257,7 +257,7 @@ int main() {
                 printf("************************** FIN Formulario 'regusr' **************************\n");
             }
 
-            if (strcmp(formulario_actual,"modusr") == 0){
+            else if (strcmp(formulario_actual,"modusr") == 0){
                 printf("************************** FIN Formulario 'modusr' **************************\n");
                 sscanf(mensaje.texto.datos_formulario, "%5d", &id_usuario);
                 //char usuario[90] = "";
@@ -266,7 +266,7 @@ int main() {
                 printf("************************** Formulario 'modusr' **************************\n");
             }
 
-            if (strcmp(formulario_actual, "actusr") == 0) {
+            else if (strcmp(formulario_actual, "actusr") == 0) {
 
             printf("************************** Formulario 'actusr' **************************\n");
 
@@ -641,6 +641,21 @@ int main() {
 
             }
 
+            else if(strcmp(formulario_actual,"modobj") == 0){
+            printf("************************** Formulario 'modobj' **************************\n");
+            printf("%s\n",mensaje.texto.datos_formulario );
+            sscanf(mensaje.texto.datos_formulario,"%5d",&id_objeto);
+            printf("El id del objeto para actualizar es: %d\n", id_objeto);
+            printf("Enviando al python: %s\n", get_objeto_por_id(id_objeto));
+            strcpy(respuesta.texto.datos_formulario,get_objeto_por_id(id_objeto));
+
+            printf("************************** FIN Formulario 'modobj' **************************\n");
+            }
+
+            else if(strcmp(formulario_actual,"actobj") == 0){
+                printf("************************** Formulario 'actobj' **************************\n");
+                printf("************************** FIN Formulario 'actobj' **************************\n");
+            }
             /* ********************************************************************************************************* */
 
             /**************************************

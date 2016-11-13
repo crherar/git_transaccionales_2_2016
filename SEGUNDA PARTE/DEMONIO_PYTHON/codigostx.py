@@ -9,7 +9,7 @@ class codigostx:
 
     def get_usuario_por_id(self):
         return "020502"
-        
+
     def actualizar_usuario(self):
         return "020503"
 
@@ -43,39 +43,41 @@ class codigostx:
     #OBJETOS
     def insertar_objeto(self):
         return "020513"
-
-    def actualizar_objeto(self):
+    def get_objeto_por_id(self):
         return "020514"
 
-    def eliminar_objeto(self):
+    def actualizar_objeto(self):
         return "020515"
 
-    def ver_mis_objetos(self):
+    def eliminar_objeto(self):
         return "020516"
+
+    def ver_mis_objetos(self):
+        return "020517"
 
     #AMIGOS
     def insertar_amigos(self):
-        return "020516"
-
-    def actualizar_amigos(self):
-        return "020517"
-
-    def eliminar_amigos(self):
         return "020518"
 
-    def ver_mis_amigos(self):
+    def actualizar_amigos(self):
         return "020519"
+
+    def eliminar_amigos(self):
+        return "020520"
+
+    def ver_mis_amigos(self):
+        return "020521"
 
 
     #REPUTACIONES
     def isertar_reputacion(self):
-        return "020520"
-
-    def actualizar_reputacion(self):
-        return "020521"
-
-    def ver_mis_reputaciones(self):
         return "020522"
 
-    def ver_reputacion_de_usuario(self):
+    def actualizar_reputacion(self):
         return "020523"
+
+    def ver_mis_reputaciones(self):
+        return "020524"
+
+    def ver_reputacion_de_usuario(self):
+        return "020525"

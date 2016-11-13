@@ -9,7 +9,7 @@ class procesospx:
 
     def get_usuario_por_id(self):
         return "modusr"
-        
+
     def actualizar_usuario(self):
         return "actusr"
 
@@ -44,6 +44,8 @@ class procesospx:
     def insertar_objeto(self):
         return "regobj"
 
+    def get_objeto_por_id(self):
+        return "modobj"
     def actualizar_objeto(self):
         return "actobj"
 
