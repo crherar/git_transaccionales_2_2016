@@ -48,7 +48,7 @@ while running:
                 usr = usuarios.usuarios()
                 print formulario
                 #respuesta = usr.iniciar_sesion(datsplit[1])
-                respuesta = usr.iniciar_sesion(data["datos"])
+                respuesta = usr.iniciar_sesion(data)
                 del usr
                 if respuesta:
                     print "respuesta 2: "
@@ -63,7 +63,22 @@ while running:
             if formulario == "regusr":
                 usr = usuarios.usuarios()
                 print formulario
-                respuesta = usr.insertar_usuario(data["datos"])
+                respuesta = usr.insertar_usuario(data)
+                del usr
+                if respuesta:
+                    print "respuesta 2: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
+            if formulario == "actusr":
+                usr = usuarios.usuarios()
+                print formulario
+                respuesta = usr.actualizar_usuario(data)
                 del usr
                 if respuesta:
                     print "respuesta 2: "
@@ -78,7 +93,7 @@ while running:
             if formulario == "verami":
                 amig = amigos.amigos()
                 print formulario
-                respuesta = amig.ver_mis_amigos(data["datos"])
+                respuesta = amig.ver_mis_amigos(data)
                 del amig
                 if respuesta:
                     print "respuesta 2: "

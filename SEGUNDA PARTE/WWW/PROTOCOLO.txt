@@ -1,0 +1,18 @@
+esto es lo que pienso, ya lo tengo implementado en python y php para codificar/decodificar lo que senvia,
+es mas facil que enviar los datos separados por | o -  para despues ocupar la funcion split
+
+desde el php los datos tienen que ir listo del largo especifico usando la funcion
+str_pad($variable,el largo que quiero que quede), entonces asi en el python recibo la data, se la mando al monitor
+
+ {
+  cabecera = {
+      'formulario': <nombre del formulario>
+      'id_usuario_logueado': <id usuario logueado>
+  },
+  datos{
+    <aqui van todos los datos como objeto, arreglo, etc que haya que enviar desde el php al python o al revez
+  }
+}
+
+la primera parte que dice cabecera va fijo siempre con los mismos campos siempre, si el usuario se esta logueando,
+se envia vacio, pero va siempre siempre

@@ -3,7 +3,7 @@
 echo "*************** usuarios *************** ";
 #gmon regusr.inp
 gmon regusr.c
-
+gmon actusr.c
 echo "****************************************** ";
 
 echo "*************** login ***************";

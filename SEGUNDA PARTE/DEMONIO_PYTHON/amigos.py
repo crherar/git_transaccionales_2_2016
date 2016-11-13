@@ -14,9 +14,9 @@ class amigos:
         self.procpx = procesospx.procesospx()
 
     def ver_mis_amigos(self,data):
-        self.amigo_1 = str(data['id_usuario_logueado'])
+        self.amigo_1 = str(data["cabecera"]['id_usuario_logueado'])
         print "id usuario logueado dentro del metodo ver mis amigos: "+self.amigo_1
         datos = self.mtx.enviar(self.procpx.ver_mis_amigos(),self.codtx.ver_mis_amigos(),"00",self.amigo_1)
         print "datos recibidos del monitor: "+datos
         mis_amigos = datos[:-1].split('-')
-        return json.dumps({'cabecera':{'id_usuario_logueado':self.amigo_1,'email':''},'data':mis_amigos})
+        return json.dumps({'cabecera':{'id_usuario_logueado':self.amigo_1,'email':''},'datos':mis_amigos})

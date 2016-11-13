@@ -14,12 +14,12 @@ if (socket_connect($socket, $host, $puerto))
 echo "\nConexion Exitosa, puerto: " . $puerto;
 //$msg = "mensaje del CLIENTE 1 desde php!!!";
 $nombre = str_pad("usuario",20);
-$apellido = str_pad("apellido",20);
-$email = str_pad("usuario@gmail.com",40);
+$apellido = str_pad("apellido123",20);
+$email = str_pad("usuario123@gmail.com",40);
 $password = str_pad("123",10);
 
-$cabecera = array('formulario' => 'regusr',
-									'id_usuario_logueado' => 0);
+$cabecera = array('formulario' => 'actusr',
+									'id_usuario_logueado' => 9);
 
 $usuario  = array('nombre' => $nombre,
 									'apellido' => $apellido,

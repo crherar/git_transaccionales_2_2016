@@ -257,33 +257,43 @@ int main() {
                 printf("************************** FIN Formulario 'regusr' **************************\n");
             }
 
-            // if (strcmp(formulario_actual, "actusr") == 0) {
-            //
-            // printf("************************** Formulario 'actusr' **************************\n");
-            //
-            // printf("-----> Actualizar usuario <-----\n");
-            //
-            //   memset(email,'\0',sizeof email);
-            //   memset(nombre,'\0',sizeof nombre);
-            //   memset(apellido,'\0',sizeof apellido);
-            //   memset(password,'\0',sizeof password);
-            //
-            //   sscanf(mensaje.texto.datos_formulario, "%40c%20c%20c%10c%10d", email, nombre, apellido, password);
-            //   usr = actualizar_usuario(email,nombre,apellido,password,id_usuario);
-            //   if (usr->verificador_error == 0) {
-            //           printf("\n\nDENTRO VERF_ERR\n\n");
-            //           strcpy(respuesta.texto.datos_formulario, "01");
-            //   } else {
-            //       strcpy(respuesta.texto.datos_formulario, "02");
-            //   }
-            //
-            //   printf("************************** FIN Formulario 'actusr' **************************\n");
-            // }
+            if (strcmp(formulario_actual, "actusr") == 0) {
+
+            printf("************************** Formulario 'actusr' **************************\n");
+
+            printf("-----> Actualizar usuario <-----\n");
+
+              memset(email,'\0',sizeof email);
+              memset(nombre,'\0',sizeof nombre);
+              memset(apellido,'\0',sizeof apellido);
+              memset(password,'\0',sizeof password);
+
+              sscanf(mensaje.texto.datos_formulario, "%20c%20c%40c%10c%5d", nombre, apellido, email,  password,&id_usuario);
+              printf("El email recibido desde regusr es: %s \n", email);
+
+              printf("El nombre recibido desde regusr es: %s \n", nombre);
+
+              printf("El apellido recibida desde regusr es: %s \n", apellido);
+
+              printf("La password recibida desde regusr es: %s \n", password);
+
+              printf("id usuario recibido para actualizar: %d\n", id_usuario);
+              usr = actualizar_usuario(email,nombre,apellido,password,id_usuario);
+
+              if (usr->verificador_error == 0) {
+                      printf("\n\nDENTRO VERF_ERR\n\n");
+                      strcpy(respuesta.texto.datos_formulario, "01");
+              } else {
+                  strcpy(respuesta.texto.datos_formulario, "02");
+              }
+
+              printf("************************** FIN Formulario 'actusr' **************************\n");
+            }
 
             else if (strcmp(formulario_actual, "delusr") == 0) {
                 printf("************************** Formulario 'delusr' **************************\n");
                 printf("-----> Eliminar usuario <-----\n");
-                sscanf(mensaje.texto.datos_formulario, "%10d", &id_usuario);
+                sscanf(mensaje.texto.datos_formulario, "%5d", &id_usuario);
                 int resp = eliminar_usuario(id_usuario);
 
                 if (resp == 0) {
