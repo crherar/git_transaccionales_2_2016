@@ -48,7 +48,7 @@ class usuarios:
 		self.id = data['cabecera']['id_usuario_logueado']
 		self.mensaje = str(self.nombre+self.apellido+self.email+self.password+str(self.id).ljust(5))
 		respuesta = self.mtx.enviar(self.procpx.actualizar_usuario(),self.codtx.actualizar_usuario(),"00",self.mensaje)
-		return json.dumps({'cabecera':{'formulario':data['cabecera']['formulario'],'id_usuario_logueado':'','email':''},'datos':respuesta})
+		return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
 
 	#def actualizar_usuario(self,data):
 

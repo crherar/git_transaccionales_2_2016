@@ -35,6 +35,7 @@ $config['base_url'] = 'http://200.14.84.235/~17957132/www_transaccionales_2_2016
 | variable so that it is blank.
 |
 */
+//$config['index_page'] = 'index.php';
 $config['index_page'] = 'index.php';
 
 /*
@@ -52,8 +53,8 @@ $config['index_page'] = 'index.php';
 |
 | WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
 */
+//$config['uri_protocol']	= 'REQUEST_URI';
 $config['uri_protocol']	= 'REQUEST_URI';
-
 /*
 |--------------------------------------------------------------------------
 | URL suffix

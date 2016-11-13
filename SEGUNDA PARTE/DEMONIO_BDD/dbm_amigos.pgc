@@ -114,16 +114,11 @@ char *get_mis_amigos(int id_usuario_logueado)
 
   int tamanio = 0;
   tamanio = (SQL_count*40)+1;
-  //char datos[tamanio] = "";
-  //memset(datos,'\0',sizeof datos);
   printf("antes del malloc \n");
     char *datos;
     datos = (char *)malloc(tamanio * sizeof(char));
     memset(datos,'\0',sizeof datos);
-  //char datos =malloc(sizeof(int)*tamanio);
  printf("despues del malloc \n");
-  //char datos *;
-  //datos = malloc(sizeof (char*) * tamanio);
   char email_amigo[40] = "";
 
   printf("antes del while \n");

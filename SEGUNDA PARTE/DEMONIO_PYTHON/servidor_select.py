@@ -136,6 +136,51 @@ while running:
                     s.close()
                     input.remove(s)
 
+            if formulario == "actobj":
+                obj = objetos.objetos()
+                print formulario
+                respuesta = obj.actualizar_objeto(data)
+                del obj
+                if respuesta:
+                    print "respuesta 2: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
+            if formulario == "delobj":
+                obj = objetos.objetos()
+                print formulario
+                respuesta = obj.eliminar_objeto(data)
+                del obj
+                if respuesta:
+                    print "respuesta 2: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
+            if formulario == "cbxobj":
+                obj = objetos.objetos()
+                print formulario
+                respuesta = obj.ver_mis_objetos_combobox(data)
+                del obj
+                if respuesta:
+                    print "respuesta 2: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
             if formulario == "verami":
                 amig = amigos.amigos()
                 print formulario

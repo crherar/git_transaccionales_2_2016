@@ -46,11 +46,15 @@ class procesospx:
 
     def get_objeto_por_id(self):
         return "modobj"
+
     def actualizar_objeto(self):
         return "actobj"
 
     def eliminar_objeto(self):
         return "delobj"
+
+    def ver_mis_objetos_combobox(self):
+        return "cbxobj"
 
     def ver_mis_objetos(self):
         return "verobj"

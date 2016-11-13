@@ -27,6 +27,7 @@ echo "*************** objetos ***************";
 #gmon registrar_objeto.inp
 gmon regobj.c
 gmon modobj.c
+gmon actobj.c
 #gmon delobj.inp
 gmon delobj.c
 #gmon cdeobj.inp

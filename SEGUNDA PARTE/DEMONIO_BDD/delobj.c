@@ -22,10 +22,10 @@ void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans 
 	{
 	long mtype;
 	char formulario_actual[7];
-		struct 
+		struct
 		{
 		  int idproceso;
-	          
+
 		  char datos_formulario[2000];
 		} texto;
 	} mensaje, respuesta;
@@ -92,15 +92,15 @@ void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans 
 
 	// printf("mensaje.texto.datos_formulario = %s\n\n", mensaje.texto.datos_formulario);
 
-	tx_sa->len=sprintf(tx_sa->datos,"%s", mensaje.texto.datos_formulario);
-	
-	aci[7]='1';
+	//tx_sa->len=sprintf(tx_sa->datos,"%s", mensaje.texto.datos_formulario);
+
+	//aci[7]='1';
 
 	tx_out->len=sprintf(tx_out->datos,"%s", respuesta.texto.datos_formulario);
 
-	if (strcmp(tx_out->datos, "02")==0){ // CARACTER INVALIDO
-		aci[7]='2'; 	//LLEVA DIRECTAMENTE A MDEOBJ	
+//	if (strcmp(tx_out->datos, "02")==0){ // CARACTER INVALIDO
+//		aci[7]='2'; 	//LLEVA DIRECTAMENTE A MDEOBJ
 
-	} 
+//	}
 
 }

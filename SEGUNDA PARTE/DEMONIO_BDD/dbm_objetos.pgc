@@ -55,24 +55,24 @@ ASSERT(SQL_output);
 return SQL_output;
 }
 
-Objeto *actualizar_objeto(int id_usuario_dueno,char *nombre_objeto,int id_objeto)
+Objeto *actualizar_objeto(char *nombre_objeto,int id_objeto)
 {
     EXEC SQL BEGIN DECLARE SECTION;
     Objeto  *SQL_output;
-    int  SQL_id_usuario_dueno;
+    //int  SQL_id_usuario_dueno;
     char SQL_nombre_objeto[15];
     int SQL_id_objeto;
     EXEC SQL END DECLARE SECTION;
 
     strcpy(SQL_nombre_objeto,nombre_objeto);
-    SQL_id_usuario_dueno = id_usuario_dueno;
+    //SQL_id_usuario_dueno = id_usuario_dueno;
     SQL_id_objeto = id_objeto;
     SQL_output = (Objeto*) malloc(sizeof(Objeto));
     memset(SQL_output, 0, sizeof(Objeto));
 
     EXEC SQL UPDATE  objetos SET
-    id_usuario_dueno = :SQL_id_usuario_dueno,
-    nomre_objeto = RTRIM(:SQL_nombre_objeto)
+
+    nombre = RTRIM(:SQL_nombre_objeto)
     WHERE objetos.id = :SQL_id_objeto;
 
     printf(sqlca.sqlerrm.sqlerrmc );
@@ -83,6 +83,96 @@ Objeto *actualizar_objeto(int id_usuario_dueno,char *nombre_objeto,int id_objeto
     db_commit();
     ASSERT(SQL_output);
     return SQL_output;
+}
+
+
+char *get_listado_objetos_combobox(int id_usuario_dueno)//debe venir por parametro la id del usuario
+{
+EXEC SQL BEGIN DECLARE SECTION;
+Objeto  *SQL_output;
+int SQL_pagina;
+int SQL_count;
+int  SQL_id_usuario_dueno;
+//char SQL_nombre_obj[15];
+
+EXEC SQL END DECLARE SECTION;
+
+SQL_id_usuario_dueno = id_usuario_dueno;
+EXEC SQL SELECT COUNT(*) INTO :SQL_count FROM objetos where id_usuario_dueno = :SQL_id_usuario_dueno;
+
+if(SQL_count == 0) return "no hay datos";
+
+SQL_output = (Objeto*) malloc(sizeof(Objeto) * (SQL_count + 1));
+//SQL_output[SQL_count].SQL_CODE = 0;
+//memset(SQL_output, 0, sizeof(Objeto));
+
+
+EXEC SQL DECLARE RESULT_SET_CB CURSOR FOR SELECT nombre
+FROM objetos  ORDER BY nombre asc;
+EXEC SQL OPEN RESULT_SET_CB;
+
+int resultset_pos = 0;
+
+int tamanio = 0;
+tamanio = (SQL_count*20)+1;
+printf("antes del malloc \n");
+  char *datos;
+  datos = (char *)malloc(tamanio * sizeof(char));
+  memset(datos,'\0',sizeof datos);
+printf("despues del malloc \n");
+
+
+//EXEC SQL SELECT nombre INTO :SQL_output->nombre FROM objetos;
+
+char nombre_obj[15] = "";
+//char datos[200] = "";
+printf("antes del while \n");
+while(!sqlca.sqlcode && resultset_pos < SQL_count){
+	EXEC SQL FETCH NEXT FROM RESULT_SET_CB INTO :SQL_output[resultset_pos].nombre;
+        printf("nombre: %s \n",SQL_output[resultset_pos].nombre);
+
+        strcpy(nombre_obj,SQL_output[resultset_pos].nombre);
+        printf("1\n");
+        strcat(nombre_obj,"-");
+        printf("2\n");
+        strcat(datos,nombre_obj);
+        printf("3\n");
+
+        
+/*
+        int tamanio = strlen(SQL_output[resultset_pos].nombre);
+        if(tamanio <=15)
+        {
+
+         printf("tamanio: %d \n",tamanio);
+         int num_espacios = 15 - tamanio;
+         printf("num_espacios: %d \n",num_espacios);
+         char espacios[15 - tamanio];
+         printf("largo espacios: %d \n",strlen(espacios));
+
+         strcpy(nombre_obj, SQL_output[resultset_pos].nombre);
+         int i;
+         for(i = 0;i<num_espacios;i++){
+          strcat(nombre_obj," ");
+         }
+         strcat(datos,nombre_obj);
+         }
+*/
+	}
+
+EXEC SQL CLOSE RESULT_SET_CB;
+printf("despues del while \n");
+
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("\n");
+SQL_output->verificador_error = sqlca.sqlcode;
+	//printf("antes de hacer commit \n");
+
+db_commit();
+ASSERT(SQL_output);
+printf("datos en el sql %s \n",datos);
+printf("largo datos en el sql %d \n",strlen(datos));
+return datos;
 }
 
 
@@ -103,12 +193,6 @@ EXEC SQL SELECT COUNT(*) INTO :SQL_count FROM objetos limit 10 offset :SQL_pagin
 
 if(SQL_count == 0) return "no hay datos";
 
-
-//if(SQL_count == 0)
-    //char datos[1] = "";
-//else
-//char datos[200] = "";
-
 SQL_output = (Objeto*) malloc(sizeof(Objeto) * (SQL_count + 1));
 //SQL_output[SQL_count].SQL_CODE = 0;
 //memset(SQL_output, 0, sizeof(Objeto));
@@ -122,8 +206,6 @@ int resultset_pos = 0;
 
 //EXEC SQL SELECT nombre INTO :SQL_output->nombre FROM objetos;
 
-
-
 char nombre_obj[15] = "";
 char datos[200] = "";
 printf("antes del while \n");
@@ -133,36 +215,19 @@ while(!sqlca.sqlcode && resultset_pos < SQL_count){
         int tamanio = strlen(SQL_output[resultset_pos].nombre);
         if(tamanio <=15)
         {
-         //if(tamanio >0)
+
          printf("tamanio: %d \n",tamanio);
          int num_espacios = 15 - tamanio;
          printf("num_espacios: %d \n",num_espacios);
          char espacios[15 - tamanio];
          printf("largo espacios: %d \n",strlen(espacios));
 
-
-
-        //memset(espacios,' ',num_espacios);
-
-        //for(int i = 0;i<num_espacios;i++){
-        //  espacios[i] = ' ';
-        //}
-
          strcpy(nombre_obj, SQL_output[resultset_pos].nombre);
-        //strcat(nombre_obj,espacios);
-        //memset(nombre_obj, ' ', espacios);
          int i;
          for(i = 0;i<num_espacios;i++){
           strcat(nombre_obj," ");
          }
          strcat(datos,nombre_obj);
-        //char espacios[15 - tamanio];
-        //memset(espacios,' ',sizeof(espacios));
-        //char nombre =
-        //strcat(datos,SQL_output[resultset_pos].nombre);
-        //strcat(datos,espacios);
-	//SQL_output[resultset_pos].SQL_CODE = 1;
-
          }
 
 	}

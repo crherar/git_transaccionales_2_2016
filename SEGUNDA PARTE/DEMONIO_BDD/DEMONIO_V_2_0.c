@@ -654,9 +654,80 @@ int main() {
 
             else if(strcmp(formulario_actual,"actobj") == 0){
                 printf("************************** Formulario 'actobj' **************************\n");
+
+                printf("-----> Actualizar objeto <-----\n");
+
+                printf("El mensaje recibido de %s es: %s \n", formulario_actual, mensaje.texto.datos_formulario);
+
+                memset(email_usuario_recibidor, '\0', sizeof email_usuario_dueno_objeto);
+                memset(nombre_objeto, '\0', sizeof nombre_objeto);
+
+                sscanf(mensaje.texto.datos_formulario, "%15c%5d%5d", nombre_objeto,&id_objeto);
+
+                printf("El id del objeto para actualizar: %5d \n", id_objeto);
+                printf("El nombre del objeto recibido es: %s \n", nombre_objeto);
+
+                //id_usuario_dueno_objeto = get_id_usuario_por_email(email_usuario_dueno_objeto);
+
+
+
+                int cuantos = validar_registro_objeto(nombre_objeto, id_usuario_dueno_objeto);
+
+                if (cuantos == 0) {
+
+                    obj = actualizar_objeto(nombre_objeto,id_objeto);
+                    printf("La respuesta luego de insertar objeto es: %d \n", obj->verificador_error);
+                    if (obj->verificador_error == 0) {
+                        strcpy(respuesta.texto.datos_formulario, "01");
+                    } else {
+                        strcpy(respuesta.texto.datos_formulario, "02");
+                    }
+
+                } else {
+                    strcpy(respuesta.texto.datos_formulario, "03");
+                }
+
+
                 printf("************************** FIN Formulario 'actobj' **************************\n");
             }
             /* ********************************************************************************************************* */
+
+            /**************************************
+                    FORMULARIO "cbxobj"
+             **************************************/
+
+            else if (strcmp(formulario_actual, "cbxobj") == 0) {
+
+                printf("************************** Formulario 'cbxobj' **************************\n");
+
+                printf("-----> Listado objetos combobox <-----\n");
+
+                printf("El mensaje recibido de %s es: %s \n", formulario_actual, mensaje.texto.datos_formulario);
+
+                char mis_objetos[170] = "";
+                int pagina;
+
+                sscanf(mensaje.texto.datos_formulario, "%5d", &id_usuario_dueno_objeto);
+                //strcpy(mis_objetos, get_listado_objetos_combobox(id_usuario_dueno_objeto));
+
+                printf("Los objetos son: %s \n", get_listado_objetos_combobox(id_usuario_dueno_objeto));
+                printf("despues de obtener los objetos \n");
+
+                if (strcmp(mis_objetos, "no hay datos") == 0) { //char error[153];
+                    //respuesta.texto.datos_formulario[151] = '0'
+                    //respuesta.texto.datos_formulario[152] = '1';
+                    strcpy(respuesta.texto.datos_formulario, "01");
+                } else {
+                    strcpy(respuesta.texto.datos_formulario, get_listado_objetos_combobox(id_usuario_dueno_objeto));
+                }
+                //printf("tamaño de obj: %d \n", sizeof (obj));
+                //printf("nombre objeto [0]: %s \n",obj[0].nombre);
+                //printf("nombre objeto [1]: %s \n",obj[1].nombre);
+                //printf("nombre objeto [2]: %s \n",obj[2].nombre);
+
+                printf("************************** FIN Formulario 'cbxobj' **************************\n");
+
+            }
 
             /**************************************
                     FORMULARIO "verobj"
@@ -674,7 +745,7 @@ int main() {
                 int pagina;
 
                 sscanf(mensaje.texto.datos_formulario, "%2d", &pagina);
-                strcpy(mis_objetos, get_listado_objetos(pagina));
+                strcpy(mis_objetos, get_listado_objetos_combobox(pagina));
 
                 printf("Los objetos son: %s \n", mis_objetos);
                 printf("despues de obtener los objetos \n");
@@ -707,46 +778,51 @@ int main() {
 
                 printf("************************** Formulario 'delobj' **************************\n");
 
-                printf("-----> Confirmar borrar objeto <-----\n");
+                //printf("-----> Confirmar borrar objeto <-----\n");
 
-                printf("El mensaje de recibido de %s es: %s\n", formulario_actual, mensaje.texto.datos_formulario);
+                //printf("El mensaje de recibido de %s es: %s\n", formulario_actual, mensaje.texto.datos_formulario);
 
-                sscanf(mensaje.texto.datos_formulario, "%15s", id_obj);
+                sscanf(mensaje.texto.datos_formulario, "%5d", &id_objeto);
 
-                if (sizeof (id_obj) == 0) {
-                    strcpy(respuesta.texto.datos_formulario, "03");
-                }
+                //if (sizeof (id_obj) == 0) {
+                //    strcpy(respuesta.texto.datos_formulario, "03");
+                //}
 
-                printf("\n\n El id_objeto es: %s \n\n", id_obj);
+                printf("\n\n El id_objeto es: %5d \n\n", id_objeto);
 
-                int num = atoi(id_obj);
+                //int num = atoi(id_obj);
 
-                printf("\nNum:%d \n", num);
+                //printf("\nNum:%d \n", num);
 
-                printf("\nlakalkalakalkal \n");
+                //printf("\nlakalkalakalkal \n");
 
-                printf("\n\n ANTES DE LA LLAMADA A FUNCION \n\n");
+                //printf("\n\n ANTES DE LA LLAMADA A FUNCION \n\n");
 
-                printf("size of resp: %d\n", sizeof (resp));
+                //printf("size of resp: %d\n", sizeof (resp));
 
                 //memset(resp, '\0', sizeof(resp));
-                obj = get_nombre_objeto_por_id2(num);
-                printf("nombre objeto: %s\n", obj->nombre);
-                printf("vef err objeto: %d\n", obj->verificador_error);
-                printf("id objeto: %d\n", obj->id);
+                // obj = get_nombre_objeto_por_id2(num);
+                // printf("nombre objeto: %s\n", obj->nombre);
+                // printf("vef err objeto: %d\n", obj->verificador_error);
+                // printf("id objeto: %d\n", obj->id);
                 //strcpy(resp, get_nombre_objeto_por_id(num));
 
                 // printf("Resp:%s\n", resp);
 
                 printf("\n\n DESPUES DE LA LLAMADA A FUNCION \n\n");
-
-                if (obj->verificador_error == 0 && obj->id > 0) {
-
-                    sprintf(respuesta.texto.datos_formulario, "%15d%15s", obj->id, obj->nombre);
-                    printf("\n\nrespuesta.texto.datos_formulario:\n\n%s\n", respuesta.texto.datos_formulario);
-                } else {
-                    strcpy(respuesta.texto.datos_formulario, "02");
+                int resp = borrar_objeto(id_objeto);
+                if(resp == 0){
+                    sprintf(respuesta.texto.datos_formulario, "%s", "01");
+                }else{
+                    sprintf(respuesta.texto.datos_formulario, "%s", "02");
                 }
+                // if (obj->verificador_error == 0 && obj->id > 0) {
+                //
+                //     sprintf(respuesta.texto.datos_formulario, "%15d%15s", obj->id, obj->nombre);
+                //     printf("\n\nrespuesta.texto.datos_formulario:\n\n%s\n", respuesta.texto.datos_formulario);
+                // } else {
+                //     strcpy(respuesta.texto.datos_formulario, "02");
+                // }
                 printf("************************** FIN Formulario 'delobj' **************************\n");
             }
 
@@ -756,39 +832,43 @@ int main() {
                     FORMULARIO "cdeobj"
              **************************************/
 
-            else if (strcmp(formulario_actual, "cdeobj") == 0) {
+            // else if (strcmp(formulario_actual, "cdeobj") == 0) {
+            //
+            //     printf("************************** Formulario 'cdeobj' **************************\n");
+            //
+            //     printf("-----> Confirmar borrado de objeto <-----\n");
+            //
+            //     printf("El mensaje de recibido de %s es: %s\n", formulario_actual, mensaje.texto.datos_formulario);
+            //
+            //     sscanf(mensaje.texto.datos_formulario, "%15s%1s", id_obj, confirmacion);
+            //
+            //     printf("\n\nEl id_objeto es:%s\nEl caracter es:%s\n\n", id_obj, confirmacion);
+            //
+            //     printf("\nTamaño de id_obj:%d\n\n", (int) sizeof (id_obj));
+            //     printf("\nTamaño de confirmacion:%d\n\n", (int) sizeof (confirmacion));
+            //
+            //     int num = atoi(id_obj);
+            //     printf("Num:%d\n", num);
+            //
+            //     if (strcmp(confirmacion, "s") == 0) {
+            //         int resp = borrar_objeto(num);
+            //         printf("RESP: %d \n", resp);
+            //         if (resp == 0) {
+            //             sprintf(respuesta.texto.datos_formulario, "%s", "01");
+            //         } else if (resp != 0) {
+            //             sprintf(respuesta.texto.datos_formulario, "%s", "02");
+            //         }
+            //     } else if (strcmp(confirmacion, "n") == 0) {
+            //         sprintf(respuesta.texto.datos_formulario, "%s", "03");
+            //     } else {
+            //         sprintf(respuesta.texto.datos_formulario, "%s", "04");
+            //     }
+            //     printf("************************** FIN Formulario 'cdeobj' **************************\n");
+            // }
 
-                printf("************************** Formulario 'cdeobj' **************************\n");
 
-                printf("-----> Confirmar borrado de objeto <-----\n");
 
-                printf("El mensaje de recibido de %s es: %s\n", formulario_actual, mensaje.texto.datos_formulario);
 
-                sscanf(mensaje.texto.datos_formulario, "%15s%1s", id_obj, confirmacion);
-
-                printf("\n\nEl id_objeto es:%s\nEl caracter es:%s\n\n", id_obj, confirmacion);
-
-                printf("\nTamaño de id_obj:%d\n\n", (int) sizeof (id_obj));
-                printf("\nTamaño de confirmacion:%d\n\n", (int) sizeof (confirmacion));
-
-                int num = atoi(id_obj);
-                printf("Num:%d\n", num);
-
-                if (strcmp(confirmacion, "s") == 0) {
-                    int resp = borrar_objeto(num);
-                    printf("RESP: %d \n", resp);
-                    if (resp == 0) {
-                        sprintf(respuesta.texto.datos_formulario, "%s", "01");
-                    } else if (resp != 0) {
-                        sprintf(respuesta.texto.datos_formulario, "%s", "02");
-                    }
-                } else if (strcmp(confirmacion, "n") == 0) {
-                    sprintf(respuesta.texto.datos_formulario, "%s", "03");
-                } else {
-                    sprintf(respuesta.texto.datos_formulario, "%s", "04");
-                }
-                printf("************************** FIN Formulario 'cdeobj' **************************\n");
-            }
             else{
               printf("PROCESO FORMULARIO NO ENCONTRADO \n");
             }

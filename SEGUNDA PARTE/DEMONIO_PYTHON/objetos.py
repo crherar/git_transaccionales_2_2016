@@ -33,3 +33,21 @@ class objetos:
         else:
             print "la respueta tiene largo 0"
             return json.dumps({'cabecera':data["cabecera"],'datos':'02'})
+
+    def actualizar_objeto(self,data):
+        self.nombre = data["datos"]["nombre_objeto"]
+        self.id = data["datos"]["id_objeto"]
+        self.mensaje = self.nombre+str(self.id).ljust(5)
+        respuesta = self.mtx.enviar(self.procpx.actualizar_objeto(),self.codtx.actualizar_objeto(),"00",self.mensaje)
+        return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
+
+
+    def eliminar_objeto(self,data):
+        self.id = data["datos"]["id_objeto"]
+        respuesta = self.mtx.enviar(self.procpx.eliminar_objeto(),self.codtx.eliminar_objeto(),"00",str(self.id).ljust(5))
+        return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
+
+    def ver_mis_objetos_combobox(self,data):
+        self.id_usuario_dueno = data["cabecera"]["id_usuario_logueado"]
+        respuesta = self.mtx.enviar(self.procpx.ver_mis_objetos_combobox(),self.codtx.ver_mis_objetos_combobox(),"00",str(self.id_usuario_dueno).ljust(5))[:-1].split('-')
+        return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
