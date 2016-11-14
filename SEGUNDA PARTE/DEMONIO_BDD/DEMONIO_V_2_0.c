@@ -191,7 +191,7 @@ int main() {
                     //   strcat(respuesta.texto.datos_formulario, usr->email);
                     //   printf("3");
                 } else {
-                    strcpy(respuesta.texto.datos_formulario, "01");
+                    strcpy(respuesta.texto.datos_formulario, "02");
                 }
 
                 printf("************************** FIN Formulario 'loginn' **************************\n");

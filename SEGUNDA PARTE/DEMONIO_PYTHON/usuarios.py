@@ -65,5 +65,10 @@ class usuarios:
 		mensaje = str(self.email+self.password)
 		print 'datos para el monitor: "%s"' % mensaje
 		print "codigo tx"+self.codtx.iniciar_sesion()
-		respuesta =  self.mtx.enviar(self.procpx.iniciar_sesion(),self.codtx.iniciar_sesion(),"00",mensaje).split('-')
-		return json.dumps({'cabecera':{'formulario':data['cabecera']['formulario'],'id_usuario_logueado':respuesta[0],'email':respuesta[1]},'datos':''})
+		respuesta =  self.mtx.enviar(self.procpx.iniciar_sesion(),self.codtx.iniciar_sesion(),"00",mensaje)
+		print "respuesta:"+respuesta
+		datos = respuesta.split('-')
+		if len(datos) > 1:
+			return json.dumps({'cabecera':{'formulario':data['cabecera']['formulario'],'id_usuario_logueado':datos[0],'email':datos[1]},'datos':''})
+		else:
+			return json.dumps({'cabecera':{'formulario':data['cabecera']['formulario'],'id_usuario_logueado':'','email':''},'datos':respuesta})
