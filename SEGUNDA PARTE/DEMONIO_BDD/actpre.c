@@ -22,7 +22,7 @@ void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans 
 	{
 	long mtype;
 	char formulario_actual[7];
-		struct 
+		struct
 		{
 		  int idproceso;
 	          
@@ -48,7 +48,7 @@ void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans 
     strcat(mensaje.texto.datos_formulario,tx_sa->datos);
 	printf("Copia de datos formulario a mensaje \n");
 
-	strcpy(mensaje.formulario_actual,"eprest");
+	strcpy(mensaje.formulario_actual,"actpre");
 
 	mensaje.mtype = 1;
 	mensaje.texto.idproceso = idproceso;
@@ -98,17 +98,17 @@ void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans 
 	//tx_out->len=sprintf(tx_sa->datos,"%s", mensaje.texto.datos_formulario);
 
 	//aci[7]='1';
-	
+
 	tx_out->len=sprintf(tx_out->datos,"%s", respuesta.texto.datos_formulario);
 
 	if (strcmp(tx_out->datos, "01")==0){ // MOD SATISFACTORIA
-		aci[7]='1';		//LLEVA DIRECTAMENTE A MENPRE		
+		aci[7]='1';		//LLEVA DIRECTAMENTE A MENPRE
 
 	}
-	if (strcmp(tx_out->datos, "02")==0){ // MOD ERROR 
-		aci[7]='1'; 	//LLEVA DIRECTAMENTE A MENPRE	
+	if (strcmp(tx_out->datos, "02")==0){ // MOD ERROR
+		aci[7]='1'; 	//LLEVA DIRECTAMENTE A MENPRE
 
-	} 
+	}
 
 
 }

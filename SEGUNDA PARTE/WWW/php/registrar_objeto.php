@@ -17,7 +17,8 @@ $nombre_objeto = str_pad("computador2",15);
 
 
 $cabecera = array('formulario' => 'regobj',
-									'id_usuario_logueado' => 26);
+									'id_usuario_logueado' => 26,
+								  'email'=>'');
 
 $objeto  = array('nombre_objeto' => $nombre_objeto);
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$objeto));//"loginn|".$email."-".$password;

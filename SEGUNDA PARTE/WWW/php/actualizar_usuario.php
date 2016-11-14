@@ -19,7 +19,8 @@ $email = str_pad("usuario123@gmail.com",40);
 $password = str_pad("123",10);
 
 $cabecera = array('formulario' => 'actusr',
-									'id_usuario_logueado' => 9);
+									'id_usuario_logueado' => 9,
+								  'email'=>'');
 
 $usuario  = array('nombre' => $nombre,
 									'apellido' => $apellido,

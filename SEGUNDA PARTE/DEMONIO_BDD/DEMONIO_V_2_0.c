@@ -340,9 +340,9 @@ int main() {
                     FORMULARIO "hprest"
              **************************************/
 
-            else if (strcmp(formulario_actual, "hprest") == 0) {
+            else if (strcmp(formulario_actual, "regpre") == 0) {
 
-                printf("************************** Formulario 'hprest' **************************\n");
+                printf("************************** Formulario 'regpre' **************************\n");
 
                 printf("-----> Registro de nuevo prestamo <-----\n");
 
@@ -386,7 +386,7 @@ int main() {
                     strcpy(respuesta.texto.datos_formulario, "02");
                 }
 
-                printf("************************** FIN Formulario 'hprest' **************************\n");
+                printf("************************** FIN Formulario 'regpre' **************************\n");
 
             }
 
@@ -416,8 +416,8 @@ int main() {
              **************************************/
 
 
-            else if (strcmp(formulario_actual, "eprest") == 0) {
-                printf("************************** Formulario 'eprest' **************************\n");
+            else if (strcmp(formulario_actual, "actpre") == 0) {
+                printf("************************** Formulario 'actpre' **************************\n");
 
                 printf("-----> Editar prestamo <-----\n");
 
@@ -462,7 +462,7 @@ int main() {
                 }
 
 
-                printf("************************** FIN Formulario 'eprest' **************************\n");
+                printf("************************** FIN Formulario 'actpre' **************************\n");
             }
             /* ********************************************************************************************************* */
             /* ********************************************************************************************************* */

@@ -16,7 +16,8 @@ echo "\nConexion Exitosa, puerto: " . $puerto."\n";
 
 
 $cabecera = array('formulario' => 'delobj',
-									'id_usuario_logueado' => 26);
+									'id_usuario_logueado' => 26,
+								  'email'=>'');
 
 $objeto = array('id_objeto'=>77,'nombre_objeto'=>'');
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$objeto));//"loginn|".$email."-".$password;

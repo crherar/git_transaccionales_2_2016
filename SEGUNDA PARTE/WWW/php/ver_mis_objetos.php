@@ -13,20 +13,21 @@ if (socket_connect($socket, $host, $puerto))
 {
 echo "\nConexion Exitosa, puerto: " . $puerto;
 //$msg = "mensaje del CLIENTE 1 desde php!!!";
+$nombre_objeto = str_pad("computador2",15);
 
 
-$cabecera = array('formulario' => 'modusr',
-									'id_usuario_logueado' => 26,
+$cabecera = array('formulario' => 'cbxobj',
+									'id_usuario_logueado' => 8,
 								  'email'=>'');
 
-
+//$objeto  = array('nombre_objeto' => $nombre_objeto);
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>''));//"loginn|".$email."-".$password;
 
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
 
 $sock_data = socket_write($socket, $msg, strlen($msg));
 $resp = socket_read($socket, 1024);
-var_dump($resp);
+var_dump(json_decode($resp));
 
 
 /*

@@ -15,10 +15,10 @@ echo "****************************************** ";
 
 echo "*************** prestamos ***************";
 #gmon registrar_prestamo.inp
-gmon hprest.c
+gmon regpre.c
 gmon modpre.c
 #gmon modpre.inp
-gmon eprest.c
+gmon actpre.c
 #gmon eprest.inp
 
 echo "****************************************** ";

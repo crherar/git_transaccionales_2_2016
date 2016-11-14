@@ -16,7 +16,9 @@ echo "\nConexion Exitosa, puerto: " . $puerto;
 $email = str_pad("matias@gmail.com",40);
 $password = str_pad("123",10);
 $cabecera = array('formulario' => 'verami',
-									'id_usuario_logueado' => 9);
+									'id_usuario_logueado' => 9,
+								  'email'=>'');
+
 $usuario = array('id_usuario_logueado'=>9);
 $msg =  json_encode(array('cabecera'=>$cabecera,'datos'=>''));//"verami|9";
 

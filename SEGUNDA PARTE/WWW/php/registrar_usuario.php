@@ -19,7 +19,8 @@ $email = str_pad("usuario@gmail.com",40);
 $password = str_pad("123",10);
 
 $cabecera = array('formulario' => 'regusr',
-									'id_usuario_logueado' => 0);
+									'id_usuario_logueado' => 0,
+								  'email'=>'');
 
 $usuario  = array('nombre' => $nombre,
 									'apellido' => $apellido,

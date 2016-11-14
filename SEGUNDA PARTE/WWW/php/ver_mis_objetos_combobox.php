@@ -17,16 +17,25 @@ $nombre_objeto = str_pad("computador2",15);
 
 
 $cabecera = array('formulario' => 'cbxobj',
-									'id_usuario_logueado' => 8);
+									'id_usuario_logueado' => 8,
+								  'email'=>'');
 
 //$objeto  = array('nombre_objeto' => $nombre_objeto);
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>''));//"loginn|".$email."-".$password;
-
+var_dump(array('cabecera'=>$cabecera,'datos'=>''));
+echo "ENVIADO AL PYTHON \n";
+var_dump($msg);
+echo "\n";
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
 
 $sock_data = socket_write($socket, $msg, strlen($msg));
+
 $resp = socket_read($socket, 1024);
+echo "RECIBIDO DEL PYTHON \n";
 var_dump(json_decode($resp));
+//echo get_object_vars($resp);
+//var_dump($resp[0]['formulario']);
+echo "\n";
 
 
 /*

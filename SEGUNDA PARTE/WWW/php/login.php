@@ -14,7 +14,8 @@ if (socket_connect($socket, $host, $puerto))
 echo "\nConexion Exitosa, puerto: " . $puerto;
 //$msg = "mensaje del CLIENTE 1 desde php!!!";
 $cabecera = array('formulario' => 'loginn',
-									'id_usuario_logueado' => 0);
+									'id_usuario_logueado' => 0,
+								  'email'=>'');
 $email = str_pad("matias@gmail.com",40);
 $password = str_pad("123",10);
 $logueo  = array('email' => $email,

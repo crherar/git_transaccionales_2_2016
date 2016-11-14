@@ -34,10 +34,10 @@ struct monitor_demonio
 {
 long mtype;
 char formulario_actual[7];
-	struct 
+	struct
 	{
 	  int idproceso;
-          
+
 	  char datos_formulario[2000];
 	} texto;
 } mensaje, respuesta;
@@ -64,7 +64,7 @@ printf("id proceso: %d \n",idproceso);
 
 strcpy(mensaje.texto.datos_formulario,tx_in->datos);
 printf("copia de datos formulario a mensaje \n");
-strcpy(mensaje.formulario_actual,"hprest");
+strcpy(mensaje.formulario_actual,"regpre");
 mensaje.mtype = 1;
 mensaje.texto.idproceso = idproceso;
 //se envia el mensaje al demonio
