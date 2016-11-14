@@ -20,10 +20,13 @@ class procesospx:
         return "verusr"
     #PRESTAMOS
     def insertar_prestamo(self):
-        return "hprest"
+        return "regpre"
+
+    def get_prestamo_por_id(self):
+        return "modpre"
 
     def actualizar_prestamo(self):
-        return "eprest"
+        return "actpre"
 
     def eliminar_prestamo(self):
         return "delpre"

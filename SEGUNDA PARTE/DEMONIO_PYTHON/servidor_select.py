@@ -7,6 +7,7 @@ import socket
 import usuarios
 import objetos
 import amigos
+import prestamos
 import sys
 from pprint import pprint
 
@@ -126,6 +127,21 @@ while running:
                 print formulario
                 respuesta = obj.get_objeto_por_id(data)
                 del obj
+                if respuesta:
+                    print "respuesta 2: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
+            if formulario == "regpre":
+                prest = prestamos.prestamos()
+                print formulario
+                respuesta = prest.insertar_prestamo(data)
+                del prest
                 if respuesta:
                     print "respuesta 2: "
                     print respuesta

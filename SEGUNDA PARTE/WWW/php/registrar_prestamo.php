@@ -15,22 +15,26 @@ echo "\nConexion Exitosa, puerto: " . $puerto."\n";
 //$msg = "mensaje del CLIENTE 1 desde php!!!";
 
 
-$cabecera = array('formulario' => 'delobj',
-	'id_usuario_logueado' => 26.
+$cabecera = array('formulario' => 'regpre',
+	'id_usuario_logueado' => 26,
                   'email'=>'');
 
 
-$prestamo = array('dia_prestamo'=>13,
-                  'mes_prestamo'=>11,
-                  'anio_prestamo'=>2016,
-                  'correo_usuario_prestador'=>'matias@gmail.com',
-                  'objeto'=>'pendrive',
-                  'cantidad'=> 1,
-                  'correo_usuario_recibidor' => 'diego@gmail.com',
-                  'dia_devolucion' => 15,
-                  'mes_devolucion' => 11,
-                  'anio_devolucion' => 2016,
-									'estado'=>0);
+$correo_usuario_prestador = str_pad('matias@gmail.com',40);
+$objeto = str_pad('prendrive',15);
+$correo_usuario_recibidor = str_pad('diego@gmail.com',40);
+
+$prestamo = array('dia_prestamo'=>'13',
+                  'mes_prestamo'=>'11',
+                  'anio_prestamo'=>'2016',
+                  'correo_usuario_prestador'=>$correo_usuario_prestador,
+                  'objeto'=>$objeto,
+                  'cantidad'=> '1',
+                  'correo_usuario_recibidor' => $correo_usuario_recibidor,
+                  'dia_devolucion' => '15',
+                  'mes_devolucion' => '11',
+                  'anio_devolucion' => '2016',
+	'estado'=>'0');
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$prestamo));//"loginn|".$email."-".$password;
 
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
