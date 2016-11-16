@@ -25,7 +25,7 @@ class Loginc extends CI_Controller {
 	 */
 	public function index()
 	{
-		
+
 		$this->load->view('login');
 	}
 
@@ -33,9 +33,23 @@ class Loginc extends CI_Controller {
 	{
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
+
+		$cabecera = array('formulario' => 'loginn',
+											'id_usuario_logueado' => 0,
+										  'email'=>'');
+
+		$email = str_pad($email,40);
+		$password = str_pad($password,10);
+
+		$logueo  = array('email' => $email,
+											'password' => $password);
+
+		$msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$logueo));
 		var_dump($email);
 		var_dump($password);
-		$this->socket->enviar(str_pad($email,40)+"-"+str_pad($password,15));
+	  $respuesta = $this->socket->enviar($msg);
+	  var_dump($respuesta);
+	//	$this->socket->enviar(str_pad($email,40)+"-"+str_pad($password,15));
 //$this->socket->enviar();
 		//$this->load->library('../controllers/Socketc');
 	}

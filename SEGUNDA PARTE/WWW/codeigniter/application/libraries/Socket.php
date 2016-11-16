@@ -24,11 +24,12 @@ class Socket{
 
 	public function enviar($mensaje)
 	{
-
+		$respuesta = "";
 		if($this->conectar())
 		{
 			$sock_data = socket_write($this->socket, $mensaje, strlen($mensaje));
 			$respuesta =  socket_read($this->socket, 1024);
 		}
+		return $respuesta;
 	}
 }

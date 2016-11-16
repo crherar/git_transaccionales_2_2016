@@ -52,7 +52,7 @@ printf("password: %s \n",password);
 SQL_output = (Usuario*) malloc(sizeof(Usuario));
 memset(SQL_output,0,sizeof(Usuario));
 
-EXEC SQL SELECT count(*) INTO :SQL_cuantos FROM usuarios WHERE email = :SQL_email and password = :SQL_password;
+EXEC SQL SELECT count(*) INTO :SQL_cuantos FROM usuarios WHERE email = RTRIM(:SQL_email) and password = RTRIM(:SQL_password);
 printf("CUANTOS EN LOGUEO %d \n",SQL_cuantos);
 if(SQL_cuantos == 1){
 EXEC SQL SELECT id,nombre,apellido,email INTO :SQL_output->id,:SQL_output->nombre,:SQL_output->apellido,:SQL_output->email FROM usuarios WHERE email = RTRIM(:SQL_email) and password = RTRIM(:SQL_password);

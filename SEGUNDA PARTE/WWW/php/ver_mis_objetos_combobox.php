@@ -31,6 +31,7 @@ echo "\n";
 $sock_data = socket_write($socket, $msg, strlen($msg));
 
 $resp = socket_read($socket, 1024);
+echo "<pre>";
 echo "RECIBIDO DEL PYTHON \n";
 var_dump(json_decode($resp));
 //echo get_object_vars($resp);
@@ -55,3 +56,16 @@ else
 }
 socket_close($socket);
 ?>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>
+		</title>
+	</head>
+	<body>
+		<?php print_r($_SESSION); ?>
+		hola mundo
+	</body>
+</html>

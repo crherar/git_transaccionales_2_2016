@@ -23,7 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://200.14.84.235/~17957132/www_transaccionales_2_2016/codeigniter/';
+$config['base_url'] = 'http://localhost:81/dst/www_transaccionales_2_2016/codeigniter/';
+//$config['base_url'] = 'http://200.14.84.235/~17957132/www_transaccionales_2_2016/codeigniter/';
 //$config['base_url'] = 'http://localhost/transaccionales_ci/';
 /*
 |--------------------------------------------------------------------------
