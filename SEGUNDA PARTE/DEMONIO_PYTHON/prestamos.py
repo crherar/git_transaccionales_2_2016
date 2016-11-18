@@ -81,3 +81,9 @@ class prestamos:
         self.mensaje = self.anio_prestamo+self.mes_prestamo+self.dia_prestamo+self.correo_usuario_prestador+self.objeto+self.cantidad.ljust(3)+self.correo_usuario_recibidor+self.anio_devolucion+self.mes_devolucion+self.dia_devolucion+self.estado+str(self.id).ljust(5)
         respuesta = self.mtx.enviar(self.procpx.actualizar_prestamo(),self.codtx.actualizar_prestamo(),"00",self.mensaje)
         return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
+
+    def eliminar_prestamo(self,data):
+        self.id = data["datos"]["id_prestamo"]
+        respuesta = self.mtx.enviar(self.procpx.eliminar_prestamo(),self.codtx.eliminar_prestamo(),"00",str(self.id).ljust(5))
+        print respuesta
+        return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})

@@ -433,7 +433,8 @@ int main() {
             else if (strcmp(formulario_actual, "delpre") == 0) {
                 printf("************************** Formulario 'delpre' **************************\n");
                 printf("-----> Eliminar prestamo <-----\n");
-                sscanf(mensaje.texto.datos_formulario, "%10d", &id_prestamo);
+                sscanf(mensaje.texto.datos_formulario, "%d", &id_prestamo);
+                printf("La id del prestamo es: %d \n", id_prestamo);
                 int resp = eliminar_prestamo(id_prestamo);
 
                 if (resp == 0) {

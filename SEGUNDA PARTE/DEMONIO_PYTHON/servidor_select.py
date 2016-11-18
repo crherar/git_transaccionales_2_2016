@@ -215,7 +215,7 @@ while running:
             if formulario == "delpre":
                 prest = prestamos.prestamos()
                 print formulario
-                respuesta = prest.insertar_prestamo(data)
+                respuesta = prest.eliminar_prestamo(data)
                 del prest
                 if respuesta:
                     print "respuesta 2: "

@@ -209,7 +209,7 @@ int  SQL_id_prestamo;
 
 EXEC SQL END DECLARE SECTION;
 
-
+SQL_id_prestamo = id_prestamo;
 EXEC SQL DELETE FROM prestamos WHERE prestamos.id = :SQL_id_prestamo;
 
 printf("\n\n Sqlca Sqlcode: %d\n\n", sqlca.sqlcode);
