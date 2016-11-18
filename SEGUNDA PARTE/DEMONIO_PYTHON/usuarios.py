@@ -36,7 +36,7 @@ class usuarios:
 		#print "tamanio respuesta: "+str(len(respuesta))
 		#print json.loads(respuesta)
 		if len(respuesta) > 0:
-			return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.usuarios(respuesta)})
+			return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.usuario(respuesta)})
 		else:
 			return json.dumps({'cabecera':data["cabecera"],'datos':'02'})
 

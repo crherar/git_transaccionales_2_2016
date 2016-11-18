@@ -13,6 +13,7 @@ class prestamos:
         self.mes_prestamo = ""
         self.anio_prestamo = ""
         self.correo_usuario_prestador = ""
+        self.id_usuario_prestador = 0
         self.objeto = ""
         self.cantidad = ""
         self.correo_usuario_recibidor = ""
@@ -48,13 +49,14 @@ class prestamos:
         print respuesta
         if len(respuesta) > 0:
             print "respuesta"
-            return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.prestamos(respuesta)})
+            return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.prestamo(respuesta)})
         else:
             print "la respueta tiene largo 0"
             return json.dumps({'cabecera':data["cabecera"],'datos':'02'})
 
     def marcar_prestamo_como_pendiente(self,data):
-        self.id = data["datos"]["id_prestamo"]
+        self.id = data["cabecera"]["id_prestamo"]
+
         respuesta = self.mtx.enviar(self.procpx.marcar_prestamo_como_pendiente(),self.codtx.marcar_prestamo_como_pendiente(),"00",str(self.id).ljust(5))
         print respuesta
         return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
@@ -81,6 +83,13 @@ class prestamos:
         self.mensaje = self.anio_prestamo+self.mes_prestamo+self.dia_prestamo+self.correo_usuario_prestador+self.objeto+self.cantidad.ljust(3)+self.correo_usuario_recibidor+self.anio_devolucion+self.mes_devolucion+self.dia_devolucion+self.estado+str(self.id).ljust(5)
         respuesta = self.mtx.enviar(self.procpx.actualizar_prestamo(),self.codtx.actualizar_prestamo(),"00",self.mensaje)
         return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
+
+    def ver_prestamos_pendientes(self,data):
+        self.id_usuario_prestador = data["cabecera"]["id_usuario_logueado"]
+        respuesta = self.mtx.enviar(self.procpx.ver_prestamos_pendientes(),self.codtx.ver_prestamos_pendientes(),"00",str(self.id_usuario_prestador))
+        #print "r: "+respuesta
+        return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.prestamos(respuesta)})
+
 
     def eliminar_prestamo(self,data):
         self.id = data["datos"]["id_prestamo"]

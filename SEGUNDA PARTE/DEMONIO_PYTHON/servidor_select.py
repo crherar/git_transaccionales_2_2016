@@ -53,7 +53,7 @@ while running:
                 respuesta = usr.iniciar_sesion(data)
                 del usr
                 if respuesta:
-                    print "respuesta 2: "
+                    print "respuesta al php: "
                     print respuesta
                     s.send(respuesta)
                     input.remove(s)
@@ -68,7 +68,7 @@ while running:
                 respuesta = usr.insertar_usuario(data)
                 del usr
                 if respuesta:
-                    print "respuesta 2: "
+                    print "respuesta al php: "
                     print respuesta
                     s.send(respuesta)
                     input.remove(s)
@@ -83,7 +83,7 @@ while running:
                 respuesta = usr.get_usuario_por_id(data)
                 del usr
                 if respuesta:
-                    print "respuesta 2: "
+                    print "respuesta al php: "
                     print respuesta
                     s.send(respuesta)
                     input.remove(s)
@@ -98,7 +98,7 @@ while running:
                 respuesta = usr.actualizar_usuario(data)
                 del usr
                 if respuesta:
-                    print "respuesta 2: "
+                    print "respuesta al php: "
                     print respuesta
                     s.send(respuesta)
                     input.remove(s)
@@ -113,7 +113,7 @@ while running:
                 respuesta = obj.insertar_objeto(data)
                 del obj
                 if respuesta:
-                    print "respuesta 2: "
+                    print "respuesta al php: "
                     print respuesta
                     s.send(respuesta)
                     input.remove(s)
@@ -128,7 +128,7 @@ while running:
                 respuesta = obj.get_objeto_por_id(data)
                 del obj
                 if respuesta:
-                    print "respuesta 2: "
+                    print "respuesta al php: "
                     print respuesta
                     s.send(respuesta)
                     input.remove(s)
@@ -143,7 +143,7 @@ while running:
                 respuesta = prest.insertar_prestamo(data)
                 del prest
                 if respuesta:
-                    print "respuesta 2: "
+                    print "respuesta al php: "
                     print respuesta
                     s.send(respuesta)
                     input.remove(s)
@@ -158,7 +158,7 @@ while running:
                 respuesta = prest.get_prestamo_por_id(data)
                 del prest
                 if respuesta:
-                    print "respuesta 2: "
+                    print "respuesta al php: "
                     print respuesta
                     s.send(respuesta)
                     input.remove(s)
@@ -173,7 +173,7 @@ while running:
                 respuesta = prest.marcar_prestamo_como_pendiente(data)
                 del prest
                 if respuesta:
-                    print "respuesta 2: "
+                    print "respuesta al php: "
                     print respuesta
                     s.send(respuesta)
                     input.remove(s)
@@ -188,7 +188,7 @@ while running:
                 respuesta = prest.marcar_prestamo_como_devuelto(data)
                 del prest
                 if respuesta:
-                    print "respuesta 2: "
+                    print "respuesta al php: "
                     print respuesta
                     s.send(respuesta)
                     input.remove(s)
@@ -203,7 +203,22 @@ while running:
                 respuesta = prest.actualizar_prestamo(data)
                 del prest
                 if respuesta:
-                    print "respuesta 2: "
+                    print "respuesta al php: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
+            if formulario == "vprepe":
+                prest = prestamos.prestamos()
+                print formulario
+                respuesta = prest.ver_prestamos_pendientes(data)
+                del prest
+                if respuesta:
+                    print "respuesta al php: "
                     print respuesta
                     s.send(respuesta)
                     input.remove(s)
@@ -218,7 +233,7 @@ while running:
                 respuesta = prest.eliminar_prestamo(data)
                 del prest
                 if respuesta:
-                    print "respuesta 2: "
+                    print "respuesta al php: "
                     print respuesta
                     s.send(respuesta)
                     input.remove(s)
@@ -233,7 +248,7 @@ while running:
                 respuesta = obj.actualizar_objeto(data)
                 del obj
                 if respuesta:
-                    print "respuesta 2: "
+                    print "respuesta al php: "
                     print respuesta
                     s.send(respuesta)
                     input.remove(s)
@@ -248,7 +263,7 @@ while running:
                 respuesta = obj.eliminar_objeto(data)
                 del obj
                 if respuesta:
-                    print "respuesta 2: "
+                    print "respuesta al php: "
                     print respuesta
                     s.send(respuesta)
                     input.remove(s)
@@ -263,7 +278,7 @@ while running:
                 respuesta = obj.ver_mis_objetos_combobox(data)
                 del obj
                 if respuesta:
-                    print "respuesta 2: "
+                    print "respuesta al php: "
                     print respuesta
                     s.send(respuesta)
                     input.remove(s)
@@ -278,7 +293,7 @@ while running:
                 respuesta = amig.ver_mis_amigos(data)
                 del amig
                 if respuesta:
-                    print "respuesta 2: "
+                    print "respuesta al php: "
                     print respuesta
                     s.send(respuesta)
                     input.remove(s)

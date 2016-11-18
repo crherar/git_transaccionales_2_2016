@@ -91,6 +91,13 @@ select string_agg(concat('{','id:',cast(id as text),',',
                               'nombre_objeto:',nombreobjeto,',',
                               'fecha_devolucion:',fecha_devolucion,',',
                               'cantidad_prestada:',cantidad_prestada,'}'),'|') as datos
+
+select string_agg(concat(cast(id as text),',',
+                              fechaprestamo,',',
+                              emailrecibidor,',',
+                              nombreobjeto,',',
+                              fecha_devolucion,',',
+                              cantidad_prestada),'|') as datos                              
  from misprestamos where id_usuario_prestador = 27;
 
 select json_agg(misprestamos.*) from misprestamos where id_usuario_prestador = 27;

@@ -1,0 +1,141 @@
+solemne 2012
+
+a)
+Los procesos no se comunican entre si
+La cola de mensajes se usa para comunicar los procesos con el demonio de base de datos
+
+b)
+El monitor es el que provee el ambiente transaccional
+
+Propiedades de las transacciones:
+A atomico
+C consistente
+I independiente
+D durable
+
+
+
+c)
+Proceso de cada una de las transacciones que se garantice que el proceso que cada una de
+ellas sea completado ==> ESO ES ATOMICIDAD Y NO INDEPENDENCIA
+
+e)
+Dado que las transacciones son independientes, no es mas dificil y ni mas facil agregar nueva funcionalidad,
+sino que es agregable sin afectar a las demas
+
+
+PREGUNTA 2
+
+Definir funcionalidades
+Definir las transacciones ent
+	}
+
+	// public function enviar($mensaje)
+	// {
+	// 	$respuesta = "";
+	// 	if($this->conectar())
+	// 	{
+	// 		$sock_data = socket_write($this->socket, $mensaje, strlen($mensaje));
+	// 		$respuesta =  socket_read($this->socket, 1024);
+	// 	}
+	// 	return $respuesta;
+	// }rada y salida
+Definir los procesos
+
+Procesos independientes, demonios, para cada linea aerea
+
+
+
+**********************************************
+SOLEMNE RECUPERATIVA
+
+a)
+Los procesos se activan cuando llega la transaccion....> hasta ahi ok
+los procesos requieren manejar una cola ==> FALSO , el monitor maneja la cola
+desde la cola se obtienen los datos a procesar ==> VERDADERO
+
+b)
+Los procesos no se comunican entre si
+La transacciones pueden dejar algo para que sea usado por otro proceso ==> tx_sa
+
+c)
+Pueden acceder a la base de datos pero no se recomienda, porque como el proceso se activa cuando
+llega la transaccion, cada vez se tiene que conectar y desconectar a la base de datos
+es muy costoso en tiempo
+
+El monitor no bloquea el acceso de la base de datos
+
+Para el caso del monitor usado en clases, es necesario desarrollar un proceso externo ya que no
+tiene esta funcionalidad. En los monitores transaccionales comerciales esta funcionalidad esta
+incluida
+
+d)
+Una transaccion debe ==> el DEBE esta malo
+lo correcto es que PUEDE CONTENER todos los datos
+
+
+
+PREGUNTA 2
+
+
+
+
+**********************************************
+
+JUNIO 2014
+
+a)
+Hasta el primer punto seguido es 100% VERDADERO
+el proceso decide cuando un proceso debe ejecutar => VERDADERO
+
+decide cuando => AMBIGUO
+
+El monitor no decide cuando un proceso termina ==> FALSO
+
+EL monitor no tiene injerencia(no puede hacer nada para
+que el proceso decida cuando el proceso termina) en proceso de cuando debe terminar
+
+
+b)
+El monitor para las transacciones concurrentes activa multiples procesos con la misma transaccion
+
+
+El proceso que las requiera ==> FALSO ==> es el proceso que viene despues de mi siempre que se mantenga
+el contexto (los socket)
+
+c)
+El proceso no se preocupa de no dejar trasas, se ejecuta y termina.
+Despues del punto seguido hasta la coma es FALSO
+
+d)
+Hasta el punto ==> VERDADERO
+Las transacciones fluyen de un proceso a otro ==> FALSOOO
+Las transacciones vienen del usuario se procesa y vuelve al usuario
+
+e)
+Loss procesos se preocupan de la concurrencia ==> FALSO
+EL monitor precocupa de la concurrencia
+No hay limite de transacciones que se pueden antender de forma simultanea, pero limitado
+por los recursos.
+Si se agotan los recursos del sistema, se genera una cola para antender los procesos uno a uno
+
+PREGUNTA 2
+
+
+Argumentos para usar un monitor transaccional
+a)
+- Desarrollo escalable
+- Demora porque el usuario no ingresa todo los usuarios
+- si cae un proceso no cae todos
+
+b)
+- puedo procesar una gran cantidad de transacciones sin usar recursos excesivos del computador
+- usa mejor los recursos del procesador
+- simplifica la busqueda de errores
+
+PROBLEMAS
+- se puede interceptar la transaccion y modificarla
+
+c)
+
+- aplicaciones en tiempo real no puede implementarse en forma transaccional

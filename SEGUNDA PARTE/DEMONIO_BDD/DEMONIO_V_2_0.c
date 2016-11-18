@@ -562,6 +562,32 @@ int main() {
                 printf("************************** FIN Formulario 'prepen' **************************\n");
             }
 
+            else if (strcmp(formulario_actual, "vprepe") == 0) {
+                printf("************************** Formulario 'prepen' **************************\n");
+
+                printf("-----> Ver prestamos pendientes <-----\n");
+
+                printf("El mensaje recibido de %s es: %s \n", formulario_actual, mensaje.texto.datos_formulario);
+
+                sscanf(mensaje.texto.datos_formulario, "%d", &id_usuario_prestador);
+
+                printf("La id del usuario prestador es: %d \n", id_usuario_prestador);
+
+                printf("%s \n",get_prestamos_pendientes(id_usuario_prestador));
+
+            //    printf("La respuesta luego de marcar prestamo como pendiente es: %d \n", prest->verificador_error);
+
+            //    if (prest->verificador_error == 0) {
+                    strcpy(respuesta.texto.datos_formulario, get_prestamos_pendientes(id_usuario_prestador));
+                    printf("%s\n",respuesta.texto.datos_formulario );
+            //    } else {
+            //        strcpy(respuesta.texto.datos_formulario, "02");
+                //}
+
+
+                printf("************************** FIN Formulario 'vprepe' **************************\n");
+            }
+
             /* ********************************************************************************************************* */
             /* ********************************************************************************************************* */
 

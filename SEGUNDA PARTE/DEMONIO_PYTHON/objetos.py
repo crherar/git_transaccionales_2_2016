@@ -29,7 +29,7 @@ class objetos:
         respuesta = self.mtx.enviar(self.procpx.get_objeto_por_id(),self.codtx.get_objeto_por_id(),"00",str(self.id).ljust(5)).split('-')
         if len(respuesta) > 0:
             print "respuesta"
-            return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.objetos(respuesta)})
+            return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.objeto(respuesta)})
         else:
             print "la respueta tiene largo 0"
             return json.dumps({'cabecera':data["cabecera"],'datos':'02'})
