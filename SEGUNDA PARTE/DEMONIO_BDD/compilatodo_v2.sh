@@ -23,6 +23,8 @@ gmon actpre.c
 gmon prepen.c
 gmon predev.c
 gmon delpre.c
+gmon vprepe.c
+gmon vprede.c
 echo "****************************************** ";
 
 echo "*************** objetos ***************";

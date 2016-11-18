@@ -53,6 +53,16 @@ struct Prestamo{
     // };
 }Prestamos;
 
+struct MisPrestamos{
+  int verificador_error;
+  int id;
+  char fecha_prestamo[11];
+  char email_usuario_recibidor[40];
+  char nombre_objeto[15];
+  int cantidad_prestada;
+  char fecha_devolucion[11];
+};
+
 struct Amigo{
     int verificador_error;
     int id;
@@ -76,6 +86,7 @@ typedef struct Objeto Objeto;
 typedef struct Usuario Usuario;
 typedef struct Fecha Fecha;
 typedef struct Prestamo Prestamo;
+typedef struct MisPrestamos MisPrestamos;
 typedef struct Amigo Amigo;
 typedef struct Misamigos Misamigos;
 typedef struct Reputacion Reputacion;

@@ -61,3 +61,39 @@ usuarios as u,
 amigos as a
 where
 u.id = a.amigo_2;
+
+
+create view misPrestamos as
+select
+p.id,
+p.id_usuario_prestador,
+p.fecha as FechaPrestamo,
+u.email as emailRecibidor,
+o.nombre as nombreObjeto,
+p.fecha_devolucion,
+p.cantidad_prestada,
+p.estado
+from
+usuarios as u,
+prestamos as p,
+objetos as o
+where
+p.id_usuario_recibidor = u.id and
+p.id_objeto = o.id;
+
+
+
+
+
+select string_agg(concat('{','id:',cast(id as text),',',
+                              "\'fecha_xprestamo:\'",fechaprestamo,',',
+                              'email_usuario_recibidor:',emailrecibidor,',',
+                              'nombre_objeto:',nombreobjeto,',',
+                              'fecha_devolucion:',fecha_devolucion,',',
+                              'cantidad_prestada:',cantidad_prestada,'}'),'|') as datos
+ from misprestamos where id_usuario_prestador = 27;
+
+select json_agg(misprestamos.*) from misprestamos where id_usuario_prestador = 27;
+
+
+select json_build_object('fecha_prestamo',fechaprestamo,'email_usuario_recibidor',emailrecibidor) from misprestamos;
