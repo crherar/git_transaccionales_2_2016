@@ -37,7 +37,7 @@ class prestamos:
         self.mes_devolucion = data["datos"]["mes_devolucion"]
         self.anio_devolucion = data["datos"]["anio_devolucion"]
         self.estado = data["datos"]["estado"]
-        self.mensaje = self.anio_prestamo+self.mes_prestamo+self.dia_prestamo+self.correo_usuario_prestador+self.objeto+self.cantidad+self.correo_usuario_recibidor+self.anio_devolucion+self.mes_devolucion+self.anio_devolucion+self.estado
+        self.mensaje = self.anio_prestamo+self.mes_prestamo+self.dia_prestamo+self.correo_usuario_prestador+self.objeto+self.cantidad.ljust(3)+self.correo_usuario_recibidor+self.anio_devolucion+self.mes_devolucion+self.dia_devolucion+self.estado
         respuesta = self.mtx.enviar(self.procpx.insertar_prestamo(),self.codtx.insertar_prestamo(),"00",self.mensaje)
         return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
 
@@ -66,6 +66,6 @@ class prestamos:
         self.mes_devolucion = data["datos"]["mes_devolucion"]
         self.anio_devolucion = data["datos"]["anio_devolucion"]
         self.estado = data["datos"]["estado"]
-        self.mensaje = self.anio_prestamo+self.mes_prestamo+self.dia_prestamo+self.correo_usuario_prestador+self.objeto+self.cantidad+self.correo_usuario_recibidor+self.anio_devolucion+self.mes_devolucion+self.anio_devolucion+str(self.id).ljust(5)
-        respuesta = self.mtx.enviar(self.procpx.insertar_prestamo(),self.codtx.insertar_prestamo(),"00",self.mensaje)
+        self.mensaje = self.anio_prestamo+self.mes_prestamo+self.dia_prestamo+self.correo_usuario_prestador+self.objeto+self.cantidad.ljust(3)+self.correo_usuario_recibidor+self.anio_devolucion+self.mes_devolucion+self.dia_devolucion+self.estado+str(self.id).ljust(5)
+        respuesta = self.mtx.enviar(self.procpx.actualizar_prestamo(),self.codtx.actualizar_prestamo(),"00",self.mensaje)
         return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})

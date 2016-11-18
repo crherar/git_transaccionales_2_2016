@@ -25,7 +25,7 @@ void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans 
 		struct
 		{
 		  int idproceso;
-	          
+
 		  char datos_formulario[2000];
 		} texto;
 	} mensaje, respuesta;
@@ -101,14 +101,14 @@ void proceso (char *aci, struct trans *tx_in, struct trans *tx_out,struct trans 
 
 	tx_out->len=sprintf(tx_out->datos,"%s", respuesta.texto.datos_formulario);
 
-	if (strcmp(tx_out->datos, "01")==0){ // MOD SATISFACTORIA
-		aci[7]='1';		//LLEVA DIRECTAMENTE A MENPRE
-
-	}
-	if (strcmp(tx_out->datos, "02")==0){ // MOD ERROR
-		aci[7]='1'; 	//LLEVA DIRECTAMENTE A MENPRE
-
-	}
+	// if (strcmp(tx_out->datos, "01")==0){ // MOD SATISFACTORIA
+	// 	aci[7]='1';		//LLEVA DIRECTAMENTE A MENPRE
+  //
+	// }
+	// if (strcmp(tx_out->datos, "02")==0){ // MOD ERROR
+	// 	aci[7]='1'; 	//LLEVA DIRECTAMENTE A MENPRE
+  //
+	// }
 
 
 }

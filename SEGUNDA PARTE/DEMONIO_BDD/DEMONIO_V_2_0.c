@@ -367,6 +367,7 @@ int main() {
                 printf("Dia fecha de devolucion recibido es: %d \n", dia_devolucion);
                 printf("fecha devolucion recibida es: %s \n", fecha_devolucion);
                 printf("Nombre objeto recibido: %s \n",nombre_objeto);
+
                 id_usuario_prestador = get_id_usuario_por_email(email_usuario_prestador);
                 id_usuario_recibidor = get_id_usuario_por_email(email_usuario_recibidor);
 
@@ -427,8 +428,10 @@ int main() {
                 memset(nombre_objeto, '\0', sizeof nombre_objeto);
                 memset(email_usuario_recibidor, '\0', sizeof email_usuario_recibidor);
 
-                sscanf(mensaje.texto.datos_formulario, "%4d%2d%2d%40c%15c%3d%40c%4d%2d%2d%1d%15d", &anio_prestamo, &mes_prestamo, &dia_prestamo, email_usuario_prestador, nombre_objeto,
-                        &cantidad_prestada, email_usuario_recibidor, &anio_devolucion, &mes_devolucion, &dia_devolucion, &estado, &id_prestamo);
+                sscanf(mensaje.texto.datos_formulario, "%4d%2d%2d%40c%15c%3d%40c%4d%2d%2d%1d%d", &anio_prestamo, &mes_prestamo,
+                                                            &dia_prestamo, email_usuario_prestador, nombre_objeto,
+                                            &cantidad_prestada, email_usuario_recibidor, &anio_devolucion, &mes_devolucion,
+                                            &dia_devolucion, &estado, &id_prestamo);
 
                 sprintf(fecha_prestamo, "%d-%d-%d", anio_prestamo, mes_prestamo, dia_prestamo);
 
@@ -440,7 +443,7 @@ int main() {
                 printf("El email del usuario recibidor es: %s \n", email_usuario_recibidor);
                 printf("Dia fecha de devolucion recibido es: %d \n", dia_devolucion);
                 printf("fecha devolucion recibida es: %s \n", fecha_devolucion);
-
+                printf("Estado del prestamo recibido %d \n",estado);
                 id_usuario_prestador = get_id_usuario_por_email(email_usuario_prestador);
                 id_usuario_recibidor = get_id_usuario_por_email(email_usuario_recibidor);
 
@@ -475,7 +478,7 @@ int main() {
 
                 printf("************************** Formulario 'modpre' **************************\n");
                 printf("Mensaje recibido: %s \n", mensaje.texto.datos_formulario);
-                sscanf(mensaje.texto.datos_formulario, "%15d", &id_prestamo);
+                sscanf(mensaje.texto.datos_formulario, "%d", &id_prestamo);
                 printf("La id del prestamo recibida es: %d \n", id_prestamo);
                 prest = get_prestamo_por_id(id_prestamo);
                 printf("despues de asignar a prest \n");
@@ -540,25 +543,25 @@ int main() {
                 //                         40
                 //email@email.email
             //    printf("despues de los for \n");
-            //    char nueva_cantidad_prestada[3];
+                char nueva_cantidad_prestada[3];
                 //  memset(nueva_cantidad_prestada,' ',3);
-                //sprintf(nueva_cantidad_prestada, "%d", cantidad_prestada);
+                sprintf(nueva_cantidad_prestada, "%d", cantidad_prestada);
                 //  strcpy(nueva_cantidad_prestada,itoa(cantidad_prestada));
-            //    if (cantidad_prestada < 10) {
-                //    strcat(nueva_cantidad_prestada, " ");
-                //    strcat(nueva_cantidad_prestada, " ");
-                    //nueva_cantidad_prestada[0] = '0';
-                    //nueva_cantidad_prestada[1] = '0';
-                    //nueva_cantidad_prestada[2] = itoa(cantidad_prestada);
-            //    }
+               if (cantidad_prestada < 10) {
+                   strcat(nueva_cantidad_prestada, " ");
+                   strcat(nueva_cantidad_prestada, " ");
+                    nueva_cantidad_prestada[0] = '0';
+                    nueva_cantidad_prestada[1] = '0';
+                //    nueva_cantidad_prestada[2] = itoa(cantidad_prestada);
+               }
 
-            //    if (cantidad_prestada > 10) {
-            //        strcat(nueva_cantidad_prestada, " ");
+               if (cantidad_prestada > 10) {
+                   strcat(nueva_cantidad_prestada, " ");
 
-                    //nueva_cantidad_prestada[0] = '0';
-                    //nueva_cantidad_prestada[1] = '0';
-                    //nueva_cantidad_prestada[2] = itoa(cantidad_prestada);
-            //    }
+                    nueva_cantidad_prestada[0] = '0';
+                    nueva_cantidad_prestada[1] = '0';
+                //    nueva_cantidad_prestada[2] = itoa(cantidad_prestada);
+               }
                 // sprintf(respuesta.texto.datos_formulario, "%4s%2s%2s%40s%15s%3d%40s%4d%2d%2d", anio_prestamo, mes_prestamo, dia_prestamo, email_usuario_prestador, nombre_objeto,
                 // &cantidad_prestada, email_usuario_recibidor, &anio_devolucion, &mes_devolucion, &dia_devolucion);
                 //  sprintf(respuesta.texto.datos_formulario, "%8s%40s%15s%3d%40s%8s%1d",fecha_prestamo, email_usuario_prestador, nombre_objeto,
@@ -566,7 +569,7 @@ int main() {
                 //    sprintf(respuesta.texto.datos_formulario, "%s%s%s%d%s%s%d",fecha_prestamo, email_usuario_prestador, nombre_objeto,
                 //   &cantidad_prestada, email_usuario_recibidor, fecha_devolucion,&estado);
                 sprintf(respuesta.texto.datos_formulario, "%d-%s-%s-%s-%d-%s-%s-%d", prest->id,fecha_prestamo, email_usuario_prestador, nombre_objeto,
-                        cantidad_prestada, email_usuario_recibidor, fecha_devolucion, estado);
+                        prest->cantidad_prestada, email_usuario_recibidor, fecha_devolucion, estado);
 
                 printf("-----> Modificar prestamo <-----\n");
 
