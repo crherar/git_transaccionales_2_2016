@@ -20,7 +20,8 @@ gmon modpre.c
 #gmon modpre.inp
 gmon actpre.c
 #gmon eprest.inp
-
+gmon prepen.c
+gmon predev.c
 echo "****************************************** ";
 
 echo "*************** objetos ***************";

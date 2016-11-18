@@ -31,10 +31,10 @@ class procesospx:
     def eliminar_prestamo(self):
         return "delpre"
 
-    def prestamo_pendiente(self):
+    def marcar_prestamo_como_pendiente(self):
         return "prepen"
 
-    def prestamo_devuelto(self):
+    def marcar_prestamo_como_devuelto(self):
         return "predev"
 
     def ver_prestamos_pendientes(self):

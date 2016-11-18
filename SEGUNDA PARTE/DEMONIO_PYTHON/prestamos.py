@@ -53,6 +53,18 @@ class prestamos:
             print "la respueta tiene largo 0"
             return json.dumps({'cabecera':data["cabecera"],'datos':'02'})
 
+    def marcar_prestamo_como_pendiente(self,data):
+        self.id = data["datos"]["id_prestamo"]
+        respuesta = self.mtx.enviar(self.procpx.marcar_prestamo_como_pendiente(),self.codtx.marcar_prestamo_como_pendiente(),"00",str(self.id).ljust(5))
+        print respuesta
+        return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
+
+    def marcar_prestamo_como_devuelto(self,data):
+        self.id = data["datos"]["id_prestamo"]
+        respuesta = self.mtx.enviar(self.procpx.marcar_prestamo_como_devuelto(),self.codtx.marcar_prestamo_como_devuelto(),"00",str(self.id).ljust(5))
+        print respuesta
+        return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
+
     def actualizar_prestamo(self,data):
         self.id = data["datos"]["id_prestamo"]
         self.dia_prestamo = data["datos"]["dia_prestamo"]

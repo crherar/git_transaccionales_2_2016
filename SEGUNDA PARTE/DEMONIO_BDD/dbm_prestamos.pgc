@@ -139,6 +139,68 @@ Prestamo * actualizar_prestamo(char *fecha_prestamo ,int id_usuario_prestador,in
 }
 
 
+Prestamo * marcar_prestamo_como_devuelto(id_prestamo){
+        printf("inicio actualizar prestamo\n");
+	EXEC SQL BEGIN DECLARE SECTION;
+	Prestamo *SQL_output;
+
+	int SQL_id_prestamo;
+	EXEC SQL END DECLARE SECTION;
+
+	SQL_id_prestamo = id_prestamo;
+
+	SQL_output = (Prestamo*) malloc(sizeof(Prestamo));
+	memset(SQL_output, 0, sizeof(Prestamo));
+
+	printf("\n\nSQL_ID_PRESTAMO:%d\n\n", SQL_id_prestamo);
+
+		EXEC SQL UPDATE PRESTAMOS SET
+
+    estado = 1
+    WHERE id = :SQL_id_prestamo;
+
+	printf(sqlca.sqlerrm.sqlerrmc );
+
+	printf("\n");
+	SQL_output->verificador_error = sqlca.sqlcode;
+	printf("antes de hacer commit \n");
+
+    db_commit();
+	ASSERT(SQL_output);
+	return SQL_output;
+}
+
+Prestamo * marcar_prestamo_como_pendiente(id_prestamo){
+        printf("inicio actualizar prestamo\n");
+	EXEC SQL BEGIN DECLARE SECTION;
+	Prestamo *SQL_output;
+
+	int SQL_id_prestamo;
+	EXEC SQL END DECLARE SECTION;
+
+	SQL_id_prestamo = id_prestamo;
+
+	SQL_output = (Prestamo*) malloc(sizeof(Prestamo));
+	memset(SQL_output, 0, sizeof(Prestamo));
+
+	printf("\n\nSQL_ID_PRESTAMO:%d\n\n", SQL_id_prestamo);
+
+		EXEC SQL UPDATE PRESTAMOS SET
+
+    estado = 0
+    WHERE id = :SQL_id_prestamo;
+
+	printf(sqlca.sqlerrm.sqlerrmc );
+
+	printf("\n");
+	SQL_output->verificador_error = sqlca.sqlcode;
+	printf("antes de hacer commit \n");
+
+    db_commit();
+	ASSERT(SQL_output);
+	return SQL_output;
+}
+
 int eliminar_prestamo(int id_prestamo)
 {
 EXEC SQL BEGIN DECLARE SECTION;

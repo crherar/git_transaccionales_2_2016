@@ -31,10 +31,10 @@ class codigostx:
     def eliminar_prestamo(self):
         return "020509"
 
-    def prestamo_pendiente(self):
+    def marcar_prestamo_como_pendiente(self):
         return "020510"
 
-    def prestamo_devuelto(self):
+    def marcar_prestamo_como_devuelto(self):
         return "020511"
 
     def ver_prestamos_pendientes(self):

@@ -299,6 +299,41 @@ int main() {
               printf("************************** FIN Formulario 'actusr' **************************\n");
             }
 
+            else if (strcmp(formulario_actual, "actusr") == 0) {
+
+            printf("************************** Formulario 'actusr' **************************\n");
+
+            printf("-----> Actualizar usuario <-----\n");
+
+              memset(email,'\0',sizeof email);
+              memset(nombre,'\0',sizeof nombre);
+              memset(apellido,'\0',sizeof apellido);
+              memset(password,'\0',sizeof password);
+
+              sscanf(mensaje.texto.datos_formulario, "%20c%20c%40c%10c%5d", nombre, apellido, email,  password,&id_usuario);
+              printf("El email recibido desde regusr es: %s \n", email);
+
+              printf("El nombre recibido desde regusr es: %s \n", nombre);
+
+              printf("El apellido recibida desde regusr es: %s \n", apellido);
+
+              printf("La password recibida desde regusr es: %s \n", password);
+
+              printf("id usuario recibido para actualizar: %d\n", id_usuario);
+              usr = actualizar_usuario(email,nombre,apellido,password,id_usuario);
+
+              if (usr->verificador_error == 0) {
+                      printf("\n\nDENTRO VERF_ERR\n\n");
+                      strcpy(respuesta.texto.datos_formulario, "01");
+              } else {
+                  strcpy(respuesta.texto.datos_formulario, "02");
+              }
+
+              printf("************************** FIN Formulario 'actusr' **************************\n");
+            }
+
+
+
             else if (strcmp(formulario_actual, "delusr") == 0) {
                 printf("************************** Formulario 'delusr' **************************\n");
                 printf("-----> Eliminar usuario <-----\n");
@@ -467,6 +502,65 @@ int main() {
 
                 printf("************************** FIN Formulario 'actpre' **************************\n");
             }
+
+            else if (strcmp(formulario_actual, "predev") == 0) {
+                printf("************************** Formulario 'prepen' **************************\n");
+
+                printf("-----> Marcar prestamo como devuelto <-----\n");
+
+                printf("El mensaje recibido de %s es: %s \n", formulario_actual, mensaje.texto.datos_formulario);
+
+                memset(email_usuario_prestador, '\0', sizeof email_usuario_prestador);
+                memset(nombre_objeto, '\0', sizeof nombre_objeto);
+                memset(email_usuario_recibidor, '\0', sizeof email_usuario_recibidor);
+
+                sscanf(mensaje.texto.datos_formulario, "%d", &id_prestamo);
+
+                printf("La id del prestamo es: %d \n", id_prestamo);
+
+                prest = marcar_prestamo_como_devuelto(id_prestamo);
+
+                printf("La respuesta luego de marcar prestamo como devuelto es: %d \n", prest->verificador_error);
+
+                if (prest->verificador_error == 0) {
+                    strcpy(respuesta.texto.datos_formulario, "01");
+                } else {
+                    strcpy(respuesta.texto.datos_formulario, "02");
+                }
+
+
+                printf("************************** FIN Formulario 'predev' **************************\n");
+            }
+
+            else if (strcmp(formulario_actual, "prepen") == 0) {
+                printf("************************** Formulario 'prepen' **************************\n");
+
+                printf("-----> Marcar prestamo como pendiente <-----\n");
+
+                printf("El mensaje recibido de %s es: %s \n", formulario_actual, mensaje.texto.datos_formulario);
+
+                memset(email_usuario_prestador, '\0', sizeof email_usuario_prestador);
+                memset(nombre_objeto, '\0', sizeof nombre_objeto);
+                memset(email_usuario_recibidor, '\0', sizeof email_usuario_recibidor);
+
+                sscanf(mensaje.texto.datos_formulario, "%d", &id_prestamo);
+
+                printf("La id del prestamo es: %d \n", id_prestamo);
+
+                prest = marcar_prestamo_como_pendiente(id_prestamo);
+
+                printf("La respuesta luego de marcar prestamo como pendiente es: %d \n", prest->verificador_error);
+
+                if (prest->verificador_error == 0) {
+                    strcpy(respuesta.texto.datos_formulario, "01");
+                } else {
+                    strcpy(respuesta.texto.datos_formulario, "02");
+                }
+
+
+                printf("************************** FIN Formulario 'prepen' **************************\n");
+            }
+
             /* ********************************************************************************************************* */
             /* ********************************************************************************************************* */
 

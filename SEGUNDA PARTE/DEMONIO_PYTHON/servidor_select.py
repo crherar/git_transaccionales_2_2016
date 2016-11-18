@@ -167,6 +167,36 @@ while running:
                     s.close()
                     input.remove(s)
 
+            if formulario == "prepen":
+                prest = prestamos.prestamos()
+                print formulario
+                respuesta = prest.marcar_prestamo_como_pendiente(data)
+                del prest
+                if respuesta:
+                    print "respuesta 2: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
+            if formulario == "predev":
+                prest = prestamos.prestamos()
+                print formulario
+                respuesta = prest.marcar_prestamo_como_devuelto(data)
+                del prest
+                if respuesta:
+                    print "respuesta 2: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
             if formulario == "actpre":
                 prest = prestamos.prestamos()
                 print formulario
