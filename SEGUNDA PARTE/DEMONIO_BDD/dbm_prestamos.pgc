@@ -304,7 +304,7 @@ EXEC SQL SELECT string_agg(concat(cast(id as text),',',
                               nombreobjeto,',',
                               fecha_devolucion,',',
                               cantidad_prestada),'|') as datos
-															 INTO :SQL_output FROM misPrestamos WHERE id_usuario_prestador = :SQL_id_usuario_prestador;
+															 INTO :SQL_output FROM misPrestamos WHERE id_usuario_prestador = :SQL_id_usuario_prestador AND estado = 0;
 
 printf(sqlca.sqlerrm.sqlerrmc );
 printf("2 \n");
