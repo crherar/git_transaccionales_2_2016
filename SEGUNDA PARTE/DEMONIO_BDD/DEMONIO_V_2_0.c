@@ -366,7 +366,7 @@ int main() {
                 printf("El email del usuario recibidor es: %s \n", email_usuario_recibidor);
                 printf("Dia fecha de devolucion recibido es: %d \n", dia_devolucion);
                 printf("fecha devolucion recibida es: %s \n", fecha_devolucion);
-
+                printf("Nombre objeto recibido: %s \n",nombre_objeto);
                 id_usuario_prestador = get_id_usuario_por_email(email_usuario_prestador);
                 id_usuario_recibidor = get_id_usuario_por_email(email_usuario_recibidor);
 
@@ -515,58 +515,58 @@ int main() {
                 printf("email usuario prestador: %s \n", email_usuario_prestador);
                 printf("email_usuario_recibidor: %s \n", email_usuario_recibidor);
                 printf("fecha devolucion: %s \n", fecha_devolucion);
-                int largo_correo_prestador = strlen(email_usuario_prestador);
-                int num_espacios_correo_prestador = 40 - largo_correo_prestador;
-                int largo_correo_recibidor = strlen(email_usuario_recibidor);
-                int num_espacios_correo_recibidor = 40 - largo_correo_recibidor;
-                int largo_nombre_objeto = strlen(nombre_objeto);
-                int num_espacios_nombre_objeto = 15 - largo_nombre_objeto;
+                // int largo_correo_prestador = strlen(email_usuario_prestador);
+                // int num_espacios_correo_prestador = 40 - largo_correo_prestador;
+                // int largo_correo_recibidor = strlen(email_usuario_recibidor);
+                // int num_espacios_correo_recibidor = 40 - largo_correo_recibidor;
+                // int largo_nombre_objeto = strlen(nombre_objeto);
+                // int num_espacios_nombre_objeto = 15 - largo_nombre_objeto;
 
-                int i;
-                for (i = 0; i < num_espacios_correo_prestador; i++) {
-                    strcat(email_usuario_prestador, " ");
-                }
-
-                //int j;
-                for (i = 0; i < num_espacios_correo_recibidor; i++) {
-                    strcat(email_usuario_recibidor, " ");
-                }
-
-                for (i = 0; i < num_espacios_nombre_objeto; i++) {
-                    strcat(nombre_objeto, " ");
-                }
+                // int i;
+                // for (i = 0; i < num_espacios_correo_prestador; i++) {
+                //     strcat(email_usuario_prestador, " ");
+                // }
+                //
+                // //int j;
+                // for (i = 0; i < num_espacios_correo_recibidor; i++) {
+                //     strcat(email_usuario_recibidor, " ");
+                // }
+                //
+                // for (i = 0; i < num_espacios_nombre_objeto; i++) {
+                //     strcat(nombre_objeto, " ");
+                // }
                 // char espacios_correo_prestador[40]
                 //email@email.email => largo 17
                 //                         40
                 //email@email.email
-                printf("despues de los for \n");
-                char nueva_cantidad_prestada[3];
+            //    printf("despues de los for \n");
+            //    char nueva_cantidad_prestada[3];
                 //  memset(nueva_cantidad_prestada,' ',3);
-                sprintf(nueva_cantidad_prestada, "%d", cantidad_prestada);
+                //sprintf(nueva_cantidad_prestada, "%d", cantidad_prestada);
                 //  strcpy(nueva_cantidad_prestada,itoa(cantidad_prestada));
-                if (cantidad_prestada < 10) {
-                    strcat(nueva_cantidad_prestada, " ");
-                    strcat(nueva_cantidad_prestada, " ");
+            //    if (cantidad_prestada < 10) {
+                //    strcat(nueva_cantidad_prestada, " ");
+                //    strcat(nueva_cantidad_prestada, " ");
                     //nueva_cantidad_prestada[0] = '0';
                     //nueva_cantidad_prestada[1] = '0';
                     //nueva_cantidad_prestada[2] = itoa(cantidad_prestada);
-                }
+            //    }
 
-                if (cantidad_prestada > 10) {
-                    strcat(nueva_cantidad_prestada, " ");
+            //    if (cantidad_prestada > 10) {
+            //        strcat(nueva_cantidad_prestada, " ");
 
                     //nueva_cantidad_prestada[0] = '0';
                     //nueva_cantidad_prestada[1] = '0';
                     //nueva_cantidad_prestada[2] = itoa(cantidad_prestada);
-                }
+            //    }
                 // sprintf(respuesta.texto.datos_formulario, "%4s%2s%2s%40s%15s%3d%40s%4d%2d%2d", anio_prestamo, mes_prestamo, dia_prestamo, email_usuario_prestador, nombre_objeto,
                 // &cantidad_prestada, email_usuario_recibidor, &anio_devolucion, &mes_devolucion, &dia_devolucion);
                 //  sprintf(respuesta.texto.datos_formulario, "%8s%40s%15s%3d%40s%8s%1d",fecha_prestamo, email_usuario_prestador, nombre_objeto,
                 //  &cantidad_prestada, email_usuario_recibidor, fecha_devolucion,&estado);
                 //    sprintf(respuesta.texto.datos_formulario, "%s%s%s%d%s%s%d",fecha_prestamo, email_usuario_prestador, nombre_objeto,
                 //   &cantidad_prestada, email_usuario_recibidor, fecha_devolucion,&estado);
-                sprintf(respuesta.texto.datos_formulario, "%s%s%s%s%s%s%d", fecha_prestamo, email_usuario_prestador, nombre_objeto,
-                        nueva_cantidad_prestada, email_usuario_recibidor, fecha_devolucion, estado);
+                sprintf(respuesta.texto.datos_formulario, "%d-%s-%s-%s-%d-%s-%s-%d", prest->id,fecha_prestamo, email_usuario_prestador, nombre_objeto,
+                        cantidad_prestada, email_usuario_recibidor, fecha_devolucion, estado);
 
                 printf("-----> Modificar prestamo <-----\n");
 

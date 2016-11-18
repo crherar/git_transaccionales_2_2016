@@ -152,6 +152,51 @@ while running:
                     s.close()
                     input.remove(s)
 
+            if formulario == "modpre":
+                prest = prestamos.prestamos()
+                print formulario
+                respuesta = prest.get_prestamo_por_id(data)
+                del prest
+                if respuesta:
+                    print "respuesta 2: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
+            if formulario == "actpre":
+                prest = prestamos.prestamos()
+                print formulario
+                respuesta = prest.insertar_prestamo(data)
+                del prest
+                if respuesta:
+                    print "respuesta 2: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
+            if formulario == "delpre":
+                prest = prestamos.prestamos()
+                print formulario
+                respuesta = prest.insertar_prestamo(data)
+                del prest
+                if respuesta:
+                    print "respuesta 2: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
             if formulario == "actobj":
                 obj = objetos.objetos()
                 print formulario

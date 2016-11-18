@@ -21,7 +21,7 @@ $cabecera = array('formulario' => 'regpre',
 
 
 $correo_usuario_prestador = str_pad('matias@gmail.com',40);
-$objeto = str_pad('prendrive',15);
+$objeto = str_pad('lampara',15);
 $correo_usuario_recibidor = str_pad('diego@gmail.com',40);
 
 $prestamo = array('dia_prestamo'=>'13',

@@ -37,12 +37,21 @@ class prestamos:
         self.mes_devolucion = data["datos"]["mes_devolucion"]
         self.anio_devolucion = data["datos"]["anio_devolucion"]
         self.estado = data["datos"]["estado"]
-        self.mensaje = self.anio_prestamo+self.mes_prestamo+self.dia_prestamo+self.correo_usuario_prestador+self.objeto+self.cantidad+self.correo_usuario_recibidor+self.anio_devolucion+self.mes_devolucion+self.anio_devolucion
+        self.mensaje = self.anio_prestamo+self.mes_prestamo+self.dia_prestamo+self.correo_usuario_prestador+self.objeto+self.cantidad+self.correo_usuario_recibidor+self.anio_devolucion+self.mes_devolucion+self.anio_devolucion+self.estado
         respuesta = self.mtx.enviar(self.procpx.insertar_prestamo(),self.codtx.insertar_prestamo(),"00",self.mensaje)
         return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
 
-
-    
+    def get_prestamo_por_id(self,data):
+        print "get prestamo por id"
+        self.id = data["datos"]["id_prestamo"]
+        respuesta = self.mtx.enviar(self.procpx.get_prestamo_por_id(),self.codtx.get_prestamo_por_id(),"00",str(self.id).ljust(5)).split('-')
+        print respuesta
+        if len(respuesta) > 0:
+            print "respuesta"
+            return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.prestamos(respuesta)})
+        else:
+            print "la respueta tiene largo 0"
+            return json.dumps({'cabecera':data["cabecera"],'datos':'02'})
 
     def actualizar_prestamo(self,data):
         self.id = data["datos"]["id_prestamo"]

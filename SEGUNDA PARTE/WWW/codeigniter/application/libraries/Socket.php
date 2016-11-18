@@ -24,12 +24,26 @@ class Socket{
 
 	public function enviar($mensaje)
 	{
+		$socket = socket_create(AF_INET,SOCK_DGRAM,SOL_UDP);
+		$puerto = 3000;
+		$host = "127.0.0.1";
 		$respuesta = "";
-		if($this->conectar())
+		if(socket_connect($socket, $host, $puerto))
 		{
-			$sock_data = socket_write($this->socket, $mensaje, strlen($mensaje));
-			$respuesta =  socket_read($this->socket, 1024);
+			$sock_data = socket_write($socket, $mensaje, strlen($mensaje));
+			$respuesta =  socket_read($socket, 1024);
 		}
 		return $respuesta;
 	}
+
+	// public function enviar($mensaje)
+	// {
+	// 	$respuesta = "";
+	// 	if($this->conectar())
+	// 	{
+	// 		$sock_data = socket_write($this->socket, $mensaje, strlen($mensaje));
+	// 		$respuesta =  socket_read($this->socket, 1024);
+	// 	}
+	// 	return $respuesta;
+	// }
 }

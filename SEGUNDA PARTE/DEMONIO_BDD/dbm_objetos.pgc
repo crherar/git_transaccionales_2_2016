@@ -21,7 +21,7 @@ EXEC SQL END DECLARE SECTION;
 //memset(SQL_output, 0, sizeof(Usuario));
 strcpy(SQL_nombre_obj,nombre_objeto);
 
-EXEC SQL SELECT id INTO :SQL_output FROM objetos WHERE nombre = :SQL_nombre_obj;
+EXEC SQL SELECT id INTO :SQL_output FROM objetos WHERE nombre = RTRIM(:SQL_nombre_obj);
 db_commit();
 
 ASSERT(SQL_output);
@@ -138,7 +138,7 @@ while(!sqlca.sqlcode && resultset_pos < SQL_count){
         strcat(datos,nombre_obj);
         printf("3\n");
 
-        
+
 /*
         int tamanio = strlen(SQL_output[resultset_pos].nombre);
         if(tamanio <=15)

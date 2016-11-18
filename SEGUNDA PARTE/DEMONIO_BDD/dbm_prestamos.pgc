@@ -178,15 +178,17 @@ Prestamo *get_prestamo_por_id(int id)
    // SQL_output->estado = 0;
    // SQL_output->cantidad_prestada = 0;
 	EXEC SQL SELECT
-	to_char(prestamos.fecha,'yyyymmdd'),
+	prestamos.id,
+	to_char(prestamos.fecha,'yyyy/mm/dd'),
 	prestamos.id_usuario_prestador,
 	prestamos.id_usuario_recibidor,
 	prestamos.id_objeto,
 	prestamos.cantidad_prestada,
-	to_char(prestamos.fecha_devolucion,'yyyymmdd'),
+	to_char(prestamos.fecha_devolucion,'yyyy/mm/dd'),
 	prestamos.estado
 
 	INTO
+	:SQL_output->id,
 	:SQL_output->fecha_prestamo,
 	:SQL_output->id_usuario_prestador,
 	:SQL_output->id_usuario_recibidor,

@@ -104,7 +104,7 @@ printf("select id del email de usuario: %s \n",email);
 //SQL_output = (Usuario*) malloc(sizeof(Usuario));
 //memset(SQL_output, 0, sizeof(Usuario));
 strcpy(SQL_email,email);
-EXEC SQL SELECT id INTO :SQL_output FROM usuarios WHERE email = :SQL_email;
+EXEC SQL SELECT id INTO :SQL_output FROM usuarios WHERE email = RTRIM(:SQL_email);
 
 db_commit();
 
