@@ -72,5 +72,30 @@ var_dump($_SESSION["datos"]);
     <div>
     <a href="vista_registrar_objeto.php">Registrar objeto</a>
   </div>
+  <table>
+    <thead>
+      <th style="display: none;">id</th>
+      <th> N° </th>
+      <th> Objeto </th>
+      <th> Accion</th>
+    </thead>
+    <tbody>
+      <?php
+      $cont = 1;
+      $datos = $_SESSION["datos"];
+      foreach ($datos as $value) {
+      ?>
+      <tr>
+        <td id="td_pos_"<?php echo $cont; ?>></td>
+        <td id="td_idobjeto_"<?php echo $cont; ?>></td>
+        <td id="td_nombre_objeto_"<?php echo $cont; ?>></td>
+      </tr>
+
+      <?php
+        $cont++;
+      }
+       ?>
+    </tbody>
+  </table>
   </body>
 </html>
