@@ -1,6 +1,6 @@
 <?php
 session_start();
-echo "datos: \n";
+//echo "datos: \n";
 
 //$_SESSION["resp"] = "";
 //var_dump($_SESSION["resp"]);
@@ -68,7 +68,7 @@ echo "datos: \n";
     }
     ?>
          <div class = "col-md-4 remove-float center-block  big-top-space">
-           <form action="c_registrar_objeto.php" method="POST">
+           <form action="c_actualizar_objeto.php" method="POST">
              <div clas='form-group'>
                <label for="email">Nombre objeto:</label>
                <input class="form-control", type='text', required='true', name='nombre_objeto', placeholder='Nombre objeto',id='nombre_objeto' value=<?php echo 	$_SESSION["nombre_objeto"]; ?>>
@@ -78,5 +78,6 @@ echo "datos: \n";
              </div>
            </form>
          </div>
+
   </body>
 </html>

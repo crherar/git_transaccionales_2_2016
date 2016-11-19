@@ -12,14 +12,16 @@ if (socket_connect($socket, $host, $puerto))
 {
 echo "\nConexion Exitosa, puerto: " . $puerto;
 //$msg = "mensaje del CLIENTE 1 desde php!!!";
-$nombre_objeto = str_pad("computador3",15);
+$nombre_objeto = str_pad($_SESSION["nombre_objeto"],15);
 
 
 $cabecera = array('formulario' => 'actobj',
-'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
- 'email'=>$_SESSION["email"]);
+									'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
+									'email'=>$_SESSION["email"]);
 
-$objeto  = array('id_objeto' =>'77','nombre_objeto' => $nombre_objeto);
+$objeto  = array('id_objeto' =>$_SESSION["id_objeto"],
+									'nombre_objeto' => str_pad($_POST["nombre_objeto"],15));
+
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$objeto));//"loginn|".$email."-".$password;
 
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
@@ -27,7 +29,7 @@ $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$objeto));//"loginn|".$e
 $sock_data = socket_write($socket, $msg, strlen($msg));
 $resp = socket_read($socket, 1024);
 var_dump($resp);
-
+var_dump($_SESSION);
 
 /*
 $sock_data = socket_write($socket, "loginn", strlen("DIRPRG /home/alumnos/17957132/"));
