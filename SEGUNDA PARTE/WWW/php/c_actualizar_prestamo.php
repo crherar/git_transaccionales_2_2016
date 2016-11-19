@@ -15,9 +15,8 @@ echo "\nConexion Exitosa, puerto: " . $puerto."\n";
 
 
 $cabecera = array('formulario' => 'actpre',
-	'id_usuario_logueado' => 26,
-                  'email'=>'');
-
+									'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
+									 'email'=>$_SESSION["email"]);
 
 $correo_usuario_prestador = str_pad('matias@gmail.com',40);
 $objeto = str_pad('lampara',15);

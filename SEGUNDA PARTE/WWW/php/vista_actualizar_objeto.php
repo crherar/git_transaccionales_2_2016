@@ -1,7 +1,7 @@
 <?php
 session_start();
-//echo "datos: \n";
-//var_dump($_SESSION["datos"]);
+echo "datos: \n";
+
 //$_SESSION["resp"] = "";
 //var_dump($_SESSION["resp"]);
  ?>
@@ -15,7 +15,6 @@ session_start();
     <link rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
   <link rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css'>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/objetos.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/app.css">
     <title></title>
   </head>
@@ -59,58 +58,25 @@ session_start();
     </div><!-- /.container-fluid -->
     </nav>
     <?php
-      if($_SESSION["resp"] == "01")
-      {
+    if($_SESSION["resp"] == "02")
+    {
       ?>
-        <div class="alert alert-success">
-          Objecto registrado correctamente
-        </div>
-     <?php
-
+      <div class="alert alert-danger">
+        Error al guardar objeto
+      </div>
+      <?php
     }
     ?>
-
-    <div>
-    <a href="vista_registrar_objeto.php">Registrar objeto</a>
-  </div>
-  <table class="table table-bordered">
-    <thead>
-      <th >id</th>
-      <th> N° </th>
-      <th> Objeto </th>
-      <th> Accion</th>
-    </thead>
-    <tbody>
-      <?php
-      $cont = 1;
-      //echo "antes de llenar la tabla: \n";
-      //var_dump($_SESSION["datos"]);
-      $datos = $_SESSION["datos"];
-//style="display: none;"
-      foreach ($datos as $value) {
-      ?>
-      <tr>
-        <td id="td_pos_<?php echo $cont; ?>"><?php echo $cont; ?></td>
-        <td id="td_idobjeto_<?php echo $cont; ?>"><?php echo $value->id; ?></td>
-        <td id="td_nombre_objeto_<?php echo $cont; ?>"><?php echo $value->nombre_objeto; ?></td>
-        <td>
-          <ul>
-          <button id="btn_editar_<?php echo $cont; ?>"  onclick="get_objeto_editar(this)">Editar</button>
-          <!-- <button id="btn_devuelto_<?php echo $cont; ?>" onclick="marcarPrestamoDevuelto(this)">Devuelto</button> -->
-          <button id="btn_eliminar_<?php echo $cont; ?>"  onclick = "eliminarPrestamo(this)">Eliminar</button>
-        </ul>
-        <td>
-      </tr>
-
-      <?php
-        $cont++;
-      }
-       ?>
-    </tbody>
-  </table>
-  <?php
-  //unset($_SESSION["datos"]);
-unset($_SESSION["resp"]);
-   ?>
+         <div class = "col-md-4 remove-float center-block  big-top-space">
+           <form action="c_registrar_objeto.php" method="POST">
+             <div clas='form-group'>
+               <label for="email">Nombre objeto:</label>
+               <input class="form-control", type='text', required='true', name='nombre_objeto', placeholder='Nombre objeto',id='nombre_objeto' value=<?php echo 	$_SESSION["nombre_objeto"]; ?>>
+             </div>
+             <div class="top-space">
+               <input class="btn btn-info" type="submit" name="name" value="Guardar">
+             </div>
+           </form>
+         </div>
   </body>
 </html>

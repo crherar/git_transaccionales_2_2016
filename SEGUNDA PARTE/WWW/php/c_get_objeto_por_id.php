@@ -8,24 +8,33 @@ $email = "";
 $id_usuario = "";
 if (socket_connect($socket, $host, $puerto))
 {
-echo "\nConexion Exitosa, puerto: " . $puerto;
+//echo "\nConexion Exitosa, puerto: " . $puerto;
 //$msg = "mensaje del CLIENTE 1 desde php!!!";
 
-
+//echo "\n en c_get_objeto_por_id \n";
 $cabecera = array('formulario' => 'modobj',
-									'id_usuario_logueado' => 26,
-								   'email'=>'');
+									'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
+								   'email'=>$_SESSION["email"]);
 
-$objeto = array('id_objeto'=>77,'nombre_objeto'=>'');
+$objeto = array('id_objeto'=>$_POST["id_objeto"],'nombre_objeto'=>'');
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$objeto));//"loginn|".$email."-".$password;
 
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
-echo "ENVIANDO AL PYTHON: \n";
-echo $msg."\n";
+//echo "ENVIANDO AL PYTHON: \n";
+//echo $msg."\n";
 $sock_data = socket_write($socket, $msg, strlen($msg));
-echo "RESPUESTA DEL PYTHON: \n";
-$resp = socket_read($socket, 1024);
-var_dump($resp);
+//echo "RESPUESTA DEL PYTHON: \n";
+$resp = json_decode(socket_read($socket, 1024));
+
+if($resp->datos !="02")
+	{
+		$_SESSION["nombre_objeto"] = $resp->datos->nombre;
+		echo $resp->datos->nombre;
+	//header("location: vista_actualizar_objeto.php");
+}
+if($res->datos == "02")
+	echo "02";
+//var_dump($resp->datos->nombre);
 
 
 /*

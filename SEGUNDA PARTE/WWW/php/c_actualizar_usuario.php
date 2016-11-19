@@ -20,8 +20,8 @@ $email = str_pad("usuario123@gmail.com",40);
 $password = str_pad("123",10);
 
 $cabecera = array('formulario' => 'actusr',
-									'id_usuario_logueado' => 9,
-								  'email'=>'');
+									'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
+									 'email'=>$_SESSION["email"]);
 
 $usuario  = array('nombre' => $nombre,
 									'apellido' => $apellido,

@@ -27,7 +27,7 @@ $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>''));//"loginn|".$email.
 
 $sock_data = socket_write($socket, $msg, strlen($msg));
 $resp = socket_read($socket, 1024);
-var_dump($resp->datos);
+var_dump(json_decode($resp)->datos);
 //var_dump((array)$resp->datos);
 
 /*

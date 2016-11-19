@@ -33,7 +33,7 @@ class objs_json:
                 print "\n"
                 obj = arr[i].split(',')
                 #if len(prest) > 0:
-                datos.append({"id":obj[0],"nombre_objeto":obj[1]})
+                #datos.append({"id":obj[0],"nombre_objeto":obj[1]})
                 datos.append({"id":obj[0],"nombre_objeto":obj[1]})
                 #print prest
                 #print "\n"

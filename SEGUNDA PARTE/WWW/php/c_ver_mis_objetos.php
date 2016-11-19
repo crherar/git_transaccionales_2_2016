@@ -14,7 +14,7 @@ echo "\nConexion Exitosa, puerto: " . $puerto;
 $nombre_objeto = str_pad("computador2",15);
 
 
-$cabecera = array('formulario' => 'cbxobj',
+$cabecera = array('formulario' => 'verobj',
 									'id_usuario_logueado' => 	$_SESSION["id_usuario_logueado"],
 								  'email'=>	$_SESSION["email"]);
 
@@ -24,19 +24,13 @@ var_dump($msg);
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
 
 $sock_data = socket_write($socket, $msg, strlen($msg));
-$resp = json_decode(socket_read($socket, 1024));
+$resp = json_decode(socket_read($socket, 10000));
 //var_dump($resp);
-echo "\n";
-echo "\n";
-echo "\n";
+
 //echo "AOSODSPODPSOPDOS";
-echo "\n";
-echo "\n";
-echo "\n";
-var_dump($_SESSION);
-echo "\n";
-echo "\n";
-echo "\n";
+
+//var_dump($_SESSION);
+ 
 $_SESSION["datos"] = $resp->datos;
 
 header("location: vista_administrar_mis_objetos.php");

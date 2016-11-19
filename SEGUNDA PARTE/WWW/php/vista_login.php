@@ -15,6 +15,12 @@ session_start();
     <link rel="stylesheet" type="text/css" href="../css/app.css">
     <script type="text/javascript"  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript">
+function base_url()
+{
+  localStorage.setItem('base_url','http://200.14.84.235/~17957132/www_transaccionales_2_2016/');
+}
+</script>
+<script type="text/javascript">
 function WebSocketTest()
      {
         if ("WebSocket" in window)
@@ -63,7 +69,7 @@ function WebSocketTest()
      }
 </script>
   </head>
-  <body>
+  <body onload="base_url()">
     <?php
       if($_SESSION["resp"] == "02")
       {
