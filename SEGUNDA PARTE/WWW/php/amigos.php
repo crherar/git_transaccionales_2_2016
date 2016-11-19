@@ -1,7 +1,6 @@
 <?php
-/*
-*http://www.php.net/manual/en/ref.sockets.php
-*/
+session_start();
+
 
 $host = "127.0.0.1";
 

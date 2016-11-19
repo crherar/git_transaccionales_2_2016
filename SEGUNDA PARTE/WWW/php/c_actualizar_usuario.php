@@ -1,4 +1,5 @@
 <?php
+session_start();
 /*
 *http://www.php.net/manual/en/ref.sockets.php
 */

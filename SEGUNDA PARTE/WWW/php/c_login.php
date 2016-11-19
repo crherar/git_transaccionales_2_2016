@@ -1,9 +1,6 @@
 <?php
 session_start();
-/*
-*http://www.php.net/manual/en/ref.sockets.php
-*/
-
+ 
 $host = "127.0.0.1";
 
 $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
