@@ -7,5 +7,6 @@ Prestamo * actualizar_prestamo(char *fecha_prestamo ,int id_usuario_prestador,in
 Prestamo * marcar_prestamo_como_devuelto(id_prestamo);
 Prestamo * marcar_prestamo_como_pendiente(id_prestamo);
 char *get_prestamos_pendientes(int id_usuario_prestador);
+char *get_prestamos_devueltos(int id_usuario_prestador);
 int eliminar_prestamo(int id_prestamo);
 #endif

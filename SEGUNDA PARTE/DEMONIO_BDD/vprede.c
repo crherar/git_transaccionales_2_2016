@@ -76,7 +76,7 @@ int valor_recibido = msgrcv (idcola, &respuesta, 2000, idproceso, 0);
 //tx_out->len = 2;
 //memset(tx_out->datos,' ',2);
 //sscanf(respuesta.texto.datos_formulario,"%2s",tx_out->datos);
-sprintf(tx_out->datos,"%s", respuesta.texto.datos_formulario);
+tx_out->len = sprintf(tx_out->datos,"%s", respuesta.texto.datos_formulario);
 
 
 return;

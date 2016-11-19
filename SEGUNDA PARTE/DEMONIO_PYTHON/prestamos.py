@@ -90,6 +90,11 @@ class prestamos:
         #print "r: "+respuesta
         return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.prestamos(respuesta)})
 
+    def ver_prestamos_devueltos(self,data):
+        self.id_usuario_prestador = data["cabecera"]["id_usuario_logueado"]
+        respuesta = self.mtx.enviar(self.procpx.ver_prestamos_devueltos(),self.codtx.ver_prestamos_devueltos(),"00",str(self.id_usuario_prestador))
+        print "r: "+respuesta
+        return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.prestamos(respuesta)})
 
     def eliminar_prestamo(self,data):
         self.id = data["datos"]["id_prestamo"]

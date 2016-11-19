@@ -227,6 +227,21 @@ while running:
                     s.close()
                     input.remove(s)
 
+            if formulario == "vprede":
+                prest = prestamos.prestamos()
+                print formulario
+                respuesta = prest.ver_prestamos_devueltos(data)
+                del prest
+                if respuesta:
+                    print "respuesta al php: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
             if formulario == "delpre":
                 prest = prestamos.prestamos()
                 print formulario
