@@ -34,9 +34,11 @@ $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$logueo));
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
 
 $sock_data = socket_write($socket, $msg, strlen($msg));
-$resp = socket_read($socket, 1024);
-var_dump($resp);
+$resp = json_decode(socket_read($socket, 1024));
 
+var_dump($resp);
+echo "id:".$resp->cabecera->id_usuario_logueado."\n";
+echo "email:".$resp->cabecera->email."\n";
 
 /*
 $sock_data = socket_write($socket, "loginn", strlen("DIRPRG /home/alumnos/17957132/"));

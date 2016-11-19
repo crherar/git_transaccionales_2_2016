@@ -1,9 +1,19 @@
+<?php
+session_start();
+//$_SESSION["resp"] = "";
+//var_dump($_SESSION["resp"]);
+ ?>
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
-  <link rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css'>
-<link rel="stylesheet" type="text/css" href="../css/app.css">
+    <link rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css'>
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
+    <script type="text/javascript"  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 function WebSocketTest()
      {
@@ -54,8 +64,18 @@ function WebSocketTest()
 </script>
   </head>
   <body>
+    <?php
+      if($_SESSION["resp"] == "02")
+      {
+      ?>
+        <div class="alert alert-danger">
+          Usuario o contraseña incorrecto
+        </div>
+     <?php
+     $_SESSION["resp"] = "";
+   } ?>
     <div class = "col-md-4 remove-float center-block  big-top-space">
-      <form action='login.php', method='POST'>
+      <form action='c_login.php', method='POST'>
         <div clas='form-group'>
           <label for="email">Email</label>
           <input class="form-control", type='text', required='true', name='email', placeholder='email',id='email'>

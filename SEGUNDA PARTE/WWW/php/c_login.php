@@ -1,4 +1,5 @@
 <?php
+session_start();
 /*
 *http://www.php.net/manual/en/ref.sockets.php
 */
@@ -28,17 +29,27 @@ $password = str_pad($_POST["password"],10);
 
 $logueo  = array('email' => $email,
 									'password' => $password);
-var_dump($logueo);
+//var_dump($logueo);
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$logueo));
 //$msg = "loginn|".$email."-".$password;
 
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
 
 $sock_data = socket_write($socket, $msg, strlen($msg));
-$resp = socket_read($socket, 1024);
-var_dump($resp);
+$resp = json_decode(socket_read($socket, 1024));
+//var_dump($resp);
+if($resp->datos == "02")
+{
+$_SESSION["resp"] = "02";
+header("location: vista_login.php");
+}
+else
+{
+	$_SESSION["id_usuario_logueado"] = $resp->cabecera->id_usuario_logueado;
+	$_SESSION["email"] = $resp->cabecera->email;
 
-
+	header("location: vista_principal.php");
+}
 /*
 $sock_data = socket_write($socket, "loginn", strlen("DIRPRG /home/alumnos/17957132/"));
 $resp = socket_read($socket, 1024);
@@ -55,4 +66,5 @@ else
 	echo "\nLa conexion TCP no se pudo realizar, puerto: ".$puerto;
 }
 socket_close($socket);
+
 ?>
