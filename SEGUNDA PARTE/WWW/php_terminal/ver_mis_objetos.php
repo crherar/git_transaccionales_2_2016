@@ -17,7 +17,7 @@ $nombre_objeto = str_pad("computador2",15);
 
 
 $cabecera = array('formulario' => 'cbxobj',
-									'id_usuario_logueado' => 8,
+									'id_usuario_logueado' => 27,
 								  'email'=>'');
 
 //$objeto  = array('nombre_objeto' => $nombre_objeto);
@@ -26,9 +26,9 @@ $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>''));//"loginn|".$email.
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
 
 $sock_data = socket_write($socket, $msg, strlen($msg));
-$resp = socket_read($socket, 1024);
-var_dump(json_decode($resp));
-
+$resp = json_decode(socket_read($socket, 1024));
+var_dump($resp);
+var_dump((array)$resp->datos);
 
 /*
 $sock_data = socket_write($socket, "loginn", strlen("DIRPRG /home/alumnos/17957132/"));

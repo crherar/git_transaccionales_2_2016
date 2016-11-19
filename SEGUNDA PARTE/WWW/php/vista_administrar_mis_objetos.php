@@ -1,5 +1,7 @@
 <?php
 session_start();
+echo "datos: \n";
+var_dump($_SESSION["datos"]);
 //$_SESSION["resp"] = "";
 //var_dump($_SESSION["resp"]);
  ?>
@@ -52,7 +54,23 @@ session_start();
               </ul>
             </li>
           </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+    </nav>
+    <?php
+      if($_SESSION["resp"] == "01")
+      {
+      ?>
+        <div class="alert alert-success">
+          Objecto registrado correctamente
+        </div>
+     <?php
+     $_SESSION["datos"] = "";
+    }
+    ?>
 
-          <?php echo $_SESSION["datos"] ?>
+    <div>
+    <a href="vista_registrar_objeto.php">Registrar objeto</a>
+  </div>
   </body>
 </html>

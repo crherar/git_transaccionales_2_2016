@@ -10,12 +10,12 @@ if (socket_connect($socket, $host, $puerto))
 {
 echo "\nConexion Exitosa, puerto: " . $puerto;
 //$msg = "mensaje del CLIENTE 1 desde php!!!";
-$nombre_objeto = str_pad("computador2",15);
+$nombre_objeto = str_pad($_POST["nombre_objeto"],15);
 
 
 $cabecera = array('formulario' => 'regobj',
-									'id_usuario_logueado' => 26,
-								  'email'=>'');
+									'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
+								  'email'=>$_SESSION["email"]);
 
 $objeto  = array('nombre_objeto' => $nombre_objeto);
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$objeto));//"loginn|".$email."-".$password;
@@ -23,8 +23,19 @@ $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$objeto));//"loginn|".$e
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
 
 $sock_data = socket_write($socket, $msg, strlen($msg));
-$resp = socket_read($socket, 1024);
-var_dump($resp);
+$resp = json_decode(socket_read($socket, 1024));
+$_SESSION["datos"] = $resp->datos;
+if($resp->datos == "01")
+	{
+	$_SESSION["resp"] = "01";
+	header("location: c_ver_mis_objetos.php");
+	}
+if($resp->datos == "02")
+	{
+		$_SESSION["resp"] = "02";
+	header("location: vista_registrar_objeto.php");
+}
+//var_dump($resp);
 
 
 /*

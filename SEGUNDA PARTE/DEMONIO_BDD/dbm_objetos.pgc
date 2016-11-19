@@ -108,7 +108,7 @@ SQL_output = (Objeto*) malloc(sizeof(Objeto) * (SQL_count + 1));
 
 
 EXEC SQL DECLARE RESULT_SET_CB CURSOR FOR SELECT nombre
-FROM objetos  ORDER BY nombre asc;
+FROM objetos where id_usuario_dueno = :SQL_id_usuario_dueno  ORDER BY nombre asc;
 EXEC SQL OPEN RESULT_SET_CB;
 
 int resultset_pos = 0;

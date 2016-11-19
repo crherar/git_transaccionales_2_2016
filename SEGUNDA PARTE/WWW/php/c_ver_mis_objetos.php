@@ -1,7 +1,5 @@
 <?php
-/*
-*http://www.php.net/manual/en/ref.sockets.php
-*/
+session_start();
 
 $host = "127.0.0.1";
 
@@ -22,12 +20,14 @@ $cabecera = array('formulario' => 'cbxobj',
 
 //$objeto  = array('nombre_objeto' => $nombre_objeto);
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>''));//"loginn|".$email."-".$password;
-
+var_dump($msg);
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
 
 $sock_data = socket_write($socket, $msg, strlen($msg));
-$resp = socket_read($socket, 1024);
-var_dump(json_decode($resp));
+$resp = json_decode(socket_read($socket, 1024));
+$_SESSION["datos"] = $resp->datos;
+header("location: vista_administrar_mis_objetos.php");
+//var_dump(json_decode($resp));
 
 
 /*
