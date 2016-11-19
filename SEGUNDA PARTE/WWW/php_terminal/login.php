@@ -13,22 +13,21 @@ if (socket_connect($socket, $host, $puerto))
 {
 echo "\nConexion Exitosa, puerto: " . $puerto;
 //$msg = "mensaje del CLIENTE 1 desde php!!!";
-echo "hola \n";
-echo $_POST["email"];
-echo $_POST["password"];
-echo "\n";
+//echo $_POST["email"];
+//echo $_POST["password"];
+
 $cabecera = array('formulario' => 'loginn',
 									'id_usuario_logueado' => 0,
 								  'email'=>'');
 
-$email = str_pad($_POST["email"],40);
-$password = str_pad($_POST["password"],10);
+$email = str_pad("matias@gmail.com",40);
+$password = str_pad("123",10);
 // $email = str_pad("matias@gmail.com",40);
 // $password = str_pad("123",10);
 
 $logueo  = array('email' => $email,
 									'password' => $password);
-var_dump($logueo);
+
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$logueo));
 //$msg = "loginn|".$email."-".$password;
 

@@ -13,24 +13,20 @@ if (socket_connect($socket, $host, $puerto))
 {
 echo "\nConexion Exitosa, puerto: " . $puerto;
 //$msg = "mensaje del CLIENTE 1 desde php!!!";
-echo "hola \n";
-echo $_POST["email"];
-echo $_POST["password"];
-echo "\n";
-$cabecera = array('formulario' => 'loginn',
-									'id_usuario_logueado' => 0,
+$nombre = str_pad("usuario",20);
+$apellido = str_pad("apellido123",20);
+$email = str_pad("usuario123@gmail.com",40);
+$password = str_pad("123",10);
+
+$cabecera = array('formulario' => 'actusr',
+									'id_usuario_logueado' => 9,
 								  'email'=>'');
 
-$email = str_pad($_POST["email"],40);
-$password = str_pad($_POST["password"],10);
-// $email = str_pad("matias@gmail.com",40);
-// $password = str_pad("123",10);
-
-$logueo  = array('email' => $email,
+$usuario  = array('nombre' => $nombre,
+									'apellido' => $apellido,
+									'email' => $email,
 									'password' => $password);
-var_dump($logueo);
-$msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$logueo));
-//$msg = "loginn|".$email."-".$password;
+$msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$usuario));//"loginn|".$email."-".$password;
 
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
 
