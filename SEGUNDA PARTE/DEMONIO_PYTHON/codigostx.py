@@ -59,7 +59,7 @@ class codigostx:
     def ver_mis_objetos_combobox(self):
         return "020518"
 
-    def ver_mis_objetos(self):
+    def ver_mis_objetos_tabla(self):
         return "020519"
 
     #AMIGOS

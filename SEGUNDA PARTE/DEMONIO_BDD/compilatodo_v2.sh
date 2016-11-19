@@ -32,6 +32,8 @@ echo "*************** objetos ***************";
 gmon regobj.c
 gmon modobj.c
 gmon actobj.c
+gmon cbxobj.c
+gmon verobj.c
 #gmon delobj.inp
 gmon delobj.c
 #gmon cdeobj.inp

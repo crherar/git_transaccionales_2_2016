@@ -59,7 +59,7 @@ class procesospx:
     def ver_mis_objetos_combobox(self):
         return "cbxobj"
 
-    def ver_mis_objetos(self):
+    def ver_mis_objetos_tabla(self):
         return "verobj"
 
     #AMIGOS

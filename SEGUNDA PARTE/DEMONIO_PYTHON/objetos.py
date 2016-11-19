@@ -53,3 +53,13 @@ class objetos:
         #return json.dumps({'cabecera':[data["cabecera"]["formulario"],data["cabecera"]["id_usuario_logueado"]],'datos':respuesta})
         print data["cabecera"]
         return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
+
+    def ver_mis_objetos_tabla(self,data):
+        self.id_usuario_dueno = data["cabecera"]["id_usuario_logueado"]
+        respuesta = self.mtx.enviar(self.procpx.ver_mis_objetos_tabla(),self.codtx.ver_mis_objetos_tabla(),"00",str(self.id_usuario_dueno).ljust(5))
+        print respuesta
+        #return json.dumps({'cabecera':[data["cabecera"]["formulario"],data["cabecera"]["id_usuario_logueado"]],'datos':respuesta})[""]
+        #print data["cabecera"]
+        print "\n"
+        #print json.dumps(respuesta)
+        return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.objetos(respuesta)})

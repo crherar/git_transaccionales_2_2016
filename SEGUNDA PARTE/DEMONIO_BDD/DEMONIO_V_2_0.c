@@ -894,19 +894,19 @@ int main() {
                 char mis_objetos[170] = "";
                 int pagina;
 
-                sscanf(mensaje.texto.datos_formulario, "%2d", &pagina);
-                strcpy(mis_objetos, get_listado_objetos_combobox(pagina));
+                sscanf(mensaje.texto.datos_formulario, "%d", &id_usuario_logueado);
+                //strcpy(mis_objetos, get_listado_objetos_tabla(id_usuario_dueno));
 
-                printf("Los objetos son: %s \n", mis_objetos);
+                printf("Los objetos son: %s \n", get_listado_objetos_tabla(id_usuario_logueado));
                 printf("despues de obtener los objetos \n");
 
-                if (strcmp(mis_objetos, "no hay datos") == 0) { //char error[153];
+        //        if (strcmp(mis_objetos, "no hay datos") == 0) { //char error[153];
                     //respuesta.texto.datos_formulario[151] = '0'
                     //respuesta.texto.datos_formulario[152] = '1';
-                    strcpy(respuesta.texto.datos_formulario, "01");
-                } else {
-                    strcpy(respuesta.texto.datos_formulario, mis_objetos);
-                }
+        //            strcpy(respuesta.texto.datos_formulario, "01");
+        //        } else {
+                    strcpy(respuesta.texto.datos_formulario, get_listado_objetos_tabla(id_usuario_logueado));
+                //}
                 //printf("tamaño de obj: %d \n", sizeof (obj));
                 //printf("nombre objeto [0]: %s \n",obj[0].nombre);
                 //printf("nombre objeto [1]: %s \n",obj[1].nombre);

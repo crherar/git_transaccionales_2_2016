@@ -94,7 +94,7 @@ session_start();
         <td>
           <ul>
           <button id="btn_editar_<?php echo $cont; ?>"  onclick="editarPrestamo(this)">Editar</button>
-          <button id="btn_devuelto_<?php echo $cont; ?>" onclick="marcarPrestamoDevuelto(this)">Devuelto</button>
+          <!-- <button id="btn_devuelto_<?php echo $cont; ?>" onclick="marcarPrestamoDevuelto(this)">Devuelto</button> -->
           <button id="btn_eliminar_<?php echo $cont; ?>"  onclick = "eliminarPrestamo(this)">Eliminar</button>
         </ul>
         <td>

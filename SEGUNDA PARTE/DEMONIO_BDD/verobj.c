@@ -22,10 +22,10 @@ struct monitor_demonio
 {
 long mtype;
 char formulario_actual[7];
-	struct 
+	struct
 	{
 	  int idproceso;
-          
+
 	  char datos_formulario[2000];
 	} texto;
 } mensaje, respuesta;
@@ -86,8 +86,8 @@ printf("largo de la respuesta recibida %d \n",sizeof(respuesta.texto.datos_formu
 
 //if(strcmp(respuesta.texto.datos_formulario,"01") == 0)
 //aci[7] = '0021121';
-tx_out->len = 2;
-memset(tx_out->datos,' ',2);
+//tx_out->len = 2;
+//memset(tx_out->datos,' ',2);
 
 //sscanf(respuesta.texto.datos_formulario,"%2s",tx_out->datos);
 tx_out->len= sprintf(tx_out->datos,"%s", respuesta.texto.datos_formulario);

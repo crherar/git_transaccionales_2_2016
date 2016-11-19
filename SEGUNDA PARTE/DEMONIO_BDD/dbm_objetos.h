@@ -8,6 +8,7 @@ int get_id_objeto(char *nombre_objeto);
 Objeto *insertar_objeto(int id_usuario_dueno,char *nombre_objeto);
 char *get_listado_objetos(int pagina);
 char *get_listado_objetos_combobox(int id_usuario_dueno);
+char *get_listado_objetos_tabla(int id_usuario_dueno);
 Objeto *actualizar_objeto(char *nombre_objeto,int id_objeto);
 int borrar_objeto(int id_objeto);
 char *get_nombre_objeto_por_id(int id);

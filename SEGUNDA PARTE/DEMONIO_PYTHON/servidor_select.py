@@ -302,6 +302,21 @@ while running:
                     s.close()
                     input.remove(s)
 
+            if formulario == "verobj":
+                obj = objetos.objetos()
+                print formulario
+                respuesta = obj.ver_mis_objetos_tabla(data)
+                del obj
+                if respuesta:
+                    print "respuesta al php: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
             if formulario == "verami":
                 amig = amigos.amigos()
                 print formulario
