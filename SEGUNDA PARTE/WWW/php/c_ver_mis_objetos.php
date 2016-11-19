@@ -25,7 +25,20 @@ var_dump($msg);
 
 $sock_data = socket_write($socket, $msg, strlen($msg));
 $resp = json_decode(socket_read($socket, 1024));
+//var_dump($resp);
+echo "\n";
+echo "\n";
+echo "\n";
+//echo "AOSODSPODPSOPDOS";
+echo "\n";
+echo "\n";
+echo "\n";
+var_dump($_SESSION);
+echo "\n";
+echo "\n";
+echo "\n";
 $_SESSION["datos"] = $resp->datos;
+
 header("location: vista_administrar_mis_objetos.php");
 //var_dump(json_decode($resp));
 

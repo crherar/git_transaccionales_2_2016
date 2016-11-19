@@ -1,7 +1,7 @@
 <?php
 session_start();
-echo "datos: \n";
-var_dump($_SESSION["datos"]);
+//echo "datos: \n";
+//var_dump($_SESSION["datos"]);
 //$_SESSION["resp"] = "";
 //var_dump($_SESSION["resp"]);
  ?>
@@ -65,7 +65,7 @@ var_dump($_SESSION["datos"]);
           Objecto registrado correctamente
         </div>
      <?php
-     $_SESSION["datos"] = "";
+
     }
     ?>
 
@@ -82,13 +82,22 @@ var_dump($_SESSION["datos"]);
     <tbody>
       <?php
       $cont = 1;
+      //echo "antes de llenar la tabla: \n";
+      //var_dump($_SESSION["datos"]);
       $datos = $_SESSION["datos"];
       foreach ($datos as $value) {
       ?>
       <tr>
-        <td id="td_pos_"<?php echo $cont; ?>></td>
+        <td id="td_pos_"<?php echo $cont; ?>><?php echo $cont; ?></td>
         <td id="td_idobjeto_"<?php echo $cont; ?>></td>
-        <td id="td_nombre_objeto_"<?php echo $cont; ?>></td>
+        <td id="td_nombre_objeto_"<?php echo $cont; ?>><?php echo $value; ?></td>
+        <td>
+          <ul>
+          <button id="btn_editar_<?php echo $cont; ?>"  onclick="editarPrestamo(this)">Editar</button>
+          <button id="btn_devuelto_<?php echo $cont; ?>" onclick="marcarPrestamoDevuelto(this)">Devuelto</button>
+          <button id="btn_eliminar_<?php echo $cont; ?>"  onclick = "eliminarPrestamo(this)">Eliminar</button>
+        </ul>
+        <td>
       </tr>
 
       <?php
@@ -97,5 +106,9 @@ var_dump($_SESSION["datos"]);
        ?>
     </tbody>
   </table>
+  <?php
+  //unset($_SESSION["datos"]);
+unset($_SESSION["resp"]);
+   ?>
   </body>
 </html>
