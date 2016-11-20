@@ -53,6 +53,9 @@ function base_url()
         <div class="top-space">
           <input class="btn btn-info" type="submit" name="name" value="Iniciar sesión">
         </div>
+        <div>
+          <a href="vista_registrar_usuario.php">Registrarse</a>
+        </div>
       </form>
     </div>
     <?php
