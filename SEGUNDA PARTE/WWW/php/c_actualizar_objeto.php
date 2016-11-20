@@ -27,9 +27,19 @@ $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$objeto));//"loginn|".$e
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
 
 $sock_data = socket_write($socket, $msg, strlen($msg));
-$resp = socket_read($socket, 1024);
-var_dump($resp);
-var_dump($_SESSION);
+$resp = json_decode(socket_read($socket, 1024));
+if($resp->datos == "01")
+	{
+	$_SESSION["resp"] = "Objeto actualizado correctamente";
+	header("location: c_ver_mis_objetos.php");
+	}
+if($resp->datos == "02")
+	{
+		$_SESSION["resp"] = "Error al actualizar";
+	header("location: vista_actualizar_objeto.php");
+}
+//var_dump($resp);
+//var_dump($_SESSION);
 
 /*
 $sock_data = socket_write($socket, "loginn", strlen("DIRPRG /home/alumnos/17957132/"));

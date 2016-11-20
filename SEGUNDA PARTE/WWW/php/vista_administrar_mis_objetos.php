@@ -59,14 +59,14 @@ session_start();
     </div><!-- /.container-fluid -->
     </nav>
     <?php
-      if($_SESSION["resp"] == "01")
+      if(isset($_SESSION["resp"]))
       {
       ?>
         <div class="alert alert-success">
-          Objecto registrado correctamente
+          <?php echo $_SESSION["resp"]; ?>
         </div>
      <?php
-
+     unset($_SESSION["resp"]);
     }
     ?>
 
@@ -75,7 +75,7 @@ session_start();
   </div>
   <table class="table table-bordered">
     <thead>
-      <th >id</th>
+      <th style="display: none;">id</th>
       <th> N° </th>
       <th> Objeto </th>
       <th> Accion</th>
@@ -90,8 +90,8 @@ session_start();
       foreach ($datos as $value) {
       ?>
       <tr>
+        <td style="display: none;" id="td_idobjeto_<?php echo $cont; ?>"><?php echo $value->id; ?></td>
         <td id="td_pos_<?php echo $cont; ?>"><?php echo $cont; ?></td>
-        <td id="td_idobjeto_<?php echo $cont; ?>"><?php echo $value->id; ?></td>
         <td id="td_nombre_objeto_<?php echo $cont; ?>"><?php echo $value->nombre_objeto; ?></td>
         <td>
           <ul>

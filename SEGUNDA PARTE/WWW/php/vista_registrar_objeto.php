@@ -46,11 +46,11 @@ echo "datos: \n";
     </div><!-- /.container-fluid -->
     </nav>
     <?php
-    if($_SESSION["resp"] == "02")
+    if(isset($_SESSION["resp"]))
     {
       ?>
       <div class="alert alert-danger">
-        Error al guardar objeto
+      <?php echo $_SESSION["resp"]; ?>
       </div>
       <?php
     }
