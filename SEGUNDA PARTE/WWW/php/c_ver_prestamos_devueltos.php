@@ -21,16 +21,19 @@ $cabecera = array('formulario' => 'vprede',
 									'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
 									 'email'=>$_SESSION["email"]);
 
-$prestamo = array('id_prestamo'=>72);
-$msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$prestamo));//"loginn|".$email."-".$password;
+
+$msg = json_encode(array('cabecera'=>$cabecera,'datos'=>''));//"loginn|".$email."-".$password;
 
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
 echo "ENVIANDO AL PYTHON: \n";
 echo $msg."\n";
 $sock_data = socket_write($socket, $msg, strlen($msg));
 echo "RESPUESTA DEL PYTHON: \n";
-$resp = socket_read($socket, 1024);
-var_dump($resp);
+$resp = json_decode(socket_read($socket, 16384));
+$_SESSION["datos"] = $resp->datos;
+//var_dump($resp);
+header("location: vista_ver_prestamos_devueltos.php");
+//var_dump($resp);
 
 
 /*

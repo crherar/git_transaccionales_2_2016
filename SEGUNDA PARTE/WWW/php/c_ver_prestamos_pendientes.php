@@ -21,8 +21,8 @@ $cabecera = array('formulario' => 'vprepe',
 									'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
 									 'email'=>$_SESSION["email"]);
 
-$prestamo = array('id_prestamo'=>72);
-$msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$prestamo));//"loginn|".$email."-".$password;
+ 
+$msg = json_encode(array('cabecera'=>$cabecera,'datos'=>''));//"loginn|".$email."-".$password;
 
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
 echo "ENVIANDO AL PYTHON: \n";

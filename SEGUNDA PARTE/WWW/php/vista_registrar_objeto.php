@@ -30,7 +30,7 @@ print_r($_SESSION["email"]);
           <ul class="nav navbar-nav">
               <li><a href="vista_registrar_prestamo.php">Nuevo prestamo</a></li>
               <li class="active"><a href="c_ver_prestamos_pendientes.php">Ver prestamos pendientes</a></li>
-            <li><a href="#">Ver prestamos devueltos</a></li>
+            <li><a href="c_ver_prestamos_devueltos.php">Ver prestamos devueltos</a></li>
             <li><a href="c_ver_mis_objetos.php">Administrar mis objetos</a></li>
 
             <li class="dropdown">
