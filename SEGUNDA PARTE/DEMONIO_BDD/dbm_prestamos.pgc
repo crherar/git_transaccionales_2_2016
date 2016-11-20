@@ -298,6 +298,7 @@ if(SQL_count == 0)
 //memset(SQL_output,'\0',sizeof SQL_output);
 EXEC SQL SELECT string_agg(concat(cast(id as text),',',
                               fechaprestamo,',',
+                              usuario_recibidor,',',
                               emailrecibidor,',',
                               nombreobjeto,',',
                               fecha_devolucion,',',
@@ -340,6 +341,7 @@ if(SQL_count == 0)
 //memset(SQL_output,'\0',sizeof SQL_output);
 EXEC SQL SELECT string_agg(concat(cast(id as text),',',
                               fechaprestamo,',',
+															usuario_recibidor,',',
                               emailrecibidor,',',
                               nombreobjeto,',',
                               fecha_devolucion,',',

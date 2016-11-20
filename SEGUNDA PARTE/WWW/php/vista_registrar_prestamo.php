@@ -68,9 +68,9 @@ $amigos = $resp->datos;
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><a href="vista_registrar_prestamo.php">Nuevo prestamo</a></li>
-            <li class="active"><a href="#">Ver prestamos pendientes <span class="sr-only">(current)</span></a></li>
+              <li class="active"><a href="c_ver_prestamos_pendientes.php">Ver prestamos pendientes</a></li>
             <li><a href="#">Ver prestamos devueltos</a></li>
-            <li><a href="#">Administrar mis objetos</a></li>
+            <li><a href="c_ver_mis_objetos.php">Administrar mis objetos</a></li>
 
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION["email"] ?> <span class="caret"></span></a>

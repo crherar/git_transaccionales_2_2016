@@ -27,7 +27,7 @@ echo "ENVIANDO AL PYTHON: \n";
 echo $msg."\n";
 $sock_data = socket_write($socket, $msg, strlen($msg));
 echo "RESPUESTA DEL PYTHON: \n";
-$resp = socket_read($socket, 1024);
+$resp = json_decode(socket_read($socket, 16384));
 var_dump($resp);
 
 

@@ -68,6 +68,7 @@ select
 p.id,
 p.id_usuario_prestador,
 p.fecha as FechaPrestamo,
+concat(u.nombre,' ',u.apellido) as usuario_recibidor,
 u.email as emailRecibidor,
 o.nombre as nombreObjeto,
 p.fecha_devolucion,
@@ -97,7 +98,7 @@ select string_agg(concat(cast(id as text),',',
                               emailrecibidor,',',
                               nombreobjeto,',',
                               fecha_devolucion,',',
-                              cantidad_prestada),'|') as datos                              
+                              cantidad_prestada),'|') as datos
  from misprestamos where id_usuario_prestador = 27;
 
 select json_agg(misprestamos.*) from misprestamos where id_usuario_prestador = 27;

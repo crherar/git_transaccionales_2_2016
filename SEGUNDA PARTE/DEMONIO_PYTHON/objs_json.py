@@ -16,7 +16,14 @@ class objs_json:
             for i in range(len(arr)):
                 prest = arr[i].split(',')
                 #if len(prest) > 0:
-                datos.append({'id_prestamo':data[0],'fecha_prestamo':data[1],'correo_usuario_recibidor':data[2],'nombre_objeto':data[3],'cantidad':data[5],'fecha_devolucion':data[4]})
+                #[0] 87,
+                #[1] 2016-11-20,
+                #[2] nombre del uusario
+                #[3] matias@gmail.com,
+                #[4] cuatro,
+                #[5] 2016-11-30,
+                #[6] 1
+                datos.append({'id':prest[0],'fpre':prest[1],'ur':prest[2],'cur':prest[3],'obj':prest[4],'cant':prest[6],'fdev':prest[5]})
                 #print prest
                 #print "\n"
             return datos
