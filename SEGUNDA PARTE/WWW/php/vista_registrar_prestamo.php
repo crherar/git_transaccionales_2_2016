@@ -1,11 +1,6 @@
 <?php
 session_start();
-echo session_id();
-echo "\n";
-echo $_SESSION["id_usuario_logueado"];
-echo "\n";
-echo $_SESSION["email"];
-//echo "datos: \n";
+echo "datos: \n";
 
 //$_SESSION["resp"] = "";
 //var_dump($_SESSION["resp"]);
@@ -14,6 +9,10 @@ echo $_SESSION["email"];
 <html>
   <head>
     <meta charset="utf-8">
+
+   <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+   <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -21,30 +20,22 @@ echo $_SESSION["email"];
   <link rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css'>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/app.css">
+
+<link rel="stylesheet"  href = "../css/bootstrap-datetimepicker.min.css">
+ <script type="text/javascript" src="../js/moment.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap-datetimepicker.min.js"></script>
     <title></title>
   </head>
   <body>
     <nav class="navbar navbar-default">
       <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
 
-        <!-- <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Brand</a>
-        </div> -->
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-          <li><a href="vista_registrar_prestamo.php">Nuevo prestamo</a></li>
+            <li><a href="vista_registrar_prestamo.php">Nuevo prestamo</a></li>
             <li class="active"><a href="#">Ver prestamos pendientes <span class="sr-only">(current)</span></a></li>
             <li><a href="#">Ver prestamos devueltos</a></li>
-            <li><a href="c_ver_mis_objetos.php">Administrar mis objetos</a></li>
+            <li><a href="#">Administrar mis objetos</a></li>
 
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION["email"] ?> <span class="caret"></span></a>
@@ -73,16 +64,36 @@ echo $_SESSION["email"];
     }
     ?>
          <div class = "col-md-4 remove-float center-block  big-top-space">
-           <form action="c_actualizar_objeto.php" method="POST">
+           <form action="c_registrar_prestamo.php" method="POST">
+
+             <div class="container">
+                 <div class="row">
+                     <div class='col-sm-6'>
+                         <div class="form-group">
+                             <div class='input-group date' id='datetimepicker1'>
+                                 <input type='text' class="form-control" />
+                                 <span class="input-group-addon">
+                                     <span class="glyphicon glyphicon-calendar"></span>
+                                 </span>
+                             </div>
+                         </div>
+                     </div>
+                     <script type="text/javascript">
+                         $(function () {
+                             $('#datetimepicker1').datetimepicker();
+                         });
+                     </script>
+                 </div>
+             </div>
+
              <div clas='form-group'>
                <label for="email">Nombre objeto:</label>
-               <input class="form-control", type='text', required='true', name='nombre_objeto', placeholder='Nombre objeto',id='nombre_objeto' value=<?php echo 	$_SESSION["nombre_objeto"]; ?>>
+               <input class="form-control", type='text', required='true', name='nombre_objeto', placeholder='Nombre objeto',id='nombre_objeto'>
              </div>
              <div class="top-space">
                <input class="btn btn-info" type="submit" name="name" value="Guardar">
              </div>
            </form>
          </div>
-
   </body>
 </html>

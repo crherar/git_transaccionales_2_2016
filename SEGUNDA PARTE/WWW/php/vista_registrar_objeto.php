@@ -24,7 +24,7 @@ echo "datos: \n";
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="#">Nuevo prestamo</a></li>
+              <li><a href="vista_registrar_prestamo.php">Nuevo prestamo</a></li>
             <li class="active"><a href="#">Ver prestamos pendientes <span class="sr-only">(current)</span></a></li>
             <li><a href="#">Ver prestamos devueltos</a></li>
             <li><a href="#">Administrar mis objetos</a></li>
