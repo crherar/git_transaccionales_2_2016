@@ -25,6 +25,7 @@ print_r($_SESSION["email"]);
   <link rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css'>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/objetos.js"></script>
+<script type="text/javascript" src="../js/prestamos.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/app.css">
     <title></title>
   </head>
@@ -47,12 +48,12 @@ print_r($_SESSION["email"]);
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><a href="vista_registrar_prestamo.php">Nuevo prestamo</a></li>
-            <li class="active"><a href="c_ver_prestamos_pendientes.php">Ver prestamos pendientes <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="c_ver_prestamos_pendientes.php">Ver prestamos pendientes </a></li>
             <li><a href="c_ver_prestamos_devueltos.php">Ver prestamos devueltos</a></li>>
             <li><a href="c_ver_mis_objetos.php">Administrar mis objetos</a></li>
 
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION["email"] ?> <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION["email"] ?> </a>
               <ul class="dropdown-menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
@@ -80,11 +81,11 @@ print_r($_SESSION["email"]);
     ?>
 
     <div>
-    <a href="vista_registrar_objeto.php">Registrar objeto</a>
+     
   </div>
   <table class="table table-bordered">
     <thead>
-      <th style="display: none;">id</th>
+      <th >id</th>
       <th> N° </th>
       <th> Fecha prestamo </th>
       <th> Usuario recibidor </th>
@@ -95,7 +96,7 @@ print_r($_SESSION["email"]);
       <th> Accion</th>
     </thead>
     <tbody>
-      <?php
+      <?php //style="display: none;"
       $cont = 1;
       //echo "antes de llenar la tabla: \n";
       //var_dump($_SESSION["datos"]);
@@ -104,12 +105,12 @@ print_r($_SESSION["email"]);
       foreach ($datos as $value) {
       ?>
       <tr>
-        <td style="display: none;" id="td_idprestamo_<?php echo $cont; ?>"><?php echo $value->id; ?></td>
+        <td   id="td_idprestamo_<?php echo $cont; ?>"><?php echo $value->id; ?></td>
         <td id="td_pos_<?php echo $cont; ?>"><?php echo $cont; ?></td>
         <td id="td_fecha_prestamo_<?php echo $cont; ?>"><?php echo $value->fpre; ?></td>
         <td id="td_usuario_recibidor_<?php echo $cont; ?>"><?php echo $value->ur; ?></td>
         <td id="td_correo_usuario_recibidor_<?php echo $cont; ?>"><?php echo $value->cur; ?></td>
-        <td id="td_objeto_prestado_<?php echo $cont; ?>"><?php echo $value->nombre_obj; ?></td>
+        <td id="td_objeto_prestado_<?php echo $cont; ?>"><?php echo $value->obj; ?></td>
         <td id="td_cantidad_prestada_<?php echo $cont; ?>"><?php echo $value->cant; ?></td>
         <td id="td_fecha_devolucion_<?php echo $cont; ?>"><?php echo $value->fdev; ?></td>
         <td>

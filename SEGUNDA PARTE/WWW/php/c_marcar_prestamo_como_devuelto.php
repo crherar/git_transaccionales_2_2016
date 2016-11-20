@@ -21,7 +21,7 @@ $cabecera = array('formulario' => 'predev',
 									'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
 									 'email'=>$_SESSION["email"]);
 
-$prestamo = array('id_prestamo'=>72);
+$prestamo = array('id_prestamo'=>$_POST["id_prestamo"]);
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$prestamo));//"loginn|".$email."-".$password;
 
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));

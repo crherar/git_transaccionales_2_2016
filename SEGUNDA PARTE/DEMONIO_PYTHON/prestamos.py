@@ -55,7 +55,7 @@ class prestamos:
             return json.dumps({'cabecera':data["cabecera"],'datos':'02'})
 
     def marcar_prestamo_como_pendiente(self,data):
-        self.id = data["cabecera"]["id_prestamo"]
+        self.id = data["datos"]["id_prestamo"]
 
         respuesta = self.mtx.enviar(self.procpx.marcar_prestamo_como_pendiente(),self.codtx.marcar_prestamo_como_pendiente(),"00",str(self.id).ljust(5))
         print respuesta
