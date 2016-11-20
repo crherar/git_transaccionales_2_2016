@@ -5,6 +5,37 @@ print_r("\n");
 print_r($_SESSION["id_usuario_logueado"]);
 print_r("\n");
 print_r($_SESSION["email"]);
+$host = "127.0.0.1";
+$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+$socket2 = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+$puerto = 3000;
+$email = "";
+$id_usuario = "";
+if (socket_connect($socket, $host, $puerto) &&
+   socket_connect($socket2, $host, $puerto))
+{
+
+
+$cabecera = array('formulario' => 'cbxobj',
+									'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
+									 'email'=>$_SESSION["email"]);
+
+$msg = json_encode(array('cabecera'=>$cabecera,'datos'=>''));//"loginn|".$email."-".$password;
+
+$sock_data = socket_write($socket, $msg, strlen($msg));
+$resp = json_decode(socket_read($socket, 8192));
+$objetos = $resp->datos;
+//var_dump($objetos);
+
+$cabecera = array('formulario' => 'verami',
+									'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
+									 'email'=>$_SESSION["email"]);
+$msg = json_encode(array('cabecera'=>$cabecera,'datos'=>''));
+//var_dump($msg);
+$sock_data = socket_write($socket2, $msg, strlen($msg));
+$resp = json_decode(socket_read($socket2, 8192));
+$amigos = $resp->datos;
+//var_dump($amigos);
 
 //$_SESSION["resp"] = "";
 //var_dump($_SESSION["resp"]);
@@ -70,30 +101,68 @@ print_r($_SESSION["email"]);
          <div class = "col-md-4 remove-float center-block  big-top-space">
            <form action="c_registrar_prestamo.php" method="POST">
 
-             <div class="container">
-                 <div class="row">
-                     <div class='col-sm-6'>
-                         <div class="form-group">
-                             <div class='input-group date' id='datetimepicker1'>
-                                 <input type='text' class="form-control" />
-                                 <span class="input-group-addon">
-                                     <span class="glyphicon glyphicon-calendar"></span>
-                                 </span>
-                             </div>
-                         </div>
-                     </div>
+             <div class="form-group">
+                <label for="email">Fecha prestamo:</label>
+                 <div class='input-group date' id='fecha_prestamo'>
+
+                     <input name="fecha_prestamo"  placeholder="Fecha prestamo" type='text' class="form-control" />
                      <script type="text/javascript">
                          $(function () {
-                             $('#datetimepicker1').datetimepicker();
+                             $('#fecha_prestamo').datetimepicker();
                          });
                      </script>
+                     <span class="input-group-addon">
+                         <span class="glyphicon glyphicon-calendar"></span>
+                     </span>
                  </div>
              </div>
 
              <div clas='form-group'>
+               <label for="email">Usuario recibidor:</label>
+               <select name="usuario_recibidor" class="selectpicker form-control" data-live-search="true" multiple title="Usuario recibidor...">
+                 <?php foreach($amigos as $value)
+                 {
+                  ?>
+                  <option data-tokens="ketchup mustard"><?php print_r($value); ?></option>
+              <?php
+                  }
+                  ?>
+               </select>
+           </div>
+
+             <div clas='form-group'>
                <label for="email">Nombre objeto:</label>
-               <input class="form-control", type='text', required='true', name='nombre_objeto', placeholder='Nombre objeto',id='nombre_objeto'>
+               <select name="nombre_objeto" class="selectpicker form-control" data-live-search="true" multiple title="Nombre objeto....">
+                 <?php foreach($objetos as $value)
+                 {
+                  ?>
+                  <option data-tokens="ketchup mustard"><?php print_r($value); ?></option>
+              <?php
+                  }
+                  ?>
+               </select>
              </div>
+             <div clas='form-group'>
+               <label for="email">Cantidad:</label>
+               <input  class="form-control", type='text', required='true', name='cantidad', placeholder='Canitdad',id='cantidad'>
+             </div>
+
+             <div class="form-group">
+                <label for="email">Fecha devolución:</label>
+                 <div class='input-group date' id='fecha_devolucion'>
+
+                     <input name="fecha_devolucion" placeholder="Fecha devolución" type='text' class="form-control" />
+                     <script type="text/javascript">
+                         $(function () {
+                             $('#fecha_devolucion').datetimepicker();
+                         });
+                     </script>
+                     <span class="input-group-addon">
+                         <span class="glyphicon glyphicon-calendar"></span>
+                     </span>
+                 </div>
+             </div>
+
              <div class="top-space">
                <input class="btn btn-info" type="submit" name="name" value="Guardar">
              </div>
@@ -101,3 +170,13 @@ print_r($_SESSION["email"]);
          </div>
   </body>
 </html>
+
+
+<?php
+}
+else
+{
+	echo "\nLa conexion TCP no se pudo realizar, puerto: ".$puerto;
+}
+socket_close($socket);
+?>
