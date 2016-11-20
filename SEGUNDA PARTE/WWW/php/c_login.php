@@ -1,10 +1,10 @@
 <?php
 session_start();
-echo session_id();
-echo "\n";
-echo $_SESSION["id_usuario_logueado"];
-echo "\n";
-echo $_SESSION["email"];
+print_r(session_id());
+print_r("\n");
+print_r($_SESSION["id_usuario_logueado"]);
+print_r("\n");
+print_r($_SESSION["email"]);
 $host = "127.0.0.1";
 
 $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
@@ -42,7 +42,7 @@ $resp = json_decode(socket_read($socket, 1024));
 //var_dump($resp);
 if($resp->datos == "02")
 {
-$_SESSION["resp"] = "02";
+$_SESSION["resp"] = "Usuario o contraseña incorrecto";
 header("location: vista_login.php");
 }
 else

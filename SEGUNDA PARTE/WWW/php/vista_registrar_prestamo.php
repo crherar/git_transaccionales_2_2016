@@ -1,6 +1,10 @@
 <?php
 session_start();
-echo "datos: \n";
+print_r(session_id());
+print_r("\n");
+print_r($_SESSION["id_usuario_logueado"]);
+print_r("\n");
+print_r($_SESSION["email"]);
 
 //$_SESSION["resp"] = "";
 //var_dump($_SESSION["resp"]);
@@ -58,7 +62,7 @@ echo "datos: \n";
     {
       ?>
       <div class="alert alert-danger">
-      <?php echo $_SESSION["resp"]; ?>
+      <?php print_r($_SESSION["resp"]); ?>
       </div>
       <?php
     }

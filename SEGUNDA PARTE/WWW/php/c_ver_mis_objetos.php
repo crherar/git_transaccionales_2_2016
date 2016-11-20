@@ -1,11 +1,11 @@
 <?php
 
 session_start();
-echo session_id();
-echo "\n";
-echo $_SESSION["id_usuario_logueado"];
-echo "\n";
-echo $_SESSION["email"];
+print_r(session_id());
+print_r("\n");
+print_r($_SESSION["id_usuario_logueado"]);
+print_r("\n");
+print_r($_SESSION["email"]);
 $host = "127.0.0.1";
 
 $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
@@ -35,7 +35,7 @@ var_dump($msg);
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
 
 $sock_data = socket_write($socket, $msg, strlen($msg));
-$resp = json_decode(socket_read($socket, 10000));
+$resp = json_decode(socket_read($socket, 8192));
 //var_dump($resp);
 
 //echo "AOSODSPODPSOPDOS";

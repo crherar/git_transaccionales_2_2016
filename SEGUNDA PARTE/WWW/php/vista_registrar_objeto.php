@@ -1,6 +1,10 @@
 <?php
 session_start();
-echo "datos: \n";
+print_r(session_id());
+print_r("\n");
+print_r($_SESSION["id_usuario_logueado"]);
+print_r("\n");
+print_r($_SESSION["email"]);
 
 //$_SESSION["resp"] = "";
 //var_dump($_SESSION["resp"]);
@@ -27,7 +31,7 @@ echo "datos: \n";
               <li><a href="vista_registrar_prestamo.php">Nuevo prestamo</a></li>
             <li class="active"><a href="#">Ver prestamos pendientes <span class="sr-only">(current)</span></a></li>
             <li><a href="#">Ver prestamos devueltos</a></li>
-            <li><a href="#">Administrar mis objetos</a></li>
+            <li><a href="c_ver_mis_objetos.php">Administrar mis objetos</a></li>
 
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION["email"] ?> <span class="caret"></span></a>
@@ -50,7 +54,7 @@ echo "datos: \n";
     {
       ?>
       <div class="alert alert-danger">
-      <?php echo $_SESSION["resp"]; ?>
+      <?php print_r($_SESSION["resp"]); ?>
       </div>
       <?php
     }
@@ -66,5 +70,9 @@ echo "datos: \n";
              </div>
            </form>
          </div>
+         <?php
+       //unset($_SESSION["datos"]);
+       unset($_SESSION["resp"]);
+          ?>
   </body>
 </html>

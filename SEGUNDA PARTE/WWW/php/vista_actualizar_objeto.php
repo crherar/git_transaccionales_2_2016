@@ -1,10 +1,10 @@
 <?php
 session_start();
-echo session_id();
-echo "\n";
-echo $_SESSION["id_usuario_logueado"];
-echo "\n";
-echo $_SESSION["email"];
+print_r(session_id());
+print_r("\n");
+print_r($_SESSION["id_usuario_logueado"]);
+print_r("\n");
+print_r($_SESSION["email"]);
 //echo "datos: \n";
 
 //$_SESSION["resp"] = "";
@@ -67,7 +67,7 @@ echo $_SESSION["email"];
     {
       ?>
       <div class="alert alert-danger">
-      <?php echo $_SESSION["resp"]; ?>
+      <?php print_r($_SESSION["resp"]); ?>
       </div>
       <?php
     }
@@ -83,6 +83,9 @@ echo $_SESSION["email"];
              </div>
            </form>
          </div>
-
+         <?php
+       //unset($_SESSION["datos"]);
+       unset($_SESSION["resp"]);
+          ?>
   </body>
 </html>

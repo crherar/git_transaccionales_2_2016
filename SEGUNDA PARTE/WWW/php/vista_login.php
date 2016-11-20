@@ -1,11 +1,11 @@
 <?php
 session_unset();
 session_start();
-echo session_id();
-echo "\n";
-echo $_SESSION["id_usuario_logueado"];
-echo "\n";
-echo $_SESSION["email"];
+print_r(session_id());
+print_r("\n");
+print_r($_SESSION["id_usuario_logueado"]);
+print_r("\n");
+print_r($_SESSION["email"]);
 //unset($_SESSION["datos"]);
 //$_SESSION["resp"] = "";
 //var_dump($_SESSION["resp"]);
@@ -27,66 +27,19 @@ function base_url()
   localStorage.setItem('base_url','http://200.14.84.235/~17957132/www_transaccionales_2_2016/');
 }
 </script>
-<script type="text/javascript">
-function WebSocketTest()
-     {
-        if ("WebSocket" in window)
-        {
-           alert("WebSocket is supported by your Browser!");
 
-           // Let us open a web socket
-           var ws = new WebSocket("ws://localhost:3000/");
-
-           ws.onopen = function()
-           {
-             var msg = {
-               cabecera:{
-                 'formulario':'loginn',
-                 'id_usuario_logueado':0,
-                 'email':''
-               },
-               datos:{
-                 'email':pad('matias@gmail.com',40),
-                 'password': pad('123',10)
-               }
-             };
-              // Web Socket is connected, send data using send()
-              ws.send(msg);
-              alert("Message is sent...");
-           };
-
-           ws.onmessage = function (evt)
-           {
-              var received_msg = evt.data;
-              alert("Message is received...");
-           };
-
-           ws.onclose = function()
-           {
-              // websocket is closed.
-              alert("Connection is closed...");
-           };
-        }
-
-        else
-        {
-           // The browser doesn't support WebSocket
-           alert("WebSocket NOT supported by your Browser!");
-        }
-     }
-</script>
   </head>
   <body onload="base_url()">
     <?php
-      if($_SESSION["resp"] == "02")
-      {
+    if(isset($_SESSION["resp"]))
+    {
       ?>
-        <div class="alert alert-danger">
-          Usuario o contraseña incorrecto
-        </div>
-     <?php
-     $_SESSION["resp"] = "";
-   } ?>
+      <div class="alert alert-danger">
+        <?php print_r($_SESSION["resp"]); ?>
+      </div>
+      <?php
+    }
+    ?>
     <div class = "col-md-4 remove-float center-block  big-top-space">
       <form action='c_login.php', method='POST'>
         <div clas='form-group'>
@@ -102,5 +55,9 @@ function WebSocketTest()
         </div>
       </form>
     </div>
+    <?php
+  //unset($_SESSION["datos"]);
+  unset($_SESSION["resp"]);
+     ?>
   </body>
 </html>
