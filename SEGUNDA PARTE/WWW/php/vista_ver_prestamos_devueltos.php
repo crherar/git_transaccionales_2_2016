@@ -93,6 +93,7 @@ print_r($_SESSION["email"]);
       <th> Objeto prestado </th>
       <th> Cantidad prestada </th>
       <th> Fecha devolución </th>
+      <th> Accion</th>
     </thead>
     <tbody>
       <?php
@@ -112,6 +113,11 @@ print_r($_SESSION["email"]);
         <td id="td_objeto_prestado_<?php echo $cont; ?>"><?php echo $value->obj; ?></td>
         <td id="td_cantidad_prestada_<?php echo $cont; ?>"><?php echo $value->cant; ?></td>
         <td id="td_fecha_devolucion_<?php echo $cont; ?>"><?php echo $value->fdev; ?></td>
+        <td>
+          <ul>
+          <button id="btn_devuelto_<?php echo $cont; ?>" onclick="marcarPrestamoPendiente(this)">Pendiente</button>
+        </ul>
+      </td>
       </tr>
 
       <?php

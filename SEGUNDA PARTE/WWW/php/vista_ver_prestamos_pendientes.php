@@ -85,7 +85,7 @@ print_r($_SESSION["email"]);
   </div>
   <table class="table table-bordered">
     <thead>
-      <th >id</th>
+      <th style="display: none;">id</th>
       <th> N° </th>
       <th> Fecha prestamo </th>
       <th> Usuario recibidor </th>
@@ -105,7 +105,7 @@ print_r($_SESSION["email"]);
       foreach ($datos as $value) {
       ?>
       <tr>
-        <td   id="td_idprestamo_<?php echo $cont; ?>"><?php echo $value->id; ?></td>
+        <td style="display: none;"  id="td_idprestamo_<?php echo $cont; ?>"><?php echo $value->id; ?></td>
         <td id="td_pos_<?php echo $cont; ?>"><?php echo $cont; ?></td>
         <td id="td_fecha_prestamo_<?php echo $cont; ?>"><?php echo $value->fpre; ?></td>
         <td id="td_usuario_recibidor_<?php echo $cont; ?>"><?php echo $value->ur; ?></td>
@@ -117,7 +117,7 @@ print_r($_SESSION["email"]);
           <ul>
           <button id="btn_editar_<?php echo $cont; ?>"  onclick="get_prestamo_editar(this)">Editar</button>
           <button id="btn_devuelto_<?php echo $cont; ?>" onclick="marcarPrestamoDevuelto(this)">Devuelto</button>
-          <button id="btn_eliminar_<?php echo $cont; ?>"  onclick = "get_objeto_eliminar(this)">Eliminar</button>
+          <button id="btn_eliminar_<?php echo $cont; ?>"  onclick = "get_prestamo_eliminar(this)">Eliminar</button>
         </ul>
       </td>
       </tr>
@@ -129,8 +129,8 @@ print_r($_SESSION["email"]);
     </tbody>
   </table>
 
-  <div id="vnteliminar"  style="display:none" title="Eliminar objeto">
-<p>¿Seguro que quiere eliminar el objeto?</p>
+  <div id="vnteliminar"  style="display:none" title="Eliminar prestamo">
+<p>¿Seguro que quiere eliminar el prestamo?</p>
 </div>
 
   <?php

@@ -13,7 +13,7 @@ function get_prestamo_editar(idbtn)
     ,
     success: function(data){
       console.log(data);
-      debugger;
+      //debugger;
       if(data != "02")
         window.location = localStorage.getItem('base_url')+"php/vista_actualizar_prestamo.php";
     }
@@ -63,4 +63,58 @@ function marcarPrestamoPendiente(idbtn)
             };
       $.post(url,postData,funcion);
 
+}
+
+
+function get_prestamo_eliminar(idbtn)
+{
+  $( "#vnteliminar" ).dialog({
+  buttons: {
+"SI": function() {
+          var btn=idbtn.id.split("_");
+                    var idprestamox=$("#td_idprestamo_"+btn[2]).html();
+                      console.log(idprestamox);
+                             var postData = {
+                                            id_prestamo : idprestamox
+
+                                            };
+
+
+
+                    $.ajax({
+                             url: "c_eliminar_prestamo.php",
+                             type: "POST",
+                             data: postData,
+
+                             success: function(data) {
+                              // debugger;
+                               console.log(data);
+                               if(data == "01")
+                               {
+                               $(this).dialog('close');
+                               window.location = localStorage.getItem('base_url')+"php/c_ver_prestamos_pendientes.php";
+
+                               }
+
+                                if(data == "02")
+                                {
+                                  alert("error al eliminar");
+                                  $(this).dialog("close");
+                                }
+                              }
+
+});
+          //$(this).dialog('close');
+          window.location = localStorage.getItem('base_url')+"php/c_ver_prestamos_pendientes.php";
+          //location.reload();
+
+  },
+
+"NO": function() {
+
+   $(this).dialog('close');
+
+  }
+  }
+});
 }

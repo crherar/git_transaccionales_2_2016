@@ -49,7 +49,7 @@ $sock_data = socket_write($socket, $msg, strlen($msg));
 echo "RESPUESTA DEL PYTHON: \n";
 $resp = socket_read($socket, 1024);
 var_dump($resp);
-
+header("location c_ver_prestamos_pendientes.php");
 
 /*
 $sock_data = socket_write($socket, "loginn", strlen("DIRPRG /home/alumnos/17957132/"));
