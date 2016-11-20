@@ -16,7 +16,7 @@ if (socket_connect($socket, $host, $puerto))
 {
 echo "\nConexion Exitosa, puerto: " . $puerto;
 //$msg = "mensaje del CLIENTE 1 desde php!!!";
-$nombre_objeto = str_pad($_SESSION["nombre_objeto"],15);
+$nombre_objeto = str_pad($_SESSION["datos"]->nombre_objeto,15);
 
 
 $cabecera = array('formulario' => 'actobj',

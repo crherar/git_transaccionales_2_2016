@@ -21,16 +21,18 @@ $cabecera = array('formulario' => 'modpre',
 									'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
 									 'email'=>$_SESSION["email"]);
 
-$prestamo = array('id_prestamo'=>72);
+$prestamo = array('id_prestamo'=>$_POST["id_prestamo"]);
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$prestamo));//"loginn|".$email."-".$password;
 
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
-echo "ENVIANDO AL PYTHON: \n";
-echo $msg."\n";
+// echo "ENVIANDO AL PYTHON: \n";
+// echo $msg."\n";
 $sock_data = socket_write($socket, $msg, strlen($msg));
-echo "RESPUESTA DEL PYTHON: \n";
-$resp = socket_read($socket, 1024);
-var_dump($resp);
+//echo "RESPUESTA DEL PYTHON: \n";
+$resp = json_decode(socket_read($socket, 4096));
+
+$_SESSION["datos"] = $resp->datos;
+//var_dump($resp);
 
 
 /*

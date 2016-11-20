@@ -33,8 +33,9 @@ $resp = json_decode(socket_read($socket, 1024));
 
 if($resp->datos !="02")
 	{
-		$_SESSION["nombre_objeto"] = $resp->datos->nombre;
-		$_SESSION["id_objeto"] = $resp->datos->id_objeto;
+		 $_SESSION["datos"] = $resp->datos;
+		//$_SESSION["nombre_objeto"] = $resp->datos->nombre;
+		//$_SESSION["id_objeto"] = $resp->datos->id_objeto;
 		echo $resp->datos->nombre;
 	//header("location: vista_actualizar_objeto.php");
 }

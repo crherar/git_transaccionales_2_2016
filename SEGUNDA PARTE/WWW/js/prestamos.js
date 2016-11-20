@@ -1,3 +1,27 @@
+function get_prestamo_editar(idbtn)
+{
+  console.log(idbtn.id);
+  var btn = idbtn.id.split('_');
+  console.log(btn[2]);
+  var idprestamox = $("#td_idprestamo_"+btn[2]).html();
+  console.log(idprestamox);
+
+  $.ajax({
+    url: "c_get_prestamo_por_id.php",
+    type: "POST",
+    data:{id_prestamo:idprestamox}
+    ,
+    success: function(data){
+      console.log(data);
+      debugger;
+      if(data != "02")
+        window.location = localStorage.getItem('base_url')+"php/vista_actualizar_prestamo.php";
+    }
+  });
+}
+
+
+
 function marcarPrestamoDevuelto(idbtn)
 {
     //$("#txtRut").val();
