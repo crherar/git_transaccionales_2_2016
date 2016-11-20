@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 echo session_id();
 echo "\n";
@@ -44,6 +45,9 @@ $resp = json_decode(socket_read($socket, 10000));
 $_SESSION["datos"] = $resp->datos;
 
 header("location: vista_administrar_mis_objetos.php");
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 //var_dump(json_decode($resp));
 
 

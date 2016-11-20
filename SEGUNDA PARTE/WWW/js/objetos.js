@@ -27,13 +27,13 @@ function get_objeto_eliminar(idbtn)
 "SI": function() {
           var btn=idbtn.id.split("_");
                     var idobjetox=$("#td_idobjeto_"+btn[2]).html();
-
+                      console.log(idobjetox);
                              var postData = {
                                             id_objeto : idobjetox
 
                                             };
 
-       
+
 
                     $.ajax({
                              url: "c_eliminar_objeto.php",
@@ -41,24 +41,32 @@ function get_objeto_eliminar(idbtn)
                              data: postData,
 
                              success: function(data) {
-                                 console.log(data);
- }
+                               console.log(data);
+                               if(data == "01")
+                               {
+                               $(this).dialog('close');
+                               window.location = localStorage.getItem('base_url')+"php/c_ver_mis_objetos.php";
+
+                               }
+
+                                if(data == "02")
+                                {
+                                  alert("error al eliminar");
+                                  $(this).dialog("close");
+                                }
+                              }
 
 });
-          $(this).dialog('close');
-          location.reload();
-  // $(this).dialog('close');
-   //location.reload();
-//	      window.location = "<?php echo base_url() ?>index.php/prestamosc";
-    //window.location="index.php";
+          //$(this).dialog('close');
+          window.location = localStorage.getItem('base_url')+"php/c_ver_mis_objetos.php";
+          //location.reload();
+
   },
 
 "NO": function() {
 
    $(this).dialog('close');
-   //location.reload();
-//	      window.location = "<?php echo base_url() ?>index.php/prestamosc";
-    //window.location="index.php";
+
   }
   }
 });
