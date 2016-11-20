@@ -33,22 +33,35 @@ function base_url()
     <?php
     if(isset($_SESSION["resp"]))
     {
+      if($_SESSION["resp"] == "Usuario registrado correctamente, ahora puede iniciar sesión")
+      {
       ?>
       <div class="alert alert-success">
         <?php print_r($_SESSION["resp"]); ?>
       </div>
       <?php
+      }
+      ?>
+      <?php
+      if($_SESSION["resp"] == "Usuario o contraseña incorrecto")
+      {
+       ?>
+      <div class="alert alert-danger">
+        <?php print_r($_SESSION["resp"]); ?>
+      </div>
+      <?php
+      }
     }
     ?>
     <div class = "col-md-4 remove-float center-block  big-top-space">
       <form action='c_login.php', method='POST'>
         <div clas='form-group'>
           <label for="email">Email</label>
-          <input class="form-control", type='text', required='true', name='email', placeholder='email',id='email'>
+          <input maxlength="40" class="form-control", type='email', required='true', name='email', placeholder='email',id='email'>
         </div>
         <div>
           <label for="password">Password</label>
-          <input class="form-control" type='password', required='true', name='password', placeholder='password',id='password'>
+          <input maxlength="10" class="form-control" type='password', required='true', name='password', placeholder='password',id='password'>
         </div>
         <div class="top-space">
           <input class="btn btn-info" type="submit" name="name" value="Iniciar sesión">

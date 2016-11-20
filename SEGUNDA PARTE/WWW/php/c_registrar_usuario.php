@@ -34,7 +34,7 @@ $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$usuario));//"loginn|".$
 
 $sock_data = socket_write($socket, $msg, strlen($msg));
 $resp = json_decode(socket_read($socket, 1024));
-
+//var_dump($resp);
 if($resp->datos == "01")
 {
 	$_SESSION["resp"] = "Usuario registrado correctamente, ahora puede iniciar sesión";

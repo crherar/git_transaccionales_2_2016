@@ -43,19 +43,19 @@ print_r($_SESSION["email"]);
      <!--<form action=""></form> -->
         <div clas="form-group">
            <label for="nombre">Nombre:</label>
-           <input type="text" required="true" name="nombre" placeholder="nombre" id="nombre" class="form-control">
+           <input maxlength="20" type="text" required="true" name="nombre" placeholder="nombre" id="nombre" class="form-control">
         </div>
         <div >
            <label for="email">Apellido:</label>
-           <input type="text"  required="true" name="apellido" placeholder="apellido" id="apellido" class="form-control">
+           <input maxlength="20" type="text"  required="true" name="apellido" placeholder="apellido" id="apellido" class="form-control">
         </div>
         <div >
            <label for="email">Email:</label>
-           <input type="text"  required="true" name="text" placeholder="email" id="email" class="form-control">
+           <input maxlength="40" type="email"  required="true" name="email" placeholder="email" id="email" class="form-control">
         </div>
         <div >
            <label for="email">Password:</label>
-           <input type="password"  required="true" name="password" placeholder="password" id="password" class="form-control">
+           <input maxlength="10" type="password"  required="true" name="password" placeholder="password" id="password" class="form-control">
         </div>
         <div>
            <input type="submit" value="Registrarse" class="btn btn-info">

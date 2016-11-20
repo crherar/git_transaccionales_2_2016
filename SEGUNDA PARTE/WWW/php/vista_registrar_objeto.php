@@ -63,7 +63,7 @@ print_r($_SESSION["email"]);
            <form action="c_registrar_objeto.php" method="POST">
              <div clas='form-group'>
                <label for="email">Nombre objeto:</label>
-               <input class="form-control", type='text', required='true', name='nombre_objeto', placeholder='Nombre objeto',id='nombre_objeto'>
+               <input maxlength="15" class="form-control", type='text', required='true', name='nombre_objeto', placeholder='Nombre objeto',id='nombre_objeto'>
              </div>
              <div class="top-space">
                <input class="btn btn-info" type="submit" name="name" value="Guardar">
