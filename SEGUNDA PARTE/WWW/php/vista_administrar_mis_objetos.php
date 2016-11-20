@@ -1,5 +1,10 @@
 <?php
 session_start();
+echo session_id();
+echo "\n";
+echo $_SESSION["id_usuario_logueado"];
+echo "\n";
+echo $_SESSION["email"];
 //echo "datos: \n";
 //var_dump($_SESSION["datos"]);
 //$_SESSION["resp"] = "";
@@ -9,9 +14,13 @@ session_start();
 <html>
   <head>
     <meta charset="utf-8">
+
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css">
+  <link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css">
+    <script type="text/javascript" src="../js/jquery-ui.min.js"></script>
     <link rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
   <link rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css'>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -19,7 +28,7 @@ session_start();
 <link rel="stylesheet" type="text/css" href="../css/app.css">
     <title></title>
   </head>
-  <body>
+  <body >
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -97,7 +106,7 @@ session_start();
           <ul>
           <button id="btn_editar_<?php echo $cont; ?>"  onclick="get_objeto_editar(this)">Editar</button>
           <!-- <button id="btn_devuelto_<?php echo $cont; ?>" onclick="marcarPrestamoDevuelto(this)">Devuelto</button> -->
-          <button id="btn_eliminar_<?php echo $cont; ?>"  onclick = "eliminarPrestamo(this)">Eliminar</button>
+          <button id="btn_eliminar_<?php echo $cont; ?>"  onclick = "get_objeto_eliminar(this)">Eliminar</button>
         </ul>
         <td>
       </tr>
@@ -108,8 +117,13 @@ session_start();
        ?>
     </tbody>
   </table>
+
+  <div id="vnteliminar"  style="display:none" title="Eliminar objeto">
+<p>¿Seguro que quiere eliminar el objeto?</p>
+</div>
+
   <?php
-  //unset($_SESSION["datos"]);
+//unset($_SESSION["datos"]);
 unset($_SESSION["resp"]);
    ?>
   </body>

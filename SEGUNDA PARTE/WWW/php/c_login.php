@@ -1,6 +1,10 @@
 <?php
 session_start();
- 
+echo session_id();
+echo "\n";
+echo $_SESSION["id_usuario_logueado"];
+echo "\n";
+echo $_SESSION["email"];
 $host = "127.0.0.1";
 
 $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
@@ -21,6 +25,7 @@ $cabecera = array('formulario' => 'loginn',
 
 $email = str_pad($_POST["email"],40);
 $password = str_pad($_POST["password"],10);
+//session_name($_POST["email"]);
 // $email = str_pad("matias@gmail.com",40);
 // $password = str_pad("123",10);
 

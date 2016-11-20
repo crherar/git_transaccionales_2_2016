@@ -22,5 +22,44 @@ function get_objeto_editar(idbtn)
 
 function get_objeto_eliminar(idbtn)
 {
+  $( "#vnteliminar" ).dialog({
+  buttons: {
+"SI": function() {
+          var btn=idbtn.id.split("_");
+                    var idobjetox=$("#td_idobjeto_"+btn[2]).html();
 
+                             var postData = {
+                                            id_objeto : idobjetox
+
+                                            };
+
+       
+
+                    $.ajax({
+                             url: "c_eliminar_objeto.php",
+                             type: "POST",
+                             data: postData,
+
+                             success: function(data) {
+                                 console.log(data);
+ }
+
+});
+          $(this).dialog('close');
+          location.reload();
+  // $(this).dialog('close');
+   //location.reload();
+//	      window.location = "<?php echo base_url() ?>index.php/prestamosc";
+    //window.location="index.php";
+  },
+
+"NO": function() {
+
+   $(this).dialog('close');
+   //location.reload();
+//	      window.location = "<?php echo base_url() ?>index.php/prestamosc";
+    //window.location="index.php";
+  }
+  }
+});
 }

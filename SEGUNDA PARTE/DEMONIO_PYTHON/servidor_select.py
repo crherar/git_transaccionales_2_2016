@@ -331,7 +331,8 @@ while running:
                     print "NO EXISTE RESPUESTA"
                     s.close()
                     input.remove(s)
-#
+            del data    
+
                 # if len(respuesta) != 0:
                 #     s.send(respuesta)
                 # else:

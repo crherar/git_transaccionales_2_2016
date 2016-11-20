@@ -1,5 +1,10 @@
 <?php
 session_start();
+echo session_id();
+echo "\n";
+echo $_SESSION["id_usuario_logueado"];
+echo "\n";
+echo $_SESSION["email"];
 $host = "127.0.0.1";
 
 $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
@@ -16,7 +21,7 @@ $cabecera = array('formulario' => 'delobj',
 									'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
 									 'email'=>$_SESSION["email"]);
 
-$objeto = array('id_objeto'=>77,'nombre_objeto'=>'');
+$objeto = array('id_objeto'=>$_POST["id_objeto"],'nombre_objeto'=>'');
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$objeto));//"loginn|".$email."-".$password;
 
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));

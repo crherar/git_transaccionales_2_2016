@@ -1042,7 +1042,7 @@ int main() {
             msgsnd(idcola, &respuesta, strlen(respuesta.texto.datos_formulario) + 20, 0);
 
             printf("Enviado a %s: %s \n", formulario_actual, respuesta.texto.datos_formulario);
-
+            id_usuario_logueado = 0;
             printf("*********** FIN PROCESAR RESPUESTA ***************** \n");
             printf("------------------ FIN - SIGIUIENTE MENSAJE ------------- \n");
 

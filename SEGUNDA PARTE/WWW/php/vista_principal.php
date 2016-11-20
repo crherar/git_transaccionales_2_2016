@@ -1,5 +1,10 @@
 <?php
 session_start();
+echo session_id();
+echo "\n";
+echo $_SESSION["id_usuario_logueado"];
+echo "\n";
+echo $_SESSION["email"];
 //$_SESSION["resp"] = "";
 //var_dump($_SESSION["resp"]);
  ?>

@@ -1,8 +1,11 @@
 <?php
 session_start();
-/*
-*http://www.php.net/manual/en/ref.sockets.php
-*/
+echo session_id();
+echo "\n";
+echo $_SESSION["id_usuario_logueado"];
+echo "\n";
+echo $_SESSION["email"];
+ 
 
 $host = "127.0.0.1";
 
