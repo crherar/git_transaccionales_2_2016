@@ -34,7 +34,7 @@ function base_url()
     if(isset($_SESSION["resp"]))
     {
       ?>
-      <div class="alert alert-danger">
+      <div class="alert alert-success">
         <?php print_r($_SESSION["resp"]); ?>
       </div>
       <?php

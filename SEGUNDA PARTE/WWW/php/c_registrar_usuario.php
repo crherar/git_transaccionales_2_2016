@@ -15,10 +15,10 @@ if (socket_connect($socket, $host, $puerto))
 {
 echo "\nConexion Exitosa, puerto: " . $puerto;
 //$msg = "mensaje del CLIENTE 1 desde php!!!";
-$nombre = str_pad("matias",20);
-$apellido = str_pad("alvarez",20);
-$email = str_pad("matias@gmail.com",40);
-$password = str_pad("123",10);
+$nombre = str_pad($_POST["nombre"],20);
+$apellido = str_pad($_POST["apellido"],20);
+$email = str_pad($_POST["email"],40);
+$password = str_pad($_POST["password"],10);
 
 $cabecera = array('formulario' => 'regusr',
 									'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
@@ -33,8 +33,20 @@ $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$usuario));//"loginn|".$
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
 
 $sock_data = socket_write($socket, $msg, strlen($msg));
-$resp = socket_read($socket, 1024);
-var_dump($resp);
+$resp = json_decode(socket_read($socket, 1024));
+
+if($resp->datos == "01")
+{
+	$_SESSION["resp"] = "Usuario registrado correctamente, ahora puede iniciar sesión";
+	header("location: vista_login.php");
+}
+
+if($resp->datos == "02")
+{
+	$_SESSION["resp"] = "Usuario ya registrado";
+	header("location: vista_registrar_usuario.php");
+}
+//var_dump($resp);
 
 
 /*

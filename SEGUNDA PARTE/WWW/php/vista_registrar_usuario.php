@@ -3,6 +3,8 @@ session_unset();
 session_start();
 print_r(session_id());
 print_r("\n");
+unset($_SESSION["id_usuario_logueado"]);
+unset($_SESSION["email"]);
 print_r($_SESSION["id_usuario_logueado"]);
 print_r("\n");
 print_r($_SESSION["email"]);
@@ -62,3 +64,9 @@ print_r($_SESSION["email"]);
 
      </form>
    </div>
+   <?php
+ //unset($_SESSION["datos"]);
+ unset($_SESSION["resp"]);
+    ?>
+ </body>
+</html>
