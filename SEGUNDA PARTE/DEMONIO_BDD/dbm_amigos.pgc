@@ -28,11 +28,11 @@ memset(SQL_output,0,sizeof(Amigo));
 
 EXEC SQL INSERT INTO amigos(amigo_1,amigo_2) VALUES(:SQL_id_usuario_logueado,:SQL_id_amigo);
 db_commit();
-EXEC SQL INSERT INTO amigos(amigo_1,amigo_2) VALUES(:SQL_id_amigo,:SQL_id_usuario_logueado);
-
+//EXEC SQL INSERT INTO amigos(amigo_1,amigo_2) VALUES(:SQL_id_amigo,:SQL_id_usuario_logueado);
+printf(sqlca.sqlerrm.sqlerrmc );
 SQL_output->verificador_error = sqlca.sqlcode;
 
-db_commit();
+//db_commit();
 ASSERT(SQL_output);
 return SQL_output;
 

@@ -13,6 +13,13 @@ class amigos:
         self.codtx = codigostx.codigostx()
         self.procpx = procesospx.procesospx()
 
+    def insertar_amigos(self,data):
+        self.amigo_1 = str(data["cabecera"]['id_usuario_logueado'])
+        self.amigo_2 = str(data["datos"]["id_amigo"])
+        mensaje = str(self.amigo_1)+"-"+str(self.amigo_2)
+        respuesta = self.mtx.enviar(self.procpx.insertar_amigos(),self.codtx.insertar_amigos(),"00",mensaje)
+        return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
+
     def ver_mis_amigos(self,data):
         self.amigo_1 = str(data["cabecera"]['id_usuario_logueado'])
         print "id usuario logueado dentro del metodo ver mis amigos: "+self.amigo_1

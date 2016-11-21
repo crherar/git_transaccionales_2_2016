@@ -303,19 +303,19 @@ int validar_registro_usuario(char *email_usuario)
 
 
 
-Usuario *get_listado_usuarios_registrados()
+Usuario *get_listado_usuarios_registrados(int id_usuario_logueado)
 {
 EXEC SQL BEGIN DECLARE SECTION;
 Usuario *SQL_output;
 int SQL_count;
-
+int SQL_id_usuario_logueado;
 EXEC SQL END DECLARE SECTION;
 
-
+SQL_id_usuario_logueado = id_usuario_logueado;
 printf("1 \n");
 
 EXEC SQL SELECT count(*) INTO :SQL_count
-FROM usuarios;
+FROM usuarios WHERE id not in (select amigo_2 FROM amigos where amigo_1 = :SQL_id_usuario_logueado);
 SQL_output = (Usuario*) malloc(sizeof(Usuario) * (SQL_count + 1));
 if(SQL_count == 0)
 {
@@ -328,7 +328,8 @@ if(SQL_count == 0)
 EXEC SQL SELECT string_agg(concat(cast(id as text),',',
 																				concat(RTRIM(nombre),' ',RTRIM(apellido)),',' ,
 																				RTRIM(email)),'|')
- as datos INTO :SQL_output->listado FROM usuarios;
+ as datos INTO :SQL_output->listado FROM usuarios
+ WHERE id not in (select amigo_2 FROM amigos where amigo_1 = :SQL_id_usuario_logueado);
 
 printf(sqlca.sqlerrm.sqlerrmc );
 printf("2 \n");

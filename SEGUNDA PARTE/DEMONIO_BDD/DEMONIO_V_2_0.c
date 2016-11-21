@@ -74,9 +74,10 @@ int main() {
     int cantidad_prestada;
     char email_usuario_recibidor[41];
     char email_usuario_dueno_objeto[30];
+    int id_amigo;
     //char nombre_usuario_recibidor[10];
     //char apellido_usuario_recibidor[10];
-
+    Amigo *amig;
     Usuario *usr;
     Prestamo *prest;
     Objeto *obj;
@@ -352,10 +353,29 @@ int main() {
             else if(strcmp(formulario_actual,"verusr") == 0){
               printf("************************** Formulario 'verusr' **************************\n");
               printf("-----> Ver usuarios registrados <-----\n");
-
-              usr = get_listado_usuarios_registrados();
+              sscanf(mensaje.texto.datos_formulario, "%d", &id_usuario_logueado);
+              usr = get_listado_usuarios_registrados(id_usuario_logueado);
               strcpy(respuesta.texto.datos_formulario,usr->listado);
-              printf("************************** Formulario 'verusr' **************************\n");
+              printf("************************** FIN Formulario 'verusr' **************************\n");
+            }
+
+
+            else if(strcmp(formulario_actual,"regami") == 0){
+                printf("************************** Formulario 'regami' **************************\n");
+                printf("-----> Registrar amigo <-----\n");
+                printf("mensaje recibido: %s\n", mensaje.texto.datos_formulario);
+                sscanf(mensaje.texto.datos_formulario,"%d-%d",&id_usuario_logueado,&id_amigo);
+                printf("id usuario logueado: %d\n", id_usuario_logueado);
+                printf("id amigo: %d\n", id_amigo);
+                amig = insertar_amigos(id_usuario_logueado,id_amigo);
+
+                if (amig->verificador_error == 0) {
+                        printf("\n\nDENTRO VERF_ERR\n\n");
+                        strcpy(respuesta.texto.datos_formulario, "01");
+                } else {
+                    strcpy(respuesta.texto.datos_formulario, "02");
+                }
+                printf("************************** FIN Formulario 'regami' **************************\n");
             }
 
             else if (strcmp(formulario_actual, "verami") == 0) {

@@ -64,7 +64,7 @@ class procesospx:
 
     #AMIGOS
     def insertar_amigos(self):
-        return "inami"
+        return "regami"
 
     def actualizar_amigos(self):
         return "actami"

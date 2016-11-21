@@ -27,7 +27,7 @@ function marcarPrestamoDevuelto(idbtn)
     //$("#txtRut").val();
     var data=idbtn.id.split("_");
     var idprestamo=$("#td_idprestamo_"+data[2]).html();
-    $("#id").val(idprestamo);
+    //$("#id").val(idprestamo);
 
       var url = localStorage.getItem('base_url')+"php/c_marcar_prestamo_como_devuelto.php";
 

@@ -75,10 +75,11 @@ class usuarios:
 
 
 	def ver_usuarios_registrados(self,data):
-	    respuesta = self.mtx.enviar(self.procpx.ver_usuarios_registrados(),self.codtx.ver_usuarios_registrados(),"00","")
+		self.id = data['cabecera']['id_usuario_logueado']
+		respuesta = self.mtx.enviar(self.procpx.ver_usuarios_registrados(),self.codtx.ver_usuarios_registrados(),"00",str(self.id))
 	    #print respuesta
 	    #return json.dumps({'cabecera':[data["cabecera"]["formulario"],data["cabecera"]["id_usuario_logueado"]],'datos':respuesta})[""]
 	    #print data["cabecera"]
-	    print "\n"
+	    #print "\n"
 	    #print json.dumps(respuesta)
-	    return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.usuarios(respuesta)})
+		return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.usuarios(respuesta)})

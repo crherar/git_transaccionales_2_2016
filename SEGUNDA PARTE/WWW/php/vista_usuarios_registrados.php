@@ -24,7 +24,7 @@ print_r($_SESSION["email"]);
     <link rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
   <link rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css'>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/objetos.js"></script>
+<script type="text/javascript" src="../js/amigos.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/app.css">
     <title></title>
   </head>
@@ -80,7 +80,7 @@ print_r($_SESSION["email"]);
     ?>
 
     <div>
-    <a href="vista_registrar_objeto.php">Registrar objeto</a>
+
   </div>
   <table class="table table-bordered">
     <thead>
@@ -106,8 +106,8 @@ print_r($_SESSION["email"]);
         <td id="td_email_usuario_<?php echo $cont; ?>"><?php echo $value->email; ?></td>
         <td>
           <ul>
-          <!-- <button id="btn_devuelto_<?php echo $cont; ?>" onclick="marcarPrestamoDevuelto(this)">Devuelto</button> -->
-          <button id="btn_ver_perfil_<?php echo $cont; ?>"  onclick = "get_objeto_eliminar(this)">Ver perfil</button>
+          <button id="btn_agregarmisamigos_<?php echo $cont; ?>" onclick="agregar_amigo(this)">Agregar como amigo</button>
+          <button id="btn_verperfil_<?php echo $cont; ?>"  onclick = "get_objeto_eliminar(this)">Ver perfil</button>
 
         </ul>
       </td>
