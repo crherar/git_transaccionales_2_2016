@@ -5,6 +5,7 @@ echo "*************** usuarios *************** ";
 gmon regusr.c
 gmon modusr.c
 gmon actusr.c
+gmon verusr.c
 echo "****************************************** ";
 
 echo "*************** login ***************";

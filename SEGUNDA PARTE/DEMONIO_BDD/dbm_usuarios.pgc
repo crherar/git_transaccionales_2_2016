@@ -299,3 +299,44 @@ int validar_registro_usuario(char *email_usuario)
     return SQL_output;
 
 }
+
+
+
+
+Usuario *get_listado_usuarios_registrados()
+{
+EXEC SQL BEGIN DECLARE SECTION;
+Usuario *SQL_output;
+int SQL_count;
+
+EXEC SQL END DECLARE SECTION;
+
+
+printf("1 \n");
+
+EXEC SQL SELECT count(*) INTO :SQL_count
+FROM usuarios;
+SQL_output = (Usuario*) malloc(sizeof(Usuario) * (SQL_count + 1));
+if(SQL_count == 0)
+{
+  strcpy(SQL_output->listado,"02");
+ }
+ else
+ {
+
+//memset(SQL_output,'\0',sizeof SQL_output);
+EXEC SQL SELECT string_agg(concat(cast(id as text),',',
+																				concat(RTRIM(nombre),' ',RTRIM(apellido)),',' ,
+																				RTRIM(email)),'|')
+ as datos INTO :SQL_output->listado FROM usuarios;
+
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("2 \n");
+db_commit();
+//printf("%s \n",SQL_output);
+printf("3 \n");
+}
+//char datos[2000];
+//strcpy(datos,SQL_output);
+return SQL_output;
+}

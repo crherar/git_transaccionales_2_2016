@@ -13,5 +13,5 @@ Usuario *actualizar_usuario(char *email,char *nombre, char *apellido, char *pass
 int eliminar_usuario(int id_usuario);
 char* get_email_usuario_por_id(int id);
 int validar_registro_usuario(char *email_usuario);
-
+Usuario *get_listado_usuarios_registrados();
 #endif

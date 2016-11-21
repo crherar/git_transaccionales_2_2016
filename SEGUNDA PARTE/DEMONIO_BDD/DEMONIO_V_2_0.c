@@ -80,7 +80,7 @@ int main() {
     Usuario *usr;
     Prestamo *prest;
     Objeto *obj;
-
+    Misamigos *misamigos;
     char email[41];
     char password[11];
     char nombre[21];
@@ -349,13 +349,22 @@ int main() {
                 printf("************************** FIN Formulario 'delusr' **************************\n");
             }
 
+            else if(strcmp(formulario_actual,"verusr") == 0){
+              printf("************************** Formulario 'verusr' **************************\n");
+              printf("-----> Ver usuarios registrados <-----\n");
+
+              usr = get_listado_usuarios_registrados();
+              strcpy(respuesta.texto.datos_formulario,usr->listado);
+              printf("************************** Formulario 'verusr' **************************\n");
+            }
+
             else if (strcmp(formulario_actual, "verami") == 0) {
 
                 printf("************************** Formulario 'verami' **************************\n");
 
                 printf("-----> Ver mis amigos <-----\n");
                 //id_usuario_logueado = 9;
-                printf("id usuario logueado: %5d \n",id_usuario_logueado);
+                printf("id usuario logueado: %d \n",id_usuario_logueado);
                 sscanf(mensaje.texto.datos_formulario, "%d", &id_usuario_logueado);
                 printf("id usuario logueado: %d \n",id_usuario_logueado);
                 printf("despues de sscanf \n");
@@ -370,7 +379,8 @@ int main() {
                 //strcpy(mis_amigos,get_mis_amigos_combobox(id_usuario_logueado));
                 printf("antes de copiar datos a respuesta\n");
                 //strcpy(respuesta.texto.datos_formulario,"hola mundo");
-                strcpy(respuesta.texto.datos_formulario,get_mis_amigos(id_usuario_logueado));
+                misamigos = get_mis_amigos_combobox(id_usuario_logueado);
+                strcpy(respuesta.texto.datos_formulario,misamigos->listado);
                 printf("4\n" );
                 printf("************************** FIN Formulario 'verami' **************************\n");
             }

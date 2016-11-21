@@ -107,6 +107,21 @@ while running:
                     s.close()
                     input.remove(s)
 
+            if formulario == "verusr":
+                usr = usuarios.usuarios()
+                print formulario
+                respuesta = usr.ver_usuarios_registrados(data)
+                del usr
+                if respuesta:
+                    print "respuesta al php: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
             if formulario == "regobj":
                 obj = objetos.objetos()
                 print formulario
@@ -331,7 +346,7 @@ while running:
                     print "NO EXISTE RESPUESTA"
                     s.close()
                     input.remove(s)
-            del data    
+            del data
 
                 # if len(respuesta) != 0:
                 #     s.send(respuesta)

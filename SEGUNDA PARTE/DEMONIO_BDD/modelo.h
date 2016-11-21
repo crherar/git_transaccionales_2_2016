@@ -9,7 +9,7 @@ struct Usuario{
     char apellido[21];
     char email[41];
     char password[11];
-
+    char listado[2000];
 };
 
  struct Objeto{
@@ -73,6 +73,7 @@ struct Amigo{
 struct Misamigos{
     int id_usuario_logueado;
     char emailamigo[40];
+    char listado[2000];
 };
 
 struct Reputacion{
