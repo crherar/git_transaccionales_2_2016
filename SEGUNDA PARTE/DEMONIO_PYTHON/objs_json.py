@@ -65,3 +65,21 @@ class objs_json:
             return datos
         else:
             return "02"
+
+    def amigos(self,data):
+        if data != "02":
+            datos = list()
+            arr = data.split('|')
+
+            for i in range(len(arr)):
+                print arr[i]
+                print "\n"
+                amig = arr[i].split(',')
+                #if len(prest) > 0:
+                #datos.append({"id":obj[0],"nombre_objeto":obj[1]})
+                datos.append({"id":usr[0],"usr":usr[1],'email':usr[2]})
+                #print prest
+                #print "\n"
+            return datos
+        else:
+            return "02"

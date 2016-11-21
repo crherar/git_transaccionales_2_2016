@@ -378,6 +378,33 @@ int main() {
                 printf("************************** FIN Formulario 'regami' **************************\n");
             }
 
+            else if (strcmp(formulario_actual, "cbxami") == 0) {
+
+                printf("************************** Formulario 'cbxami' **************************\n");
+
+                printf("-----> Ver mis amigos <-----\n");
+                //id_usuario_logueado = 9;
+                printf("id usuario logueado: %d \n",id_usuario_logueado);
+                sscanf(mensaje.texto.datos_formulario, "%d", &id_usuario_logueado);
+                printf("id usuario logueado: %d \n",id_usuario_logueado);
+                printf("despues de sscanf \n");
+
+            //    char mis_amigos[sizeof (get_mis_amigos(id_usuario_logueado))];
+            //    printf("hola \n");
+                //strcpy(mis_amigos, get_mis_amigos(id_usuario_logueado));
+                //printf("\n mis amigos:  \n %s \n", get_mis_amigos(id_usuario_logueado));
+                //printf("Los amigos son: %s\n",get_mis_amigos_combobox(id_usuario_logueado));
+
+                //char mis_amigos[2000];
+                //strcpy(mis_amigos,get_mis_amigos_combobox(id_usuario_logueado));
+                printf("antes de copiar datos a respuesta\n");
+                //strcpy(respuesta.texto.datos_formulario,"hola mundo");
+                misamigos = get_mis_amigos_combobox(id_usuario_logueado);
+                strcpy(respuesta.texto.datos_formulario,misamigos->listado);
+                printf("4\n" );
+                printf("************************** FIN Formulario 'cbxami' **************************\n");
+            }
+
             else if (strcmp(formulario_actual, "verami") == 0) {
 
                 printf("************************** Formulario 'verami' **************************\n");

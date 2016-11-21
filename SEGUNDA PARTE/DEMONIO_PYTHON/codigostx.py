@@ -72,18 +72,21 @@ class codigostx:
     def eliminar_amigos(self):
         return "020522"
 
-    def ver_mis_amigos(self):
+    def ver_mis_amigos_combobox(self):
         return "020523"
+
+    def ver_mis_amigos_tabla(self):
+        return "020524"
 
     #REPUTACIONES
     def isertar_reputacion(self):
-        return "020524"
-
-    def actualizar_reputacion(self):
         return "020525"
 
-    def ver_mis_reputaciones(self):
+    def actualizar_reputacion(self):
         return "020526"
 
-    def ver_reputacion_de_usuario(self):
+    def ver_mis_reputaciones(self):
         return "020527"
+
+    def ver_reputacion_de_usuario(self):
+        return "020528"

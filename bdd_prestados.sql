@@ -54,8 +54,10 @@ constraint fk_usuario_clasificado foreign key (id_usuario_clasificado) REFERENCE
 
 create view misAmigos as
 select
+a.id as id_amistad,
 a.amigo_1,
-u.email
+concat(RTRIM(u.nombre),' ',u.apellido) as amigo,
+u.emailamigo
 from
 usuarios as u,
 amigos as a

@@ -72,9 +72,11 @@ class procesospx:
     def eliminar_amigos(self):
         return "delami"
 
-    def ver_mis_amigos(self):
-        return "verami"
+    def ver_mis_amigos_combobox(self):
+        return "cbxami"
 
+    def ver_mis_amigos_tabla(self):
+        return "verami"
 
     #REPUTACIONES
     def isertar_reputacion(self):

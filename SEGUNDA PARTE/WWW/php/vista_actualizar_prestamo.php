@@ -27,7 +27,7 @@ $resp = json_decode(socket_read($socket, 8192));
 $objetos = $resp->datos;
 //var_dump($objetos);
 
-$cabecera = array('formulario' => 'verami',
+$cabecera = array('formulario' => 'cbxami',
 									'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
 									 'email'=>$_SESSION["email"]);
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>''));
@@ -79,6 +79,7 @@ $amigos = $resp->datos;
             <li><a href="c_ver_prestamos_devueltos.php">Ver prestamos devueltos</a></li>
             <li><a href="c_ver_mis_objetos.php">Administrar mis objetos</a></li>
             <li><a href="c_ver_usuarios_registrados.php">Usuarios registrados</a></li>
+            <li><a href="c_ver_mis_amigos.php">Mis amigos</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION["email"] ?> <span class="caret"></span></a>
               <ul class="dropdown-menu">

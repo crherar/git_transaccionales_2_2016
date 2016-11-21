@@ -347,10 +347,10 @@ while running:
                     s.close()
                     input.remove(s)
 
-            if formulario == "verami":
+            if formulario == "cbxami":
                 amig = amigos.amigos()
                 print formulario
-                respuesta = amig.ver_mis_amigos(data)
+                respuesta = amig.ver_mis_amigos_combobox(data)
                 del amig
                 if respuesta:
                     print "respuesta al php: "
