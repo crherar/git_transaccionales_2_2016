@@ -75,6 +75,9 @@ int main() {
     char email_usuario_recibidor[41];
     char email_usuario_dueno_objeto[30];
     int id_amigo;
+    int id_usuario_clasificado;
+    int clasificacion;
+    char comentario_clasificacion[100];
     //char nombre_usuario_recibidor[10];
     //char apellido_usuario_recibidor[10];
     Amigo *amig;
@@ -82,6 +85,9 @@ int main() {
     Prestamo *prest;
     Objeto *obj;
     Misamigos *misamigos;
+    Reputacion *rep;
+
+
     char email[41];
     char password[11];
     char nombre[21];
@@ -1041,6 +1047,31 @@ int main() {
                 //     strcpy(respuesta.texto.datos_formulario, "02");
                 // }
                 printf("************************** FIN Formulario 'delobj' **************************\n");
+            }
+
+
+            else if (strcmp(formulario_actual, "regrep") == 0) {
+
+                printf("************************** Formulario 'regrep' **************************\n");
+                printf("---->Registrar reputacion<------\n");
+                sscanf(mensaje.texto.datos_formulario, "%d-%d-%d-%100c", &id_usuario_logueado,&id_usuario_clasificado,&clasificacion,comentario_clasificacion);
+                printf("id del usuario clasificador recibido: %d\n", id_usuario_logueado);
+                printf("id del usuario clasificado recibido: %d\n", id_usuario_clasificado);
+                printf("clasificacion recibida: %d\n", clasificacion);
+                printf("comentario recibido: %s\n", comentario_clasificacion);
+
+
+
+                printf("\n\n DESPUES DE LA LLAMADA A FUNCION \n\n");
+                rep = insertar_reputacion(id_usuario_clasificado,id_usuario_logueado,clasificacion,comentario_clasificacion);
+
+                if(rep->verificador_error == 0){
+                    sprintf(respuesta.texto.datos_formulario, "%s", "01");
+                }else{
+                    sprintf(respuesta.texto.datos_formulario, "%s", "02");
+                }
+
+                printf("************************** FIN Formulario 'regrep' **************************\n");
             }
 
             /* ********************************************************************************************************* */

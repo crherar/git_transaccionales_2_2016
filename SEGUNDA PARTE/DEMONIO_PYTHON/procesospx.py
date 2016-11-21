@@ -79,8 +79,8 @@ class procesospx:
         return "verami"
 
     #REPUTACIONES
-    def isertar_reputacion(self):
-        return "inrep"
+    def insertar_reputacion(self):
+        return "regrep"
 
     def actualizar_reputacion(self):
         return "actrep"

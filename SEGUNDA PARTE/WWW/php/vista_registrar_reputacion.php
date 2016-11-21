@@ -98,6 +98,7 @@ print_r($_SESSION["email"]);
              <div clas='form-group'>
                <label for="email">Comentario</label>
                <textarea  class="form-control", type='text', required='true', name='comentario', placeholder='Comentario',id='comentario'></textarea>
+               <input style="display: none;" name="id_usuario" id="id_usuario" value=<?php print_r($_SESSION["datos"]->id); ?>>
              </div>
 
              <div class="top-space">

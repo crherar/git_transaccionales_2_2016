@@ -11,11 +11,12 @@ EXEC SQL END DECLARE SECTION;
 
 
 
-Reputacion *insertar_reputacion(int id_usuario_clasificado,int clasificacion,char *comentario)
+Reputacion *insertar_reputacion(int id_usuario_clasificado,int id_usuario_clasificador,int clasificacion,char *comentario)
 {
 EXEC SQL BEGIN DECLARE SECTION;
 Reputacion *SQL_output;
 int SQL_id_usuario_clasificado;
+int SQL_id_usuario_clasificador;
 int SQL_clasificacion;
 char SQL_comentario[100];
 EXEC SQL END DECLARE SECTION;
@@ -23,16 +24,18 @@ EXEC SQL END DECLARE SECTION;
 
 strcpy(SQL_comentario,comentario);
 SQL_id_usuario_clasificado = id_usuario_clasificado;
+SQL_id_usuario_clasificador = id_usuario_clasificador;
 SQL_clasificacion = clasificacion;
 
 
 SQL_output = (Reputacion*) malloc(sizeof(Reputacion));
 memset(SQL_output,0,sizeof(Reputacion));
 
-EXEC SQL INSERT INTO reputacionusuarios(id_usuario_clasificado,clasificacion,comentario) VALUES(:SQL_id_usuario_clasificado,:SQL_clasificacion,:SQL_comentario);
+EXEC SQL INSERT INTO reputacionusuarios(id_usuario_clasificado,id_usuario_clasificador,clasificacion,comentario) VALUES(:SQL_id_usuario_clasificado,:SQL_id_usuario_clasificador,:SQL_clasificacion,:SQL_comentario);
 
 SQL_output->verificador_error = sqlca.sqlcode;
-
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("\n");
 db_commit();
 
 ASSERT(SQL_output);

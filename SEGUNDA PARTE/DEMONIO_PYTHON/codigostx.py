@@ -79,7 +79,7 @@ class codigostx:
         return "020524"
 
     #REPUTACIONES
-    def isertar_reputacion(self):
+    def insertar_reputacion(self):
         return "020525"
 
     def actualizar_reputacion(self):

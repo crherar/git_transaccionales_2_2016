@@ -10,6 +10,7 @@ import amigos
 import prestamos
 import sys
 from pprint import pprint
+import reputaciones
 
 host = '127.0.0.1'
 port = 3000
@@ -367,6 +368,21 @@ while running:
                 print formulario
                 respuesta = amig.ver_mis_amigos_combobox(data)
                 del amig
+                if respuesta:
+                    print "respuesta al php: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
+            if formulario == "regrep":
+                rep = reputaciones.reputaciones()
+                print formulario
+                respuesta = rep.insertar_reputacion(data)
+                del rep
                 if respuesta:
                     print "respuesta al php: "
                     print respuesta
