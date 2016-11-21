@@ -24,7 +24,7 @@ print_r($_SESSION["email"]);
     <link rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
   <link rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css'>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/objetos.js"></script>
+<script type="text/javascript" src="../js/amigos.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/app.css">
     <title></title>
   </head>
@@ -110,7 +110,7 @@ print_r($_SESSION["email"]);
         <td>
           <ul>
           <button id="btn_editar_<?php echo $cont; ?>"  onclick="get_objeto_editar(this)">Ver perfil</button>
-          <!-- <button id="btn_devuelto_<?php echo $cont; ?>" onclick="marcarPrestamoDevuelto(this)">Devuelto</button> -->
+          <button id="btn_clasificar_<?php echo $cont; ?>" onclick="agregar_reputacion(this)">Agregar reputación</button>
           <button id="btn_eliminar_<?php echo $cont; ?>"  onclick = "get_objeto_eliminar(this)">Eliminar</button>
         </ul>
       </td>
