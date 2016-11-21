@@ -103,12 +103,16 @@ printf("select id del email de usuario: %s \n",email);
 
 //SQL_output = (Usuario*) malloc(sizeof(Usuario));
 //memset(SQL_output, 0, sizeof(Usuario));
+memset(SQL_email,'\0',sizeof SQL_email);
 strcpy(SQL_email,email);
+
+printf("haciendo select del email: %s \n",SQL_email);
 EXEC SQL SELECT id INTO :SQL_output FROM usuarios WHERE email = RTRIM(:SQL_email);
-
+printf("id del usuario dentro del select: %d \n",SQL_output);
 db_commit();
-
-ASSERT(SQL_output);
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("\n");
+//ASSERT(SQL_output);
 return SQL_output;
 }
 

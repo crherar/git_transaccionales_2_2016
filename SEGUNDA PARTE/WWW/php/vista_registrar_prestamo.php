@@ -54,6 +54,16 @@ $amigos = $resp->datos;
     <link rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
   <link rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css'>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.0/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.0/js/bootstrap-select.min.js"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.0/js/i18n/defaults-*.min.js"></script> -->
+
+
 <link rel="stylesheet" type="text/css" href="../css/app.css">
 
 <link rel="stylesheet"  href = "../css/bootstrap-datetimepicker.min.css">
@@ -117,9 +127,10 @@ $amigos = $resp->datos;
                  </div>
              </div>
 
+
              <div clas='form-group'>
                <label for="email">Usuario recibidor:</label>
-               <select name="usuario_recibidor" class="selectpicker form-control" data-live-search="true" multiple title="Usuario recibidor...">
+               <select name="usuario_recibidor" class="selectpicker form-control" data-live-search="true" title="Usuario recibidor...">
                  <?php foreach($amigos as $value)
                  {
                   ?>
@@ -132,7 +143,7 @@ $amigos = $resp->datos;
 
              <div clas='form-group'>
                <label for="email">Nombre objeto:</label>
-               <select name="nombre_objeto" class="selectpicker form-control" data-live-search="true" multiple title="Nombre objeto....">
+               <select name="nombre_objeto" class="selectpicker form-control" data-live-search="true" title="Nombre objeto....">
                  <?php foreach($objetos as $value)
                  {
                   ?>
@@ -168,6 +179,10 @@ $amigos = $resp->datos;
              </div>
            </form>
          </div>
+         <?php
+       //unset($_SESSION["datos"]);
+       unset($_SESSION["resp"]);
+          ?>
   </body>
 </html>
 

@@ -359,11 +359,19 @@ int main() {
                 sscanf(mensaje.texto.datos_formulario, "%d", &id_usuario_logueado);
                 printf("id usuario logueado: %d \n",id_usuario_logueado);
                 printf("despues de sscanf \n");
-                char mis_amigos[sizeof (get_mis_amigos(id_usuario_logueado))];
-                printf("hola \n");
+
+            //    char mis_amigos[sizeof (get_mis_amigos(id_usuario_logueado))];
+            //    printf("hola \n");
                 //strcpy(mis_amigos, get_mis_amigos(id_usuario_logueado));
-                printf("\n mis amigos:  \n %s \n", get_mis_amigos(id_usuario_logueado));
+                //printf("\n mis amigos:  \n %s \n", get_mis_amigos(id_usuario_logueado));
+                //printf("Los amigos son: %s\n",get_mis_amigos_combobox(id_usuario_logueado));
+
+                //char mis_amigos[2000];
+                //strcpy(mis_amigos,get_mis_amigos_combobox(id_usuario_logueado));
+                printf("antes de copiar datos a respuesta\n");
+                //strcpy(respuesta.texto.datos_formulario,"hola mundo");
                 strcpy(respuesta.texto.datos_formulario,get_mis_amigos(id_usuario_logueado));
+                printf("4\n" );
                 printf("************************** FIN Formulario 'verami' **************************\n");
             }
 
@@ -402,15 +410,16 @@ int main() {
                 printf("Dia fecha de devolucion recibido es: %d \n", dia_devolucion);
                 printf("fecha devolucion recibida es: %s \n", fecha_devolucion);
                 printf("Nombre objeto recibido: %s \n",nombre_objeto);
-
+                id_usuario_prestador = 0;
+                id_usuario_recibidor = 0;
                 id_usuario_prestador = get_id_usuario_por_email(email_usuario_prestador);
                 id_usuario_recibidor = get_id_usuario_por_email(email_usuario_recibidor);
 
                 id_objeto = get_id_objeto(nombre_objeto);
 
                 printf("La id del objeto prestado es: %d \n", id_objeto);
-                printf("La id del usuario prestador es %d y la del usuario recibidor es %d \n", id_usuario_prestador, id_usuario_recibidor);
-
+                printf("La id del usuario prestador es %d  \n", id_usuario_prestador);
+                printf("La id del usuario recibidor es %d  \n", id_usuario_recibidor);
                 prest = insertar_prestamo(fecha_prestamo, id_usuario_prestador, id_objeto, cantidad_prestada,
                         id_usuario_recibidor, fecha_devolucion);
 
@@ -480,6 +489,7 @@ int main() {
                 printf("Dia fecha de devolucion recibido es: %d \n", dia_devolucion);
                 printf("fecha devolucion recibida es: %s \n", fecha_devolucion);
                 printf("Estado del prestamo recibido %d \n",estado);
+                id_usuario_recibidor = get_id_usuario_por_email(email_usuario_recibidor);
                 id_usuario_prestador = get_id_usuario_por_email(email_usuario_prestador);
                 id_usuario_recibidor = get_id_usuario_por_email(email_usuario_recibidor);
 

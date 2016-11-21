@@ -91,6 +91,46 @@ int eliminar_amistad(id_amistad)
   return resp;
 }
 
+
+
+char *get_mis_amigos_combobox(int id_usuario_logueado)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+char SQL_output[2000];
+int SQL_count;
+int  SQL_id_usuario_logueado;
+EXEC SQL END DECLARE SECTION;
+
+SQL_id_usuario_logueado = id_usuario_logueado;
+printf("1 \n");
+
+EXEC SQL SELECT count(*) INTO :SQL_count
+from misamigos where amigo_1 = :SQL_id_usuario_logueado;
+
+if(SQL_count == 0)
+{
+  return "02";
+ }
+ else
+ {
+//memset(SQL_output,'\0',sizeof SQL_output);
+EXEC SQL SELECT string_agg(emailamigo,',') as datos INTO :SQL_output
+FROM misamigos where amigo_1 = :SQL_id_usuario_logueado;
+
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("2 \n");
+db_commit();
+//printf("%s \n",SQL_output);
+printf("3 \n");
+}
+//char datos[2000];
+//strcpy(datos,SQL_output);
+return SQL_output;
+}
+
+
+
+
 char *get_mis_amigos(int id_usuario_logueado)
 {
   EXEC SQL BEGIN DECLARE SECTION;

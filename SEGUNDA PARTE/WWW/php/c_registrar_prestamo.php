@@ -43,14 +43,23 @@ $prestamo = array('dia_prestamo'=>strval($fecha_prestamo["day"]),
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$prestamo));//"loginn|".$email."-".$password;
 var_dump($msg);
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
-echo "ENVIANDO AL PYTHON: \n";
-echo $msg."\n";
+//echo "ENVIANDO AL PYTHON: \n";
+//echo $msg."\n";
 $sock_data = socket_write($socket, $msg, strlen($msg));
 echo "RESPUESTA DEL PYTHON: \n";
-$resp = socket_read($socket, 1024);
-var_dump($resp);
-header("location c_ver_prestamos_pendientes.php");
+$resp = json_decode(socket_read($socket, 1024));
+//var_dump($resp);
+if($resp->datos == "01")
+{
+$_SESSION["resp"] = "Prestamo registrado correctamente";
+header("location: c_ver_prestamos_pendientes.php");
+}
 
+if($resp->datos == "02")
+{
+$_SESSION["resp"] = "Error al guardar";
+header("location: vista_registar_prestamo.php");
+}
 /*
 $sock_data = socket_write($socket, "loginn", strlen("DIRPRG /home/alumnos/17957132/"));
 $resp = socket_read($socket, 1024);

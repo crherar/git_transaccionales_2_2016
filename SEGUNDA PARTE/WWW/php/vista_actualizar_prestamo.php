@@ -54,6 +54,13 @@ $amigos = $resp->datos;
     <link rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
   <link rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css'>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.0/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.0/js/bootstrap-select.min.js"></script>
+
+
 <link rel="stylesheet" type="text/css" href="../css/app.css">
 
 <link rel="stylesheet"  href = "../css/bootstrap-datetimepicker.min.css">
@@ -99,7 +106,7 @@ $amigos = $resp->datos;
     }
     ?>
          <div class = "col-md-4 remove-float center-block  big-top-space">
-           <form action="c_registrar_prestamo.php" method="POST">
+           <form action="c_actualizar_prestamo.php" method="POST">
 
              <div class="form-group">
                 <label for="email">Fecha prestamo:</label>
@@ -119,7 +126,7 @@ $amigos = $resp->datos;
 
              <div clas='form-group'>
                <label for="email">Usuario recibidor:</label>
-               <select name="usuario_recibidor" class="selectpicker form-control" data-live-search="true" multiple title="Usuario recibidor...">
+               <select name="usuario_recibidor" class="selectpicker form-control" data-live-search="true" title=<?php print_r($_SESSION["datos"]->correo_usuario_recibidor) ?>>
                  <?php foreach($amigos as $value)
                  {
                   ?>
@@ -132,7 +139,7 @@ $amigos = $resp->datos;
 
              <div clas='form-group'>
                <label for="email">Nombre objeto:</label>
-               <select name="nombre_objeto" class="selectpicker form-control" data-live-search="true" multiple title="Nombre objeto....">
+               <select name="nombre_objeto" class="selectpicker form-control" data-live-search="true" title=<?php print_r($_SESSION["datos"]->nombre_objeto) ?>>
                  <?php foreach($objetos as $value)
                  {
                   ?>
