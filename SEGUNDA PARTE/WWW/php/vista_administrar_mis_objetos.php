@@ -50,7 +50,7 @@ print_r($_SESSION["email"]);
               <li class="active"><a href="c_ver_prestamos_pendientes.php">Ver prestamos pendientes</a></li>
             <li><a href="c_ver_prestamos_devueltos.php">Ver prestamos devueltos</a></li>
             <li><a href="c_ver_mis_objetos.php">Administrar mis objetos</a></li>
-
+            <li><a href="c_ver_usuarios_registrados.php">Usuarios registrados</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION["email"] ?> <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -108,7 +108,7 @@ print_r($_SESSION["email"]);
           <!-- <button id="btn_devuelto_<?php echo $cont; ?>" onclick="marcarPrestamoDevuelto(this)">Devuelto</button> -->
           <button id="btn_eliminar_<?php echo $cont; ?>"  onclick = "get_objeto_eliminar(this)">Eliminar</button>
         </ul>
-        <td>
+      </td>
       </tr>
 
       <?php
