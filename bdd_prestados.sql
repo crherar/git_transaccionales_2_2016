@@ -56,8 +56,9 @@ create view misAmigos as
 select
 a.id as id_amistad,
 a.amigo_1,
+a.amigo_2 as id_amigo,
 concat(RTRIM(u.nombre),' ',u.apellido) as amigo,
-u.emailamigo
+u.email as emailamigo
 from
 usuarios as u,
 amigos as a

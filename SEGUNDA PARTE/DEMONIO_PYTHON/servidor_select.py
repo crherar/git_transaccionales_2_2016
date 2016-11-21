@@ -347,6 +347,21 @@ while running:
                     s.close()
                     input.remove(s)
 
+            if formulario == "verami":
+                amig = amigos.amigos()
+                print formulario
+                respuesta = amig.ver_mis_amigos_tabla(data)
+                del amig
+                if respuesta:
+                    print "respuesta al php: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
             if formulario == "cbxami":
                 amig = amigos.amigos()
                 print formulario

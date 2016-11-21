@@ -2,6 +2,7 @@ import json
 import monitor
 import codigostx
 import procesospx
+import objs_json
 
 class amigos:
 
@@ -12,6 +13,7 @@ class amigos:
         self.mtx = monitor.monitor()
         self.codtx = codigostx.codigostx()
         self.procpx = procesospx.procesospx()
+        self.objson = objs_json.objs_json()
 
     def insertar_amigos(self,data):
         self.amigo_1 = str(data["cabecera"]['id_usuario_logueado'])
@@ -27,3 +29,13 @@ class amigos:
         print "datos recibidos del monitor: "+datos
         mis_amigos = datos.split(',')
         return json.dumps({'cabecera':{'id_usuario_logueado':self.amigo_1,'email':''},'datos':mis_amigos})
+
+    def ver_mis_amigos_tabla(self,data):
+        self.amigo_1 = data["cabecera"]["id_usuario_logueado"]
+        respuesta = self.mtx.enviar(self.procpx.ver_mis_amigos_tabla(),self.codtx.ver_mis_amigos_tabla(),"00",str(self.amigo_1))
+        print respuesta
+        #return json.dumps({'cabecera':[data["cabecera"]["formulario"],data["cabecera"]["id_usuario_logueado"]],'datos':respuesta})[""]
+        #print data["cabecera"]
+        print "\n"
+        #print json.dumps(respuesta)
+        return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.amigos(respuesta)})

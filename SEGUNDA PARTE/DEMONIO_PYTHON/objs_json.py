@@ -77,7 +77,7 @@ class objs_json:
                 amig = arr[i].split(',')
                 #if len(prest) > 0:
                 #datos.append({"id":obj[0],"nombre_objeto":obj[1]})
-                datos.append({"id":usr[0],"usr":usr[1],'email':usr[2]})
+                datos.append({"id_amistad":amig[0],'id_amigo':amig[1],"ami":amig[2],'emailami':amig[3]})
                 #print prest
                 #print "\n"
             return datos

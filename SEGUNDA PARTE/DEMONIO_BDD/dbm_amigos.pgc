@@ -130,6 +130,46 @@ return SQL_output;
 }
 
 
+Misamigos *get_mis_amigos_tabla(int id_usuario_logueado)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+Misamigos *SQL_output;
+int SQL_count;
+int  SQL_id_usuario_logueado;
+EXEC SQL END DECLARE SECTION;
+
+SQL_id_usuario_logueado = id_usuario_logueado;
+printf("1 \n");
+
+EXEC SQL SELECT count(*) INTO :SQL_count
+from misamigos where amigo_1 = :SQL_id_usuario_logueado;
+SQL_output = (Misamigos*) malloc(sizeof(Misamigos) * (SQL_count + 1));
+if(SQL_count == 0)
+{
+  strcpy(SQL_output->listado,"02");
+ }
+ else
+ {
+
+//memset(SQL_output,'\0',sizeof SQL_output);
+EXEC SQL SELECT string_agg(concat(cast(id_amistad as text),',',
+                                  cast(id_amigo as text),',',  
+                                        amigo,',',
+                                        emailamigo),
+'|') as datos INTO :SQL_output->listado
+FROM misamigos where amigo_1 = :SQL_id_usuario_logueado;
+
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("2 \n");
+db_commit();
+//printf("%s \n",SQL_output);
+printf("3 \n");
+}
+//char datos[2000];
+//strcpy(datos,SQL_output);
+return SQL_output;
+}
+
 
 
 char *get_mis_amigos(int id_usuario_logueado)

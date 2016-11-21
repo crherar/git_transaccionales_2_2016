@@ -85,9 +85,11 @@ print_r($_SESSION["email"]);
   </div>
   <table class="table table-bordered">
     <thead>
-      <th style="display: none;">id</th>
+      <th style="display: none;">id_amistad</th>
+      <th style="display: none;">id_amigo</th>
       <th> N° </th>
-      <th> Objeto </th>
+      <th> Nombre amigo </th>
+      <th> Email amigo </th>
       <th> Accion</th>
     </thead>
     <tbody>
@@ -100,12 +102,14 @@ print_r($_SESSION["email"]);
       foreach ($datos as $value) {
       ?>
       <tr>
-        <td style="display: none;" id="td_idobjeto_<?php echo $cont; ?>"><?php echo $value->id; ?></td>
+        <td style="display: none;" id="td_idamistad_<?php echo $cont; ?>"><?php echo $value->id_amistad; ?></td>
+        <td style="display: none;" id="td_idamigo_<?php echo $cont; ?>"><?php echo $value->id_amigo; ?></td>
         <td id="td_pos_<?php echo $cont; ?>"><?php echo $cont; ?></td>
-        <td id="td_nombre_objeto_<?php echo $cont; ?>"><?php echo $value->nombre_objeto; ?></td>
+        <td id="td_nombreamigo_<?php echo $cont; ?>"><?php echo $value->ami; ?></td>
+        <td id="td_emailamigo_<?php echo $cont; ?>"><?php echo $value->emailami; ?></td>
         <td>
           <ul>
-          <button id="btn_editar_<?php echo $cont; ?>"  onclick="get_objeto_editar(this)">Editar</button>
+          <button id="btn_editar_<?php echo $cont; ?>"  onclick="get_objeto_editar(this)">Ver perfil</button>
           <!-- <button id="btn_devuelto_<?php echo $cont; ?>" onclick="marcarPrestamoDevuelto(this)">Devuelto</button> -->
           <button id="btn_eliminar_<?php echo $cont; ?>"  onclick = "get_objeto_eliminar(this)">Eliminar</button>
         </ul>

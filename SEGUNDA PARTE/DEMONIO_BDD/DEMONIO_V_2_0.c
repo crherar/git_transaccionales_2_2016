@@ -426,7 +426,7 @@ int main() {
                 //strcpy(mis_amigos,get_mis_amigos_combobox(id_usuario_logueado));
                 printf("antes de copiar datos a respuesta\n");
                 //strcpy(respuesta.texto.datos_formulario,"hola mundo");
-                misamigos = get_mis_amigos_combobox(id_usuario_logueado);
+                misamigos = get_mis_amigos_tabla(id_usuario_logueado);
                 strcpy(respuesta.texto.datos_formulario,misamigos->listado);
                 printf("4\n" );
                 printf("************************** FIN Formulario 'verami' **************************\n");
