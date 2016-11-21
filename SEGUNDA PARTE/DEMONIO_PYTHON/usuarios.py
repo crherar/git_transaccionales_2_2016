@@ -29,7 +29,7 @@ class usuarios:
 		return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
 
 	def get_usuario_por_id(self,data):
-		self.id = data['cabecera']['id_usuario_logueado']
+		self.id = int(data['datos']['id_usuario'])
 		respuesta = self.mtx.enviar(self.procpx.get_usuario_por_id(),self.codtx.get_usuario_por_id(),"00",str(self.id)).split('-')
 
 		#resp = respuesta.split('-')

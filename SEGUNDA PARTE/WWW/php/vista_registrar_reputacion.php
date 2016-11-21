@@ -77,7 +77,7 @@ print_r($_SESSION["email"]);
     }
     ?>
          <div class = "col-md-4 remove-float center-block  big-top-space">
-           <form action="c_registrar_prestamo.php" method="POST">
+           <form action="c_registrar_reputacion.php" method="POST">
 
              <div clas='form-group'>
                <label for="email">Usuario por clasificar: <?php print_r($_SESSION["datos"]->nombre." ".$_SESSION["datos"]->apellido); ?></label>
@@ -87,7 +87,7 @@ print_r($_SESSION["email"]);
              </div>
              <div clas='form-group'>
                <label for="email">Clasificacion:</label>
-               <select name="usuario_recibidor" class="selectpicker form-control" data-live-search="true" title="Usuario recibidor...">
+               <select name="clasificacion" class="selectpicker form-control" data-live-search="true" title="Clasificación...">
                   <option data-tokens="ketchup mustard">1</option>
                   <option data-tokens="ketchup mustard">2</option>
                   <option data-tokens="ketchup mustard">3</option>
@@ -97,7 +97,7 @@ print_r($_SESSION["email"]);
            </div>
              <div clas='form-group'>
                <label for="email">Comentario</label>
-               <input  class="form-control", type='textarea', required='true', name='cantidad', placeholder='Canitdad',id='cantidad'>
+               <textarea  class="form-control", type='text', required='true', name='comentario', placeholder='Comentario',id='comentario'></textarea>
              </div>
 
              <div class="top-space">

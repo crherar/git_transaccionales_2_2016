@@ -40,13 +40,15 @@ function agregar_reputacion(idbtn)
          'id_amigo' : idusuariox
 
        };
+       debugger;
        //debugger;
        var funcion = function(data){
-           if(data == "01")
-           {
-               alert("Amigo agregado correctamente");
+        //   if(data == "01")
+         //  {
+         debugger;
+             //  alert("Amigo agregado correctamente");
                window.location = localStorage.getItem('base_url')+"php/vista_registrar_reputacion.php";
-           }
+         //  }
       //alert(data);
      // debugger;
         //window.location = localStorage.getItem('base_url')+"php/c_ver_amigos.php";

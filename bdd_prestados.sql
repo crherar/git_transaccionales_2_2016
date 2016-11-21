@@ -48,8 +48,10 @@ create table ReputacionUsuarios
 (
 id serial primary key,
 id_usuario_clasificado int,
+id_usuario_clasificador int,
 clasificacion int,
-constraint fk_usuario_clasificado foreign key (id_usuario_clasificado) REFERENCES Usuarios (id)
+constraint fk_usuario_clasificado foreign key (id_usuario_clasificado) REFERENCES Usuarios (id),
+constraint fk_usuario_clasificador foreign key (id_usuario_clasificador) REFERENCES Usuarios (id)
 );
 
 create view misAmigos as
