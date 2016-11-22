@@ -115,7 +115,7 @@ print_r($_SESSION["email"]);
           <?php if($value->clasificacion == 1)
           {
           ?>
-                  <img src="/img/estrella.jpg" >
+                  <img src="../img/estrella.jpg" >
           <?php
           }
           ?>
@@ -123,8 +123,8 @@ print_r($_SESSION["email"]);
           <?php if($value->clasificacion == 2)
           {
           ?>
-                  <img src="/img/estrella.jpg" >
-                  <img src="/img/estrella.jpg" >
+                  <img src="../img/estrella.jpg" >
+                  <img src="../img/estrella.jpg" >
           <?php
           }
           ?>
@@ -132,9 +132,9 @@ print_r($_SESSION["email"]);
           <?php if($value->clasificacion == 3)
           {
           ?>
-          <img src="/img/estrella.jpg" >
-          <img src="/img/estrella.jpg" >
-            <img src="/img/estrella.jpg" >
+          <img src="../img/estrella.jpg" >
+          <img src="../img/estrella.jpg" >
+            <img src="../img/estrella.jpg" >
           <?php
           }
           ?>
@@ -142,10 +142,10 @@ print_r($_SESSION["email"]);
           <?php if($value->clasificacion == 4)
           {
           ?>
-          <img src="/img/estrella.jpg" >
-          <img src="/img/estrella.jpg" >
-          <img src="/img/estrella.jpg" >
-          <img src="/img/estrella.jpg" >
+          <img src="../img/estrella.jpg" >
+          <img src="../img/estrella.jpg" >
+          <img src="../img/estrella.jpg" >
+          <img src="../img/estrella.jpg" >
           <?php
           }
           ?>
@@ -153,11 +153,11 @@ print_r($_SESSION["email"]);
           <?php if($value->clasificacion == 5)
           {
           ?>
-          <img src="/img/estrella.jpg" >
-          <img src="/img/estrella.jpg" >
-          <img src="/img/estrella.jpg" >
-          <img src="/img/estrella.jpg" >
-          <img src="/img/estrella.jpg" >
+          <img src="../img/estrella.jpg" >
+          <img src="../img/estrella.jpg" >
+          <img src="../img/estrella.jpg" >
+          <img src="../img/estrella.jpg" >
+          <img src="../img/estrella.jpg" >
           <?php
           }
           ?>
