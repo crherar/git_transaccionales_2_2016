@@ -81,6 +81,7 @@ struct Reputacion{
     int id_usuario_clasificador;
     int clasificacion;
     char comentario[100];
+    char listado[2000];
 };
 
 typedef struct Objeto Objeto;

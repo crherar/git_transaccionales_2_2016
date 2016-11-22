@@ -83,3 +83,17 @@ class objs_json:
             return datos
         else:
             return "02"
+
+    def reputaciones(self,data):
+        if data != "02":
+            datos = list()
+            arr = data.split('|')
+
+            for i in range(len(arr)):
+                print arr[i]
+                print "\n"
+                rep = arr[i].split(',')
+                datos.append({"id_reputacion":rep[0],'id_usuario_clasificado':rep[1],"id_usuario_clasificador":rep[2],'usuario_clasificador':rep[3],'email_usuario_clasificador':rep[4],'clasificacion':rep[5],'comentario':rep[6]})
+            return datos
+        else:
+            return "02"

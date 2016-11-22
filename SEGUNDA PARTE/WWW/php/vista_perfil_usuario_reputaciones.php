@@ -5,10 +5,7 @@ print_r("\n");
 print_r($_SESSION["id_usuario_logueado"]);
 print_r("\n");
 print_r($_SESSION["email"]);
-//echo "datos: \n";
-//var_dump($_SESSION["datos"]);
-//$_SESSION["resp"] = "";
-//var_dump($_SESSION["resp"]);
+
  ?>
 <!DOCTYPE html>
 <html>
@@ -86,13 +83,14 @@ print_r($_SESSION["email"]);
   </div>
   <table class="table table-bordered">
     <thead>
-      <th style="display: none;">id_amistad</th>
-      <th style="display: none;">id_usuario</th>
-      <!-- id_amigo = id_usuario -->
-      <th style="display: none;">id_amigo</th>
+      <th style="display: none;">id_reputacion</th>
+      <th style="display: none;">id_usuario_clasificado</th>
+      <th style="display: none;">id_usuario_clasificador</th>
       <th> N° </th>
-      <th> Nombre amigo </th>
-      <th> Email amigo </th>
+      <th> Usuario clasificador </th>
+      <th> Email usuario clasificador </th>
+      <th> Clasificacion </th>
+      <th> Comentario <th/>
       <th> Accion</th>
     </thead>
     <tbody>
@@ -105,17 +103,73 @@ print_r($_SESSION["email"]);
       foreach ($datos as $value) {
       ?>
       <tr>
-        <td style="display: none;" id="td_idamistad_<?php echo $cont; ?>"><?php echo $value->id_amistad; ?></td>
-        <td style="display: none;" id="td_idusuario_<?php echo $cont; ?>"><?php echo $value->id_amigo; ?></td>
-        <td style="display: none;" id="td_idamigo_<?php echo $cont; ?>"><?php echo $value->id_amigo; ?></td>
+        <td style="display: none;" id="td_idreputacion_<?php echo $cont; ?>"><?php echo $value->id_reputacion; ?></td>
+        <td style="display: none;" id="td_idusuarioclasificador_<?php echo $cont; ?>"><?php echo $value->id_usuario_clasificador; ?></td>
+        <td style="display: none;" id="td_idusuarioclasificado_<?php echo $cont; ?>"><?php echo $value->id_usuario_clasificado; ?></td>
+
         <td id="td_pos_<?php echo $cont; ?>"><?php echo $cont; ?></td>
-        <td id="td_nombreamigo_<?php echo $cont; ?>"><?php echo $value->ami; ?></td>
-        <td id="td_emailamigo_<?php echo $cont; ?>"><?php echo $value->emailami; ?></td>
+        <td id="td_nombre_usuarioclasificador_<?php echo $cont; ?>"><?php echo $value->usuario_clasificador; ?></td>
+        <td id="td_email_usuarioclasificador_<?php echo $cont; ?>"><?php echo $value->email_usuario_clasificador; ?></td>
+        <td id="td_clasificacion_<?php echo $cont; ?>">
+
+          <?php if($value->clasificacion == 1)
+          {
+          ?>
+                  <img src="/img/estrella.jpg" >
+          <?php
+          }
+          ?>
+
+          <?php if($value->clasificacion == 2)
+          {
+          ?>
+                  <img src="/img/estrella.jpg" >
+                  <img src="/img/estrella.jpg" >
+          <?php
+          }
+          ?>
+
+          <?php if($value->clasificacion == 3)
+          {
+          ?>
+          <img src="/img/estrella.jpg" >
+          <img src="/img/estrella.jpg" >
+            <img src="/img/estrella.jpg" >
+          <?php
+          }
+          ?>
+
+          <?php if($value->clasificacion == 4)
+          {
+          ?>
+          <img src="/img/estrella.jpg" >
+          <img src="/img/estrella.jpg" >
+          <img src="/img/estrella.jpg" >
+          <img src="/img/estrella.jpg" >
+          <?php
+          }
+          ?>
+
+          <?php if($value->clasificacion == 5)
+          {
+          ?>
+          <img src="/img/estrella.jpg" >
+          <img src="/img/estrella.jpg" >
+          <img src="/img/estrella.jpg" >
+          <img src="/img/estrella.jpg" >
+          <img src="/img/estrella.jpg" >
+          <?php
+          }
+          ?>
+
+
+        </td>
+        <td id="td_comentario_<?php echo $cont; ?>"><?php echo $value->comentario; ?></td>
         <td>
           <ul>
-          <button id="btn_perfil_<?php echo $cont; ?>"  onclick="ver_perfil_usuario_amigo(this)">Ver perfil</button>
-          <button id="btn_clasificar_<?php echo $cont; ?>" onclick="agregar_reputacion(this)">Agregar reputación</button>
-          <button id="btn_eliminar_<?php echo $cont; ?>"  onclick = "get_objeto_eliminar(this)">Eliminar</button>
+          <!-- <button id="btn_agregarmisamigos_<?php echo $cont; ?>" onclick="agregar_amigo(this)">Agregar como amigo</button>
+          <button id="btn_verperfil_<?php echo $cont; ?>"  onclick = "ver_perfil_usuario_amigo(this)">Ver perfil</button> -->
+
         </ul>
       </td>
       </tr>

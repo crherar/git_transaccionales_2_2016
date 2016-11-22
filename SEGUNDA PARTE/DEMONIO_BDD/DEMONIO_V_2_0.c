@@ -1074,6 +1074,29 @@ int main() {
                 printf("************************** FIN Formulario 'regrep' **************************\n");
             }
 
+            else if (strcmp(formulario_actual, "veorep") == 0) {
+
+                printf("************************** Formulario 'veorep' **************************\n");
+                printf("---->Ver reputaciones (perfil) de un usuario<------\n");
+                sscanf(mensaje.texto.datos_formulario, "%d", &id_usuario_clasificado);
+
+                printf("id del usuario clasificado recibido: %d\n", id_usuario_clasificado);
+
+
+
+
+                printf("\n\n DESPUES DE LA LLAMADA A FUNCION \n\n");
+                rep = get_perfil_usuario_reputaciones(id_usuario_clasificado);
+
+                if(rep->verificador_error == 0){
+                    sprintf(respuesta.texto.datos_formulario, "%s", rep->listado);
+                }else{
+                    sprintf(respuesta.texto.datos_formulario, "%s", "02");
+                }
+
+                printf("************************** FIN Formulario 'veorep' **************************\n");
+            }
+
             /* ********************************************************************************************************* */
 
             /**************************************

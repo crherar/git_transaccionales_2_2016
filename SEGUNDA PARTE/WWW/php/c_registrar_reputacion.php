@@ -34,13 +34,13 @@ $resp = json_decode(socket_read($socket, 1024));
 $_SESSION["datos"] = $resp->datos;
 if($resp->datos == "01")
 	{
-	$_SESSION["resp"] = "Objeto registrado correctamente";
-	//header("location: c_ver_mis_objetos.php");
+	$_SESSION["resp"] = "Reputación registrada correctamente";
+	header("location: c_ver_mis_amigos.php");
 	}
 if($resp->datos == "02")
 	{
 		$_SESSION["resp"] = "Error al guardar";
-//	header("location: vista_registrar_objeto.php");
+	header("location: vista_registrar_reputacion.php");
 }
 //var_dump($resp);
 

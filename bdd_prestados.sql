@@ -107,7 +107,33 @@ select string_agg(concat(cast(id as text),',',
                               cantidad_prestada),'|') as datos
  from misprestamos where id_usuario_prestador = 27;
 
-select json_agg(misprestamos.*) from misprestamos where id_usuario_prestador = 27;
+
+create view perfiles_usuarios
+as
+select
+r.id as id_reputacion,
+r.id_usuario_clasificado,
+r.id_usuario_clasificador,
+concat(u.nombre,' ',u.apellido) as usuario_clasificador,
+u.email,
+r.clasificacion,
+r.comentario
+from
+usuarios u,
+reputacionusuarios r
+where
+u.id = r.id_usuario_clasificador;
+
+SELECT string_agg(concat(cast(id_reputacion as text),',',
+                                        id_usuario_clasificado as text,',',
+                                        id_usuario_clasificador as text,',',																	RTRIM(email),','
+                                        clasificacion,',',
+                                        comentario),'|') as datos
 
 
-select json_build_object('fecha_prestamo',fechaprestamo,'email_usuario_recibidor',emailrecibidor) from misprestamos;
+
+
+--select json_agg(misprestamos.*) from misprestamos where id_usuario_prestador = 27;
+
+
+--select json_build_object('fecha_prestamo',fechaprestamo,'email_usuario_recibidor',emailrecibidor) from misprestamos;

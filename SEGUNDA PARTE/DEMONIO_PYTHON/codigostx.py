@@ -88,5 +88,5 @@ class codigostx:
     def ver_mis_reputaciones(self):
         return "020527"
 
-    def ver_reputacion_de_usuario(self):
+    def ver_reputaciones_de_usuario(self):
         return "020528"

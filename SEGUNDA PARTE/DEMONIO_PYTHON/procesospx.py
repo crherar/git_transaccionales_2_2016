@@ -88,5 +88,5 @@ class procesospx:
     def ver_mis_reputaciones(self):
         return "vemrep"
 
-    def ver_reputacion_de_usuario(self):
+    def ver_reputaciones_de_usuario(self):
         return "veorep"

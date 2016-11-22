@@ -74,3 +74,48 @@ db_commit();
 ASSERT(SQL_output);
 return SQL_output;
 }
+
+
+Reputacion *get_perfil_usuario_reputaciones(int id_usuario_clasificado)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+Reputacion *SQL_output;
+int SQL_count;
+int SQL_id_usuario_clasificado;
+EXEC SQL END DECLARE SECTION;
+
+SQL_id_usuario_clasificado = id_usuario_clasificado;
+printf("1 \n");
+
+EXEC SQL SELECT count(*) INTO :SQL_count
+FROM perfiles_usuarios WHERE id_usuario_clasificado = :SQL_id_usuario_clasificado;
+SQL_output = (Reputacion*) malloc(sizeof(Reputacion) * (SQL_count + 1));
+if(SQL_count == 0)
+{
+  strcpy(SQL_output->listado,"02");
+ }
+ else
+ {
+
+//memset(SQL_output,'\0',sizeof SQL_output);
+EXEC SQL SELECT string_agg(concat(cast(id_reputacion as text),',',
+                                        id_usuario_clasificado ,',',
+                                        id_usuario_clasificador,',',
+																				usuario_clasificador,',' ,
+																				RTRIM(email),',',
+                                        clasificacion,',',
+                                        comentario),'|')
+ as datos INTO :SQL_output->listado FROM perfiles_usuarios
+WHERE id_usuario_clasificado = :SQL_id_usuario_clasificado;
+
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("2 \n");
+SQL_output->verificador_error = sqlca.sqlcode;
+db_commit();
+//printf("%s \n",SQL_output);
+printf("3 \n");
+}
+//char datos[2000];
+//strcpy(datos,SQL_output);
+return SQL_output;
+}
