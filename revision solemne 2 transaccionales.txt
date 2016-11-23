@@ -117,7 +117,6 @@ PREGUNTA 2
 
 Tener un proceso que se encargue de comunicarse con las lineas aereas
 Debiese ser un proceso distinto por cada linea aerea
-
 Procesos independientes, demonios, para cada linea aerea
 Etapas de diseño de un sistema transaccional:
 
