@@ -1,8 +1,85 @@
+Contenidos:
+
+
+Transaccion: Proceso mediante el cual se solicita una peticion y se responde en 1 sola instancia
+Requerimientos: Entrego todo lo que necesito y responde con si o no con lo pedido.
+
+----->> Propiedades de las transacciones <<----------------------
+
+Domicidad: El proceso es todo en uno, pero en terminos del proceso completo no se puede descomponer
+					 Funciona o no funciona
+
+Consistente: El proceso que se realiza no deja el sistema inconsistente
+						 La transaccion no debe dejar inconsistente el sistema
+
+						 En una transferencia de $ entre dos cuentas, en una debe sumar y en la otra descontar
+
+Independencia: Las transacciones son independientes
+						   Transacciones simultaneas en forma secuencial
+							 Si una transaccion falla, no implica que otra transaccion falle, al menos que sea por falla
+							 	general del sistema
+								Un error en un proceso no afecta a los demas
+
+
+Las transacciones son perdurables en el tiempo => una accion hecha no desaparece con el tiempo
+
+Atomicidad:Cada proceso debe ser completado satisfactoriamente.
+  				 Es obligatorio que  se garantice que cada uno de los procesos de las transacciones sea completado
+					 satisfactoriamente	.
+
+A => Atomicidad
+C => Consistencia
+I => Independencia
+D => Durabilidad
+
+***************************************************************************************************************
+
+Los sistemas transaccionales son independientes a la velocidad del usuario
+
+En un sistema normal:
+											Las solicitudes se responden a la velocidad del usuario (pensar en elegir
+											cual pc comprar) y en el pc o dispositivo del usuario ==> durante ese tiempo
+											hay recursos tomados del servidor
+
+											(dibujo => cada pc cliente toma una porcion de recursos en el servidor(memoria por ej))
+
+
+Sistema no transaccional: El usuario interactua directamente con el sistema y funciona a la velocidad del sistema
+
+Sistema transaccional: El sistema funciona a la velocidad del Servidor principal y adelante hay una parte
+											 interactiva
+
+
+Asociado a cada transacción hay asociado un proceso transaccional que da a satisfacer esa transacción
+
+Cada proceso con una transaccioó de forma independiente.
+
+Si hay un nuevo proceso se agrega sin tener que bajar el sistema
+
+Si hay una falla => se cae el proceso. En un sistema no transaccional, si hay un error => se cae todo
+
+RPC ==> comunicar 2 procesos ejecutandose de manera independiente.
+
+tx_sa => transaccion interna
+
 solemne 2012
 
 a)
-Los procesos no se comunican entre si
+Los procesos no se comunican directamente entre si. Un proceso deja informacion en la tx_sa y el otro si quiere
+la usa y si no quiere, no la usa
+
+Los procesos no intercambian informacion.
+
 La cola de mensajes se usa para comunicar los procesos con el demonio de base de datos
+
+Cada proceso tiene su propio ambiente
+
+Los procesos son independientes
+
+El esquema de cola de mensajes no es para comunicar un proceso con otro,  sino que el monitor con el proceso
+y el proceso con el demonio de la base de datos.
+
+La transaccion interna permite dejar algo para que otro proceso eventualmente lo tome
 
 b)
 El monitor es el que provee el ambiente transaccional
@@ -13,40 +90,40 @@ C consistente
 I independiente
 D durable
 
-
-
 c)
 Proceso de cada una de las transacciones que se garantice que el proceso que cada una de
 ellas sea completado ==> ESO ES ATOMICIDAD Y NO INDEPENDENCIA
 
+ Es obligatorio que  se garantice que cada uno de los procesos de las transacciones sea completado
+ satisfactoriamente ==> ESTO ES ATOMICIDAD
+Un error en un proceso no afecta a los demas
+
+d)
+No es necesario estrictamente una base de datos, puede ser un txt o cualquier otra tecnología para
+almacenar datos
+No es primordial el uso de una base de datos
+
 e)
 Dado que las transacciones son independientes, no es mas dificil y ni mas facil agregar nueva funcionalidad,
-sino que es agregable sin afectar a las demas
-
+sino que es agregable sin afectar a las demás.
+Debido a que las transacciones son independientes yo puedo agregar nuevas funcionalidades sin afectar a las
+que ya existen
 
 PREGUNTA 2
 
-Definir funcionalidades
-Definir las transacciones ent
-	}
+1 - Definir funcionalidades que vamos a ofrecer
+2 - Definir las transacciones entrada y salida
+3 - Definir los procesos
 
-	// public function enviar($mensaje)
-	// {
-	// 	$respuesta = "";
-	// 	if($this->conectar())
-	// 	{
-	// 		$sock_data = socket_write($this->socket, $mensaje, strlen($mensaje));
-	// 		$respuesta =  socket_read($this->socket, 1024);
-	// 	}
-	// 	return $respuesta;
-	// }rada y salida
-Definir los procesos
+Tener un proceso que se encargue de comunicarse con las lineas aereas
+Debiese ser un proceso distinto por cada linea aerea
 
 Procesos independientes, demonios, para cada linea aerea
-
+Etapas de diseño de un sistema transaccional:
 
 
 **********************************************
+
 SOLEMNE RECUPERATIVA
 
 a)

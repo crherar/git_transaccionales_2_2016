@@ -19,8 +19,8 @@ echo "\nConexion Exitosa, puerto: " . $puerto;
 
 
 $cabecera = array('formulario' => 'verusr',
-									'id_usuario_logueado' => 27,
-								   'email'=>'');
+									'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
+								   'email'=>$_SESSION["email"]);
 
 $prestamo = array('id_prestamo'=>72);
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$prestamo));//"loginn|".$email."-".$password;
