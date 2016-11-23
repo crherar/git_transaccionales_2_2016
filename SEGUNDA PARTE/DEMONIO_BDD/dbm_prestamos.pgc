@@ -272,6 +272,51 @@ Prestamo *get_prestamo_por_id(int id)
 	return SQL_output;
 }
 
+MisPrestamos *get_prestamos_pendientes(int id_usuario_prestador)//debe venir por parametro la id del usuario
+{
+EXEC SQL BEGIN DECLARE SECTION;
+MisPrestamos *SQL_output;
+int SQL_pagina;
+int SQL_count;
+int  SQL_id_usuario_prestador;
+//char SQL_nombre_obj[15];
+
+EXEC SQL END DECLARE SECTION;
+
+SQL_id_usuario_prestador = id_usuario_prestador;
+printf("1 \n");
+
+EXEC SQL SELECT count(*) INTO :SQL_count from misprestamos where id_usuario_prestador = :SQL_id_usuario_prestador AND estado = 0;
+SQL_output = (MisPrestamos*) malloc(sizeof(MisPrestamos) * (SQL_count + 1));
+if(SQL_count == 0)
+{
+   strcpy(SQL_output->listado,"02");
+ }
+ else
+ {
+//EXEC SQL SELECT json_agg(misprestamos.*) as datos INTO :SQL_output->listado FROM misPrestamos;
+//memset(SQL_output,'\0',sizeof SQL_output);
+EXEC SQL SELECT string_agg(concat(cast(id as text),',',
+                              fechaprestamo,',',
+                              usuario_recibidor,',',
+                              emailrecibidor,',',
+                              nombreobjeto,',',
+                              fecha_devolucion,',',
+                              cantidad_prestada ),'|') as datos
+															INTO :SQL_output->listado FROM misPrestamos WHERE id_usuario_prestador = :SQL_id_usuario_prestador AND estado = 0 ;
+
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("\n");
+printf("2 \n");
+SQL_output->verificador_error = sqlca.sqlcode;
+db_commit();
+//printf("%s \n",SQL_output);
+printf("3 \n");
+//ASSERT(SQL_output);
+}
+return SQL_output;
+}
+/*
 char *get_prestamos_pendientes(int id_usuario_prestador)//debe venir por parametro la id del usuario
 {
 EXEC SQL BEGIN DECLARE SECTION;
@@ -302,10 +347,11 @@ EXEC SQL SELECT string_agg(concat(cast(id as text),',',
                               emailrecibidor,',',
                               nombreobjeto,',',
                               fecha_devolucion,',',
-                              cantidad_prestada),'|') as datos
-															 INTO :SQL_output FROM misPrestamos WHERE id_usuario_prestador = :SQL_id_usuario_prestador AND estado = 0;
+                              cantidad_prestada as text),'|') as datos
+															INTO :SQL_output FROM misPrestamos WHERE id_usuario_prestador = :SQL_id_usuario_prestador AND estado = 0 ;
 
 printf(sqlca.sqlerrm.sqlerrmc );
+printf("\n");
 printf("2 \n");
 db_commit();
 //printf("%s \n",SQL_output);
@@ -314,7 +360,52 @@ printf("3 \n");
 }
 return SQL_output;
 }
+*/
+MisPrestamos *get_prestamos_devueltos(int id_usuario_prestador)//debe venir por parametro la id del usuario
+{
+EXEC SQL BEGIN DECLARE SECTION;
+MisPrestamos *SQL_output;
+int SQL_pagina;
+int SQL_count;
+int  SQL_id_usuario_prestador;
+//char SQL_nombre_obj[15];
 
+EXEC SQL END DECLARE SECTION;
+
+SQL_id_usuario_prestador = id_usuario_prestador;
+printf("1 \n");
+
+EXEC SQL SELECT count(*) INTO :SQL_count from misprestamos where id_usuario_prestador = :SQL_id_usuario_prestador AND estado = 1;
+SQL_output = (MisPrestamos*) malloc(sizeof(MisPrestamos) * (SQL_count + 1));
+if(SQL_count == 0)
+{
+   strcpy(SQL_output->listado,"02");
+ }
+ else
+ {
+//EXEC SQL SELECT json_agg(misprestamos.*) as datos INTO :SQL_output->listado FROM misPrestamos;
+//memset(SQL_output,'\0',sizeof SQL_output);
+EXEC SQL SELECT string_agg(concat(cast(id as text),',',
+                              fechaprestamo,',',
+                              usuario_recibidor,',',
+                              emailrecibidor,',',
+                              nombreobjeto,',',
+                              fecha_devolucion,',',
+                              cantidad_prestada ),'|') as datos
+															INTO :SQL_output->listado FROM misPrestamos WHERE id_usuario_prestador = :SQL_id_usuario_prestador AND estado = 1 ;
+
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("\n");
+printf("2 \n");
+SQL_output->verificador_error = sqlca.sqlcode;
+db_commit();
+//printf("%s \n",SQL_output);
+printf("3 \n");
+//ASSERT(SQL_output);
+}
+return SQL_output;
+}
+/*
 char *get_prestamos_devueltos(int id_usuario_prestador)//debe venir por parametro la id del usuario
 {
 EXEC SQL BEGIN DECLARE SECTION;
@@ -357,3 +448,5 @@ printf("3 \n");
 }
 return SQL_output;
 }
+
+*/

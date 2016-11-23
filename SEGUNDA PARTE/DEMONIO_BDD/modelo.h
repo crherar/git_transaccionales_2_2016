@@ -17,6 +17,10 @@ struct Usuario{
     int id;
     char nombre[15];
 };
+struct MisObjetos{
+    int verificador_error;
+    char listado[2000];
+};
 
 struct Fecha{
   int anio;
@@ -61,6 +65,7 @@ struct MisPrestamos{
   char nombre_objeto[15];
   int cantidad_prestada;
   char fecha_devolucion[11];
+  char listado[2000];
 };
 
 struct Amigo{
@@ -85,6 +90,7 @@ struct Reputacion{
 };
 
 typedef struct Objeto Objeto;
+typedef struct MisObjetos MisObjetos;
 typedef struct Usuario Usuario;
 typedef struct Fecha Fecha;
 typedef struct Prestamo Prestamo;

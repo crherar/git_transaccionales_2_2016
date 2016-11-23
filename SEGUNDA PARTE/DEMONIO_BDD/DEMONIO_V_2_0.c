@@ -86,8 +86,8 @@ int main() {
     Objeto *obj;
     Misamigos *misamigos;
     Reputacion *rep;
-
-
+    MisPrestamos *mprest;
+    MisObjetos *mobj;
     char email[41];
     char password[11];
     char nombre[21];
@@ -646,16 +646,17 @@ int main() {
 
                 printf("La id del usuario prestador es: %d \n", id_usuario_prestador);
 
-                printf("%s \n",get_prestamos_pendientes(id_usuario_prestador));
+                mprest = get_prestamos_pendientes(id_usuario_prestador);
+                printf("%s \n",mprest->listado);
 
             //    printf("La respuesta luego de marcar prestamo como pendiente es: %d \n", prest->verificador_error);
 
-            //    if (prest->verificador_error == 0) {
-                    strcpy(respuesta.texto.datos_formulario, get_prestamos_pendientes(id_usuario_prestador));
+                 if (mprest->verificador_error == 0) {
+                    strcpy(respuesta.texto.datos_formulario, mprest->listado);
                     printf("%s\n",respuesta.texto.datos_formulario );
-            //    } else {
-            //        strcpy(respuesta.texto.datos_formulario, "02");
-                //}
+               } else {
+                   strcpy(respuesta.texto.datos_formulario, "02");
+                }
 
 
                 printf("************************** FIN Formulario 'vprepe' **************************\n");
@@ -672,16 +673,17 @@ int main() {
 
                 printf("La id del usuario prestador es: %d \n", id_usuario_prestador);
 
-                printf("%s \n",get_prestamos_devueltos(id_usuario_prestador));
-
+                //printf("%s \n",get_prestamos_devueltos(id_usuario_prestador));
+                mprest = get_prestamos_devueltos(id_usuario_prestador);
+                printf("%s \n",mprest->listado);
             //    printf("La respuesta luego de marcar prestamo como pendiente es: %d \n", prest->verificador_error);
 
-            //    if (prest->verificador_error == 0) {
-                    strcpy(respuesta.texto.datos_formulario, get_prestamos_devueltos(id_usuario_prestador));
+                if (mprest->verificador_error == 0) {
+                    strcpy(respuesta.texto.datos_formulario, mprest->listado);
                     printf("%s\n",respuesta.texto.datos_formulario );
-            //    } else {
-            //        strcpy(respuesta.texto.datos_formulario, "02");
-                //}
+               } else {
+                   strcpy(respuesta.texto.datos_formulario, "02");
+                }
 
 
                 printf("************************** FIN Formulario 'vprede' **************************\n");
@@ -930,19 +932,20 @@ int main() {
                 char mis_objetos[170] = "";
                 int pagina;
 
-                sscanf(mensaje.texto.datos_formulario, "%5d", &id_usuario_dueno_objeto);
+                sscanf(mensaje.texto.datos_formulario, "%d", &id_usuario_dueno_objeto);
                 //strcpy(mis_objetos, get_listado_objetos_combobox(id_usuario_dueno_objeto));
-
-                printf("Los objetos son: %s \n", get_listado_objetos_combobox(id_usuario_dueno_objeto));
+                mobj = get_listado_objetos_combobox(id_usuario_dueno_objeto);
+                printf("Los objetos son: %s \n", mobj->listado);
                 printf("despues de obtener los objetos \n");
 
-                if (strcmp(mis_objetos, "no hay datos") == 0) { //char error[153];
-                    //respuesta.texto.datos_formulario[151] = '0'
-                    //respuesta.texto.datos_formulario[152] = '1';
-                    strcpy(respuesta.texto.datos_formulario, "01");
-                } else {
-                    strcpy(respuesta.texto.datos_formulario, get_listado_objetos_combobox(id_usuario_dueno_objeto));
-                }
+                strcpy(respuesta.texto.datos_formulario, mobj->listado);
+                // if (strcmp(mis_objetos, "no hay datos") == 0) { //char error[153];
+                //     //respuesta.texto.datos_formulario[151] = '0'
+                //     //respuesta.texto.datos_formulario[152] = '1';
+                //     strcpy(respuesta.texto.datos_formulario, "01");
+                // } else {
+                //     strcpy(respuesta.texto.datos_formulario, get_listado_objetos_combobox(id_usuario_dueno_objeto));
+                // }
                 //printf("tamaño de obj: %d \n", sizeof (obj));
                 //printf("nombre objeto [0]: %s \n",obj[0].nombre);
                 //printf("nombre objeto [1]: %s \n",obj[1].nombre);

@@ -131,7 +131,13 @@ SELECT string_agg(concat(cast(id_reputacion as text),',',
                                         comentario),'|') as datos
 
 
-
+SELECT string_agg(concat(cast(id as text),',',
+          fechaprestamo,',',
+          usuario_recibidor,',',
+          emailrecibidor,',',
+          nombreobjeto,',',
+          fecha_devolucion,',',
+          cast(cantidad_prestada as text)),'|') as datos from misprestamos;
 
 --select json_agg(misprestamos.*) from misprestamos where id_usuario_prestador = 27;
 

@@ -120,7 +120,7 @@ Debiese ser un proceso distinto por cada linea aerea
 Procesos independientes, demonios, para cada linea aerea
 Etapas de diseño de un sistema transaccional:
 
-
+MINUTO 25
 **********************************************
 
 SOLEMNE RECUPERATIVA

@@ -85,6 +85,51 @@ Objeto *actualizar_objeto(char *nombre_objeto,int id_objeto)
     return SQL_output;
 }
 
+
+MisObjetos *get_listado_objetos_tabla(int id_usuario_dueno)//debe venir por parametro la id del usuario
+{
+EXEC SQL BEGIN DECLARE SECTION;
+MisObjetos *SQL_output;
+int SQL_pagina;
+int SQL_count;
+int  SQL_id_usuario_dueno;
+//char SQL_nombre_obj[15];
+
+EXEC SQL END DECLARE SECTION;
+
+SQL_id_usuario_dueno = id_usuario_dueno;
+printf("1 \n");
+
+EXEC SQL SELECT count(*) INTO :SQL_count from objetos where id_usuario_dueno = :SQL_id_usuario_dueno;
+SQL_output = (MisObjetos*) malloc(sizeof(MisObjetos) * (SQL_count + 1));
+if(SQL_count == 0)
+{
+strcpy(SQL_output->listado,"02");
+ }
+ else
+ {
+//EXEC SQL SELECT json_agg(objetos.*) as datos INTO :SQL_output FROM misPrestamos;
+//EXEC SQL SELECT json_agg(objs.*) as datos INTO :SQL_output from (select id,nombre from objetos where id_usuario_dueno = :SQL_id_usuario_dueno) as objs;
+//memset(SQL_output,'\0',sizeof SQL_output);
+
+EXEC SQL SELECT string_agg(concat(cast(id as text),',',
+  nombre),'|') as datos INTO :SQL_output->listado
+  FROM objetos where id_usuario_dueno = :SQL_id_usuario_dueno;
+
+
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("\n");
+printf("2 \n");
+SQL_output->verificador_error = sqlca.sqlcode;
+db_commit();
+//printf("%s \n",SQL_output);
+printf("3 \n");
+//ASSERT(SQL_output);
+}
+return SQL_output;
+}
+
+/*
 char *get_listado_objetos_tabla(int id_usuario_dueno)//debe venir por parametro la id del usuario
 {
 EXEC SQL BEGIN DECLARE SECTION;
@@ -100,7 +145,7 @@ SQL_id_usuario_dueno = id_usuario_dueno;
 printf("1 \n");
 
 EXEC SQL SELECT count(*) INTO :SQL_count from objetos where id_usuario_dueno = :SQL_id_usuario_dueno;
-
+SQL_output = (MisObjetos*) malloc(sizeof(MisObjetos) * (SQL_count + 1));
 if(SQL_count == 0)
 {
  strcpy(SQL_output,"02");
@@ -125,8 +170,51 @@ printf("3 \n");
 }
 return SQL_output;
 }
+*/
+
+MisObjetos *get_listado_objetos_combobox(int id_usuario_dueno)//debe venir por parametro la id del usuario
+{
+EXEC SQL BEGIN DECLARE SECTION;
+MisObjetos *SQL_output;
+int SQL_pagina;
+int SQL_count;
+int  SQL_id_usuario_dueno;
+//char SQL_nombre_obj[15];
+
+EXEC SQL END DECLARE SECTION;
+
+SQL_id_usuario_dueno = id_usuario_dueno;
+printf("1 \n");
+
+EXEC SQL SELECT count(*) INTO :SQL_count from objetos where id_usuario_dueno = :SQL_id_usuario_dueno;
+SQL_output = (MisObjetos*) malloc(sizeof(MisObjetos) * (SQL_count + 1));
+if(SQL_count == 0)
+{
+strcpy(SQL_output->listado,"02");
+ }
+ else
+ {
+//EXEC SQL SELECT json_agg(objetos.*) as datos INTO :SQL_output FROM misPrestamos;
+//EXEC SQL SELECT json_agg(objs.*) as datos INTO :SQL_output from (select id,nombre from objetos where id_usuario_dueno = :SQL_id_usuario_dueno) as objs;
+//memset(SQL_output,'\0',sizeof SQL_output);
+
+EXEC SQL SELECT string_agg(nombre,',') as datos INTO :SQL_output->listado
+  FROM objetos where id_usuario_dueno = :SQL_id_usuario_dueno;
 
 
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("\n");
+printf("2 \n");
+SQL_output->verificador_error = sqlca.sqlcode;
+db_commit();
+//printf("%s \n",SQL_output);
+printf("3 \n");
+//ASSERT(SQL_output);
+}
+return SQL_output;
+}
+
+/*
 char *get_listado_objetos_combobox(int id_usuario_dueno)//debe venir por parametro la id del usuario
 {
 EXEC SQL BEGIN DECLARE SECTION;
@@ -180,25 +268,6 @@ while(!sqlca.sqlcode && resultset_pos < SQL_count){
         printf("3\n");
 
 
-/*
-        int tamanio = strlen(SQL_output[resultset_pos].nombre);
-        if(tamanio <=15)
-        {
-
-         printf("tamanio: %d \n",tamanio);
-         int num_espacios = 15 - tamanio;
-         printf("num_espacios: %d \n",num_espacios);
-         char espacios[15 - tamanio];
-         printf("largo espacios: %d \n",strlen(espacios));
-
-         strcpy(nombre_obj, SQL_output[resultset_pos].nombre);
-         int i;
-         for(i = 0;i<num_espacios;i++){
-          strcat(nombre_obj," ");
-         }
-         strcat(datos,nombre_obj);
-         }
-*/
 	}
 
 EXEC SQL CLOSE RESULT_SET_CB;
@@ -215,7 +284,7 @@ printf("datos en el sql %s \n",datos);
 printf("largo datos en el sql %d \n",strlen(datos));
 return datos;
 }
-
+*/
 
 
 char *get_listado_objetos(int pagina)//debe venir por parametro la id del usuario
