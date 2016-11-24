@@ -52,7 +52,7 @@ Sistema transaccional: El sistema funciona a la velocidad del Servidor principal
 
 Asociado a cada transacción hay asociado un proceso transaccional que da a satisfacer esa transacción
 
-Cada proceso con una transaccioó de forma independiente.
+Cada proceso con una transacción de forma independiente.
 
 Si hay un nuevo proceso se agrega sin tener que bajar el sistema
 
@@ -111,6 +111,7 @@ que ya existen
 
 PREGUNTA 2
 
+Etapas de diseño de un sistema transaccional:
 1 - Definir funcionalidades que vamos a ofrecer
 2 - Definir las transacciones entrada y salida
 3 - Definir los procesos
@@ -118,12 +119,12 @@ PREGUNTA 2
 Tener un proceso que se encargue de comunicarse con las lineas aereas
 Debiese ser un proceso distinto por cada linea aerea
 Procesos independientes, demonios, para cada linea aerea
-Etapas de diseño de un sistema transaccional:
 
-MINUTO 25
+
+
 **********************************************
 
-SOLEMNE RECUPERATIVA
+SOLEMNE RECUPERATIVA 2012
 
 a)
 Los procesos se activan cuando llega la transaccion....> hasta ahi ok
@@ -162,7 +163,7 @@ JUNIO 2014
 
 a)
 Hasta el primer punto seguido es 100% VERDADERO
-el proceso decide cuando un proceso debe ejecutar => VERDADERO
+el monitor decide cuando un proceso debe ejecutar => VERDADERO
 
 decide cuando => AMBIGUO
 
@@ -189,8 +190,8 @@ Las transacciones fluyen de un proceso a otro ==> FALSOOO
 Las transacciones vienen del usuario se procesa y vuelve al usuario
 
 e)
-Loss procesos se preocupan de la concurrencia ==> FALSO
-EL monitor precocupa de la concurrencia
+Los procesos se preocupan de la concurrencia ==> FALSO
+EL monitor se precocupa de la concurrencia
 No hay limite de transacciones que se pueden antender de forma simultanea, pero limitado
 por los recursos.
 Si se agotan los recursos del sistema, se genera una cola para antender los procesos uno a uno
@@ -201,7 +202,7 @@ PREGUNTA 2
 Argumentos para usar un monitor transaccional
 a)
 - Desarrollo escalable
-- Demora porque el usuario no ingresa todo los usuarios
+- Demora porque el usuario no ingresa todo los datos
 - si cae un proceso no cae todos
 
 b)
