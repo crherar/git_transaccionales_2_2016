@@ -62,6 +62,9 @@ RPC ==> comunicar 2 procesos ejecutandose de manera independiente.
 
 tx_sa => transaccion interna
 
+
+En chile hay unos 7000-8000 cajeros automaticos y el sistema puede procesar 30 a 40 transacciones simultaneas
+*******************************************************************************************************************
 solemne 2012
 
 a)
@@ -155,8 +158,6 @@ lo correcto es que PUEDE CONTENER todos los datos
 PREGUNTA 2
 
 
-
-
 **********************************************
 
 JUNIO 2014
@@ -183,42 +184,50 @@ iguales y activa varias instancias del mismo proceso
 
 La comunicacion  se logra mediante unas transacciones de salida internas que entrega cada proceso ==> VERDADERO
 
-El proceso que las requiera ==> FALSO ==> es el proceso que viene despues de mi siempre que se mantenga
-el contexto (los socket)
+El contenido de TX_SA  es puesto a disposicion del  proceso que las requiera ==> FALSO ==> es el proceso que
+viene a continuacion en la cadena de procesamiento que se ha difinido,el proceso
+viene despues de mi siempre que se mantenga el contexto (los socket)
 
 c)
-El proceso no se preocupa de no dejar trasas, se ejecuta y termina.
+El proceso no se preocupa de no dejar trasas, se ejecuta y termina, y todo lo que haya dejado a excepcion de la tx_sa
+desaparece.
 Despues del punto seguido hasta la coma es FALSO
 
+Hasta el primer punto seguido ==> VERDADERO(Una de las caracteristicas que debe cumplir un sistema transaccional es la de garantizar
+la independencia de las transacciones)
+
+No afecta a la transaccion que viene a continuacion porque es un proceso nuevo que parte de cero ==> INDEPENDENCIA de las transacciones
+
 d)
-Hasta el punto ==> VERDADERO
+Las transacciones son el medio de transporte de los requerimientos de los usuarios hacia el sistema transaccional ==> VERDADERO pero
+puede ser FALSO dependiendo de la interpretacion ==> EL MEDIO DE TRANSPORTE ES EL PROTOCOLO TCP Y FIBRA OPTICA - LOS ELECTRONES
 Las transacciones fluyen de un proceso a otro ==> FALSOOO
 Las transacciones vienen del usuario se procesa y vuelve al usuario
+Lo que va de un proceso a otro es la tx_sa
 
 e)
 Los procesos se preocupan de la concurrencia ==> FALSO
 EL monitor se precocupa de la concurrencia
-No hay limite de transacciones que se pueden antender de forma simultanea, pero limitado
-por los recursos.
+No hay limite de transacciones que se pueden antender de forma simultanea, pero limitado por los recursos.
 Si se agotan los recursos del sistema, se genera una cola para antender los procesos uno a uno
 
 PREGUNTA 2
-
 
 Argumentos para usar un monitor transaccional
 a)
 - Desarrollo escalable
 - Demora porque el usuario no ingresa todo los datos
-- si cae un proceso no cae todos
-
+- si cae un proceso no cae todos <==> INDEPENDENCIA de los procesos
+- Desarrollo puede ser incremental, agregar nuevas funcionalidades sin afectar a las demás
+- uso de mas de un servidor para contener el sistema
 b)
 - puedo procesar una gran cantidad de transacciones sin usar recursos excesivos del computador
-- usa mejor los recursos del procesador
+- usa mejor los recursos del computador
 - simplifica la busqueda de errores
+- pueden ser 1000 procesos pero cada uno de 50 lineas c/u
 
 PROBLEMAS
-- se puede interceptar la transaccion y modificarla
+- se puede interceptar la transacción y modificarla
 
 c)
-
-- aplicaciones en tiempo real no puede implementarse en forma transaccional
+- aplicaciones en tiempo real(mineria, software de avion, monitoreo signos vitales) no puede implementarse en forma transaccional
