@@ -176,6 +176,12 @@ que el proceso decida cuando el proceso termina) en proceso de cuando debe termi
 b)
 El monitor para las transacciones concurrentes activa multiples procesos con la misma transaccion
 
+La logica de negocio es programada en los procesos transaccionales ==> VERDADERO - de manera de posibilitar
+la ejecucion concurrente de varias transacciones del mismo tipo ==> NO NECESARIAMENTE, es el monitor
+quien hace la ejecucion concurrente de transacciones del mismo tipo en la medida que le lleguen transacciones
+iguales y activa varias instancias del mismo proceso
+
+La comunicacion  se logra mediante unas transacciones de salida internas que entrega cada proceso ==> VERDADERO
 
 El proceso que las requiera ==> FALSO ==> es el proceso que viene despues de mi siempre que se mantenga
 el contexto (los socket)
