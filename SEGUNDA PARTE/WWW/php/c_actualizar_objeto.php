@@ -23,7 +23,7 @@ $cabecera = array('formulario' => 'actobj',
 									'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
 									'email'=>$_SESSION["email"]);
 
-$objeto  = array('id_objeto' =>$_SESSION["id_objeto"],
+$objeto  = array('id_objeto' =>$_SESSION["datos"]->id_objeto,
 									'nombre_objeto' => str_pad($_POST["nombre_objeto"],15));
 
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$objeto));//"loginn|".$email."-".$password;

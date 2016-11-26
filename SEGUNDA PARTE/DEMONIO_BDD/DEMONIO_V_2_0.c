@@ -972,8 +972,8 @@ int main() {
 
                 sscanf(mensaje.texto.datos_formulario, "%d", &id_usuario_logueado);
                 //strcpy(mis_objetos, get_listado_objetos_tabla(id_usuario_dueno));
-
-                printf("Los objetos son: %s \n", get_listado_objetos_tabla(id_usuario_logueado));
+                mobj =  get_listado_objetos_tabla(id_usuario_logueado);
+                printf("Los objetos son: %s \n", mobj->listado);
                 printf("despues de obtener los objetos \n");
 
         //        if (strcmp(mis_objetos, "no hay datos") == 0) { //char error[153];
@@ -981,7 +981,7 @@ int main() {
                     //respuesta.texto.datos_formulario[152] = '1';
         //            strcpy(respuesta.texto.datos_formulario, "01");
         //        } else {
-                    strcpy(respuesta.texto.datos_formulario, get_listado_objetos_tabla(id_usuario_logueado));
+                    strcpy(respuesta.texto.datos_formulario, mobj->listado);
                 //}
                 //printf("tamaño de obj: %d \n", sizeof (obj));
                 //printf("nombre objeto [0]: %s \n",obj[0].nombre);

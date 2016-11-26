@@ -112,11 +112,16 @@ $amigos = $resp->datos;
              <div class="form-group">
                 <label for="email">Fecha prestamo:</label>
                  <div class='input-group date' id='fecha_prestamo'>
-
-                     <input name="fecha_prestamo"  placeholder="Fecha prestamo" type='text' class="form-control" value=<?php print_r($_SESSION["datos"]->fecha_prestamo) ?>/>
+<!-- <?php print_r(date($_SESSION["datos"]->fecha_prestamo)); ?> -->
+                     <input name="fecha_prestamo"  placeholder="Fecha prestamo" type='text' class="form-control" value=<?php print_r($_SESSION["datos"]->fecha_prestamo); ?>/>
                      <script type="text/javascript">
                          $(function () {
-                             $('#fecha_prestamo').datetimepicker();
+
+                             $('#fecha_prestamo').datetimepicker({
+                             format: "DD/MM/YYYY"
+                            //    autoclose: true
+                             });
+                             //$('#fecha_prestamo').datetimepicker('setStartDate', '2012-01-01');
                          });
                      </script>
                      <span class="input-group-addon">
@@ -127,7 +132,7 @@ $amigos = $resp->datos;
 
              <div clas='form-group'>
                <label for="email">Usuario recibidor:</label>
-               <select name="usuario_recibidor" class="selectpicker form-control" data-live-search="true" title=<?php print_r($_SESSION["datos"]->correo_usuario_recibidor) ?>>
+               <select name="usuario_recibidor" class="selectpicker form-control" data-live-search="true" title=<?php print_r($_SESSION["datos"]->correo_usuario_recibidor); ?>>
                  <?php foreach($amigos as $value)
                  {
                   ?>
@@ -140,7 +145,7 @@ $amigos = $resp->datos;
 
              <div clas='form-group'>
                <label for="email">Nombre objeto:</label>
-               <select name="nombre_objeto" class="selectpicker form-control" data-live-search="true" title=<?php print_r($_SESSION["datos"]->nombre_objeto) ?>>
+               <select name="nombre_objeto" class="selectpicker form-control" data-live-search="true" title=<?php print_r($_SESSION["datos"]->nombre_objeto); ?>>
                  <?php foreach($objetos as $value)
                  {
                   ?>
@@ -152,17 +157,19 @@ $amigos = $resp->datos;
              </div>
              <div clas='form-group'>
                <label for="email">Cantidad:</label>
-               <input  class="form-control", type='text', required='true', name='cantidad', placeholder='Canitdad',id='cantidad' value=<?php print_r($_SESSION["datos"]->cantidad) ?>>
+               <input  class="form-control", type='text', required='true', name='cantidad', placeholder='Canitdad',id='cantidad' value=<?php print_r($_SESSION["datos"]->cantidad); ?>>
              </div>
 
              <div class="form-group">
                 <label for="email">Fecha devolución:</label>
                  <div class='input-group date' id='fecha_devolucion'>
 
-                     <input name="fecha_devolucion" placeholder="Fecha devolución" type='text' class="form-control" value=<?php print_r($_SESSION["datos"]->fecha_devolucion) ?>/>
+                     <input name="fecha_devolucion" placeholder="Fecha devolución" type='text' class="form-control" value=<?php print_r($_SESSION["datos"]->fecha_devolucion); ?>/>
                      <script type="text/javascript">
                          $(function () {
-                             $('#fecha_devolucion').datetimepicker();
+                             $('#fecha_devolucion').datetimepicker({
+                               format: "DD/MM/YYYY"
+                             });
                          });
                      </script>
                      <span class="input-group-addon">

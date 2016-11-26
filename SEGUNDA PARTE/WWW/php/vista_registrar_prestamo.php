@@ -119,7 +119,10 @@ $amigos = $resp->datos;
                      <input name="fecha_prestamo"  placeholder="Fecha prestamo" type='text' class="form-control" />
                      <script type="text/javascript">
                          $(function () {
-                             $('#fecha_prestamo').datetimepicker();
+                             $('#fecha_prestamo').datetimepicker({
+                               format: "DD/MM/YYYY"
+                               //format: "MM/DD/YYYY"
+                             });
                          });
                      </script>
                      <span class="input-group-addon">
@@ -166,7 +169,10 @@ $amigos = $resp->datos;
                      <input name="fecha_devolucion" placeholder="Fecha devolución" type='text' class="form-control" />
                      <script type="text/javascript">
                          $(function () {
-                             $('#fecha_devolucion').datetimepicker();
+                             $('#fecha_devolucion').datetimepicker({
+                               format: "DD/MM/YYYY"
+                               //format: "MM/DD/YYYY"
+                             });
                          });
                      </script>
                      <span class="input-group-addon">

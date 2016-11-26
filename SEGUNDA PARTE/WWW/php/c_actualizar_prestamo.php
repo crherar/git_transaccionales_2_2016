@@ -19,32 +19,35 @@ echo "\nConexion Exitosa, puerto: " . $puerto."\n";
 
 
 $cabecera = array('formulario' => 'actpre',
-									'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
-									 'email'=>$_SESSION["email"]);
+	'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
+	 'email'=>$_SESSION["email"]);
 
 $correo_usuario_prestador = str_pad('matias@gmail.com',40);
 $objeto = str_pad($_POST["nombre_objeto"],15);
+var_dump($objeto);
 $correo_usuario_recibidor = str_pad($_POST["usuario_recibidor"],40);
-$fecha_prestamo = date_parse($_POST["fecha_prestamo"]);
-$fecha_devolucion = date_parse($_POST["fecha_devolucion"]);
-print_r("\n\n\n".$_POST["fecha_prestamo"]."\n\n\n");
-print_r("\n\n\n".$_POST["fecha_devolucion"]."\n\n\n");
-$prestamo = array('dia_prestamo'=>strval($fecha_prestamo["day"]),
-                  'mes_prestamo'=>strval($fecha_prestamo["month"]),
-                  'anio_prestamo'=>strval($fecha_prestamo["year"]),
+list($dia_prestamo,$mes_prestamo, $anio_prestamo) = split('[/.-]', $_POST["fecha_prestamo"]);
+list($dia_devolucion,$mes_devolucion, $anio_devolucion) = split('[/.-]', $_POST["fecha_devolucion"]);
+//print_r("\n\n\n".$_POST["fecha_prestamo"]."\n\n\n");
+//print_r("\n\n\n".$_POST["fecha_devolucion"]."\n\n\n");
+$prestamo = array('dia_prestamo'=>$dia_prestamo,
+                  'mes_prestamo'=>$mes_prestamo,
+                  'anio_prestamo'=>$anio_prestamo,
                   'correo_usuario_prestador'=>$correo_usuario_prestador,
                   'objeto'=>$objeto,
-                  'cantidad'=> '1',
+                  'cantidad'=> $_POST["cantidad"],
                   'correo_usuario_recibidor' => $correo_usuario_recibidor,
-                  'dia_devolucion' => strval($fecha_devolucion["day"]),
-                  'mes_devolucion' => strval($fecha_devolucion["month"]),
-                  'anio_devolucion' => strval($fecha_devolucion["year"]),
-	'estado'=>'0');
+                  'dia_devolucion' => $dia_devolucion,
+                  'mes_devolucion' => $mes_devolucion,
+                  'anio_devolucion' => $anio_devolucion,
+	'estado'=>'0',
+	'id_prestamo'=>$_SESSION["datos"]->id_prestamo);
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$prestamo));//"loginn|".$email."-".$password;
 
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
 echo "ENVIANDO AL PYTHON: \n";
-echo $msg."\n";
+print_r($msg);
+print_r("\n");
 $sock_data = socket_write($socket, $msg, strlen($msg));
 echo "RESPUESTA DEL PYTHON: \n";
 $resp = socket_read($socket, 1024);
