@@ -132,14 +132,18 @@ $amigos = $resp->datos;
 
              <div clas='form-group'>
                <label for="email">Usuario recibidor:</label>
-               <select name="usuario_recibidor" class="selectpicker form-control" data-live-search="true" title=<?php print_r($_SESSION["datos"]->correo_usuario_recibidor); ?>>
+               <select name="usuario_recibidor" class="selectpicker form-control" data-live-search="true" title=<?php print_r($_SESSION["datos"]->correo_usuario_recibidor); ?> >
                  <?php foreach($amigos as $value)
                  {
+                   if($value != $_SESSION["datos"]->correo_usuario_recibidor)
+                   {
                   ?>
                   <option data-tokens="ketchup mustard"><?php print_r($value); ?></option>
               <?php
                   }
+                }
                   ?>
+                  <option selected="selected"><?php print_r($_SESSION["datos"]->correo_usuario_recibidor); ?> </option>
                </select>
            </div>
 
@@ -148,11 +152,15 @@ $amigos = $resp->datos;
                <select name="nombre_objeto" class="selectpicker form-control" data-live-search="true" title=<?php print_r($_SESSION["datos"]->nombre_objeto); ?>>
                  <?php foreach($objetos as $value)
                  {
+                   if($value != $_SESSION["datos"]->nombre_objeto)
+                   {
                   ?>
                   <option data-tokens="ketchup mustard"><?php print_r($value); ?></option>
               <?php
-                  }
+                    }
+                }
                   ?>
+                  <option selected="selected"><?php print_r($_SESSION["datos"]->nombre_objeto); ?></option>
                </select>
              </div>
              <div clas='form-group'>

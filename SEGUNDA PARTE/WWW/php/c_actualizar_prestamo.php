@@ -24,6 +24,7 @@ $cabecera = array('formulario' => 'actpre',
 
 $correo_usuario_prestador = str_pad('matias@gmail.com',40);
 $objeto = str_pad($_POST["nombre_objeto"],15);
+var_dump($_POST);
 var_dump($objeto);
 $correo_usuario_recibidor = str_pad($_POST["usuario_recibidor"],40);
 list($dia_prestamo,$mes_prestamo, $anio_prestamo) = split('[/.-]', $_POST["fecha_prestamo"]);
@@ -50,9 +51,19 @@ print_r($msg);
 print_r("\n");
 $sock_data = socket_write($socket, $msg, strlen($msg));
 echo "RESPUESTA DEL PYTHON: \n";
-$resp = socket_read($socket, 1024);
+$resp = json_decode(socket_read($socket, 1024));
 var_dump($resp);
+if($resp->datos == "01")
+{
+$_SESSION["resp"] = "Prestamo actualizado correctamente";
+header("location: c_ver_prestamos_pendientes.php");
+}
 
+if($resp->datos == "02")
+{
+$_SESSION["resp"] = "Error al actualizar";
+header("location: vista_actualizar_prestamo.php");
+}
 
 /*
 $sock_data = socket_write($socket, "loginn", strlen("DIRPRG /home/alumnos/17957132/"));
