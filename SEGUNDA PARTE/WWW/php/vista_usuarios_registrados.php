@@ -25,6 +25,7 @@ print_r($_SESSION["email"]);
   <link rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css'>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/amigos.js"></script>
+<script type="text/javascript" src="../js/usuarios.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/app.css">
     <title></title>
   </head>
@@ -108,7 +109,7 @@ print_r($_SESSION["email"]);
         <td>
           <ul>
           <button id="btn_agregarmisamigos_<?php echo $cont; ?>" onclick="agregar_amigo(this)">Agregar como amigo</button>
-          <button id="btn_verperfil_<?php echo $cont; ?>"  onclick = "get_objeto_eliminar(this)">Ver perfil</button>
+          <button id="btn_verperfil_<?php echo $cont; ?>"  onclick = "ver_perfil_usuario_amigo(this)">Ver perfil</button>
 
         </ul>
       </td>

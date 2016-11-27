@@ -167,9 +167,15 @@ print_r($_SESSION["email"]);
         <td id="td_comentario_<?php echo $cont; ?>"><?php echo $value->comentario; ?></td>
         <td>
           <ul>
-          <!-- <button id="btn_agregarmisamigos_<?php echo $cont; ?>" onclick="agregar_amigo(this)">Agregar como amigo</button>
-          <button id="btn_verperfil_<?php echo $cont; ?>"  onclick = "ver_perfil_usuario_amigo(this)">Ver perfil</button> -->
-
+            <?php if($value->id_usuario_clasificador == $_SESSION["id_usuario_logueado"])
+            { ?>
+          <!-- <button id="btn_agregarmisamigos_<?php echo $cont; ?>" onclick="agregar_amigo(this)">Agregar como amigo</button> -->
+          <button id="btn_verperfil_<?php echo $cont; ?>"  onclick = "ver_perfil_usuario_amigo(this)">Editar reputación</button>
+          <?php }
+          else {
+            print_r("No puedes editar esta reputación");
+          }
+           ?>
         </ul>
       </td>
       </tr>

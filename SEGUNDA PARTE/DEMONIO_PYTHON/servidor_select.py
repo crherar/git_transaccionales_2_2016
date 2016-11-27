@@ -378,6 +378,21 @@ while running:
                     s.close()
                     input.remove(s)
 
+            if formulario == "delami":
+                amig = amigos.amigos()
+                print formulario
+                respuesta = amig.eliminar_amistad(data)
+                del amig
+                if respuesta:
+                    print "respuesta al php: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
             if formulario == "regrep":
                 rep = reputaciones.reputaciones()
                 print formulario

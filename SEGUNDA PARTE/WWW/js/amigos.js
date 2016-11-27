@@ -56,3 +56,54 @@ function agregar_reputacion(idbtn)
             };
       $.post(url,postData,funcion);
 }
+
+
+function get_amigo_eliminar(idbtn)
+{
+  $( "#vnteliminar" ).dialog({
+  buttons: {
+"SI": function() {
+          var btn=idbtn.id.split("_");
+                    var idamistadx=$("#td_idamistad_"+btn[2]).html();
+                      console.log(idamistadx);
+                             var postData = {
+                                            id_amistad : idamistadx
+
+                                          };
+                    $.ajax({
+                             url: "c_eliminar_amigo.php",
+                             type: "POST",
+                             data: postData,
+
+                             success: function(data) {
+                              // debugger;
+                               console.log(data);
+                               if(data == "01")
+                               {
+                              // $(this).dialog('close');
+                               window.location = localStorage.getItem('base_url')+"php/c_ver_mis_amigos.php";
+
+                               }
+
+                                if(data == "02")
+                                {
+                                  alert("error al eliminar");
+                                //  $(this).dialog("close");
+                                }
+                              }
+
+});
+          //$(this).dialog('close');
+          window.location = localStorage.getItem('base_url')+"php/c_ver_mis_amigos.php";
+          //location.reload();
+
+  },
+
+"NO": function() {
+
+   $(this).dialog('close');
+
+  }
+  }
+});
+}

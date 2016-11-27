@@ -115,7 +115,7 @@ print_r($_SESSION["email"]);
           <ul>
           <button id="btn_perfil_<?php echo $cont; ?>"  onclick="ver_perfil_usuario_amigo(this)">Ver perfil</button>
           <button id="btn_clasificar_<?php echo $cont; ?>" onclick="agregar_reputacion(this)">Agregar reputación</button>
-          <button id="btn_eliminar_<?php echo $cont; ?>"  onclick = "get_objeto_eliminar(this)">Eliminar</button>
+          <button id="btn_eliminar_<?php echo $cont; ?>"  onclick = "get_amigo_eliminar(this)">Eliminar</button>
         </ul>
       </td>
       </tr>
@@ -127,8 +127,8 @@ print_r($_SESSION["email"]);
     </tbody>
   </table>
 
-  <div id="vnteliminar"  style="display:none" title="Eliminar objeto">
-<p>¿Seguro que quiere eliminar el objeto?</p>
+  <div id="vnteliminar"  style="display:none" title="Eliminar amigo">
+<p>¿Seguro que quiere eliminar el amigo?</p>
 </div>
 
   <?php

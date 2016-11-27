@@ -22,12 +22,12 @@ if (socket_connect($socket, $host, $puerto))
 //$msg = "mensaje del CLIENTE 1 desde php!!!";
 
 
-$cabecera = array('formulario' => 'delobj',
+$cabecera = array('formulario' => 'delami',
 									'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
 									 'email'=>$_SESSION["email"]);
 
-$objeto = array('id_objeto'=>$_POST["id_objeto"],'nombre_objeto'=>'');
-$msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$objeto));//"loginn|".$email."-".$password;
+$amistad = array('id_amistad'=>$_POST["id_amistad"]);
+$msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$amistad));//"loginn|".$email."-".$password;
 
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
 //echo "ENVIANDO AL PYTHON: \n";

@@ -69,7 +69,7 @@ class procesospx:
     def actualizar_amigos(self):
         return "actami"
 
-    def eliminar_amigos(self):
+    def eliminar_amistad(self):
         return "delami"
 
     def ver_mis_amigos_combobox(self):

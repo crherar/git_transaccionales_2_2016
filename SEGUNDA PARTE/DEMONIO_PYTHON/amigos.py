@@ -39,3 +39,8 @@ class amigos:
         print "\n"
         #print json.dumps(respuesta)
         return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.amigos(respuesta)})
+
+    def eliminar_amistad(self,data):
+        self.id = data["datos"]["id_amistad"]
+        respuesta = self.mtx.enviar(self.procpx.eliminar_amistad(),self.codtx.eliminar_amistad(),"00",str(self.id))
+        return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})

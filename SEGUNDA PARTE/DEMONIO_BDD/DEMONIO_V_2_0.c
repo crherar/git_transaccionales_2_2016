@@ -75,6 +75,7 @@ int main() {
     char email_usuario_recibidor[41];
     char email_usuario_dueno_objeto[30];
     int id_amigo;
+    int id_amistad;
     int id_usuario_clasificado;
     int clasificacion;
     char comentario_clasificacion[100];
@@ -438,7 +439,21 @@ int main() {
                 printf("************************** FIN Formulario 'verami' **************************\n");
             }
 
+            else if(strcmp(formulario_actual,"delami") == 0){
+              printf("************************** Formulario 'delami' **************************\n");
+              sscanf(mensaje.texto.datos_formulario, "%d", &id_amistad);
+              printf("id amistad: %d \n",id_amistad);
+              int resp = eliminar_amistad(id_amistad);
 
+              if(resp == 0){
+                  sprintf(respuesta.texto.datos_formulario, "%s", "01");
+              }else{
+                  sprintf(respuesta.texto.datos_formulario, "%s", "02");
+              }
+              
+              printf("-----> Eliminar amistad <-----\n");
+              printf("************************** FIN Formulario 'delami' **************************\n");
+            }
 
             /* ********************************************************************************************************* */
 

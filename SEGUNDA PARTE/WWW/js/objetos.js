@@ -44,7 +44,7 @@ function get_objeto_eliminar(idbtn)
                                console.log(data);
                                if(data == "01")
                                {
-                               $(this).dialog('close');
+                              // $(this).dialog('close');
                                window.location = localStorage.getItem('base_url')+"php/c_ver_mis_objetos.php";
 
                                }
@@ -52,7 +52,7 @@ function get_objeto_eliminar(idbtn)
                                 if(data == "02")
                                 {
                                   alert("error al eliminar");
-                                  $(this).dialog("close");
+                              //    $(this).dialog("close");
                                 }
                               }
 

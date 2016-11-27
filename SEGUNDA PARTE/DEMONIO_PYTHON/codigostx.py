@@ -69,7 +69,7 @@ class codigostx:
     def actualizar_amigos(self):
         return "020521"
 
-    def eliminar_amigos(self):
+    def eliminar_amistad(self):
         return "020522"
 
     def ver_mis_amigos_combobox(self):
