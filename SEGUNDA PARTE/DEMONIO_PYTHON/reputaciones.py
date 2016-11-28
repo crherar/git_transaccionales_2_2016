@@ -31,3 +31,8 @@ class reputaciones:
         self.id_usuario_clasificado = data["datos"]["id_usuario_clasificado"]
         respuesta = self.mtx.enviar(self.procpx.ver_reputaciones_de_usuario(),self.codtx.ver_reputaciones_de_usuario(),"00",str(self.id_usuario_clasificado))
         return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.reputaciones(respuesta)})
+
+    def mi_perfil_mis_reputaciones(self,data):
+        self.id_usuario_clasificado = data["cabecera"]["id_usuario_logueado"]
+        respuesta = self.mtx.enviar(self.procpx.ver_mis_reputaciones(),self.codtx.ver_mis_reputaciones(),"00",str(self.id_usuario_clasificado))
+        return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.reputaciones(respuesta)})

@@ -423,6 +423,21 @@ while running:
                     s.close()
                     input.remove(s)
 
+            if formulario == "vemrep":
+                rep = reputaciones.reputaciones()
+                print formulario
+                respuesta = rep.mi_perfil_mis_reputaciones(data)
+                del rep
+                if respuesta:
+                    print "respuesta al php: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
             del data
 
                 # if len(respuesta) != 0:

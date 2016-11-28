@@ -450,7 +450,7 @@ int main() {
               }else{
                   sprintf(respuesta.texto.datos_formulario, "%s", "02");
               }
-              
+
               printf("-----> Eliminar amistad <-----\n");
               printf("************************** FIN Formulario 'delami' **************************\n");
             }
@@ -1113,6 +1113,29 @@ int main() {
                 }
 
                 printf("************************** FIN Formulario 'veorep' **************************\n");
+            }
+
+            else if (strcmp(formulario_actual, "vemrep") == 0) {
+
+                printf("************************** Formulario 'vemrep' **************************\n");
+                printf("---->Ver mis reputaciones (mi perfil)<------\n");
+                sscanf(mensaje.texto.datos_formulario, "%d", &id_usuario_logueado);
+
+                printf("id del usuario clasificado recibido: %d\n", id_usuario_logueado);
+
+
+
+
+                printf("\n\n DESPUES DE LA LLAMADA A FUNCION \n\n");
+                rep = get_perfil_usuario_reputaciones(id_usuario_logueado);
+
+                if(rep->verificador_error == 0){
+                    sprintf(respuesta.texto.datos_formulario, "%s", rep->listado);
+                }else{
+                    sprintf(respuesta.texto.datos_formulario, "%s", "02");
+                }
+
+                printf("************************** FIN Formulario 'vemrep' **************************\n");
             }
 
             /* ********************************************************************************************************* */
