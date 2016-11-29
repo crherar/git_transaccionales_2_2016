@@ -42,19 +42,6 @@ if($resp->datos == "02")
 		$_SESSION["resp"] = "Error al actualizar";
 	header("location: vista_actualizar_objeto.php");
 }
-//var_dump($resp);
-//var_dump($_SESSION);
-
-/*
-$sock_data = socket_write($socket, "loginn", strlen("DIRPRG /home/alumnos/17957132/"));
-$resp = socket_read($socket, 1024);
-var_dump($resp);
-$mensaje = "TXIN 000020506loginn00matias@gmail.com                        123       ";
-$sock_data = socket_write($socket, $mensaje, strlen($mensaje));
-$resp = socket_read($socket, 1024);
-var_dump($resp);
-*/
-
 }
 else
 {

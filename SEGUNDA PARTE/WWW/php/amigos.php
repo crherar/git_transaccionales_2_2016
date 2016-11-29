@@ -26,18 +26,6 @@ $msg =  json_encode(array('cabecera'=>$cabecera,'datos'=>''));//"verami|9";
 $sock_data = socket_write($socket, $msg, strlen($msg));
 $resp = socket_read($socket, 1024);
 var_dump($resp);
-
-
-/*
-$sock_data = socket_write($socket, "loginn", strlen("DIRPRG /home/alumnos/17957132/"));
-$resp = socket_read($socket, 1024);
-var_dump($resp);
-$mensaje = "TXIN 000020506loginn00matias@gmail.com                        123       ";
-$sock_data = socket_write($socket, $mensaje, strlen($mensaje));
-$resp = socket_read($socket, 1024);
-var_dump($resp);
-*/
-
 }
 else
 {

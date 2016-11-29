@@ -1,15 +1,5 @@
 <?php
 session_start();
-// print_r(session_id());
-// print_r("\n");
-// print_r($_SESSION["id_usuario_logueado"]);
-// print_r("\n");
-// print_r($_SESSION["email"]);
-//echo session_id();
-//echo "\n";
-//echo $_SESSION["id_usuario_logueado"];
-//echo "\n";
-//echo $_SESSION["email"];
 $host = "127.0.0.1";
 
 $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
@@ -28,27 +18,10 @@ $cabecera = array('formulario' => 'delobj',
 
 $objeto = array('id_objeto'=>$_POST["id_objeto"],'nombre_objeto'=>'');
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$objeto));//"loginn|".$email."-".$password;
-
-//$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
-//echo "ENVIANDO AL PYTHON: \n";
-//echo $msg."\n";
 $sock_data = socket_write($socket, $msg, strlen($msg));
 //echo "RESPUESTA DEL PYTHON: \n";
 $resp = json_decode(socket_read($socket, 1024));
 echo $resp->datos;
-//var_dump($resp);
-
-
-/*
-$sock_data = socket_write($socket, "loginn", strlen("DIRPRG /home/alumnos/17957132/"));
-$resp = socket_read($socket, 1024);
-var_dump($resp);
-$mensaje = "TXIN 000020506loginn00matias@gmail.com                        123       ";
-$sock_data = socket_write($socket, $mensaje, strlen($mensaje));
-$resp = socket_read($socket, 1024);
-var_dump($resp);
-*/
-
 }
 else
 {

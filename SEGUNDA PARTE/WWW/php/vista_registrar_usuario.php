@@ -39,6 +39,7 @@ print_r($_SESSION["email"]);
    }
    ?>
    <div class = "col-md-4 remove-float center-block  big-top-space">
+     <h1>Registrar usuario</h1>
       <form action="c_registrar_usuario.php" method="POST">
      <!--<form action=""></form> -->
         <div clas="form-group">

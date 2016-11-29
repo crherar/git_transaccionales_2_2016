@@ -5,11 +5,7 @@ print_r("\n");
 print_r($_SESSION["id_usuario_logueado"]);
 print_r("\n");
 print_r($_SESSION["email"]);
-//print_r("ID USUARIO CLASIFICADO: "+$_POST["id_usuario_clasificado"]);
-//echo "datos: \n";
-//var_dump($_SESSION["datos"]);
-//$_SESSION["resp"] = "";
-//var_dump($_SESSION["resp"]);
+
 $host = "127.0.0.1";
 $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 $puerto = 3000;

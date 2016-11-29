@@ -50,11 +50,6 @@ print_r($_SESSION["email"]);
               <ul class="dropdown-menu">
                 <li><a href="c_ver_mi_perfil_mis_reputaciones.php">Mi perfil</a></li>
                 <li><a href="c_cerrar_sesion.php">Salir</a></li>
-                <!-- <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">One more separated link</a></li> -->
               </ul>
             </li>
           </ul>

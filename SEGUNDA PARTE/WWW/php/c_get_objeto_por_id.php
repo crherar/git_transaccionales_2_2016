@@ -34,26 +34,11 @@ $resp = json_decode(socket_read($socket, 1024));
 if($resp->datos !="02")
 	{
 		 $_SESSION["datos"] = $resp->datos;
-		//$_SESSION["nombre_objeto"] = $resp->datos->nombre;
-		//$_SESSION["id_objeto"] = $resp->datos->id_objeto;
 		echo $resp->datos->nombre;
 	//header("location: vista_actualizar_objeto.php");
 }
 if($res->datos == "02")
 	echo "02";
-//var_dump($resp->datos->nombre);
-
-
-/*
-$sock_data = socket_write($socket, "loginn", strlen("DIRPRG /home/alumnos/17957132/"));
-$resp = socket_read($socket, 1024);
-var_dump($resp);
-$mensaje = "TXIN 000020506loginn00matias@gmail.com                        123       ";
-$sock_data = socket_write($socket, $mensaje, strlen($mensaje));
-$resp = socket_read($socket, 1024);
-var_dump($resp);
-*/
-
 }
 else
 {

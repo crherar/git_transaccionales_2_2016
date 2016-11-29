@@ -48,19 +48,6 @@ header("location: vista_administrar_mis_objetos.php");
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-//var_dump(json_decode($resp));
-
-
-/*
-$sock_data = socket_write($socket, "loginn", strlen("DIRPRG /home/alumnos/17957132/"));
-$resp = socket_read($socket, 1024);
-var_dump($resp);
-$mensaje = "TXIN 000020506loginn00matias@gmail.com                        123       ";
-$sock_data = socket_write($socket, $mensaje, strlen($mensaje));
-$resp = socket_read($socket, 1024);
-var_dump($resp);
-*/
-
 }
 else
 {
