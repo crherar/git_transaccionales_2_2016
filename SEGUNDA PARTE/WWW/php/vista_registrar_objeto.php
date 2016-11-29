@@ -61,6 +61,7 @@ print_r($_SESSION["email"]);
     }
     ?>
          <div class = "col-md-4 remove-float center-block  big-top-space">
+           <h1>Registrar Objeto</h1>
            <form action="c_registrar_objeto.php" method="POST">
              <div clas='form-group'>
                <label for="email">Nombre objeto:</label>

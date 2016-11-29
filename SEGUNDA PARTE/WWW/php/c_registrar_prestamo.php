@@ -22,7 +22,7 @@ $cabecera = array('formulario' => 'regpre',
 									 'email'=>$_SESSION["email"]);
 
 
-$correo_usuario_prestador = str_pad('matias@gmail.com',40);
+$correo_usuario_prestador = str_pad($_SESSION["email"],40);
 $objeto = str_pad($_POST["nombre_objeto"],15);
 $correo_usuario_recibidor = str_pad($_POST["usuario_recibidor"],40);
 list($dia_prestamo,$mes_prestamo, $anio_prestamo) = split('[/.-]', $_POST["fecha_prestamo"]);

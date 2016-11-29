@@ -49,7 +49,7 @@ class objetos:
 
     def ver_mis_objetos_combobox(self,data):
         self.id_usuario_dueno = data["cabecera"]["id_usuario_logueado"]
-        respuesta = self.mtx.enviar(self.procpx.ver_mis_objetos_combobox(),self.codtx.ver_mis_objetos_combobox(),"00",str(self.id_usuario_dueno).ljust(5))[:-1].split(',')
+        respuesta = self.mtx.enviar(self.procpx.ver_mis_objetos_combobox(),self.codtx.ver_mis_objetos_combobox(),"00",str(self.id_usuario_dueno).ljust(5)).split(',')
         #return json.dumps({'cabecera':[data["cabecera"]["formulario"],data["cabecera"]["id_usuario_logueado"]],'datos':respuesta})
         print data["cabecera"]
         return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})

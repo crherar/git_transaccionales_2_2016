@@ -42,7 +42,7 @@ print_r($_SESSION["email"]);
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
           <li><a href="vista_registrar_prestamo.php">Nuevo prestamo</a></li>
-            <li class="active"><a href="c_ver_prestamos_pendientes.php">Ver prestamos pendientes</a></li>
+            <li><a href="c_ver_prestamos_pendientes.php">Ver prestamos pendientes</a></li>
             <li><a href="c_ver_prestamos_devueltos.php">Ver prestamos devueltos</a></li>
             <li><a href="c_ver_mis_objetos.php">Administrar mis objetos</a></li>
             <li><a href="c_ver_usuarios_registrados.php">Usuarios registrados</a></li>
@@ -74,6 +74,7 @@ print_r($_SESSION["email"]);
     }
     ?>
          <div class = "col-md-4 remove-float center-block  big-top-space">
+             <h1>Actualizar Objeto</h1>
            <form action="c_actualizar_objeto.php" method="POST">
              <div clas='form-group'>
                <label for="email">Nombre objeto:</label>

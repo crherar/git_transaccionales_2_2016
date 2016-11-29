@@ -22,7 +22,7 @@ $cabecera = array('formulario' => 'actpre',
 	'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
 	 'email'=>$_SESSION["email"]);
 
-$correo_usuario_prestador = str_pad('matias@gmail.com',40);
+$correo_usuario_prestador = str_pad($_SESSION["email"],40);
 $objeto = str_pad($_POST["nombre_objeto"],15);
 var_dump($_POST);
 var_dump($objeto);

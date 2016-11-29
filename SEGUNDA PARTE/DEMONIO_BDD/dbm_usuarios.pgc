@@ -107,7 +107,7 @@ memset(SQL_email,'\0',sizeof SQL_email);
 strcpy(SQL_email,email);
 
 printf("haciendo select del email: %s \n",SQL_email);
-EXEC SQL SELECT id INTO :SQL_output FROM usuarios WHERE email = RTRIM(:SQL_email);
+EXEC SQL SELECT id INTO :SQL_output FROM usuarios WHERE email = trim(:SQL_email);
 printf("id del usuario dentro del select: %d \n",SQL_output);
 db_commit();
 printf(sqlca.sqlerrm.sqlerrmc );
