@@ -30,6 +30,7 @@ $sock_data = socket_write($socket, $msg, strlen($msg));
 $resp = json_decode(socket_read($socket, 1024));
 var_dump($resp);
 $_SESSION["datos"] = $resp->datos;
+//$_SESSION["usuario_perfil"] = $_SESSION["datos"]->nombre." ".$_SESSION["datos"]->apellido;
 //header("location: vista_registrar_reputacion.php");
 
 /*

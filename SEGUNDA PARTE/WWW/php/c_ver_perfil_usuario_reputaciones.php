@@ -13,6 +13,7 @@ print_r($_SESSION["email"]);
 $host = "127.0.0.1";
 $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 $puerto = 3000;
+
 if (socket_connect($socket, $host, $puerto))
 {
 $cabecera = array('formulario' => 'veorep',
@@ -30,6 +31,7 @@ $sock_data = socket_write($socket, $msg, strlen($msg));
 //echo "RESPUESTA DEL PYTHON: \n";
 $resp = json_decode(socket_read($socket, 2048));
 $_SESSION["datos"] = $resp->datos;
+$_SESSION["usuario_perfil"] = $resp->usuario_perfil->nombre." ".$resp->usuario_perfil->apellido." - ".$resp->usuario_perfil->email;
 //var_dump($resp);
 }
 else

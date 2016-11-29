@@ -40,6 +40,18 @@ class usuarios:
 		else:
 			return json.dumps({'cabecera':data["cabecera"],'datos':'02'})
 
+	def get_usuario_por_id(self,id_usuario):
+		#self.id = int(data['datos']['id_usuario'])
+		respuesta = self.mtx.enviar(self.procpx.get_usuario_por_id(),self.codtx.get_usuario_por_id(),"00",str(id_usuario)).split('-')
+		return self.objson.usuario(respuesta)
+		#resp = respuesta.split('-')
+		#print "tamanio respuesta: "+str(len(respuesta))
+		#print json.loads(respuesta)
+		# if len(respuesta) > 0:
+		# 	return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.usuario(respuesta)})
+		# else:
+		# 	return json.dumps({'cabecera':data["cabecera"],'datos':'02'})
+
 	def actualizar_usuario(self,data):
 		self.nombre = data["datos"]['nombre']
 		self.apellido = data["datos"]['apellido']
