@@ -81,6 +81,7 @@ print_r($_SESSION["email"]);
     <div>
 
   </div>
+  <h1>Mi Perfil</h1>
   <table class="table table-bordered">
     <thead>
       <th style="display: none;">id_reputacion</th>

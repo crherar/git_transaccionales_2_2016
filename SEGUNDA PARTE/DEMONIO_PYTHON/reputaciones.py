@@ -31,6 +31,7 @@ class reputaciones:
         usr = usuarios.usuarios()
         self.id_usuario_clasificado = data["datos"]["id_usuario_clasificado"]
         usr_clasificado = usr.get_usuario_por_id(data["datos"]["id_usuario_clasificado"])
+        del usr
         respuesta = self.mtx.enviar(self.procpx.ver_reputaciones_de_usuario(),self.codtx.ver_reputaciones_de_usuario(),"00",str(self.id_usuario_clasificado))
         return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.reputaciones(respuesta),'usuario_perfil':usr_clasificado})
 
