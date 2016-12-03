@@ -72,8 +72,8 @@ print_r($_SESSION["email"]);
     }
     ?>
          <div class = "col-md-4 remove-float center-block  big-top-space">
-           <h1> Registrar reputación </h1>
-           <form action="c_registrar_reputacion.php" method="POST">
+           <h1> Actualizar reputación </h1>
+           <form action="c_actualizar_reputacion.php" method="POST">
 
              <div clas='form-group'>
                <label for="email">Usuario por clasificar: <?php print_r($_SESSION["datos"]->nombre." ".$_SESSION["datos"]->apellido); ?></label>

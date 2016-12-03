@@ -38,3 +38,4 @@ else
 	echo "\nLa conexion TCP no se pudo realizar, puerto: ".$puerto;
 }
 socket_close($socket);
+?>

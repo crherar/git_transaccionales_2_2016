@@ -1072,6 +1072,7 @@ int main() {
 
                 printf("************************** Formulario 'regrep' **************************\n");
                 printf("---->Registrar reputacion<------\n");
+                memset(comentario_clasificacion, '\0', sizeof comentario_clasificacion);
                 sscanf(mensaje.texto.datos_formulario, "%d-%d-%d-%100c", &id_usuario_logueado,&id_usuario_clasificado,&clasificacion,comentario_clasificacion);
                 printf("id del usuario clasificador recibido: %d\n", id_usuario_logueado);
                 printf("id del usuario clasificado recibido: %d\n", id_usuario_clasificado);
@@ -1090,6 +1091,31 @@ int main() {
                 }
 
                 printf("************************** FIN Formulario 'regrep' **************************\n");
+            }
+
+            else if (strcmp(formulario_actual, "actrep") == 0) {
+
+                printf("************************** Formulario 'actrep' **************************\n");
+                printf("---->Registrar reputacion<------\n");
+                memset(comentario_clasificacion, '\0', sizeof comentario_clasificacion);
+                sscanf(mensaje.texto.datos_formulario, "%d-%d-%d-%100c", &id_usuario_logueado,&id_usuario_clasificado,&clasificacion,comentario_clasificacion);
+                printf("id del usuario clasificador recibido: %d\n", id_usuario_logueado);
+                printf("id del usuario clasificado recibido: %d\n", id_usuario_clasificado);
+                printf("clasificacion recibida: %d\n", clasificacion);
+                printf("comentario recibido: %s\n", comentario_clasificacion);
+
+
+
+                printf("\n\n DESPUES DE LA LLAMADA A FUNCION \n\n");
+                rep = actualizar_reputacion(id_usuario_clasificado,id_usuario_logueado,clasificacion,comentario_clasificacion);
+
+                if(rep->verificador_error == 0){
+                    sprintf(respuesta.texto.datos_formulario, "%s", "01");
+                }else{
+                    sprintf(respuesta.texto.datos_formulario, "%s", "02");
+                }
+
+                printf("************************** FIN Formulario 'actrep' **************************\n");
             }
 
             else if (strcmp(formulario_actual, "veorep") == 0) {
