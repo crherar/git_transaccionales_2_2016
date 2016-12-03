@@ -63,10 +63,11 @@ echo "****************************************** ";
 
 
 echo "****************************************";
-gmon regrep.c;
-gmon actrep.c;
-gmon vemrep.c;
-gmon veorep.c;
+gmon regrep.c
+gmon modrep.c
+gmon actrep.c
+gmon vemrep.c
+gmon veorep.c
 echo "*****************************************";
 
 rm DEMONIO_V_2_0
