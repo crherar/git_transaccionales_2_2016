@@ -8,14 +8,14 @@ function get_reputacion_editar(idbtn)
   console.log(idreputacionx);
 
   $.ajax({
-    url: "c_actualizar_reputacion.php",
+    url: "c_get_reputacion_por_id.php",
     type: "POST",
     data:{id_reputacion:idreputacionx}
     ,
     success: function(data){
       console.log(data);
       if(data != "02")
-        window.location = localStorage.getItem('base_url')+"php/vista_perfil_usuario_reputaciones.php";
+        window.location = localStorage.getItem('base_url')+"php/vista_actualizar_reputacion.php";
     }
   });
 }

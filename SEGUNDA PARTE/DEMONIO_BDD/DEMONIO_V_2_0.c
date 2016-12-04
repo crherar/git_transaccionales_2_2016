@@ -1095,11 +1095,12 @@ int main() {
 
             else if(strcmp(formulario_actual,"modrep") == 0){
             printf("************************** Formulario 'modrep' **************************\n");
-            printf("%s\n",mensaje.texto.datos_formulario );
-            sscanf(mensaje.texto.datos_formulario,"%5d",&id_objeto);
-            printf("El id de la reputacion para actualizar es: %d\n", id_objeto);
-            printf("Enviando al python: %s\n", get_reputacion_por_id(id_reputacion));
-            strcpy(respuesta.texto.datos_formulario,get_reputacion_por_id(id_reputacion));
+            //printf("%s\n",mensaje.texto.datos_formulario );
+            sscanf(mensaje.texto.datos_formulario,"%d",&id_reputacion);
+            printf("El id de la reputacion para actualizar es: %d\n", id_reputacion);
+            rep = get_reputacion_por_id(id_reputacion);
+            printf("Enviando al python: %s\n", rep->listado);
+            strcpy(respuesta.texto.datos_formulario,rep->listado);
 
             printf("************************** FIN Formulario 'modrep' **************************\n");
             }

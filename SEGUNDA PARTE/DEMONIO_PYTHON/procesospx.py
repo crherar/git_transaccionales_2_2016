@@ -83,8 +83,8 @@ class procesospx:
         return "regrep"
 
     def get_reputacion_por_id(self):
-        return "020526"
-        
+        return "modrep"
+
     def actualizar_reputacion(self):
         return "actrep"
 

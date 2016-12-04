@@ -5,6 +5,8 @@ print_r("\n");
 print_r($_SESSION["id_usuario_logueado"]);
 print_r("\n");
 print_r($_SESSION["email"]);
+print_r($_SESSION["datos"]);
+print_r($_SESSION["usuario_clasificado"]);
 ?>
 
 <!DOCTYPE html>
@@ -76,25 +78,38 @@ print_r($_SESSION["email"]);
            <form action="c_actualizar_reputacion.php" method="POST">
 
              <div clas='form-group'>
-               <label for="email">Usuario por clasificar: <?php print_r($_SESSION["datos"]->nombre." ".$_SESSION["datos"]->apellido); ?></label>
+               <label for="email">Usuario por clasificar: <?php print_r($_SESSION["usuario_clasificado"]->nombre." ".$_SESSION["usuario_clasificado"]->apellido); ?></label>
              </div>
              <div clas='form-group'>
-               <label for="email">Email usuario por clasificar: <?php printf($_SESSION["datos"]->email); ?></label>
+               <label for="email">Email usuario por clasificar: <?php printf($_SESSION["usuario_clasificado"]->email); ?></label>
              </div>
              <div clas='form-group'>
                <label for="email">Clasificacion:</label>
                <select name="clasificacion" class="selectpicker form-control" data-live-search="true" title="Clasificación...">
-                  <option data-tokens="ketchup mustard">1</option>
-                  <option data-tokens="ketchup mustard">2</option>
-                  <option data-tokens="ketchup mustard">3</option>
-                  <option data-tokens="ketchup mustard">4</option>
-                  <option data-tokens="ketchup mustard">5</option>
+
+                  <?php
+                  for ($i=1; $i <= 5 ; $i++) {
+                  if ($_SESSION["datos"]->clasificacion == $i) {
+
+                  ?>
+                    <option selected = "selected" data-tokens="ketchup mustard"><?php print_r($i); ?></option>
+
+                  <?php
+                    }
+                    else{
+                    ?>
+                    <option data-tokens="ketchup mustard"><?php print_r($i); ?></option>
+
+                <?php  }
+                  }
+                   ?>
+
                </select>
            </div>
              <div clas='form-group'>
                <label for="email">Comentario</label>
                <textarea  class="form-control", type='text', required='true', name='comentario', placeholder='Comentario',id='comentario'></textarea>
-               <input style="display: none;" name="id_usuario" id="id_usuario" value=<?php print_r($_SESSION["datos"]->id); ?>>
+               <input style="display: none;" name="id_reputacion" id="id_reputacion" value=<?php print_r($_SESSION["datos"]->id); ?>>
              </div>
 
              <div class="top-space">

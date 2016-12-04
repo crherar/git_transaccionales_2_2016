@@ -29,13 +29,18 @@ class reputaciones:
         return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
 
     def get_reputacion_por_id(self,data):
-        print "get prestamo por id"
+
+        #print "get reputacion por id"
         self.id = data["datos"]["id_reputacion"]
         respuesta = self.mtx.enviar(self.procpx.get_reputacion_por_id(),self.codtx.get_reputacion_por_id(),"00",str(self.id).ljust(5)).split('-')
         print respuesta
         if len(respuesta) > 0:
             print "respuesta"
-            return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.reputacion(respuesta)})
+            usr = usuarios.usuarios()
+            objrep = self.objson.reputacion(respuesta)
+            usr_clasificado = usr.get_usuario_por_id2(objrep['id_usuario_clasificado'])
+            del usr
+            return json.dumps({'cabecera':data["cabecera"],'datos':objrep,'usuario_clasificado':usr_clasificado})
         else:
             print "la respueta tiene largo 0"
             return json.dumps({'cabecera':data["cabecera"],'datos':'02'})

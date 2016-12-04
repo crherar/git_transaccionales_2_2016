@@ -87,6 +87,8 @@ EXEC SQL END DECLARE SECTION;
 SQL_id_usuario_clasificado = id_usuario_clasificado;
 printf("1 \n");
 
+
+
 EXEC SQL SELECT count(*) INTO :SQL_count
 FROM perfiles_usuarios WHERE id_usuario_clasificado = :SQL_id_usuario_clasificado;
 SQL_output = (Reputacion*) malloc(sizeof(Reputacion) * (SQL_count + 1));
@@ -121,26 +123,29 @@ return SQL_output;
 }
 
 
-char *get_reputacion_por_id(int id_reputacion)
+Reputacion *get_reputacion_por_id(int id_reputacion)
 {
 EXEC SQL BEGIN DECLARE SECTION;
-char SQL_output[90];
+Reputacion *SQL_output;
 int SQL_id_reputacion;
 EXEC SQL END DECLARE SECTION;
 
 SQL_id_reputacion = id_reputacion;
+
+SQL_output = (Reputacion*) malloc(sizeof(Reputacion));
+memset(SQL_output,0,sizeof(Reputacion));
 
 EXEC SQL SELECT
 CONCAT(reputacionusuarios.id,'-',
 reputacionusuarios.id_usuario_clasificado,'-',
 reputacionusuarios.id_usuario_clasificador,'-',
 reputacionusuarios.clasificacion,'-',
-reputacionusuarios.comentario) as reputacion INTO :SQL_output
+reputacionusuarios.comentario) as reputacion INTO :SQL_output->listado
 FROM reputacionusuarios WHERE reputacionusuarios.id = :SQL_id_reputacion;
 
 printf(sqlca.sqlerrm.sqlerrmc );
-printf("\n");
-//SQL_output->verificador_error = sqlca.sqlcode;
+printf("%s \n",SQL_output);
+SQL_output->verificador_error = sqlca.sqlcode;
 db_commit();
 //ASSERT(SQL_output);
 printf("antes del return \n");
