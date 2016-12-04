@@ -408,6 +408,21 @@ while running:
                     s.close()
                     input.remove(s)
 
+            if formulario == "modrep":
+                rep = reputaciones.reputaciones()
+                print formulario
+                respuesta = rep.get_reputacion_por_id(data)
+                del rep
+                if respuesta:
+                    print "respuesta al php: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
             if formulario == "actrep":
                 rep = reputaciones.reputaciones()
                 print formulario

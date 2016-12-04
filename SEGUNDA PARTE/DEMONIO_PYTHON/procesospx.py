@@ -82,6 +82,9 @@ class procesospx:
     def insertar_reputacion(self):
         return "regrep"
 
+    def get_reputacion_por_id(self):
+        return "020526"
+        
     def actualizar_reputacion(self):
         return "actrep"
 

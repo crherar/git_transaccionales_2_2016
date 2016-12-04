@@ -82,11 +82,14 @@ class codigostx:
     def insertar_reputacion(self):
         return "020525"
 
-    def actualizar_reputacion(self):
+    def get_reputacion_por_id(self):
         return "020526"
 
-    def ver_mis_reputaciones(self):
+    def actualizar_reputacion(self):
         return "020527"
 
-    def ver_reputaciones_de_usuario(self):
+    def ver_mis_reputaciones(self):
         return "020528"
+
+    def ver_reputaciones_de_usuario(self):
+        return "020529"

@@ -28,6 +28,19 @@ class reputaciones:
         respuesta = self.mtx.enviar(self.procpx.insertar_reputacion(),self.codtx.insertar_reputacion(),"00",self.mensaje)
         return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
 
+    def get_reputacion_por_id(self,data):
+        print "get prestamo por id"
+        self.id = data["datos"]["id_reputacion"]
+        respuesta = self.mtx.enviar(self.procpx.get_reputacion_por_id(),self.codtx.get_reputacion_por_id(),"00",str(self.id).ljust(5)).split('-')
+        print respuesta
+        if len(respuesta) > 0:
+            print "respuesta"
+            return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.reputacion(respuesta)})
+        else:
+            print "la respueta tiene largo 0"
+            return json.dumps({'cabecera':data["cabecera"],'datos':'02'})
+
+
     def actualizar_reputacion(self,data):
         self.id_usuario_clasificador = data["cabecera"]["id_usuario_logueado"]
         self.id_usuario_clasificado = data["datos"]["id_usuario_clasificado"]

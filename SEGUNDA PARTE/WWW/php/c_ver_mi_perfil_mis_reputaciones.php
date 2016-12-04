@@ -1,4 +1,5 @@
 <?php
+//NO SE ESTA USANDO
 session_start();
 print_r(session_id());
 print_r("\n");

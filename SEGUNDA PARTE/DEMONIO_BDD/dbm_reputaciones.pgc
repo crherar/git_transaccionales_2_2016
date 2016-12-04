@@ -119,3 +119,31 @@ printf("3 \n");
 //strcpy(datos,SQL_output);
 return SQL_output;
 }
+
+
+char *get_reputacion_por_id(int id_reputacion)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+char SQL_output[90];
+int SQL_id_reputacion;
+EXEC SQL END DECLARE SECTION;
+
+SQL_id_reputacion = id_reputacion;
+
+EXEC SQL SELECT
+CONCAT(reputacionusuarios.id,'-',
+reputacionusuarios.id_usuario_clasificado,'-',
+reputacionusuarios.id_usuario_clasificador,'-',
+reputacionusuarios.clasificacion,'-',
+reputacionusuarios.comentario) as reputacion INTO :SQL_output
+FROM reputacionusuarios WHERE reputacionusuarios.id = :SQL_id_reputacion;
+
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("\n");
+//SQL_output->verificador_error = sqlca.sqlcode;
+db_commit();
+//ASSERT(SQL_output);
+printf("antes del return \n");
+return SQL_output;
+
+}

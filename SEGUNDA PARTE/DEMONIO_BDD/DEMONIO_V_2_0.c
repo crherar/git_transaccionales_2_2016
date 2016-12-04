@@ -59,7 +59,7 @@ int main() {
     int id_usuario_dueno_objeto;
     int id_usuario_logueado;
     int id_objeto;
-
+    int id_reputacion;
     int estado;
 
     char *fecha_devolucion[10]; //la deje como puntero porque me tomaba el dia de la fecha como 37 aunque mandara cualquier otro numero, y provocaba error al insertar en la base de datos.
@@ -1091,6 +1091,17 @@ int main() {
                 }
 
                 printf("************************** FIN Formulario 'regrep' **************************\n");
+            }
+
+            else if(strcmp(formulario_actual,"modrep") == 0){
+            printf("************************** Formulario 'modrep' **************************\n");
+            printf("%s\n",mensaje.texto.datos_formulario );
+            sscanf(mensaje.texto.datos_formulario,"%5d",&id_objeto);
+            printf("El id de la reputacion para actualizar es: %d\n", id_objeto);
+            printf("Enviando al python: %s\n", get_reputacion_por_id(id_reputacion));
+            strcpy(respuesta.texto.datos_formulario,get_reputacion_por_id(id_reputacion));
+
+            printf("************************** FIN Formulario 'modrep' **************************\n");
             }
 
             else if (strcmp(formulario_actual, "actrep") == 0) {
