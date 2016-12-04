@@ -1,0 +1,83 @@
+.cont-body-log{
+    position: absolute;
+    left: 50%;
+    text-align: center;        
+    width:646px;
+    height:265px;
+    margin-left: -303px; /*half width*/
+    margin-top: -32px; /*half height*/
+    display: inline-block;
+}
+.cont-body-log .big-top-space{
+	border-width: 3px; 
+	border-style: solid; 
+	border-color: #EB984E; 
+	border-radius: 10px;
+	background-color: #f5f5f5;
+}
+.body {
+	background-color: #7F8C8D;
+	opacity: 0.9 !important;
+}
+h4{	
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 22px;
+	font-family: 'robotoblack';
+	text-align: center;
+}
+.cont-body-log .big-top-space form{
+	display: block;
+	background-color: #f5f5f5;
+	text-align: center;
+	text-transform: uppercase;
+	padding: 20px 0px;
+}
+.cont-body-log .big-top-space h4{
+	display: block;
+	background-color: #EB984E;
+	color: #F4F6F7;
+    text-transform: uppercase;
+    font-size: 20px;
+	border-radius: 4px 5px 1px 1px;
+    font-family: Montserrat_Bold, Verdana, Geneva, sans-serif;
+    text-align: center;
+    width:318.5px;
+    height: 50px;
+    margin-left: -15px;
+}
+.input{
+
+	border-radius: 10px;
+	margin-left: 20px;
+	width:250px;
+	margin-bottom: 20px;
+}
+.top-space input{
+	margin-top: 10px;
+	margin-bottom: 5px;
+	background: #E74C3C;
+}
+form a{
+	margin-top: 10px;
+	font-size: 12px;
+	color: #F1948A;
+}
+.alertas{
+	font-size: 12px;
+}
+
+
+.registro-usuario{
+	position: relative;
+    left: 15%;
+    text-align: center;
+	width:846px;
+    height:365px;
+
+}
+
+.registro-usuario form input {
+	margin-bottom: 10px;
+}
+

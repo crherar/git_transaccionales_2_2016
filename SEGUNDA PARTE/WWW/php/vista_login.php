@@ -12,23 +12,14 @@ print_r($_SESSION["email"]);
  ?>
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <link rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
-    <link rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css'>
-    <link rel="stylesheet" type="text/css" href="../css/app.css">
-    <script type="text/javascript"  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<?php include '../base/header.php';?>
+
 <script type="text/javascript">
 function base_url()
 {
   localStorage.setItem('base_url','http://200.14.84.235/~17957132/www_transaccionales_2_2016/');
 }
 </script>
-
-  </head>
   <body onload="base_url()">
     <?php
     if(isset($_SESSION["resp"]))
