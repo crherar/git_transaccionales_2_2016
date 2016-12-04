@@ -123,7 +123,7 @@ $_SESSION["usuario_perfil"] = $resp->usuario_perfil->nombre." ".$resp->usuario_p
       <th> Usuario clasificador </th>
       <th> Email usuario clasificador </th>
       <th> Clasificacion </th>
-      <th> Comentario <th/>
+      <th> Comentario </th>
       <th> Accion</th>
     </thead>
     <tbody>
@@ -203,8 +203,8 @@ $_SESSION["usuario_perfil"] = $resp->usuario_perfil->nombre." ".$resp->usuario_p
             <?php if($value->id_usuario_clasificador == $_SESSION["id_usuario_logueado"])
             { ?>
           <!-- <button id="btn_agregarmisamigos_<?php echo $cont; ?>" onclick="agregar_amigo(this)">Agregar como amigo</button> -->
-          <button id="btn_verperfil_<?php echo $cont; ?>"  onclick = "get_reputacion_editar(this)">Editar reputación</button>
-          <button id="btn_verperfil_<?php echo $cont; ?>"  onclick = "ver_perfil_usuario_amigo(this)">Eliminar reputación</button>
+          <button id="btn_verperfil_<?php echo $cont; ?>"  onclick = "get_reputacion_editar(this)">Editar</button>
+          <button id="btn_verperfil_<?php echo $cont; ?>"  onclick = "ver_perfil_usuario_amigo(this)">Eliminar</button>
           <?php }
           else {
             print_r("No puedes editar esta reputación");
