@@ -12,7 +12,7 @@ print_r($_SESSION["email"]);
  ?>
 <!DOCTYPE html>
 <html>
-<?php include 'http://200.14.84.235/~17957132/www_transaccionales_2_2016/base/header.php';?>
+<?php include '../base/header.php';?>
 
 <script type="text/javascript">
 function base_url()

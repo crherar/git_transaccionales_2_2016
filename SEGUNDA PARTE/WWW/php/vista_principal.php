@@ -1,5 +1,6 @@
 <?php
 session_start();
+/*
 print_r(session_id());
 print_r("\n");
 print_r($_SESSION["id_usuario_logueado"]);
@@ -7,52 +8,28 @@ print_r("\n");
 print_r($_SESSION["email"]);
 //$_SESSION["resp"] = "";
 //var_dump($_SESSION["resp"]);
+*/
  ?>
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <link rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
-  <link rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css'>
-<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../css/app.css">
-    <title></title>
-  </head>
-  <body>
-    <nav class="navbar navbar-default">
+ <?php include '../base/header.php';?>
+  <body class="body">
+    <nav>
       <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-
-        <!-- <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Brand</a>
-        </div> -->
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-              <li><a href="vista_registrar_prestamo.php">Nuevo prestamo</a></li>
-            <li class="active"><a href="c_ver_prestamos_pendientes.php">Ver prestamos pendientes</a></li>
-            <li><a href="c_ver_prestamos_devueltos.php">Ver prestamos devueltos</a></li>
-            <li><a href="c_ver_mis_objetos.php">Administrar mis objetos</a></li>
-            <li><a href="c_ver_usuarios_registrados.php">Usuarios registrados</a></li>
-            <li><a href="c_ver_mis_amigos.php">Mis amigos</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION["email"] ?> <span class="caret"></span></a>
+          <div class="list-group list-class">
+            <a href="vista_registrar_prestamo.php" class="list-group-item">Nuevo prestamo</a>
+            <a href="c_ver_prestamos_pendientes.php" class="list-group-item">Ver prestamos pendientes</a>
+            <a href="c_ver_prestamos_devueltos.php" class="list-group-item">Ver prestamos devueltos</a>
+            <a href="c_ver_mis_objetos.php" class="list-group-item">Administrar mis objetos</a>
+            <a href="c_ver_usuarios_registrados.php" class="list-group-item">Usuarios registrados</a>
+            <a href="c_ver_mis_amigos.php" class="list-group-item">Mis amigos</a>
+            <a href="#" class="dropdown-toggle list-group-item" data-toggle="dropdown" role="button" ><?php echo $_SESSION["email"] ?></a>
               <ul class="dropdown-menu">
                 <li><a href="c_ver_mi_perfil_mis_reputaciones.php">Mi perfil</a></li>
                 <li><a href="c_cerrar_sesion.php">Salir</a></li>
               </ul>
-            </li>
-          </ul>
+          </div>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
     </nav>
