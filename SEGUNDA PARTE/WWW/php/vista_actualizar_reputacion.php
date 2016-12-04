@@ -6,7 +6,10 @@ print_r($_SESSION["id_usuario_logueado"]);
 print_r("\n");
 print_r($_SESSION["email"]);
 print_r($_SESSION["datos"]);
-print_r($_SESSION["usuario_clasificado"]);
+//echo "<pre>";
+print_r($_SESSION);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -108,7 +111,7 @@ print_r($_SESSION["usuario_clasificado"]);
            </div>
              <div clas='form-group'>
                <label for="email">Comentario</label>
-               <textarea  class="form-control", type='text', required='true', name='comentario', placeholder='Comentario',id='comentario'></textarea>
+               <textarea  class="form-control", type='text', required='true', name='comentario', placeholder='Comentario',id='comentario'><?php print_r($_SESSION["datos"]->comentario); ?></textarea>
                <input style="display: none;" name="id_reputacion" id="id_reputacion" value=<?php print_r($_SESSION["datos"]->id); ?>>
              </div>
 

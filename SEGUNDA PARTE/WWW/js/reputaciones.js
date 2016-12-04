@@ -6,7 +6,7 @@ function get_reputacion_editar(idbtn)
   console.log(btn[2]);
   var idreputacionx = $("#td_idreputacion_"+btn[2]).html();
   console.log(idreputacionx);
-
+console.log('get_reputacion_EDITADOR');
   $.ajax({
     url: "c_get_reputacion_por_id.php",
     type: "POST",

@@ -33,9 +33,12 @@ $resp = json_decode(socket_read($socket, 4096));
 
 $_SESSION["datos"] = $resp->datos;
 $_SESSION["usuario_clasificado"] = $resp->usuario_clasificado;
+//$_SESSION["usuario_clasificado"] = 'matias';
+//die('me mori');
 }
 else
 {
+	//die('me mori en el else');
 	echo "\nLa conexion TCP no se pudo realizar, puerto: ".$puerto;
 }
 socket_close($socket);

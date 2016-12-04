@@ -6,7 +6,7 @@ function ver_perfil_usuario_amigo(idbtn)
     var postData = {
          'id_usuario_clasificado' : idusuariox
        };
-      debugger;
+      //debugger;
        //debugger;
        var funcion = function(data){
 //debugger;
