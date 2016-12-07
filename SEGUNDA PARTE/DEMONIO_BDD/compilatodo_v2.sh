@@ -6,6 +6,7 @@ gmon regusr.c
 gmon modusr.c
 gmon actusr.c
 gmon verusr.c
+gmon tnrusr.c
 echo "****************************************** ";
 
 echo "*************** login ***************";
@@ -26,6 +27,8 @@ gmon predev.c
 gmon delpre.c
 gmon vprepe.c
 gmon vprede.c
+gmon trnppe.c
+gmon trnpde.c
 echo "****************************************** ";
 
 echo "*************** objetos ***************";
@@ -69,6 +72,8 @@ gmon actrep.c
 gmon vemrep.c
 gmon veorep.c
 gmon delrep.c
+gmon tnrmre.c
+gmon tnrore.c
 echo "*****************************************";
 
 rm DEMONIO_V_2_0
