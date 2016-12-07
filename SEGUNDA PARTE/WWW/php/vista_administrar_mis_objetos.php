@@ -5,6 +5,7 @@ print_r("\n");
 print_r($_SESSION["id_usuario_logueado"]);
 print_r("\n");
 print_r($_SESSION["email"]);
+print_r($_SESSION["tnrobj"]);
 //echo "datos: \n";
 //var_dump($_SESSION["datos"]);
 //$_SESSION["resp"] = "";

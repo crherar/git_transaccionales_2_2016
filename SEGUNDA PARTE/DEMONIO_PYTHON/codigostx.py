@@ -62,37 +62,40 @@ class codigostx:
     def ver_mis_objetos_tabla(self):
         return "020519"
 
-    #AMIGOS
-    def insertar_amigos(self):
+    def total_registros_objetos(self):
         return "020520"
 
-    def actualizar_amigos(self):
+    #AMIGOS
+    def insertar_amigos(self):
         return "020521"
 
-    def eliminar_amistad(self):
+    def actualizar_amigos(self):
         return "020522"
 
-    def ver_mis_amigos_combobox(self):
+    def eliminar_amistad(self):
         return "020523"
 
-    def ver_mis_amigos_tabla(self):
+    def ver_mis_amigos_combobox(self):
         return "020524"
+
+    def ver_mis_amigos_tabla(self):
+        return "020525"
 
     #REPUTACIONES
     def insertar_reputacion(self):
-        return "020525"
-
-    def get_reputacion_por_id(self):
         return "020526"
 
-    def actualizar_reputacion(self):
+    def get_reputacion_por_id(self):
         return "020527"
 
-    def ver_mis_reputaciones(self):
+    def actualizar_reputacion(self):
         return "020528"
 
-    def ver_reputaciones_de_usuario(self):
+    def ver_mis_reputaciones(self):
         return "020529"
 
+    def ver_reputaciones_de_usuario(self):
+        return "020530"
+
     def eliminar_reputacion(self):
-        return "020530"         
+        return "020531"

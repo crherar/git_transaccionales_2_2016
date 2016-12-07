@@ -1034,9 +1034,11 @@ int main() {
               printf("************************** Formulario 'tnrobj' **************************\n");
               printf("Total numero objetos\n");
               sscanf(mensaje.texto.datos_formulario,"%d",&id_usuario_logueado);
-              int numreg = get_total_objetos(id_usuario_logueado);
+              printf("Id usuario logueado: %d\n",id_usuario_logueado);
+              int numreg = 0;
+              numreg = get_total_objetos(id_usuario_logueado);
 
-              strcpy(mensaje.texto.datos_formulario,id_usuario_logueado);
+              sprintf(respuesta.texto.datos_formulario,"%d",numreg);
 
               printf("************************** FIN Formulario 'tnrobj' **************************\n");
             }

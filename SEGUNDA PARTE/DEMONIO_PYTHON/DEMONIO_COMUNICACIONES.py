@@ -333,6 +333,21 @@ while running:
                     s.close()
                     input.remove(s)
 
+            if formulario == "tnrobj":
+                obj = objetos.objetos()
+                print formulario
+                respuesta = obj.total_registros_objetos(data)
+                del obj
+                if respuesta:
+                    print "respuesta al php: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
             if formulario == "regami":
                 amig = amigos.amigos()
                 print formulario

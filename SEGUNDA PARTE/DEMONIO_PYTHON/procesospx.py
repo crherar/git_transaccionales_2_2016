@@ -62,6 +62,9 @@ class procesospx:
     def ver_mis_objetos_tabla(self):
         return "verobj"
 
+    def total_registros_objetos(self):
+        return "tnrobj"
+
     #AMIGOS
     def insertar_amigos(self):
         return "regami"

@@ -63,3 +63,8 @@ class objetos:
         print "\n"
         #print json.dumps(respuesta)
         return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.objetos(respuesta)})
+
+    def total_registros_objetos(self,data):
+        self.id_usuario_dueno = data["cabecera"]["id_usuario_logueado"]
+        respuesta = self.mtx.enviar(self.procpx.total_registros_objetos(),self.codtx.total_registros_objetos(),"00",str(self.id_usuario_dueno))
+        return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})

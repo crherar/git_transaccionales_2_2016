@@ -33,7 +33,7 @@ int get_total_objetos(int id_usuario_logueado)
 {
 EXEC SQL BEGIN DECLARE SECTION;
 int  SQL_output;
-char SQL_id_usuario_logueado;
+int SQL_id_usuario_logueado;
 
 EXEC SQL END DECLARE SECTION;
 
@@ -43,7 +43,8 @@ SQL_id_usuario_logueado = id_usuario_logueado;
 
 EXEC SQL SELECT count(*) INTO :SQL_output FROM objetos WHERE id_usuario_dueno = :SQL_id_usuario_logueado;
 db_commit();
-
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("\n");
 ASSERT(SQL_output);
 return SQL_output;
 }
