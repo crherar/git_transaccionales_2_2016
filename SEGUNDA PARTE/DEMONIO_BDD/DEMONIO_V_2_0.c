@@ -729,6 +729,31 @@ int main() {
                 printf("************************** FIN Formulario 'vprede' **************************\n");
             }
 
+            else if(strcmp(formulario_actual,"tnrppe") == 0){
+              printf("************************** Formulario 'tnrppe' **************************\n");
+              printf("Total prestamos pendientes\n");
+              sscanf(mensaje.texto.datos_formulario,"%d",&id_usuario_logueado);
+              printf("Id usuario logueado: %d\n",id_usuario_logueado);
+              int numreg = 0;
+              numreg = get_total_prestamos_pendientes(id_usuario_logueado);
+
+              sprintf(respuesta.texto.datos_formulario,"%d",numreg);
+
+              printf("************************** FIN Formulario 'tnrppe' **************************\n");
+            }
+
+            else if(strcmp(formulario_actual,"tnrpde") == 0){
+              printf("************************** Formulario 'tnrpde' **************************\n");
+              printf("Total prestamos devueltos\n");
+              sscanf(mensaje.texto.datos_formulario,"%d",&id_usuario_logueado);
+              printf("Id usuario logueado: %d\n",id_usuario_logueado);
+              int numreg = 0;
+              numreg = get_total_prestamos_devueltos(id_usuario_logueado);
+
+              sprintf(respuesta.texto.datos_formulario,"%d",numreg);
+
+              printf("************************** FIN Formulario 'tnrpde' **************************\n");
+            }
             /* ********************************************************************************************************* */
             /* ********************************************************************************************************* */
 

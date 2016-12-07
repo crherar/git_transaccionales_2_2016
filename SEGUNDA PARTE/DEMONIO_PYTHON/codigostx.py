@@ -47,62 +47,68 @@ class codigostx:
     def ver_prestamos_devueltos(self):
         return "020514"
 
-    #OBJETOS
-    def insertar_objeto(self):
+    def total_prestamos_pendientes(self):
         return "020515"
 
-    def get_objeto_por_id(self):
+    def total_prestamos_devueltos(self):
         return "020516"
 
-    def actualizar_objeto(self):
+    #OBJETOS
+    def insertar_objeto(self):
         return "020517"
 
-    def eliminar_objeto(self):
+    def get_objeto_por_id(self):
         return "020518"
 
-    def ver_mis_objetos_combobox(self):
+    def actualizar_objeto(self):
         return "020519"
 
-    def ver_mis_objetos_tabla(self):
+    def eliminar_objeto(self):
         return "020520"
 
-    def total_registros_objetos(self):
+    def ver_mis_objetos_combobox(self):
         return "020521"
+
+    def ver_mis_objetos_tabla(self):
+        return "020522"
+
+    def total_registros_objetos(self):
+        return "020523"
 
     #AMIGOS
     def insertar_amigos(self):
-        return "020522"
-
-    def actualizar_amigos(self):
-        return "020523"
-
-    def eliminar_amistad(self):
         return "020524"
 
-    def ver_mis_amigos_combobox(self):
+    def actualizar_amigos(self):
         return "020525"
 
-    def ver_mis_amigos_tabla(self):
+    def eliminar_amistad(self):
         return "020526"
 
-    def total_amigos_registrados(self):
+    def ver_mis_amigos_combobox(self):
         return "020527"
+
+    def ver_mis_amigos_tabla(self):
+        return "020528"
+
+    def total_amigos_registrados(self):
+        return "020529"
 
     #REPUTACIONES
     def insertar_reputacion(self):
-        return "020528"
+        return "0205230"
 
     def get_reputacion_por_id(self):
-        return "020529"
-
-    def actualizar_reputacion(self):
-        return "020530"
-
-    def ver_mis_reputaciones(self):
         return "020531"
 
-    def ver_reputaciones_de_usuario(self):
+    def actualizar_reputacion(self):
         return "020532"
 
-    def eliminar_reputacion(self):
+    def ver_mis_reputaciones(self):
         return "020533"
+
+    def ver_reputaciones_de_usuario(self):
+        return "020534"
+
+    def eliminar_reputacion(self):
+        return "020535"

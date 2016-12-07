@@ -288,6 +288,36 @@ while running:
                     s.close()
                     input.remove(s)
 
+            if formulario == "tnrppe":
+                prest = prestamos.prestamos()
+                print formulario
+                respuesta = prest.total_prestamos_pendientes(data)
+                del prest
+                if respuesta:
+                    print "respuesta al php: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
+            if formulario == "tnrpde":
+                prest = prestamos.prestamos()
+                print formulario
+                respuesta = prest.total_prestamos_devueltos(data)
+                del prest
+                if respuesta:
+                    print "respuesta al php: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
             if formulario == "actobj":
                 obj = objetos.objetos()
                 print formulario

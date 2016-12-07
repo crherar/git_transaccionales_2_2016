@@ -101,3 +101,13 @@ class prestamos:
         respuesta = self.mtx.enviar(self.procpx.eliminar_prestamo(),self.codtx.eliminar_prestamo(),"00",str(self.id).ljust(5))
         print respuesta
         return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
+
+    def total_prestamos_pendientes(self,data):
+        self.id_usuario_prestador = data["cabecera"]["id_usuario_logueado"]
+        respuesta = self.mtx.enviar(self.procpx.total_prestamos_pendientes(),self.codtx.total_prestamos_devueltos(),"00",str(self.id_usuario_prestador))
+        return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
+
+    def total_prestamos_devueltos(self,data):
+        self.id_usuario_prestador = data["cabecera"]["id_usuario_logueado"]
+        respuesta = self.mtx.enviar(self.procpx.total_prestamos_devueltos(),self.codtx.total_prestamos_devueltos(),"00",str(self.id_usuario_prestador))
+        return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})

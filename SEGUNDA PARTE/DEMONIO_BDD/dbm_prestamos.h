@@ -11,4 +11,6 @@ MisPrestamos *get_prestamos_pendientes(int id_usuario_prestador);
 //char *get_prestamos_devueltos(int id_usuario_prestador);
 MisPrestamos *get_prestamos_devueltos(int id_usuario_prestador);
 int eliminar_prestamo(int id_prestamo);
+int get_total_prestamos_pendientes(int id_usuario_prestador);
+int get_total_prestamos_devueltos(int id_usuario_prestador);
 #endif

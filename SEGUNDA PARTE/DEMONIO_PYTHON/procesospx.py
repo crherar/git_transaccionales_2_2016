@@ -47,6 +47,12 @@ class procesospx:
     def ver_prestamos_devueltos(self):
         return "vprede"
 
+    def total_prestamos_pendientes(self):
+        return "tnrppe"
+
+    def total_prestamos_devueltos(self):
+        return "tnrpde"
+
     #OBJETOS
     def insertar_objeto(self):
         return "regobj"
@@ -86,7 +92,7 @@ class procesospx:
         return "verami"
 
     def total_amigos_registrados(self):
-        return "tnrami"        
+        return "tnrami"
 
     #REPUTACIONES
     def insertar_reputacion(self):
