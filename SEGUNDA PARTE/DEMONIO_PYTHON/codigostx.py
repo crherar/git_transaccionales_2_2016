@@ -93,3 +93,6 @@ class codigostx:
 
     def ver_reputaciones_de_usuario(self):
         return "020529"
+
+    def eliminar_reputacion(self):
+        return "020530"         

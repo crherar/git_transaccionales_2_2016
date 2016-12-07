@@ -1018,38 +1018,8 @@ int main() {
             else if (strcmp(formulario_actual, "delobj") == 0) {
 
                 printf("************************** Formulario 'delobj' **************************\n");
-
-                //printf("-----> Confirmar borrar objeto <-----\n");
-
-                //printf("El mensaje de recibido de %s es: %s\n", formulario_actual, mensaje.texto.datos_formulario);
-
                 sscanf(mensaje.texto.datos_formulario, "%5d", &id_objeto);
-
-                //if (sizeof (id_obj) == 0) {
-                //    strcpy(respuesta.texto.datos_formulario, "03");
-                //}
-
                 printf("\n\n El id_objeto es: %5d \n\n", id_objeto);
-
-                //int num = atoi(id_obj);
-
-                //printf("\nNum:%d \n", num);
-
-                //printf("\nlakalkalakalkal \n");
-
-                //printf("\n\n ANTES DE LA LLAMADA A FUNCION \n\n");
-
-                //printf("size of resp: %d\n", sizeof (resp));
-
-                //memset(resp, '\0', sizeof(resp));
-                // obj = get_nombre_objeto_por_id2(num);
-                // printf("nombre objeto: %s\n", obj->nombre);
-                // printf("vef err objeto: %d\n", obj->verificador_error);
-                // printf("id objeto: %d\n", obj->id);
-                //strcpy(resp, get_nombre_objeto_por_id(num));
-
-                // printf("Resp:%s\n", resp);
-
                 printf("\n\n DESPUES DE LA LLAMADA A FUNCION \n\n");
                 int resp = borrar_objeto(id_objeto);
                 if(resp == 0){
@@ -1057,13 +1027,6 @@ int main() {
                 }else{
                     sprintf(respuesta.texto.datos_formulario, "%s", "02");
                 }
-                // if (obj->verificador_error == 0 && obj->id > 0) {
-                //
-                //     sprintf(respuesta.texto.datos_formulario, "%15d%15s", obj->id, obj->nombre);
-                //     printf("\n\nrespuesta.texto.datos_formulario:\n\n%s\n", respuesta.texto.datos_formulario);
-                // } else {
-                //     strcpy(respuesta.texto.datos_formulario, "02");
-                // }
                 printf("************************** FIN Formulario 'delobj' **************************\n");
             }
 
@@ -1170,10 +1133,6 @@ int main() {
                 sscanf(mensaje.texto.datos_formulario, "%d", &id_usuario_logueado);
 
                 printf("id del usuario clasificado recibido: %d\n", id_usuario_logueado);
-
-
-
-
                 printf("\n\n DESPUES DE LA LLAMADA A FUNCION \n\n");
                 rep = get_perfil_usuario_reputaciones(id_usuario_logueado);
 
@@ -1184,6 +1143,21 @@ int main() {
                 }
 
                 printf("************************** FIN Formulario 'vemrep' **************************\n");
+            }
+
+            else if (strcmp(formulario_actual, "delrep") == 0) {
+
+                printf("************************** Formulario 'delrep' **************************\n");
+                sscanf(mensaje.texto.datos_formulario, "%d", &id_reputacion);
+                printf("\n\n El id_reputacion es: %d \n\n", id_reputacion);
+                printf("\n\n DESPUES DE LA LLAMADA A FUNCION \n\n");
+                int resp = eliminar_reputacion(id_reputacion);
+                if(resp == 0){
+                    sprintf(respuesta.texto.datos_formulario, "%s", "01");
+                }else{
+                    sprintf(respuesta.texto.datos_formulario, "%s", "02");
+                }
+                printf("************************** FIN Formulario 'delrep' **************************\n");
             }
 
             /* ********************************************************************************************************* */

@@ -152,3 +152,20 @@ printf("antes del return \n");
 return SQL_output;
 
 }
+
+
+int eliminar_reputacion(int id_reputacion)
+{
+
+    EXEC SQL BEGIN DECLARE SECTION;
+    int  SQL_id_reputacion;
+    EXEC SQL END DECLARE SECTION;
+    SQL_id_reputacion = id_reputacion;
+    EXEC SQL DELETE FROM reputacionusuarios WHERE reputacionusuarios.id = :SQL_id_reputacion;
+    printf("\n\n Sqlca Sqlcode: %d\n\n", sqlca.sqlcode);
+    printf(sqlca.sqlerrm.sqlerrmc );
+    int resp;
+    resp = sqlca.sqlcode;
+    db_commit();
+    return resp;
+}

@@ -93,3 +93,6 @@ class procesospx:
 
     def ver_reputaciones_de_usuario(self):
         return "veorep"
+
+    def eliminar_reputacion(self):
+        return "delrep"

@@ -62,12 +62,13 @@ echo "*************** menus ***************\n";
 echo "****************************************** ";
 
 
-echo "****************************************";
+echo "*********** reputaciones *****************";
 gmon regrep.c
 gmon modrep.c
 gmon actrep.c
 gmon vemrep.c
 gmon veorep.c
+gmon delrep.c
 echo "*****************************************";
 
 rm DEMONIO_V_2_0

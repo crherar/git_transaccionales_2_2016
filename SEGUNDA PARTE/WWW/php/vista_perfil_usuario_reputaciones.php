@@ -204,10 +204,10 @@ $_SESSION["usuario_perfil"] = $resp->usuario_perfil->nombre." ".$resp->usuario_p
             { ?>
           <!-- <button id="btn_agregarmisamigos_<?php echo $cont; ?>" onclick="agregar_amigo(this)">Agregar como amigo</button> -->
           <button id="btn_verperfil_<?php echo $cont; ?>"  onclick = "get_reputacion_editar(this)">Editar</button>
-          <button id="btn_verperfil_<?php echo $cont; ?>"  onclick = "ver_perfil_usuario_amigo(this)">Eliminar</button>
+          <button id="btn_verperfil_<?php echo $cont; ?>"  onclick = "get_reputacion_eliminar(this)">Eliminar</button>
           <?php }
           else {
-            print_r("No puedes editar esta reputación");
+            print_r("No puedes editar/eliminar esta reputación");
           }
            ?>
         </ul>
