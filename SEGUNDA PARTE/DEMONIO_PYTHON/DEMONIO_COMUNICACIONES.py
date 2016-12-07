@@ -423,6 +423,21 @@ while running:
                     s.close()
                     input.remove(s)
 
+            if formulario == "tnrami":
+                amig = amigos.amigos()
+                print formulario
+                respuesta = amig.total_amigos_registrados(data)
+                del amig
+                if respuesta:
+                    print "respuesta al php: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
             if formulario == "regrep":
                 rep = reputaciones.reputaciones()
                 print formulario

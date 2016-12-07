@@ -44,3 +44,8 @@ class amigos:
         self.id = data["datos"]["id_amistad"]
         respuesta = self.mtx.enviar(self.procpx.eliminar_amistad(),self.codtx.eliminar_amistad(),"00",str(self.id))
         return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
+
+    def total_amigos_registrados(self,data):
+        self.amigo_1 = data["cabecera"]["id_usuario_logueado"]
+        respuesta = self.mtx.enviar(self.procpx.total_amigos_registrados(),self.codtx.total_amigos_registrados(),"00",str(self.amigo_1))
+        return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})

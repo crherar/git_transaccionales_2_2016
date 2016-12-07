@@ -9,10 +9,11 @@ print_r($_SESSION["email"]);
 $host = "127.0.0.1";
 
 $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+$socket_tnr = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 $puerto = 3000;
 $email = "";
 $id_usuario = "";
-if (socket_connect($socket, $host, $puerto))
+if (socket_connect($socket, $host, $puerto) && socket_connect($socket_tnr, $host, $puerto))
 {
 echo "\nConexion Exitosa, puerto: " . $puerto;
 //$msg = "mensaje del CLIENTE 1 desde php!!!";
@@ -22,26 +23,22 @@ echo "\n";
 echo "xxx: ".$_SESSION["id_usuario_logueado"];
 echo "\n";
 echo $_SESSION["email"];
+
+$cabecera = array('formulario' => 'tnrami',
+									'id_usuario_logueado' => 	$_SESSION["id_usuario_logueado"],
+								  'email'=>	$_SESSION["email"]);
+									$msg = json_encode(array('cabecera'=>$cabecera,'datos'=>''));//"loginn|".$email."-".$password;
+									$sock_data = socket_write($socket_tnr, $msg, strlen($msg));
+									$resp = json_decode(socket_read($socket_tnr, 1024));
+									$_SESSION["tnrami"] = $resp->datos;
+
 $cabecera = array('formulario' => 'verami',
 									'id_usuario_logueado' => 	$_SESSION["id_usuario_logueado"],
 								  'email'=>	$_SESSION["email"]);
 
-
-echo "\n\n\n cabecera: \n\n\n";
-var_dump($cabecera);
-//$objeto  = array('nombre_objeto' => $nombre_objeto);
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>''));//"loginn|".$email."-".$password;
-var_dump($msg);
-//$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
-
 $sock_data = socket_write($socket, $msg, strlen($msg));
 $resp = json_decode(socket_read($socket, 8192));
-//var_dump($resp);
-
-//echo "AOSODSPODPSOPDOS";
-
-//var_dump($_SESSION);
-
 $_SESSION["datos"] = $resp->datos;
 
 header("location: vista_administrar_mis_amigos.php");

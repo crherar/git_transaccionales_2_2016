@@ -467,6 +467,19 @@ int main() {
               printf("************************** FIN Formulario 'delami' **************************\n");
             }
 
+            else if(strcmp(formulario_actual,"tnrami") == 0){
+              printf("************************** Formulario 'tnrami' **************************\n");
+              printf("Total numero objetos\n");
+              sscanf(mensaje.texto.datos_formulario,"%d",&id_usuario_logueado);
+              printf("Id usuario logueado: %d\n",id_usuario_logueado);
+              int numreg = 0;
+              numreg = get_total_amigos(id_usuario_logueado);
+
+              sprintf(respuesta.texto.datos_formulario,"%d",numreg);
+
+              printf("************************** FIN Formulario 'tnrami' **************************\n");
+            }
+
             /* ********************************************************************************************************* */
 
             /**************************************

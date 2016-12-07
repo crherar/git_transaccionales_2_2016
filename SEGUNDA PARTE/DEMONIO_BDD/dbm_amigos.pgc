@@ -153,7 +153,7 @@ if(SQL_count == 0)
 
 //memset(SQL_output,'\0',sizeof SQL_output);
 EXEC SQL SELECT string_agg(concat(cast(id_amistad as text),',',
-                                  cast(id_amigo as text),',',  
+                                  cast(id_amigo as text),',',
                                         amigo,',',
                                         emailamigo),
 '|') as datos INTO :SQL_output->listado
@@ -221,4 +221,27 @@ EXEC SQL CLOSE RESULT_SET;
 
 
 return datos;
+}
+
+
+
+int get_total_amigos(int id_usuario_logueado)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+int  SQL_output;
+int SQL_id_usuario_logueado;
+
+EXEC SQL END DECLARE SECTION;
+
+//SQL_output = (Usuario*) malloc(sizeof(Usuario));
+//memset(SQL_output, 0, sizeof(Usuario));
+SQL_id_usuario_logueado = id_usuario_logueado;
+
+EXEC SQL SELECT count(*) INTO :SQL_output FROM amigos  where amigo_1 = :SQL_id_usuario_logueado;
+
+db_commit();
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("\n");
+ASSERT(SQL_output);
+return SQL_output;
 }

@@ -85,21 +85,24 @@ class codigostx:
     def ver_mis_amigos_tabla(self):
         return "020526"
 
-    #REPUTACIONES
-    def insertar_reputacion(self):
+    def total_amigos_registrados(self):
         return "020527"
 
-    def get_reputacion_por_id(self):
+    #REPUTACIONES
+    def insertar_reputacion(self):
         return "020528"
 
-    def actualizar_reputacion(self):
+    def get_reputacion_por_id(self):
         return "020529"
 
-    def ver_mis_reputaciones(self):
+    def actualizar_reputacion(self):
         return "020530"
 
-    def ver_reputaciones_de_usuario(self):
+    def ver_mis_reputaciones(self):
         return "020531"
 
-    def eliminar_reputacion(self):
+    def ver_reputaciones_de_usuario(self):
         return "020532"
+
+    def eliminar_reputacion(self):
+        return "020533"

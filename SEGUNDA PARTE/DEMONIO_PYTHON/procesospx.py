@@ -85,6 +85,9 @@ class procesospx:
     def ver_mis_amigos_tabla(self):
         return "verami"
 
+    def total_amigos_registrados(self):
+        return "tnrami"        
+
     #REPUTACIONES
     def insertar_reputacion(self):
         return "regrep"
