@@ -366,6 +366,18 @@ int main() {
               printf("************************** FIN Formulario 'verusr' **************************\n");
             }
 
+            else if(strcmp(formulario_actual,"tnrusr") == 0){
+              printf("************************** Formulario 'tnrusr' **************************\n");
+              printf("Total numero objetos\n");
+              sscanf(mensaje.texto.datos_formulario,"%d",&id_usuario_logueado);
+              printf("Id usuario logueado: %d\n",id_usuario_logueado);
+              int numreg = 0;
+              numreg = get_total_usuarios_registrados(id_usuario_logueado);
+
+              sprintf(respuesta.texto.datos_formulario,"%d",numreg);
+
+              printf("************************** FIN Formulario 'tnrusr' **************************\n");
+            }
 
             else if(strcmp(formulario_actual,"regami") == 0){
                 printf("************************** Formulario 'regami' **************************\n");

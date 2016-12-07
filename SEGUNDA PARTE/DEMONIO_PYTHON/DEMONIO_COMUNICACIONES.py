@@ -123,6 +123,21 @@ while running:
                     s.close()
                     input.remove(s)
 
+            if formulario == "tnrusr":
+                usr = usuarios.usuarios()
+                print formulario
+                respuesta = usr.total_usuarios_registrados(data)
+                del usr
+                if respuesta:
+                    print "respuesta al php: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
             if formulario == "regobj":
                 obj = objetos.objetos()
                 print formulario

@@ -18,6 +18,10 @@ class procesospx:
 
     def ver_usuarios_registrados(self):
         return "verusr"
+
+    def total_usuarios_registrados(self):
+        return "tnrusr"
+
     #PRESTAMOS
     def insertar_prestamo(self):
         return "regpre"

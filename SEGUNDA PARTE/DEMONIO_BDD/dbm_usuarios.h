@@ -14,4 +14,5 @@ int eliminar_usuario(int id_usuario);
 char* get_email_usuario_por_id(int id);
 int validar_registro_usuario(char *email_usuario);
 Usuario *get_listado_usuarios_registrados();
+int get_total_usuarios_registrados(int id_usuario_logueado);
 #endif

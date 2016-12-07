@@ -95,3 +95,8 @@ class usuarios:
 	    #print "\n"
 	    #print json.dumps(respuesta)
 		return json.dumps({'cabecera':data["cabecera"],'datos':self.objson.usuarios(respuesta)})
+
+	def total_usuarios_registrados(self,data):
+		self.id = data['cabecera']['id_usuario_logueado']
+		respuesta = self.mtx.enviar(self.procpx.total_usuarios_registrados(),self.codtx.total_usuarios_registrados(),"00",str(self.id))
+		return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})

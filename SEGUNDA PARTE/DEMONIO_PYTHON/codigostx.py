@@ -18,84 +18,88 @@ class codigostx:
 
     def ver_usuarios_registrados(self):
         return "020505"
-    #PRESTAMOS
-    def insertar_prestamo(self):
+
+    def total_usuarios_registrados(self):
         return "020506"
 
-    def get_prestamo_por_id(self):
+    #PRESTAMOS
+    def insertar_prestamo(self):
         return "020507"
 
-    def actualizar_prestamo(self):
+    def get_prestamo_por_id(self):
         return "020508"
 
-    def eliminar_prestamo(self):
+    def actualizar_prestamo(self):
         return "020509"
 
-    def marcar_prestamo_como_pendiente(self):
+    def eliminar_prestamo(self):
         return "020510"
 
-    def marcar_prestamo_como_devuelto(self):
+    def marcar_prestamo_como_pendiente(self):
         return "020511"
 
-    def ver_prestamos_pendientes(self):
+    def marcar_prestamo_como_devuelto(self):
         return "020512"
 
-    def ver_prestamos_devueltos(self):
+    def ver_prestamos_pendientes(self):
         return "020513"
+
+    def ver_prestamos_devueltos(self):
+        return "020514"
 
     #OBJETOS
     def insertar_objeto(self):
-        return "020514"
-
-    def get_objeto_por_id(self):
         return "020515"
 
-    def actualizar_objeto(self):
+    def get_objeto_por_id(self):
         return "020516"
 
-    def eliminar_objeto(self):
+    def actualizar_objeto(self):
         return "020517"
 
-    def ver_mis_objetos_combobox(self):
+    def eliminar_objeto(self):
         return "020518"
 
-    def ver_mis_objetos_tabla(self):
+    def ver_mis_objetos_combobox(self):
         return "020519"
 
-    def total_registros_objetos(self):
+    def ver_mis_objetos_tabla(self):
         return "020520"
+
+    def total_registros_objetos(self):
+        return "020521"
 
     #AMIGOS
     def insertar_amigos(self):
-        return "020521"
-
-    def actualizar_amigos(self):
         return "020522"
 
-    def eliminar_amistad(self):
+    def actualizar_amigos(self):
         return "020523"
 
-    def ver_mis_amigos_combobox(self):
+    def eliminar_amistad(self):
         return "020524"
 
-    def ver_mis_amigos_tabla(self):
+    def ver_mis_amigos_combobox(self):
         return "020525"
+
+    def ver_mis_amigos_tabla(self):
+        return "020526"
 
     #REPUTACIONES
     def insertar_reputacion(self):
-        return "020526"
-
-    def get_reputacion_por_id(self):
         return "020527"
 
-    def actualizar_reputacion(self):
+    def get_reputacion_por_id(self):
         return "020528"
 
-    def ver_mis_reputaciones(self):
+    def actualizar_reputacion(self):
         return "020529"
 
-    def ver_reputaciones_de_usuario(self):
+    def ver_mis_reputaciones(self):
         return "020530"
 
-    def eliminar_reputacion(self):
+    def ver_reputaciones_de_usuario(self):
         return "020531"
+
+    def eliminar_reputacion(self):
+        return "020532"

@@ -22,7 +22,7 @@ print_r($_SESSION["email"]);
             <a href="c_ver_prestamos_pendientes.php" class="list-group-item">Ver prestamos pendientes</a>
             <a href="c_ver_prestamos_devueltos.php" class="list-group-item">Ver prestamos devueltos</a>
             <a href="c_ver_mis_objetos.php" class="list-group-item">Administrar mis objetos</a>
-            <a href="c_ver_usuarios_registrados.php" class="list-group-item">Usuarios registrados</a>
+            <a href="vista_usuarios_registrados.php" class="list-group-item">Usuarios registrados</a>
             <a href="c_ver_mis_amigos.php" class="list-group-item">Mis amigos</a>
             <a href="#" class="dropdown-toggle list-group-item" data-toggle="dropdown" role="button" ><?php echo $_SESSION["email"] ?></a>
               <ul class="dropdown-menu">
