@@ -89,6 +89,16 @@ struct Reputacion{
     char listado[2000];
 };
 
+
+struct NumRegistros{
+  int usuarios;
+  int amigos;
+  int prestamos_pendientes;
+  int prestamos_devueltos;
+  int objetos;
+};
+
+
 typedef struct Objeto Objeto;
 typedef struct MisObjetos MisObjetos;
 typedef struct Usuario Usuario;

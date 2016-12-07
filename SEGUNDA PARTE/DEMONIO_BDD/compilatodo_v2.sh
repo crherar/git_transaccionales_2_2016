@@ -41,7 +41,7 @@ gmon delobj.c
 gmon cdeobj.c
 #gmon mdeobj.inp
 #gmon mdeobj.c
-
+gmon tnrobj.c
 echo "****************************************** ";
 
 
@@ -50,7 +50,7 @@ gmon cbxami.c
 gmon verami.c
 gmon regami.c
 gmon delami.c
-
+gmon tnrami.c
 echo "*****************************************";
 
 echo "*************** menus ***************\n";

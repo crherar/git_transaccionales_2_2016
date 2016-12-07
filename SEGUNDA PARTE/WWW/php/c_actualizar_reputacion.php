@@ -22,10 +22,10 @@ $cabecera = array('formulario' => 'actrep',
 									'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
 								  'email'=>$_SESSION["email"]);
 
-$reputacion  = array('id_usuario_clasificado' => $_POST["id_usuario"],
+$reputacion  = array('id_usuario_clasificado' => $_SESSION["datos"]->id_usuario_clasificado,
 										 'clasificacion' => $_POST["clasificacion"],
 									 	 'comentario' => $_POST["comentario"],
-									 		'id_reputacion'=>$_POST["id_reputacion"]);
+									 		'id_reputacion'=>$_SESSION["datos"]->id_reputacion);
 $msg = json_encode(array('cabecera'=>$cabecera,'datos'=>$reputacion));//"loginn|".$email."-".$password;
 
 //$sock_data = socket_write($socket, "HOLA MUNDO! 17957132", strlen("HOLA MUNDO! 17957132"));
@@ -35,7 +35,7 @@ $resp = json_decode(socket_read($socket, 1024));
 $_SESSION["datos"] = $resp->datos;
 if($resp->datos == "01")
 	{
-	$_SESSION["resp"] = "Reputación registrada correctamente";
+	$_SESSION["resp"] = "Reputación actualizada correctamente";
 	header("location: c_ver_mis_amigos.php");
 	}
 if($resp->datos == "02")

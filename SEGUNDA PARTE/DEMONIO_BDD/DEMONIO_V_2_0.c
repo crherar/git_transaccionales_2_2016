@@ -1067,6 +1067,16 @@ int main() {
                 printf("************************** FIN Formulario 'delobj' **************************\n");
             }
 
+            else if(strcmp(formulario_actual,"tnrobj") == 0){
+              printf("************************** Formulario 'tnrobj' **************************\n");
+              printf("Total numero objetos\n");
+              sscanf(mensaje.texto.datos_formulario,"%d",&id_usuario_logueado);
+              int numreg = get_total_objetos(id_usuario_logueado);
+
+              strcpy(mensaje.texto.datos_formulario,id_usuario_logueado);
+
+              printf("************************** FIN Formulario 'tnrobj' **************************\n");
+            }
 
             else if (strcmp(formulario_actual, "regrep") == 0) {
 
@@ -1110,7 +1120,7 @@ int main() {
                 printf("************************** Formulario 'actrep' **************************\n");
                 printf("---->Registrar reputacion<------\n");
                 memset(comentario_clasificacion, '\0', sizeof comentario_clasificacion);
-                sscanf(mensaje.texto.datos_formulario, "%d-%d-%d-%100c", &id_usuario_logueado,&id_usuario_clasificado,&clasificacion,comentario_clasificacion);
+                sscanf(mensaje.texto.datos_formulario, "%d-%d-%d-%d-%100c",&id_reputacion, &id_usuario_logueado,&id_usuario_clasificado,&clasificacion,comentario_clasificacion);
                 printf("id del usuario clasificador recibido: %d\n", id_usuario_logueado);
                 printf("id del usuario clasificado recibido: %d\n", id_usuario_clasificado);
                 printf("clasificacion recibida: %d\n", clasificacion);
@@ -1119,7 +1129,7 @@ int main() {
 
 
                 printf("\n\n DESPUES DE LA LLAMADA A FUNCION \n\n");
-                rep = actualizar_reputacion(id_usuario_clasificado,id_usuario_logueado,clasificacion,comentario_clasificacion);
+                rep = actualizar_reputacion(id_usuario_clasificado,clasificacion,comentario_clasificacion,id_reputacion);
 
                 if(rep->verificador_error == 0){
                     sprintf(respuesta.texto.datos_formulario, "%s", "01");

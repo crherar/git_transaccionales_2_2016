@@ -57,7 +57,7 @@ strcpy(SQL_comentario,comentario);
 SQL_id_usuario_clasificado = id_usuario_clasificado;
 SQL_clasificacion = clasificacion;
 SQL_id_reputacion = id_reputacion;
-
+printf("1\n");
 SQL_output = (Reputacion*) malloc(sizeof(Reputacion));
 memset(SQL_output,0,sizeof(Reputacion));
 
@@ -66,11 +66,11 @@ id_usuario_clasificado = :SQL_id_usuario_clasificado,
 clasificacion = :SQL_clasificacion,
 comentario = :SQL_comentario
 WHERE reputacionusuarios.id = :SQL_id_reputacion;
-
+printf("2\n");
 SQL_output->verificador_error = sqlca.sqlcode;
 
 db_commit();
-
+printf("3\n");
 ASSERT(SQL_output);
 return SQL_output;
 }

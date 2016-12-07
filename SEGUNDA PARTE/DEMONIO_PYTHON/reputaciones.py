@@ -52,7 +52,7 @@ class reputaciones:
         self.clasificacion = data["datos"]["clasificacion"]
         self.comentario = data["datos"]["comentario"]
         self.id = data["datos"]["id_reputacion"]
-        self.mensaje = str(self.id_usuario_clasificador)+"-"+str(self.id_usuario_clasificado)+"-"+str(self.clasificacion)+"-"+self.comentario+str(self.id)
+        self.mensaje = str(self.id)+"-"+str(self.id_usuario_clasificador)+"-"+str(self.id_usuario_clasificado)+"-"+str(self.clasificacion)+"-"+self.comentario
         respuesta = self.mtx.enviar(self.procpx.actualizar_reputacion(),self.codtx.actualizar_reputacion(),"00",self.mensaje)
         return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
 

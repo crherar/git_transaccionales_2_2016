@@ -29,6 +29,25 @@ return SQL_output;
 }
 
 
+int get_total_objetos(int id_usuario_logueado)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+int  SQL_output;
+char SQL_id_usuario_logueado;
+
+EXEC SQL END DECLARE SECTION;
+
+//SQL_output = (Usuario*) malloc(sizeof(Usuario));
+//memset(SQL_output, 0, sizeof(Usuario));
+SQL_id_usuario_logueado = id_usuario_logueado;
+
+EXEC SQL SELECT count(*) INTO :SQL_output FROM objetos WHERE id_usuario_dueno = :SQL_id_usuario_logueado;
+db_commit();
+
+ASSERT(SQL_output);
+return SQL_output;
+}
+
 Objeto *insertar_objeto(int id_usuario_dueno,char *nombre_objeto)
 {
 EXEC SQL BEGIN DECLARE SECTION;

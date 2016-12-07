@@ -17,5 +17,5 @@ char *get_nombre_objeto_por_id(int id);
 Objeto *get_nombre_objeto_por_id2(int id);
 char *get_objeto_por_id(int id);
 int validar_registro_objeto(char *nombre_objeto, int id_dueno_objeto);
-
+int get_total_objetos(int id_usuario_logueado);
 #endif

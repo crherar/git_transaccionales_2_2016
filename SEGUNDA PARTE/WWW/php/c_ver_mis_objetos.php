@@ -22,6 +22,12 @@ echo "\n";
 echo "xxx: ".$_SESSION["id_usuario_logueado"];
 echo "\n";
 echo $_SESSION["email"];
+
+
+
+
+
+
 $cabecera = array('formulario' => 'verobj',
 									'id_usuario_logueado' => 	$_SESSION["id_usuario_logueado"],
 								  'email'=>	$_SESSION["email"]);
