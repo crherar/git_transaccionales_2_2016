@@ -1212,6 +1212,31 @@ int main() {
                 printf("************************** FIN Formulario 'delrep' **************************\n");
             }
 
+            else if(strcmp(formulario_actual,"tnrmre") == 0){
+              printf("************************** Formulario 'tnrmre' **************************\n");
+              printf("Total numero mis reputaciones\n");
+              sscanf(mensaje.texto.datos_formulario,"%d",&id_usuario_logueado);
+              printf("Id usuario logueado: %d\n",id_usuario_logueado);
+              int numreg = 0;
+              numreg = get_total_reputaciones_usuario(id_usuario_logueado);
+
+              sprintf(respuesta.texto.datos_formulario,"%d",numreg);
+
+              printf("************************** FIN Formulario 'tnrmre' **************************\n");
+            }
+
+            else if(strcmp(formulario_actual,"tnrore") == 0){
+              printf("************************** Formulario 'tnrore' **************************\n");
+              printf("Total numero reputaciones de usuario\n");
+              sscanf(mensaje.texto.datos_formulario,"%d",&id_usuario_clasificado);
+              printf("Id usuario clasificado: %d\n",id_usuario_clasificado);
+              int numreg = 0;
+              numreg = get_total_reputaciones_usuario(id_usuario_clasificado);
+
+              sprintf(respuesta.texto.datos_formulario,"%d",numreg);
+
+              printf("************************** FIN Formulario 'tnrore' **************************\n");
+            }
             /* ********************************************************************************************************* */
 
             /**************************************

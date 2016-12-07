@@ -25,9 +25,18 @@ print_r($_SESSION["email"]);
 //var_dump($_SESSION["resp"]);
 $host = "127.0.0.1";
 $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+$socket_tnr = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 $puerto = 3000;
-if (socket_connect($socket, $host, $puerto))
+if (socket_connect($socket, $host, $puerto) && socket_connect($socket_tnr, $host, $puerto))
 {
+$cabecera = array('formulario' => 'tnrmre',
+									'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
+									 'email'=>$_SESSION["email"]);
+$msg = json_encode(array('cabecera'=>$cabecera,'datos'=>''));
+$sock_data = socket_write($socket_tnr, $msg, strlen($msg));
+$resp = json_decode(socket_read($socket_tnr, 16384));
+$_SESSION["tnrmre"] = $resp->datos;
+print_r("total_mis_reputaciones: ".$resp->datos);
 $cabecera = array('formulario' => 'vemrep',
 									'id_usuario_logueado' => $_SESSION["id_usuario_logueado"],
 								  'email'=>$_SESSION["email"]);

@@ -73,3 +73,13 @@ class reputaciones:
         self.id = data["datos"]["id_reputacion"]
         respuesta = self.mtx.enviar(self.procpx.eliminar_reputacion(),self.codtx.eliminar_reputacion(),"00",str(self.id))
         return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
+
+    def total_reputaciones_de_usuario(self,data):
+        self.id_usuario_clasificado = data["datos"]["id_usuario_clasificado"]
+        respuesta = self.mtx.enviar(self.procpx.total_reputaciones_de_usuario(),self.codtx.total_reputaciones_de_usuario(),"00",str(self.id_usuario_clasificado))
+        return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})
+
+    def total_mis_reputaciones(self,data):
+        self.id_usuario_clasificado = data["cabecera"]["id_usuario_logueado"]
+        respuesta = self.mtx.enviar(self.procpx.total_mis_reputaciones(),self.codtx.total_mis_reputaciones(),"00",str(self.id_usuario_clasificado))
+        return json.dumps({'cabecera':data["cabecera"],'datos':respuesta})

@@ -8,4 +8,5 @@ Reputacion *actualizar_reputacion(int id_usuario_clasificado,int clasificacion,c
 Reputacion *get_perfil_usuario_reputaciones(int id_usuario_clasificado);
 Reputacion *get_reputacion_por_id(int id_reputacion);
 int eliminar_reputacion(int id_reputacion);
+int get_total_reputaciones_usuario(int id_usuario_clasificado);
 #endif

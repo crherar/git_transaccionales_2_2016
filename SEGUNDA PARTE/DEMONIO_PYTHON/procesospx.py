@@ -112,3 +112,9 @@ class procesospx:
 
     def eliminar_reputacion(self):
         return "delrep"
+
+    def total_reputaciones_de_usuario(self):
+        return "tnrore"
+
+    def total_mis_reputaciones(self):
+        return "tnrmre"

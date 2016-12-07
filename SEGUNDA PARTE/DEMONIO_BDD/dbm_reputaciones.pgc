@@ -169,3 +169,25 @@ int eliminar_reputacion(int id_reputacion)
     db_commit();
     return resp;
 }
+
+int get_total_reputaciones_usuario(int id_usuario_clasificado)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+int  SQL_output;
+int SQL_id_usuario_clasificado;
+
+EXEC SQL END DECLARE SECTION;
+
+//SQL_output = (Usuario*) malloc(sizeof(Usuario));
+//memset(SQL_output, 0, sizeof(Usuario));
+SQL_id_usuario_clasificado = id_usuario_clasificado;
+
+EXEC SQL SELECT count(*) INTO :SQL_output FROM perfiles_usuarios
+WHERE id_usuario_clasificado = :SQL_id_usuario_clasificado;;
+
+db_commit();
+printf(sqlca.sqlerrm.sqlerrmc );
+printf("\n");
+ASSERT(SQL_output);
+return SQL_output;
+}

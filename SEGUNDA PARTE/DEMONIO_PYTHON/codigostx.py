@@ -112,3 +112,9 @@ class codigostx:
 
     def eliminar_reputacion(self):
         return "020535"
+
+    def total_reputaciones_de_usuario(self):
+        return "020536"
+
+    def total_mis_reputaciones(self):
+        return "020537"

@@ -558,6 +558,36 @@ while running:
                     s.close()
                     input.remove(s)
 
+            if formulario == "tnrore":
+                rep = reputaciones.reputaciones()
+                print formulario
+                respuesta = rep.total_reputaciones_de_usuario(data)
+                del rep
+                if respuesta:
+                    print "respuesta al php: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
+            if formulario == "tnrmre":
+                rep = reputaciones.reputaciones()
+                print formulario
+                respuesta = rep.total_mis_reputaciones(data)
+                del rep
+                if respuesta:
+                    print "respuesta al php: "
+                    print respuesta
+                    s.send(respuesta)
+                    input.remove(s)
+                else:
+                    print "NO EXISTE RESPUESTA"
+                    s.close()
+                    input.remove(s)
+
             del data
 
                 # if len(respuesta) != 0:
