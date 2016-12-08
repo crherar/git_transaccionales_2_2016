@@ -7,6 +7,7 @@ import objs_json
 class objetos:
 
     def __init__(self):
+        self.pagina = 0
         self.mensaje = ""
         self.id = 0
         self.nombre = ""
@@ -56,7 +57,8 @@ class objetos:
 
     def ver_mis_objetos_tabla(self,data):
         self.id_usuario_dueno = data["cabecera"]["id_usuario_logueado"]
-        respuesta = self.mtx.enviar(self.procpx.ver_mis_objetos_tabla(),self.codtx.ver_mis_objetos_tabla(),"00",str(self.id_usuario_dueno).ljust(5))
+        self.pagina = data["datos"]["pagina"]
+        respuesta = self.mtx.enviar(self.procpx.ver_mis_objetos_tabla(),self.codtx.ver_mis_objetos_tabla(),"00",str(self.id_usuario_dueno)+str(self.pagina))
         print respuesta
         #return json.dumps({'cabecera':[data["cabecera"]["formulario"],data["cabecera"]["id_usuario_logueado"]],'datos':respuesta})[""]
         #print data["cabecera"]
